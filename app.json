@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/booking/booking",
+    "pages/alliance/alliance",
+    "pages/user/user"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "太原圣美精品酒店",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#595959",
+    "selectedColor": "#ff6634",
+    "backgroundColor": "#fff",
+    "position": "bottom",
+    "borderStyle": "black",
+    "list": [
+      {
+        "text": "主页",
+        "pagePath": "pages/index/index",
+        "iconPath": "assets/image/home.png",
+        "selectedIconPath": "assets/image/home-orange.png"
+      },
+      {
+        "text": "酒店预定",
+        "pagePath": "pages/booking/booking",
+        "iconPath": "assets/image/booking.png",
+        "selectedIconPath": "assets/image/booking-orange.png"
+      },
+      {
+        "text": "酒店直订",
+        "pagePath": "pages/alliance/alliance",
+        "iconPath": "assets/image/alliance.png",
+        "selectedIconPath": "assets/image/alliance-orange.png"
+      },
+      {
+        "text": "会员中心",
+        "pagePath": "pages/user/user",
+        "iconPath": "assets/image/user.png",
+        "selectedIconPath": "assets/image/user-orange.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "将根据您的位置给您推荐更多便宜的好酒店"
+    }
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
+}

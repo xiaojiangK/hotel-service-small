@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/booking/booking",
     "pages/alliance/alliance",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/bookingOrder/bookingOrder"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -25,7 +26,7 @@
         "selectedIconPath": "assets/image/home-orange.png"
       },
       {
-        "text": "酒店预定",
+        "text": "酒店预订",
         "pagePath": "pages/booking/booking",
         "iconPath": "assets/image/booking.png",
         "selectedIconPath": "assets/image/booking-orange.png"

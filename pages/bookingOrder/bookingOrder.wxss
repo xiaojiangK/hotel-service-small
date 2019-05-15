@@ -1,0 +1,224 @@
+/**
+ *  酒店预订订单页
+ */
+/*房间信息*/
+.content {
+  padding-top: 20rpx;
+}
+.room {
+  margin: 0 20rpx 20rpx;
+  border-radius: 8rpx;
+  padding-top: 24rpx;
+  background: #fff;
+}
+.room .type {
+  margin-left: 32rpx;
+  color: #000;
+  font-size: 32rpx;
+  line-height: 32rpx;
+}
+.room .desc {
+  margin: 23rpx 0 0 32rpx;
+  color: #666;
+  font-size: 26rpx;
+  line-height: 26rpx;
+}
+.room .duration {
+  margin-top: 22rpx;
+  border-top: 1rpx solid #eee;
+  padding: 34rpx 0 26rpx 36rpx;
+}
+.room .duration .date {
+  margin-right: 12rpx;
+  color: #ff6634;
+  font-size: 32rpx;
+  font-weight: 500;
+  line-height: 32rpx;
+}
+.room .duration .status {
+  color: #929292;
+  font-size: 24rpx;
+  line-height: 24rpx;
+}
+.room .duration .divider {
+  display: inline-block;
+  position: relative;
+  top: -5rpx;
+  margin: 0 25rpx;
+  color: #989898;
+  font-size: 20rpx;
+}
+.room .duration .sum {
+  margin-left: 39rpx;
+  color: #4289ff;
+  font-size: 24rpx;
+  line-height: 24rpx;
+}
+/*提示信息*/
+.tips {
+  margin: 25rpx 31rpx;
+  color: #929292;
+  font-size: 26rpx;
+  line-height: 26rpx;
+}
+/*用户信息*/
+.user {
+  background: #fff;
+}
+.user .form-group {
+  position: relative;
+  border-bottom: 1rpx solid #eee;
+  padding-left: 21rpx;
+  height: 89rpx;
+  line-height: 90rpx;
+}
+.user .form-group label {
+  display: inline-block;
+  vertical-align: top;
+  width: 200rpx;
+  color: #b2b2b2;
+  font-size: 30rpx;
+  line-height: 89rpx;
+}
+.user .form-group picker {
+  display: inline-block;
+  vertical-align: top;
+  width: 520rpx;
+}
+.user .form-group picker text,
+.user .form-group input {
+  display: inline-block;
+  vertical-align: top;
+  height: 49rpx;
+  padding: 20rpx 0;
+  width: 520rpx;
+  color: #181818;
+  font-size: 30rpx;
+  line-height: 49rpx;
+}
+.icon-right {
+  position: absolute;
+  top: 36rpx;
+  right: 51rpx;
+  width: 11rpx;
+  height: 19rpx;
+}
+/*备注信息*/
+.remark {
+  margin-top: 30rpx;
+  color: #929292;
+  font-size: 24rpx;
+  text-align: center;
+}
+/*统计栏信息*/
+.sum-bar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 999;
+  border-top: 1rpx solid #e1e1e1;
+  width: 100%;
+  height: 109rpx;
+  background: #fff;
+}
+.sum-bar view {
+  display: inline-block;
+  vertical-align: middle;
+  height: 109rpx;
+  line-height: 109rpx;
+}
+.sum-bar .number {
+  margin-left: 30rpx;
+  width: 386rpx;
+  color: #666;
+  font-size: 28rpx;
+}
+.sum-bar .number text {
+  color: #e93a3d;
+  font-size: 42rpx;
+}
+.sum-bar .number text::before {
+  content: '￥';
+  font-size: 24rpx;
+}
+.sum-bar .detail {
+  color: #ff6634;
+  font-size: 20rpx;
+  line-height: 20rpx;
+}
+.sum-bar .detail image {
+  display: block;
+  margin: 25rpx auto 11rpx;
+  width: 22rpx;
+  height: 22rpx;
+}
+.sum-bar .submit {
+  float: right;
+  margin-top: -1rpx;
+  width: 260rpx;
+  height: 110rpx;
+  color: #fff;
+  font-size: 36rpx;
+  text-align: center;
+  background: #ff6634;
+}
+.sum-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background: rgba(12, 12, 12, .5);
+}
+.sum-panel .wrap {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  line-height: 1;
+  background: #fff;
+}
+.sum-panel .head {
+  position: relative;
+  height: 90rpx;
+  color: #333;
+  font-size: 32rpx;
+  line-height: 90rpx;
+  text-align: center;
+  background: #f2f2f2;
+}
+.sum-panel .close {
+  position: absolute;
+  top: 32rpx;
+  right: 39rpx;
+  width: 26rpx;
+  height: 26rpx;
+}
+.sum-panel .row {
+  display: flex;
+  justify-content: space-between;
+  margin: 40rpx 0;
+  padding-left: 41rpx;
+  padding-right: 54rpx;
+  color: #333;
+  font-size: 30rpx;
+}
+.sum-panel .row:nth-of-type(2){
+  margin: 33rpx 0;
+  padding-left: 21rpx;
+}
+.sum-panel .row .date {
+  font-size: 26rpx;
+}
+.sum-panel .row .breakfast {
+  margin-left: 74rpx;
+  color: #929292;
+}
+.sum-panel .row .price {
+  color: #e93a3d;
+}
+.sum-panel .sum {
+  margin-top: 30rpx;
+  border-top: 1rpx solid #e1e1e1;
+  padding: 34rpx 54rpx 5rpx 22rpx;
+}

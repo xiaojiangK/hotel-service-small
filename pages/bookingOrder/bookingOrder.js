@@ -19,8 +19,6 @@ Page({
       roomNumberIndex: e.detail.value,
       roomNumber: this.data.roomNumberArray[e.detail.value]
     });
-    console.log(e.detail.value);
-    console.log(this.data.roomNumber);
   },
   //  选择预计办理入住时间
   bindDateChange: function (e) {

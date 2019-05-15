@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/booking/booking",
     "pages/alliance/alliance",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/morningVolume/morningVolume"
   ],
   "window": {
     "backgroundTextStyle": "light",

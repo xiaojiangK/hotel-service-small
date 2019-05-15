@@ -1,1 +1,60 @@
-
+<view>
+  <view class="wrapper">
+    <!--轮播和遮罩层-->
+    <view class="banner-box">
+      <swiper class="swiper-box"
+        indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}"
+        interval="{{interval}}"
+        duration="{{duration}}"
+        circular="true"
+      >
+        <block wx:for="{{imgUrls}}" wx:key='index'>
+          <swiper-item class="swiper-item">
+            <image src="{{item}}" class="slide-image"/>
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class="welcome">
+        <view class="welcome-tp">Hello 你好</view>
+        <view class="welcome-bt">欢迎入住太原圣美精品酒店</view>
+      </view>
+    </view>
+    <!--end-->
+    <!--酒店服务-->
+    <view class="hotel-services">
+      <view class="services-title">
+        <image class="services-title-img" src="../../assets/image/index-left.png"/>         
+        <view>酒店服务</view>
+        <image class="services-title-img" src="../../assets/image/index-right.png"/> 
+      </view>
+      <view class="services-nav">
+        <view  class="services-item">
+          <navigator url="../morningVolume/morningVolume">
+            <image class="services-img" src="../../assets/image/index-volume.png" ></image>
+            <view class="services-text">早餐卷</view>
+          </navigator>
+        </view>
+        <view  class="services-item">
+          <image class="services-img" src="../../assets/image/index-supermarket.png" ></image>
+          <view class="services-text">酒店超市</view>
+        </view>
+        <view  class="services-item">
+          <image class="services-img" src="../../assets/image/index-facility.png" ></image>
+          <view class="services-text">酒店设施</view>
+        </view>
+        <view  class="services-item">
+          <image class="services-img" src="../../assets/image/index-periphery.png" ></image>
+          <view class="services-text">酒店周边</view>
+        </view>
+      </view>
+    </view>
+    <!--end-->
+  </view>
+  
+  <view class="location">
+      asasa
+  </view>
+  
+ 
+</view>

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "custom-module": "/components/custom-module/custom-module"
+  },
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "酒店设施"
+}

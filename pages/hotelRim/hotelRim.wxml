@@ -1,0 +1,17 @@
+<!--pages/hotelRim/hotelRim.wxml-->
+<view class="wrapper" > 
+  <view class="hotel-rim">
+    <view class="rim-banner">
+      <image src="{{bannerUrl}}" />
+    </view>
+    <view class="rim-bt">
+      <view class="rim-lf">
+        <view class="rim-lf-text" > 柳巷美食城百旗氏</view>
+        <view class="rim-lf-meg" > 太原市迎泽区柳巷南路三圣庵工贸大厦三层(长风… </view>
+      </view>
+      <view class="rim-rg">
+        <image class="rim-rg-img" src="/assets/image/index-iphone.png"></image>
+      </view>       
+    </view>   
+  </view> 
+</view>

@@ -1,1 +1,136 @@
-/* pages/booking/booking.wxss */
+/**
+ *  酒店预订页
+ */
+/*banner大图*/
+.banner {
+  height: 380rpx;
+  background: #efefef;
+}
+.banner image {
+  width: 100%;
+  height: 100%;
+}
+/*入住期限*/
+.duration {
+  position: relative;
+  z-index: 10;
+  margin-top: -14rpx;
+  border-radius: 16rpx 16rpx 0 0;
+  padding: 21rpx 0 19rpx;
+  text-align: center;
+  background: #fff;
+}
+.duration .col {
+  display: inline-block;
+  vertical-align: top;
+}
+.duration .status {
+  color: #333;
+  font-size: 26rpx;
+  line-height: 26rpx;
+}
+.duration .date {
+  margin: 16rpx 0 14rpx;
+  color: #FF6342;
+  font-size: 36rpx; 
+  line-height: 36rpx;
+}
+.duration .day {
+  color: #929292;
+  font-size: 22rpx;
+  line-height: 22rpx;
+}
+.duration .sum {
+  margin: 39rpx 109rpx 0;
+  border: 1rpx solid #e1e1e1;
+  border-radius: 42rpx;
+  width: 110rpx;
+  height: 42rpx;
+  color: #333;
+  font-size: 24rpx;
+  line-height: 42rpx;
+}
+/*房间列表*/
+.room-list {
+  margin-top: 20rpx;
+  padding: 17rpx 0;
+  background: #fff;
+}
+.room-list .item {
+  position: relative;
+  border-bottom: 1rpx solid #eee;
+  padding: 22rpx 20rpx 20rpx;
+  height: 124rpx;
+}
+.room-list .item:last-of-type {
+  border-bottom: none;
+}
+.room-list .item .img {
+  float: left;
+  margin-left: 10rpx;
+  margin-right: 16rpx;
+  width: 124rpx;
+  height: 124rpx;
+}
+.room-list .item .type {
+  margin-top: 5rpx;
+  color: #000;
+  font-size: 36rpx;
+  line-height: 36rpx;
+}
+.room-list .item .desc {
+  margin-top: 14rpx;
+  color: #666;
+  font-size: 24rpx;
+  line-height: 24rpx;
+}
+.room-list .item .breakfast {
+  margin-top: 17rpx;
+  color: #929292;
+  font-size: 24rpx;
+  line-height: 24rpx;
+}
+.room-list .item .price {
+  float: right;
+  margin-top: -44rpx;
+  margin-right: 128rpx;
+  color: #ff6634;
+  font-size: 44rpx;
+  line-height: 44rpx;
+}
+.room-list .item .price::before {
+  content: '￥';
+  font-size: 24rpx;
+}
+.room-list .item .status {
+  position: absolute;
+  top: 42rpx;
+  right: 20rpx;
+  border: 2rpx solid #ff6634;
+  border-radius: 4rpx;
+  min-width: 104rpx;
+  text-align: center;
+}
+.room-list .item .status.full {
+  border-color: #c7c7c7;
+}
+.room-list .item .status view:first-of-type {
+  height: 54rpx;
+  color: #fff;
+  font-size: 32rpx;
+  line-height: 54rpx;
+  background: #ff6634;
+}
+.room-list .item .status.full view:first-of-type {
+  background: #c7c7c7;
+}
+.room-list .item .status view:last-of-type {
+  padding: 6rpx 0 8rpx;
+  color: #ff6634;
+  font-size: 22rpx;
+  line-height: 22rpx;
+  background: #fff;
+}
+.room-list .item .status.full view:last-of-type {
+  color: #c7c7c7;
+}

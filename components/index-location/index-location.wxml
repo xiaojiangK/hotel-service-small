@@ -1,0 +1,35 @@
+<!--components/index-location/index-location.wxml-->
+<view class="location">
+  <view class="location-title">
+    <image class="location-img" src="/assets/image/index-location.png"/>
+    <view class="location-text">酒店位置</view>
+    <view class="location-meg">去哪里也不怕找不到回家的路 </view>      
+  </view>
+  <view class="location-main">
+    <view class="location-map">
+      <map
+        id="map"
+        longitude="113.324520"
+        latitude="23.099994"
+        scale="16"
+        markers="{{markers}}"
+        bindregionchange="regionchange"
+        enable-zoom = "{{false}}"
+        enable-scroll = "{{false}}"
+        enable-rotate = "{{false}}"
+        style="width: 100%; height: 100%;"
+        bindtap="openMap"
+      ></map>
+    </view>
+    <view class="location-bt">
+      <view class="location-bt-lf">
+        <view class="bt-lf-title">{{title}}</view>
+        <view class="bt-lf-meg">{{meg}}</view>
+      </view>
+      <view class="location-bt-rg">
+        <image class="location-rg-img" bindtap="openPhoneCall" src="/assets/image/index-iphone.png"></image>
+        <image class="location-rg-img" bindtap="openMap" src="/assets/image/index-navigation.png"></image> 
+      </view> 
+    </view>
+  </view>  
+</view>

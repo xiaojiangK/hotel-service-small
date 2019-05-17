@@ -1,2 +1,69 @@
-<!--pages/booking/booking.wxml-->
-<text>pages/booking/booking.wxml</text>
+<!-- 酒店预订页 -->
+<!-- banner start -->
+<view class="banner">
+  <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557839574163&di=b283cb7950d8be677c4d719348b83a4d&imgtype=0&src=http%3A%2F%2Fwww.chinadaily.com.cn%2Fbeijing%2Fimg%2Fattachement%2Fjpg%2Fsite1%2F20150610%2Fb083fe9fe7b716e1f23914.jpg" mode="aspectFill"></image>
+</view>
+<!-- banner end -->
+<!-- duration start -->
+<view class="duration">
+  <view class="col">
+    <view class="status">入住</view>
+    <view class="date">04月28日</view>
+    <view class="day">周日</view>
+  </view>
+  <view class="col sum">共1晚</view>
+  <view class="col">
+    <view class="status">离店</view>
+    <view class="date">04月29日</view>
+    <view class="day">周一</view>
+  </view>
+</view>
+<!-- duration end -->
+<!-- room list start -->
+<view class="room-list">
+  <navigator class="item" url="/pages/bookingOrder/bookingOrder">
+    <image class="img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557839574163&di=b283cb7950d8be677c4d719348b83a4d&imgtype=0&src=http%3A%2F%2Fwww.chinadaily.com.cn%2Fbeijing%2Fimg%2Fattachement%2Fjpg%2Fsite1%2F20150610%2Fb083fe9fe7b716e1f23914.jpg" mode="aspectFill"></image>
+    <view class="type">精致大床房</view>
+    <view class="desc">1张1.8m大床 23㎡ 有窗</view>
+    <view class="breakfast">不含早</view>
+    <view class="price">280</view>
+    <view class="status">
+      <view>预订</view>
+      <view>仅剩8间</view>
+    </view>
+  </navigator>
+  <navigator class="item" url="/pages/bookingOrder/bookingOrder">
+    <image class="img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557839574163&di=b283cb7950d8be677c4d719348b83a4d&imgtype=0&src=http%3A%2F%2Fwww.chinadaily.com.cn%2Fbeijing%2Fimg%2Fattachement%2Fjpg%2Fsite1%2F20150610%2Fb083fe9fe7b716e1f23914.jpg" mode="aspectFill"></image>
+    <view class="type">精致标准间</view>
+    <view class="desc">2张1.2米单人床 23㎡ 有窗</view>
+    <view class="breakfast">不含早</view>
+    <view class="price">280</view>
+    <view class="status">
+      <view>预订</view>
+      <view>仅剩8间</view>
+    </view>
+  </navigator>
+  <navigator class="item" url="/pages/bookingOrder/bookingOrder">
+    <image class="img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557839574163&di=b283cb7950d8be677c4d719348b83a4d&imgtype=0&src=http%3A%2F%2Fwww.chinadaily.com.cn%2Fbeijing%2Fimg%2Fattachement%2Fjpg%2Fsite1%2F20150610%2Fb083fe9fe7b716e1f23914.jpg" mode="aspectFill"></image>
+    <view class="type">豪华标准间</view>
+    <view class="desc">2张1.2米单人床 27㎡ 有窗</view>
+    <view class="breakfast">不含早</view>
+    <view class="price">300</view>
+    <view class="status full">
+      <view>满房</view>
+      <view>满房</view>
+    </view>
+  </navigator>
+  <navigator class="item" url="/pages/bookingOrder/bookingOrder">
+    <image class="img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557839574163&di=b283cb7950d8be677c4d719348b83a4d&imgtype=0&src=http%3A%2F%2Fwww.chinadaily.com.cn%2Fbeijing%2Fimg%2Fattachement%2Fjpg%2Fsite1%2F20150610%2Fb083fe9fe7b716e1f23914.jpg" mode="aspectFill"></image>
+    <view class="type">精致大床房</view>
+    <view class="desc">1张1.8m大床 23㎡ 有窗</view>
+    <view class="breakfast">不含早</view>
+    <view class="price">280</view>
+    <view class="status">
+      <view>预订</view>
+      <view>仅剩8间</view>
+    </view>
+  </navigator>
+</view>
+<!-- room list end -->

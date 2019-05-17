@@ -1,3 +1,10 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "custom-swiper": "/components/custom-swiper/custom-swiper",
+    "index-service": "/components/index-service/index-service",
+    "index-location": "/components/index-location/index-location",
+    "index-facility": "/components/index-facility/index-facility",
+    "index-supermarket": "/components/index-supermarket/index-supermarket",
+    "index-rim": "/components/index-rim/index-rim"
+  }
 }

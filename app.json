@@ -39,7 +39,7 @@
         "selectedIconPath": "assets/image/home-orange.png"
       },
       {
-        "text": "酒店预定",
+        "text": "酒店预订",
         "pagePath": "pages/booking/booking",
         "iconPath": "assets/image/booking.png",
         "selectedIconPath": "assets/image/booking-orange.png"
@@ -60,7 +60,7 @@
   },
   "permission": {
     "scope.userLocation": {
-      "desc": "将根据您的位置给您推荐更多便宜的好酒店"
+      "desc": "您的位置信息用于地图导航"
     }
   },
   "debug": true,

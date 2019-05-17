@@ -1,0 +1,32 @@
+/* components/swiper/swiper.wxss */
+.banner-box {
+  position: relative;
+}
+.swiper-box {
+  width: 100%;
+  height: 380rpx;
+}
+.swiper-box .slide-image {
+  width: 100%;
+  height: 380rpx;
+}
+.welcome {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 168rpx;
+  background: linear-gradient(0deg,rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
+}
+.welcome-tp {
+  margin-top: 40rpx;
+  margin-left: 30rpx;
+  color: white;
+  font-size: 28rpx;
+}
+.welcome-bt {
+  margin-left: 30rpx;
+  font-size: 36rpx;
+  color: white;
+}

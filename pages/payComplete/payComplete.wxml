@@ -1,0 +1,4 @@
+<!--pages/payComplete/payComplete.wxml-->
+<view>
+  <complete paramToCom='{{ msg }}'></complete>
+</view>

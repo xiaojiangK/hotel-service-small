@@ -10,8 +10,14 @@
     "pages/morningVolume/morningVolume",
     "pages/booking/booking",
     "pages/user/user",
-    "pages/bookingOrder/bookingOrder"
-
+    "pages/bookingOrder/bookingOrder",
+    "pages/vipCenter/vipCenter",
+    "pages/orderList/orderList",
+    "pages/marketOrder/marketOrder",
+    "pages/payComplete/payComplete",
+    "pages/marketPay/marketPay",
+    "pages/supermarket/supermarket",
+    "components/goods/goods"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,5 @@
+<view class='stepper'>
+  <view class='minus btn'>-</view>
+  <input class='num' type='text'></input>
+  <view class='add btn'>+</view>
+</view>

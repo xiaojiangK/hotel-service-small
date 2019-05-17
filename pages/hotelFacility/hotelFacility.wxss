@@ -1,1 +1,4 @@
 /* pages/hotelFacility/hotelFacility.wxss */
+page {
+  background: white;
+}

@@ -1,3 +1,4 @@
+<import src="../../components/date/dateChoice.wxml" />
 <!-- 酒店预订页 -->
 <!-- banner start -->
 <view class="banner">
@@ -18,6 +19,8 @@
     <view class="day">周一</view>
   </view>
 </view>
+
+<template is="date-choice" catchtap="changeType"/>
 <!-- duration end -->
 <!-- room list start -->
 <view class="room-list">

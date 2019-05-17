@@ -8,12 +8,11 @@
   <view class="foot">
     精彩旅行，从酒店生活开始…
   </view>
-    
-  <!-- 授权窗口 -->
+</view>
+ <!-- 授权窗口 -->
   <view class='user-alert' wx:if="{{ isGetUserInfo }}">
     <view class='alert-content'>
       <view>想体验全部功能，请点击授权</view>
       <button class='getUser-btn' bindgetuserinfo='getUserInfo' open-type="getUserInfo">立即授权</button>
     </view>
   </view>
-</view>

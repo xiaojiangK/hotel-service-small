@@ -1,7 +1,5 @@
-/**
- *  酒店预订页
- */
-/*banner大图*/
+@import "../../components/date/dateChoice.wxss"
+
 .banner {
   height: 380rpx;
   background: #efefef;

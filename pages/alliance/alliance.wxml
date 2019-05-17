@@ -1,6 +1,9 @@
 <!--pages/alliance/alliance.wxml-->
-<view class="wrapper">
-  <image class="banner" src="/assets/image/alliance-banner.png"/>
-    
+<!-- <view class="wrapper"> -->
+<image class="banner" src="/assets/image/alliance-banner.png"/>
+<view class="foot">
+  <image class="foot-logo" src="../../assets/image/logo.png"></image>
 </view>
+      
+<!-- </view> -->
   

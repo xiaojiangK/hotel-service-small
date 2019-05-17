@@ -39,7 +39,7 @@
         "selectedIconPath": "assets/image/booking-orange.png"
       },
       {
-        "text": "酒店直订",
+        "text": "今夜特价",
         "pagePath": "pages/alliance/alliance",
         "iconPath": "assets/image/alliance.png",
         "selectedIconPath": "assets/image/alliance-orange.png"

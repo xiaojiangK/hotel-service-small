@@ -4,6 +4,18 @@ Page({
   /**
    * 页面的初始数据
    */
+  changeType: function () {
+    var show = this.data.dateShow
+    if (show) {
+      this.setData({
+        dateShow: false
+      })
+    } else {
+      this.setData({
+        dateShow: true
+      })
+    }
+  },
   data: {
 
   },

@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "custom-module": "/components/custom-module/custom-module"
+  },
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "早餐卷"
 }

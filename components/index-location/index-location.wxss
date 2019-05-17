@@ -1,0 +1,78 @@
+/* components/index-location/index-location.wxss */
+.location {
+  width: 100%;
+  height: 428rpx;
+  background: white;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+}
+.location-title {
+  width: 90.67%;
+  height: 127rpx;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+.location-img {
+  width: 45rpx;
+  height: 45rpx;
+}
+.location-text {
+  font-size: 36rpx;
+  color: #333333;
+  font-weight: bold;
+  margin-left: 16rpx;
+}
+.location-meg {
+  font-size: 26rpx;
+  color: #a7a7a7;
+  margin-left: 26rpx;
+}
+.location-main {
+  width: 90.67%;
+  height: 266rpx;
+  margin: 0 auto;
+  border: 1rpx solid rgba(225,225,225,1);
+  border-radius:12rpx;
+}
+.location-map {
+  width: 100%;
+  height: 166rpx;
+  background: #EFEFEF;
+}
+.location-bt {
+  width: 100%;
+  height: 100rpx;
+  overflow: hidden;
+}
+.location-bt-lf {
+  float: left;
+  width: 60%;
+  height: 100%;
+  padding-left: 26rpx; 
+}
+.bt-lf-title {
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: bold;
+  margin: 8rpx auto;
+}
+.bt-lf-meg {
+  font-size: 22rpx;
+  color: #666666; 
+}
+.location-bt-rg {
+  float: right;
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.location-rg-img {
+  width: 60rpx;
+  height: 60rpx;
+}

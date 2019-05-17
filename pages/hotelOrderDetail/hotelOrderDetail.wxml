@@ -1,0 +1,93 @@
+<!--pages/hotelOrderDetail/hotelOrderDetail.wxml-->
+<view class='wrapper'>
+  <view class='pay-box'>
+    <view class='pay-status'>待支付</view>
+    <view class='pay-text'>
+      <view class='pay-meg'>剩余支付时间</view> 
+      <view class='pay-time countdown'>{{c3}}</view>
+      <!-- <view class='pay-thank'>感谢您再次光临！</view> -->
+    </view>
+  </view>
+  <view class='charge-details'>
+    <view class='charge-text'>费用明细</view>
+  </view>
+
+  <view class='charge-info'>  
+    <view class='charge-title'>
+      <view class='title-text'>入住间夜 (<view class='late'>2</view>晚，<view class='rooms'>2</view>间）
+      </view>
+      <view class='item-nub'>
+        <label>￥</label><text>1200.00</text>
+      </view>
+    </view>
+    <view class='charge-item'>
+      <view class='item-text'>2019-03-06</view>
+      <view class='item-nub black'>
+        <label>2×</label><label>￥</label><text>1200.00</text>
+      </view>
+    </view>
+    <view class='charge-item'>
+      <view class='item-text'>2019-03-06<label class='item-meg'>无早/间</label></view>
+      <view class='item-nub black'>
+        <label>2×</label><label>￥</label><text>1200.00</text>
+      </view>
+    </view>
+    <view class='charge-item'>
+      <view class='item-text'>2019-03-06<label class='item-meg'>无早/间</label></view>
+    </view>
+  </view> 
+  
+  <view class='payment'>
+    <view class='payment-title'>
+      <view class='payment-title-text'>实付金额</view>
+      <view class='item-nub'>
+        <label>￥</label><text>1200.00</text>
+      </view>
+    </view>
+    <view class='payment-box'>
+      <view class='cancel-payment'>取消订单</view>
+      <view class='sub-payment'>去支付</view>
+      <!-- <view class='book-again'>再次预定</view> -->
+    </view>
+    <view class='payment-meg'>预订成功后不可取消/变更订单</view>
+  </view>
+
+  <view class='destine-info'>
+    <view class='info-title'>预订信息</view>
+    <view class='info-item'>
+      <view class='info-item-lf'>预订房型</view>
+      <view class='info-item-rg'>标准双床房/无早餐</view>
+    </view>
+    <view class='info-item'>
+      <view class='info-item-lf'>入住时间</view>
+      <view class='info-item-rg'>02月28日 - 03月02日，共2晚1间</view>
+    </view>
+    <view class='info-item'>
+      <view class='info-item-lf'>入住人</view>
+      <view class='info-item-rg'>张三,李四</view>
+    </view>
+    <view class='info-item'>
+      <view class='info-item-lf'>联系电话</view>
+      <view class='info-item-rg'>13800138000</view>
+    </view>
+    <view class='info-item' style='margin-bottom: 0'>
+      <view class='info-item-lf'>预计到店时间</view>
+      <view class='info-item-rg'>3月1日 14:00之前</view>
+    </view>
+    <view class='info-item-a'>
+      <view class='info-item-meg'>(不影响酒店留房)</view>
+    </view>
+  </view>
+
+  <view class='destine-info'>
+    <view class='info-title'>订单信息</view>
+    <view class='info-item'>
+      <view class='info-item-lf'>订单号</view>
+      <view class='info-item-rg'>5790129101</view>
+    </view>
+    <view class='info-item'>
+      <view class='info-item-lf'>下单时间</view>
+      <view class='info-item-rg'>2019-02-28 15:21:07</view>
+    </view>
+  </view>
+</view>

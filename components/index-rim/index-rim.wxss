@@ -1,0 +1,103 @@
+/* components/index-rim/index-rim.wxss */
+.hotel-rim {
+  width: 100%;
+  height: 654rpx;
+  background: white;
+  margin-bottom: 20rpx;
+}
+.rim-title {
+  width: 90.67%;
+  height: 127rpx;
+  margin: 0 auto;
+  line-height: 127rpx;
+}
+.rim-img {
+  float: left;
+  width: 45rpx;
+  height: 45rpx;
+  margin-top: 42rpx;
+  vertical-align: middle;
+}
+.rim-text {
+  float: left;
+  font-size: 36rpx;
+  color: #333333;
+  font-weight: bold;
+  margin-left: 16rpx;
+}
+.rim-meg {
+  float: left;
+  font-size: 26rpx;
+  color: #a7a7a7;
+  margin-left: 22rpx;
+}
+.rim-arrow {
+  float: right;
+  margin-top: 56rpx;
+  width: 10rpx;
+  height: 18rpx;
+}
+.rim-banner {
+  width: 90.67%;
+  height: 342rpx;
+  background: #EFEFEF;
+  margin: 0 auto;
+  border-radius:12rpx;
+  text-align: center;
+  position: relative;
+}
+.rim-banner image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin:auto;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+.rim-bt {
+  width: 90.67%;
+  height: auto;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.rim-lf {
+  width: 90%;
+  height: auto;
+  overflow: hidden;
+}
+.rim-lf-text {
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  font-size: 36rpx;
+  color: #333333;
+  font-weight: bold;
+  margin: 14rpx auto 0 auto;
+}
+.rim-lf-meg {
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size: 26rpx;
+  color: #929292;
+}
+.rim-rg {
+  width: 10%;
+  height: auto;
+  overflow: hidden;
+  margin-top: 30rpx;
+}
+.rim-rg-img {
+  width: 60rpx;
+  height: 60rpx;
+}

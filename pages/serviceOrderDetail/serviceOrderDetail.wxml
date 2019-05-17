@@ -1,0 +1,28 @@
+<!--pages/serviceOrderDetail/serviceOrderDetail.wxml-->
+<view class="wrapper">  
+  <view class="hotel-facility">
+    <view class="facility-banner">
+      <image src="{{bannerUrl}}" />
+    </view>   
+  </view>
+  <view class="order-item">
+    <view class="order-meg">金额</view>
+     <view class="order-rg">
+       <view><label class="order-sign">￥</label> <text class="order-nub">11.33</text></view>
+     </view> 
+  </view>
+  <view class="order-item">
+    <view class="order-meg">数量</view>
+     <view class="order-rg">
+       <view><text class="order-nub red-nub">1</text></view>
+     </view> 
+  </view>
+  <view class="text-box">
+    <view class="sub-success">用餐前，主动出示条形码</view>
+    <view class="sub-faill">该早餐券已于2019-09-21 15:20:22使用</view>  
+  </view>
+  <view class="bar-code">
+    <image class="" src=""></image>
+  </view>
+  <view class="bar-code-nub" >4372 8948 9237 0199</view>    
+</view>

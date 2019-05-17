@@ -1,0 +1,92 @@
+/* pages/subOrder/subOrder.wxss */
+.wrapper {
+  width: 100%;
+  height: 100%;
+  background: white;
+  position: relative;
+}
+.title {
+  width: 90.67%;
+  height: 110rpx;
+  line-height: 110rpx;
+  color: #333333;
+  font-size: 48rpx;
+  font-weight: bold;
+  margin: 0 auto;
+}
+.order-item {
+  width: 90.67%;
+  height: 130rpx;
+  line-height: 130rpx;
+  color: #666666;
+  border-bottom: 1px solid #E1E1E1;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.order-meg {
+  font-size: 36rpx;
+  color: #666666;
+}
+.order-sign {
+  font-size: 24rpx;
+  color: #666666;
+}
+.order-nub {
+  font-size: 36rpx;
+  color: #666666;
+}
+.red-nub {
+  color: #E93A3D
+}
+.order-caption {
+  width: 90.67%;
+  margin: 58rpx auto 30rpx auto;
+  color: #333333;
+  font-size: 28rpx;
+}
+.order-caption-a {
+  color: #929292;
+  font-size: 28rpx;
+  margin-left: 40rpx;
+  margin-bottom: 14rpx;
+}
+.foot {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 110rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.strong {
+  font-weight: bold;
+}
+.foot-lf {
+  width: 490rpx;
+  height: 110rpx;
+  border-top: 1rpx solid #E1E1E1;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+.foot-text {
+  font-size: 28rpx;
+  color: #666666;
+  margin-left: 30rpx;
+}
+.btnSubmit {
+  width: 260rpx;
+  height: 110rpx;
+  line-height: 110rpx;
+  background: #E93A3D;
+  color: white;
+  font-size: 36rpx;
+  text-align: center;
+}

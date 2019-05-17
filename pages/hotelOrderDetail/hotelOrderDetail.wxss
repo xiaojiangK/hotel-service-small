@@ -1,0 +1,231 @@
+/* pages/hotelOrderDetail/hotelOrderDetail.wxss */
+.wrapper {
+  width: 100%;
+  height: auto;
+  background: #F2F2F2;
+  overflow: hidden;
+}
+.pay-box {
+  width: 100%;
+  height: 164rpx;
+  background: white;
+  padding: 38rpx 0 0 32rpx;
+}
+.pay-status {
+  font-size: 42rpx;
+  color: #333333;
+  font-weight: bold;
+  margin-bottom: 14rpx;
+}
+.pay-text {
+  width: 100%;
+  height: auto;
+  color: #FF6634;
+  font-size: 24rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.pay-time {
+  margin-left: 10rpx;
+}
+.pay-thank {
+  color: #929292
+}
+.charge-details {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px #E1E1E1 dashed;
+  position: relative;
+}
+.charge-text {
+  position: absolute;
+  top: -10px;
+  left: 37%;
+  width: 186rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  color: #B2B2B2;
+  text-align: center;
+  background: white;
+  border:1px solid rgba(225,225,225,1);
+  border-radius:20rpx;
+  margin: 0 auto;
+}
+.charge-title {
+  width: 100%;
+  height: 86rpx;
+  background: white;
+  /* padding: 20rpx auto; */
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.charge-item {
+  width: 100%;
+  height: 58rpx;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.title-text {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-start;
+  font-size: 30rpx;
+  color: #333333;
+  padding-left: 22rpx;
+}
+.item-text {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-start;
+  font-size: 26rpx;
+  color: #333333;
+  padding-left: 40rpx;
+}
+.item-nub {
+  font-size: 30rpx;
+  color: #E93A3D;
+  font-weight: bold;
+  padding-right: 34rpx; 
+}
+.black {
+  color: #181818;
+  font-weight: 400;
+}
+.item-meg {
+  color: #929292;
+  font-size: 26rpx;
+  margin-left: 74rpx;
+}
+.charge-info {
+  background: white;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  padding-bottom: 44rpx;
+  border-bottom: 1rpx solid#E1E1E1;
+}
+.payment {
+  width: 100%;
+  height: 320rpx;
+  background: white;
+  /* margin-bottom: 20rpx; */
+}
+.payment-title {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.payment-title-text {
+  font-size: 30rpx;
+  color: #333333;
+  padding-left: 22rpx;
+}
+.payment-box {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 30rpx auto 40rpx auto;
+}
+.cancel-payment {
+  width: 330rpx;
+  height: 80rpx;
+  background: #CCCCCC;
+  color: white;
+  font-size: 30rpx;
+  font-weight: bold;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius:4rpx;
+}
+.sub-payment {
+  width: 330rpx;
+  height: 80rpx;
+  background: #FF6634;
+  color: white;
+  font-size: 30rpx;
+  font-weight: bold;
+  line-height: 80rpx;
+  text-align: center;
+  margin-left: 24rpx;
+  border-radius:4rpx;
+}
+.book-again {
+  width: 330rpx;
+  height: 80rpx;
+  background: #FF6634;
+  color: white;
+  font-size: 30rpx;
+  font-weight: bold;
+  line-height: 80rpx;
+  text-align: center;
+  margin-left: 24rpx;
+  border-radius:4rpx;
+}
+.payment-meg {
+  color: #929292;
+  font-size: 26rpx;
+  margin-left: 34rpx;
+}
+.destine-info {
+  width: 100%;
+  height: auto;
+  background: white;
+  margin-top: 20rpx;
+  overflow: hidden;
+}
+.info-title {
+  width: 90.67%;
+  line-height: 104rpx;
+  margin: 0 auto;
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: bold;
+}
+.info-item {
+  width: 90.67%;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+.info-item-lf {
+  font-size: 28rpx;
+  color: #929292;
+}
+.info-item-rg {
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: bold;
+}
+.info-item-a {
+  width: 90.67%;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: 24rpx;
+  color: #929292;
+  margin-bottom: 30rpx;
+}

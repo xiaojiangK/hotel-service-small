@@ -1,9 +1,23 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/booking/booking",
+    "pages/hotelOrderDetail/hotelOrderDetail",
+    "pages/serviceOrderDetail/serviceOrderDetail",
     "pages/alliance/alliance",
-    "pages/user/user"
+    "pages/subOrder/subOrder",
+    "pages/hotelRim/hotelRim",
+    "pages/hotelFacility/hotelFacility",
+    "pages/morningVolume/morningVolume",
+    "pages/booking/booking",
+    "pages/user/user",
+    "pages/bookingOrder/bookingOrder",
+    "pages/vipCenter/vipCenter",
+    "pages/orderList/orderList",
+    "pages/marketOrder/marketOrder",
+    "pages/payComplete/payComplete",
+    "pages/marketPay/marketPay",
+    "pages/supermarket/supermarket",
+    "components/goods/goods"
   ],
   "window": {
     "backgroundTextStyle": "light",

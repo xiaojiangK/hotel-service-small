@@ -1,0 +1,142 @@
+/* pages/vipCenter/vipCenter.wxss */
+page{
+  background-color: #f1f1f1;
+}
+.center-header{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 240rpx;
+  background-color: #FF8234;
+}
+.center-header{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 240rpx;
+  background-color: #FF8234; 
+}
+.vip-photo{
+  width: 126rpx;
+  height: 126rpx;
+  margin-left: 40rpx;
+  margin-right: 30rpx;
+  border:4rpx solid #fff;
+  border-radius: 126px;
+  overflow: hidden;
+}
+.vip-photo >image{
+  width: 100%;
+  height: 100%;
+}
+.vip-name{
+  font-size:36rpx;
+  color:#fff;
+}
+.vip-notice{
+  margin-top: 14rpx;
+  font-size:28rpx;
+  color:#fff;
+}
+.vip-order{
+  position: absolute;
+  top:220rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 92%;
+  height:96rpx;
+  padding: 0 4%;
+  border-radius: 20rpx;
+  font-size: 32rpx;
+  background-color: #fff; 
+}
+.look-all{
+  font-size: 24rpx;
+  color: #929292
+}
+.order{
+  border-top:2rpx solid #e1e1e1;
+  margin-top: 76rpx;
+  background-color: #fff;
+}
+.order-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+}
+.order-title{
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+}
+.icon-title{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 8rpx;
+  border-radius: 50rpx;
+}
+.order-status{
+  font-size: 28rpx;
+  color: #666;
+}
+.order-content{
+  display: flex;
+  padding: 26rpx;
+  align-items: center;
+  font-size: 34rpx;
+  background-color: #fafafa;
+}
+.order-img{
+  width: 126rpx;
+  height: 126rpx;
+  margin-right: 36rpx; 
+}
+.order-statistics{
+  display: flex;
+  justify-content: flex-end;
+  padding: 20rpx;
+  font-size: 30rpx;
+  color: #666666;
+}
+.statistics-right{
+  display: flex;
+  justify-content: space-around;
+}
+.statistics-price{
+  margin-left: 10rpx;
+}
+.price-font{
+  color: #333;
+  font-weight: bold;
+}
+.order-no{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 240rpx;
+  font-size: 28rpx;
+  color: #666;
+  background-color: #fff;
+}
+
+
+.hotel-tel{
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+  margin-top: 40rpx;
+  padding: 0 40rpx;
+  font-size: 36rpx;
+  background-color: #fff;
+}
+.icon-tel{
+  width: 32rpx;
+  height: 32rpx;
+  margin-top: 6rpx;
+}
+.number-tel{
+  margin-left: 24rpx;
+  font-size: 30rpx;
+}

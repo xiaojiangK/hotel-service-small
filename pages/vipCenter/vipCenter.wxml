@@ -10,10 +10,10 @@
     </view>
   </view>
 
-  <view class='vip-order'>
+  <navigator url="/pages/orderList/orderList" hover-class="none" class='vip-order'>
     <view>我的订单</view>
     <view class='look-all'>查看全部</view>
-  </view>
+  </navigator>
 
   <view wx:if='{{ isLogin }}' class='order'>
     <view class='order-header'>
@@ -39,7 +39,7 @@
 
   <view class='hotel-tel'>
     <image class='icon-tel' src='/assets/image/icon-tel.png'></image>
-    <view class='number-tel'>酒店客服电话：010-78775658</view>
+    <view class='number-tel' bind:tap="goCall" data-tel="010-78775658">酒店客服电话：010-78775658</view>
   </view>
 
 </view>

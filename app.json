@@ -52,7 +52,7 @@
       },
       {
         "text": "会员中心",
-        "pagePath": "pages/user/user",
+        "pagePath": "pages/vipCenter/vipCenter",
         "iconPath": "assets/image/user.png",
         "selectedIconPath": "assets/image/user-orange.png"
       }

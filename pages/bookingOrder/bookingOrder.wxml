@@ -56,7 +56,7 @@
     <image src="/assets/image/icon-sum-detail.png" mode="aspectFill"></image>
     <text>明细</text>
   </view>
-  <view class="submit">提交订单</view>
+  <view class="submit" bind:tap="submit">提交订单</view>
 </view>
 <!-- sum bar end -->
 <!-- sum panel start -->

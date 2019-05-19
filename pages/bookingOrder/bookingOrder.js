@@ -1,3 +1,5 @@
+var app = getApp();
+
 Page({
   data: {
     //  房间数集合索引
@@ -30,6 +32,38 @@ Page({
   toggleSumDetail: function () {
     this.setData({
       isSumDetail: !this.data.isSumDetail
+    });
+  },
+  submit() {
+    wx.showLoading({
+      title: '支付中...',
+      mask: true
+    });
+    app.util.request({
+      url: "entry/wxapp/AddOrder",
+      data: {
+        
+      },
+      success:(e) => {
+        wx.requestPayment({
+          timeStamp: e.data.timeStamp,
+          nonceStr: e.data.nonceStr,
+          package: e.data.package,
+          signType: e.data.signType,
+          paySign: e.data.paySign,
+          success:(e) => {
+            
+          },
+          fail:(e) => {
+            wx.showToast({
+              title: "支付失败"
+            });
+          },
+          complete:() => {
+            wx.hideLoading();
+          }
+        });
+      }
     });
   }
 })

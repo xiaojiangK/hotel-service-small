@@ -1,9 +1,8 @@
 const app = getApp()
-const request = require("../../utils/request")
 
 Page({
   data: {
-    swiperData: "",
+    swiperData: [],
     isGetUserInfo: false
   },
 
@@ -21,128 +20,77 @@ Page({
 
   },
   loadData(){
-    // request.getBannnerInfo()
-    var that = this,
-    res = {
-      state:"ok",
-      data:[
-        // 'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
-        // 'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
-        'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
-      ]
-    }
-    if(res.state == 'ok'){
-      that.setData({
-        swiperData:res.data
-      })
-      console.log()
-    }
+    // 酒店周边
+    app.util.request({
+      url: "entry/wxapp/Periphery",
+      success:(res) => {
+        console.log(res);
+      }
+    });
+    // 酒店超市
+    app.util.request({
+      url: "entry/wxapp/Goods",
+      success:(res) => {
+        console.log(res);
+      }
+    });
+    // 酒店服务
+    app.util.request({
+      url: "entry/wxapp/Service",
+      success:(res) => {
+        console.log(res);
+      }
+    });
+    // 酒店设施
+    app.util.request({
+      url: "entry/wxapp/Volume",
+      success:(res) => {
+        console.log(res);
+      }
+    });
+    // 酒店详情
+    app.util.request({
+      url: "entry/wxapp/PjDetails",
+      data: {
+        seller_id: 1
+      },
+      success:(res) => {
+        console.log(res);
+      }
+    });
+    
+    // var res = {
+    //   state:"ok",
+    //   data:[
+    //     'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
+    //     'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
+    //     'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
+    //   ]
+    // }
+    // if(res.state == 'ok'){
+    //   this.setData({
+    //     swiperData: res.data
+    //   })
+    // }
   },
 
   bindGetUserInfo() {
-    let _this = this
-    // 登录
-    wx.login({
-      success: res1 => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        wx.request({
-          url: "https://u.showboom.cn/ucenter/device/api/index",
-          method: 'POST',
-          data: {
-            service: "zdPermit",
-            code: res1.code
-          },
-          header: {
-            'content-type': 'application/x-www-form-urlencoded',
-          },
-          success: function (res2) {
-            wx.getSetting({
-              success(res) {
-                console.log(res.authSetting)
-                if (res.authSetting["scope.userInfo"]){
-                  wx.getUserInfo({
-                    success: function (res3) {
-                      // 可以将 res 发送给后台解码出 unionId
-                      wx.request({
-                        url: "https://u.showboom.cn/ucenter/device/api/index",
-                        method: 'POST',
-                        data: {
-                          service: "zdSmallLogin",
-                          data: res3.encryptedData,
-                          skey: res2.data.data.sessKey,
-                          iv: res3.iv
-                        },
-                        header: {
-                          'content-type': 'application/x-www-form-urlencoded',
-                        },
-                        success: function (res4) {                       
-                          app.globalData.userInfo.uid = res4.data.data.uid;
-                          wx.setStorage({
-                            key: 'userinfo',
-                            data: {
-                              uid: res4.data.data.uid,
-                              nickName: res3.userInfo.nickName,
-                              avatarUrl: res3.userInfo.avatarUrl
-                            }
-                          });
-
-                        },
-                        fail: function (error) {
-                          reject(error)
-                        }
-                      });
-                      //读取用户详细信息unionId
-                      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-                      // 所以此处加入 callback 以防止这种情况
-                      if (that.userInfoReadyCallback) {
-                        that.userInfoReadyCallback(res)
-                      }
-                    }
-                  })
-                }else{
-                  that.setData({
-                    isGetUserInfo: true
-                  })
-                }
-              }
-            })
-          },
-          fail: function (error) {
-            reject(error)
-          }
+    wx.getStorage({
+      key: 'userinfo',
+      fail: () => {
+        this.setData({
+          isGetUserInfo: true
         });
       }
-    })
-    var that = this;
-
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              // 可以将 res 发送给后台解码出 unionId
-              app.globalData.userInfo = res.userInfo
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
-            }
-          })
-        }
-      }
-    })
+    });
   },
 
   getUserInfo(e){
-    console.log(e)
-    if(e){
+    if (e.detail.errMsg == "getUserInfo:ok") {
+      app.userLogin();
       this.setData({
         isGetUserInfo: false
-      })
-      this.bindGetUserInfo() 
+      });
     }
   }
 })

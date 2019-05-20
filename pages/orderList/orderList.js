@@ -1,66 +1,49 @@
 // pages/orderList/orderList.js
+var app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    orderList:[1]
+    page: 1,
+    orderList: []
   },
-
+  onPullDownRefresh() {
+    this.loadData();
+  },
+  loadData() {
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    });
+    wx.showNavigationBarLoading();
+    wx.getStorage({
+      key: 'userinfo',
+      success: (res)=>{
+        app.util.request({
+          url: "entry/wxapp/MyOrder",
+          data: {
+            uniacid: res.data.uniacid,
+            user_id: res.data.id,
+            page: this.data.page
+          },
+          success:(res) => {
+            this.setData({
+              orderList: res.data
+            });
+            wx.hideLoading();
+            wx.hideNavigationBarLoading();
+          }
+        });
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  onLoad (options) {
+    this.loadData();
   }
 })

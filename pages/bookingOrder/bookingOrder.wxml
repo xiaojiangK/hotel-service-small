@@ -2,15 +2,18 @@
 <view class="content">
   <!-- room start -->
   <view class="room">
-    <view class="type">精致大床房</view>
-    <view class="desc">1张1.8m大床 23㎡ 有窗 不含早</view>
+    <view class="type">{{room.name}}</view>
+    <view class="desc">
+      {{room.size}} {{room.windows == '1' ? '有窗' : '无窗'}}
+      {{room.breakfast == '0' ? '不' : ''}}含早
+    </view>
     <view class="duration">
-      <text class="date">03月20日</text>
-      <text class="status">周三入住</text>
+      <text class="date">{{room.start[1]}}月{{room.start[2]}}日</text>
+      <text class="status">{{room.startWeek}}入住</text>
       <text class="divider">—</text>
-      <text class="date">03月21日</text>
-      <text class="status">周四离店</text>
-      <text class="sum">共2晚</text>
+      <text class="date">{{room.end[1]}}月{{room.end[2]}}日</text>
+      <text class="status">{{room.endWeek}}离店</text>
+      <text class="sum">共{{room.dayNum}}晚</text>
     </view>
   </view>
   <!-- room end -->
@@ -25,16 +28,12 @@
       <image class="icon-right" src="/assets/image/icon-right.png" mode="aspectFill"></image>
     </view>
     <view class="form-group">
-      <label for="">入住人1</label>
-      <input type="text" placeholder="姓名，每间只需填写1人" placeholder-class="placeholder" maxlength="10" />
-    </view>
-    <view class="form-group">
-      <label for="">入住人2</label>
-      <input type="text" placeholder="姓名，每间只需填写1人" placeholder-class="placeholder" maxlength="10" />
+      <label for="">入住人</label>
+      <input type="text" placeholder="姓名，每间只需填写1人" value="{{name}}" data-idx="name" bindblur="inputChange" maxlength="10" />
     </view>
     <view class="form-group">
       <label for="">手机号</label>
-      <input type="text" placeholder="用于接收通知" placeholder-class="placeholder" maxlength="11" />
+      <input type="text" placeholder="用于接收通知" value="{{phone}}" data-idx="phone" bindinput="inputChange" maxlength="11" />
     </view>
     <view class="form-group">
       <label for="">到店时间</label>
@@ -50,7 +49,7 @@
 <!-- sum bar start -->
 <view class="sum-bar">
   <view class="number">
-    实付金额：<text>600.00</text>
+    实付金额：<text>{{totalPrice * roomNumber}}</text>
   </view>
   <view class="detail" bindtap="toggleSumDetail">
     <image src="/assets/image/icon-sum-detail.png" mode="aspectFill"></image>
@@ -67,23 +66,16 @@
       <image class="close" src="/assets/image/icon-close.png" mode="aspectFill" bindtap="toggleSumDetail"></image>
     </view>
     <view class="row">
-      <view class="item">入住间夜（2晚，2间）</view>
-      <view class="price">￥1200.00</view>
+      <view class="item">入住间夜（{{room.dayNum}}晚，{{roomNumber}}间）</view>
+      <view class="price">￥{{totalPrice * roomNumber}}</view>
     </view>
-    <view class="row">
-      <view class="date">2019-03-06</view>
-      <view>2x ￥300.00</view>
-    </view>
-    <view class="row">
-      <view class="date">2019-03-07<text class="breakfast">无早/间</text></view>
-      <view>2x ￥300.00</view>
-    </view>
-    <view class="row">
-      <view class="date">2019-03-08<text class="breakfast">无早/间</text></view>
+    <view class="row" wx:for="{{roomCost}}" wx:key="index">
+      <view class="date">{{item.dateday}}</view>
+      <view>{{roomNumber > 1 ? roomNumber+'x' : ''}} ￥{{item.mprice}}</view>
     </view>
     <view class="row sum">
       <view>实付金额</view>
-      <view class="price">￥1200.00</view>
+      <view class="price">￥{{totalPrice * roomNumber}}</view>
     </view>
   </view>
 </view>

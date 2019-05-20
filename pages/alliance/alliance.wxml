@@ -1,4 +1,5 @@
 <!--pages/alliance/alliance.wxml-->
+<!-- 酒店直订页 -->
 <view class="wrapper">
   <image class="banner" src="/assets/image/alliance-banner.png"/>
     

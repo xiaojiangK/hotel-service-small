@@ -6,7 +6,7 @@
     duration="{{duration}}"
     circular="true"
   >
-    <block wx:for="{{swiperData}}" wx:key='index'>
+    <block wx:for="{{data.img}}" wx:key='index'>
       <swiper-item class="swiper-item">
         <image src="{{item}}" class="slide-image"/>
       </swiper-item>
@@ -14,7 +14,7 @@
   </swiper>
   <view class="welcome">
   
-    <view class="welcome-tp">{{textTp}}</view>
-    <view class="welcome-bt">{{textBt}}</view>
+    <view class="welcome-tp">{{data.prompt}}</view>
+    <view class="welcome-bt">欢迎入住{{data.name}}</view>
   </view>
 </view>

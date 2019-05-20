@@ -1,4 +1,4 @@
-// pages/booking/booking.js
+// pages/supermarket/supermarket.js
 Page({
 
   /**

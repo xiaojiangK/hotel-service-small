@@ -1,11 +1,11 @@
-// pages/booking/booking.js
+// pages/orderList/orderList.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    orderList:[1]
   },
 
   /**

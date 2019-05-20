@@ -1,11 +1,11 @@
-// pages/booking/booking.js
+// pages/vipCenter/vipCenter.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    isLogin: true
   },
 
   /**

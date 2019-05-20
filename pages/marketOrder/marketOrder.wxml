@@ -1,0 +1,24 @@
+<!--pages/marketOrder/marketOrder.wxml-->
+<!--pages/marketPay/marketPay.wxml-->
+<view class='pages'>     
+  <view class='title'>当前状态：<text>待配送</text></view>
+  <view class='input-item'>
+    <view>房间号</view>
+    <view>8018</view>
+  </view>
+  <view class='input-item'>
+    <view>手机号</view>
+    <view>16890198523</view>
+  </view>
+  <view class='cancel-btn'>取消订单</view>
+  <view class='goods-list-title'>商品信息</view>
+  <view class='goods-list'>
+    <goods isCurrentNum= "1"></goods>
+    <goods isCurrentNum= "1"></goods>
+    <goods isCurrentNum= "1"></goods>
+    <goods isCurrentNum= "1"></goods>
+    <goods isCurrentNum= "1"></goods>
+    <goods isCurrentNum= "1"></goods>
+  </view>
+</view>
+

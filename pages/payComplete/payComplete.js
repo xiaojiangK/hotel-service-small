@@ -1,18 +1,36 @@
-// pages/booking/booking.js
+// pages/payComplete/payComplete.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    msg:{
+      msgTitle: '下单成功',
+      msgContent: '酒店将尽快与您确认订单'
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if (options.completeType && options.completeType == 1){
+      this.setData({
+        msg: {
+          msgTitle: '取消成功',
+          msgContent: '支付金额j将原路退回'
+        }
+      })
+    } else if (options.completeType && options.completeType == 2){
+      this.setData({
+        msg: {
+          msgTitle: '早餐券已使用',
+          msgContent: '祝您用餐愉快'
+        }
+      })
+    }
+    
   },
 
   /**

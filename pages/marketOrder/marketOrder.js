@@ -1,4 +1,4 @@
-// pages/booking/booking.js
+// pages/marketOrder/marketOrder.js
 Page({
 
   /**

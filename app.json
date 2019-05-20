@@ -1,9 +1,21 @@
 {
   "pages": [
+    "pages/marketPay/marketPay",
+    "pages/marketOrder/marketOrder",
+    "pages/vipCenter/vipCenter",
+    "pages/supermarket/supermarket",
+    
+    
+    "pages/orderList/orderList",
+    
+    "pages/payComplete/payComplete",
+    
+    "components/goods/goods",
     "pages/index/index",
     "pages/booking/booking",
     "pages/alliance/alliance",
     "pages/user/user"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

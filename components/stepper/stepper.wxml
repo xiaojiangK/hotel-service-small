@@ -1,11 +1,5 @@
 <view class='stepper'>
-<<<<<<< HEAD
   <view class='minus btn' bindtap='minus'>-</view>
   <input class='num' type='text' disabled value='{{ currentNum }}' ></input>
   <view class='add btn'bindtap='add'>+</view>
-=======
-  <view class='minus btn'>-</view>
-  <input class='num' type='text'></input>
-  <view class='add btn'>+</view>
->>>>>>> ca0cb237537cb913ccba8953e050ca2651546c43
 </view>

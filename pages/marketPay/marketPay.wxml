@@ -9,21 +9,12 @@
   </view>
 
   <view class='goods-list'>
-<<<<<<< HEAD
     <goods isStepper="1"></goods>
     <goods isStepper="1"></goods>
     <goods isStepper="1"></goods>
     <goods isStepper="1"></goods>
     <goods isStepper="1"></goods>
     <goods isStepper="1"></goods>
-=======
-    <goods></goods>
-    <goods></goods>
-    <goods></goods>
-    <goods></goods>
-    <goods></goods>
-    <goods></goods>
->>>>>>> ca0cb237537cb913ccba8953e050ca2651546c43
   </view>
   <view class='submit-bar'>
     <view class='totle-num'>已选<text class='red'>3</text>件商品</view>

@@ -11,18 +11,13 @@ Component({
    * 组件的初始数据
    */
   data: {
-<<<<<<< HEAD
     currentNum:1
-=======
-
->>>>>>> ca0cb237537cb913ccba8953e050ca2651546c43
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-<<<<<<< HEAD
     minus(){
       let num = this.data.currentNum
       if (num>1){
@@ -39,8 +34,5 @@ Component({
         currentNum: num
       })
     }
-=======
-
->>>>>>> ca0cb237537cb913ccba8953e050ca2651546c43
   }
 })

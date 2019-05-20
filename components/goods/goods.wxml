@@ -4,7 +4,6 @@
   <view class="good-right">
     <view class="goods-title">益达口香糖就是这个味道，好吃的受不了的感觉，feeling</view>
     <view class="goods-content">
-<<<<<<< HEAD
       <!-- price -->
       <view class="goods-price">￥18.02</view>
       <!-- step -->
@@ -21,18 +20,6 @@
     </view>
   </view>
   <view wx:if='{{ isStepper }}' class="goods-delete">
-=======
-      <view class="goods-price">￥18.02</view>
-      <view class="goods-num">
-        <stepper></stepper>
-      </view>
-      <view class="goods-add">
-        <image class="goods-car" src="/assets/image/shop-car.png" />
-      </view>
-    </view>
-  </view>
-  <view  class="goods-delete">
->>>>>>> ca0cb237537cb913ccba8953e050ca2651546c43
     <image class="icon-delete" src="/assets/image/icon-delete.png" />
   </view>
 </view>

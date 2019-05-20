@@ -1,0 +1,90 @@
+<!-- 酒店预订订单页 -->
+<view class="content">
+  <!-- room start -->
+  <view class="room">
+    <view class="type">精致大床房</view>
+    <view class="desc">1张1.8m大床 23㎡ 有窗 不含早</view>
+    <view class="duration">
+      <text class="date">03月20日</text>
+      <text class="status">周三入住</text>
+      <text class="divider">—</text>
+      <text class="date">03月21日</text>
+      <text class="status">周四离店</text>
+      <text class="sum">共2晚</text>
+    </view>
+  </view>
+  <!-- room end -->
+  <view class="tips">预订成功后不可取消/变更订单</view>
+  <!-- user start -->
+  <view class="user">
+    <view class="form-group">
+      <label for="">房间数</label>
+      <picker value="{{roomNumberIndex}}" range="{{roomNumberArray}}" bindchange="bindRoomNumberChange">
+        <text>{{roomNumberArray[roomNumberIndex]}}间</text>
+      </picker>
+      <image class="icon-right" src="/assets/image/icon-right.png" mode="aspectFill"></image>
+    </view>
+    <view class="form-group">
+      <label for="">入住人1</label>
+      <input type="text" placeholder="姓名，每间只需填写1人" placeholder-class="placeholder" maxlength="10" />
+    </view>
+    <view class="form-group">
+      <label for="">入住人2</label>
+      <input type="text" placeholder="姓名，每间只需填写1人" placeholder-class="placeholder" maxlength="10" />
+    </view>
+    <view class="form-group">
+      <label for="">手机号</label>
+      <input type="text" placeholder="用于接收通知" placeholder-class="placeholder" maxlength="11" />
+    </view>
+    <view class="form-group">
+      <label for="">到店时间</label>
+      <picker mode="date" value="{{checkInTime}}" start="{{startCheckInTime}}" bindchange="bindDateChange">
+        <text class="{{checkInTime ? '':'placeholder'}}">{{checkInTime ? checkInTime:'预计办理入住时间'}}</text>
+      </picker>
+      <image class="icon-right" src="/assets/image/icon-right.png" mode="aspectFill"></image>
+    </view>
+  </view>
+  <!-- user end -->
+  <view class="remark">如需要发票，可向酒店索取</view>
+</view>
+<!-- sum bar start -->
+<view class="sum-bar">
+  <view class="number">
+    实付金额：<text>600.00</text>
+  </view>
+  <view class="detail" bindtap="toggleSumDetail">
+    <image src="/assets/image/icon-sum-detail.png" mode="aspectFill"></image>
+    <text>明细</text>
+  </view>
+  <view class="submit" bind:tap="submit">提交订单</view>
+</view>
+<!-- sum bar end -->
+<!-- sum panel start -->
+<view class="sum-panel" hidden="{{!isSumDetail}}">
+  <view class="wrap">
+    <view class="head">
+      费用明细
+      <image class="close" src="/assets/image/icon-close.png" mode="aspectFill" bindtap="toggleSumDetail"></image>
+    </view>
+    <view class="row">
+      <view class="item">入住间夜（2晚，2间）</view>
+      <view class="price">￥1200.00</view>
+    </view>
+    <view class="row">
+      <view class="date">2019-03-06</view>
+      <view>2x ￥300.00</view>
+    </view>
+    <view class="row">
+      <view class="date">2019-03-07<text class="breakfast">无早/间</text></view>
+      <view>2x ￥300.00</view>
+    </view>
+    <view class="row">
+      <view class="date">2019-03-08<text class="breakfast">无早/间</text></view>
+    </view>
+    <view class="row sum">
+      <view>实付金额</view>
+      <view class="price">￥1200.00</view>
+    </view>
+  </view>
+</view>
+<!-- sum panel end -->

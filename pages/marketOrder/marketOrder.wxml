@@ -13,12 +13,21 @@
   <view class='cancel-btn'>取消订单</view>
   <view class='goods-list-title'>商品信息</view>
   <view class='goods-list'>
+<<<<<<< HEAD
     <goods isCurrentNum= "1"></goods>
     <goods isCurrentNum= "1"></goods>
     <goods isCurrentNum= "1"></goods>
     <goods isCurrentNum= "1"></goods>
     <goods isCurrentNum= "1"></goods>
     <goods isCurrentNum= "1"></goods>
+=======
+    <goods></goods>
+    <goods></goods>
+    <goods></goods>
+    <goods></goods>
+    <goods></goods>
+    <goods></goods>
+>>>>>>> ca0cb237537cb913ccba8953e050ca2651546c43
   </view>
 </view>
 

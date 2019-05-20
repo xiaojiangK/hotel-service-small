@@ -8,6 +8,14 @@ Page({
     isLogin: true
   },
 
+<<<<<<< HEAD
+=======
+  goCall (e) {
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.dataset.tel
+    });
+  },
+>>>>>>> ca0cb237537cb913ccba8953e050ca2651546c43
   /**
    * 生命周期函数--监听页面加载
    */

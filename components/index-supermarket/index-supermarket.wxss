@@ -1,0 +1,91 @@
+/* components/index-supermarket/index-supermarket.wxss */
+.hotel-superMarket {
+  width: 100%;
+  height: 580rpx;
+  background: white;
+  margin-bottom: 20rpx;
+}
+.superMarket-title {
+  width: 90.67%;
+  height: 114rpx;
+  margin: 0 auto;
+  line-height: 114rpx;
+}
+.superMarket-img {
+  float: left;
+  width: 45rpx;
+  height: 45rpx;
+  margin-top: 36rpx;
+  vertical-align: middle;
+}
+.superMarket-text {
+  float: left;
+  font-size: 36rpx;
+  color: #333333;
+  font-weight: bold;
+  margin-left: 16rpx;
+}
+.superMarket-meg {
+  float: left;
+  font-size: 26rpx;
+  color: #a7a7a7;
+  margin-left: 22rpx;
+}
+.superMarket-arrow {
+  float: right;
+  margin-top: 50rpx;
+  width: 10rpx;
+  height: 18rpx;
+}
+.superMarket-main {
+  width: 100%;
+  height: 226rpx;
+}
+.superMarket-lf {
+  float: left;
+  width: 236rpx;
+  height: 222rpx;
+  background: #EFEFEF;
+}
+.superMarket-lf image {
+  width: 100%;
+  height: 100%;
+}
+.superMarket-rg {
+  float: left;
+  width: 514rpx;
+  height: 100%;
+  border-bottom: 1px solid #E1E1E1;
+}
+
+.main-title {
+  width: 376rpx;
+  height: auto;
+  line-height: 39rpx;
+  font-size: 30rpx;
+  color: #333333;
+  margin: 42rpx 0 30rpx 24rpx;
+}
+.main-bt {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-bt-sign {
+  font-size: 24rpx;
+  color: #E93A3D;
+  margin-left: 24rpx;
+}
+.main-bt-nub {
+  font-size: 42rpx;
+  color: #E93A3D;
+  font-weight: bold;
+}
+.main-shopping {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 24rpx;
+}

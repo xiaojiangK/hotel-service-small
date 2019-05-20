@@ -1,2 +1,6 @@
 <!--pages/alliance/alliance.wxml-->
-<text>pages/alliance/alliance.wxml</text>
+<view class="wrapper">
+  <image class="banner" src="/assets/image/alliance-banner.png"/>
+    
+</view>
+  

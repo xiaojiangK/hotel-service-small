@@ -1,0 +1,38 @@
+<!--pages/subOrder/subOrder.wxml-->
+<view class="wrapper">
+  <view class="title"> 商品信息 </view>
+  <view class="order-item">
+    <view class="order-meg"> 双人早餐 </view>
+     <view class="order-rg">
+       <view><label class="order-sign">￥</label> <text class="order-nub">11.33</text></view>
+     </view> 
+  </view>
+  <view class="order-item">
+    <view class="order-meg">数量</view>
+     <view class="order-rg">
+       <view><label class="order-sign">￥</label> <text class="order-nub">11.33</text></view>
+     </view> 
+  </view>
+  <view class="order-item">
+    <view class="order-meg">金额</view>
+     <view class="order-rg">
+       <view><label class="order-sign red-nub">￥</label> <text class="order-nub red-nub">11.33</text></view>
+     </view> 
+  </view>
+  <view class="order-caption">商品说明：</view>
+  <view class="order-caption-a" >
+    · 请在早餐时间6:30 - 10:00使用
+  </view>
+  <view class="order-caption-a" >
+    · 使用时在“我的订单”找到并出示给工作人员                      
+  </view>
+  <view class="foot" >
+    <view class="foot-lf" >
+      <view class="foot-text">实付金额：</view>
+      <view class="strong"><label class="order-sign red-nub">￥</label> <text class="order-nub red-nub">11.33</text></view>
+    </view> 
+    <view class="btnSubmit">立即购买</view>
+  </view>
+      
+</view>
+  

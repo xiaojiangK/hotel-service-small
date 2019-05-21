@@ -1,11 +1,10 @@
 {
   "pages": [
-    "pages/marketPay/marketPay",
-    "pages/marketOrder/marketOrder",
-    "pages/supermarket/supermarket",
     "pages/index/index",
     "pages/hotelOrderDetail/hotelOrderDetail",
     "pages/serviceOrderDetail/serviceOrderDetail",
+    "pages/marketPay/marketPay",
+    "pages/supermarket/supermarket",
     "pages/alliance/alliance",
     "pages/subOrder/subOrder",
     "pages/hotelRim/hotelRim",

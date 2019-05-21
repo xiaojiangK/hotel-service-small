@@ -1,14 +1,9 @@
 <view>
   <view class='good-list'>
-    <goods></goods>
-    <goods></goods>
-    <goods></goods>
-    <goods></goods>
-    <goods></goods>
-    <goods></goods>
+    <goods isCar= "1" data="{{list}}"></goods>
   </view>
   <view class='submit-bar'>
-    <view class='totle-num'>已选<text class='red'>3</text>件商品</view>
+    <view class='totle-num'>已选<text class='red'>{{list.length}}</text>件商品</view>
     <view class='totle-price'>合计<text class='red'>￥196.21</text></view>
     <view class='submit-btn'>选好了</view>
   </view>

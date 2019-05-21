@@ -13,12 +13,12 @@
   <view class='cancel-btn'>取消订单</view>
   <view class='goods-list-title'>商品信息</view>
   <view class='goods-list'>
-    <goods></goods>
-    <goods></goods>
-    <goods></goods>
-    <goods></goods>
-    <goods></goods>
-    <goods></goods>
+    <goods isCurrentNum= "1"></goods>
+    <goods isCurrentNum= "1"></goods>
+    <goods isCurrentNum= "1"></goods>
+    <goods isCurrentNum= "1"></goods>
+    <goods isCurrentNum= "1"></goods>
+    <goods isCurrentNum= "1"></goods>
   </view>
 </view>
 

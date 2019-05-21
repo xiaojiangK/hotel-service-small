@@ -11,8 +11,8 @@
   height: 240rpx;
 }
 .good-right{
+  width: 400rpx;
   margin-left: 24rpx;
-  padding-right: 52rpx;
   border-bottom: 2rpx solid #E1E1E1;
 }
 .goods-title{
@@ -30,6 +30,10 @@
 .goods-price{
   font-size: 42rpx;
   color: #E93A3D;
+}
+.goods-current-num{
+  font-size: 32rpx;
+  color: #666;
 }
 .goods-car{
   display: block;

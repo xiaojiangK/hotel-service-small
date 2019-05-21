@@ -37,6 +37,9 @@ page {
   height: 380rpx;
   background: #efefef;
 }
+.banner swiper{
+  height: 380rpx;
+}
 .banner image {
   width: 100%;
   height: 100%;

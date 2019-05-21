@@ -1,7 +1,7 @@
 //  应用配置
 const config = {
   //  接口地址前缀
-  baseURL: '',
+  baseURL: 'http://msp.showboom.cn/',
   //  外部图片地址前缀
   baseImgURL: '',
   //  外部网页地址前缀

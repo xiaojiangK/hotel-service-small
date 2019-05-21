@@ -1,19 +1,19 @@
 <view class="wrapper">
-  <custom-swiper swiperData="{{swiperData}}"> </custom-swiper>
+  <custom-swiper data="{{detail}}"> </custom-swiper>
   <index-service></index-service>
-  <index-location></index-location>
-  <index-facility></index-facility>
-  <index-supermarket></index-supermarket>
-  <index-rim></index-rim> 
+  <index-location data="{{detail}}"></index-location>
+  <index-facility data="{{volume}}"></index-facility>
+  <index-supermarket data="{{goods}}"></index-supermarket>
+  <index-rim data="{{periphery}}"></index-rim> 
   <view class="foot">
     精彩旅行，从酒店生活开始…
   </view>
+  
+  <!-- 授权窗口 -->
+  <view class='user-alert' wx:if="{{ isGetUserInfo }}">
+    <view class='alert-content'>
+      <view>想体验全部功能，请点击授权</view>
+      <button class='getUser-btn' bindgetuserinfo='getUserInfo' open-type="getUserInfo">立即授权</button>
+    </view>
+  </view>
 </view>
- <!-- 授权窗口 -->
-<cover-view class="user-alert" scroll-top="0" wx:if="{{ isGetUserInfo }}">
-  <cover-view class='alert-content'>
-    <cover-view>想体验全部功能，请点击授权</cover-view>
-    <button class='getUser-btn' bindgetuserinfo='getUserInfo' open-type="getUserInfo">立即授权</button>
-  </cover-view>
-</cover-view>
-   

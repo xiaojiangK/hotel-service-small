@@ -20,7 +20,7 @@ Component({
   methods: {
     /* 点击减号 */
     minus() {
-      var num = this.data.currentNum;
+      let num = this.data.currentNum;
       // 如果大于1时，才可以减
       if (num > 1) {
         num --;
@@ -33,7 +33,7 @@ Component({
     },
     /* 点击加号 */
     add() {
-      var num = this.data.currentNum;
+      let num = this.data.currentNum;
       // 不作过多考虑自增1
       num ++;
       this.setData({

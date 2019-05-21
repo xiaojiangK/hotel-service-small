@@ -8,25 +8,25 @@
       <view class='order-status'>已提交</view>
     </view>  
       
-    <view class='order-content'>
-      <image class='order-img' src='/assets/image/goods-img.png'></image>
-      <view>这是一个颗无与伦比的口香糖，这个口香糖持久的香味，让人欲罢不能</view>
+    <view class='order-content' data-id="{{data.id}}" bindtap="goDetail">
+      <image class='order-img' src='{{data.room_logo}}'></image>
+      <view>{{data.name}}</view>
     </view>
     <view class='order-statistics'>
       <view class='statistics-right'>
-        <view>共1件商品</view>
-        <view class='statistics-price'>实付金额：<text class='price-font'>￥1888.21</text></view>
+        <view>共{{data.num}}件商品</view>
+        <view class='statistics-price'>实付金额：<text class='price-font'>￥{{data.price}}</text></view>
       </view>
     </view>
     <view class='more-oprate'>
-      <view class='oprate-notice'>
+      <view class='oprate-notice' wx:if="{{data.status == '1'}}">
         <image class='icon-notice' src='/assets/image/icon-order.png'></image>
-        <view class='notice-content'>剩余支付时间23：26</view>
+        <view class='notice-content'>剩余支付时间{{data.time}}</view>
       </view>
       <view class='operate-right'>
-        <view class='oprate-btn'>取消订单</view>
-        <view class='oprate-btn orange'>去支付</view>
-        <!-- <view class='oprate-btn'>再次预定</view> -->
+        <view class='oprate-btn' wx:if="{{data.status == '1'}}" data-id="{{data.id}}" bindtap="cancelOrder">取消订单</view>
+        <view class='oprate-btn orange' wx:if="{{data.status == '1'}}" data-id="{{data.id}}" bindtap="goPay">去支付</view>
+        <!-- <view class='oprate-btn' data-id="{{data.id}}" bindtap="goReserve">再次预定</view> -->
       </view>
     </view>
   </view>

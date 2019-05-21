@@ -1,2 +1,2 @@
 <!--pages/morningVolume/morningVolume.wxml-->
-<custom-module></custom-module>
+<custom-module data="{{list}}"></custom-module>

@@ -1,5 +1,4 @@
-const api = require("../../utils/api.js");
-const request = require("../../utils/request.js");
+var app =  getApp();
 
 Component({
   /**
@@ -7,9 +6,11 @@ Component({
    * 用于组件自定义设置
    */
   properties: {
-    swiperData: {
-      type: Array,
-      value: []
+    data: {
+      type: Object,
+      observer: function(newVal, oldVal) {
+        this.setData({ data: newVal  });
+      }
     }
   },
 
@@ -18,11 +19,10 @@ Component({
    * 可用于模版渲染
    */
   data: {
+    data: {},
     indicatorDots: false,
     interval: 2000,
-    duration: 1000,
-    textTp: 'Hello 你好',
-    textBt: '欢迎入住太原圣美精品酒店'
+    duration: 1000
   },
 
   /**

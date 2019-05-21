@@ -2,11 +2,12 @@
   "pages": [
     "pages/index/index",
     "pages/subOrder/subOrder",   
-    "pages/marketPay/marketPay",
     "pages/payComplete/payComplete",  
     "pages/hotelOrderDetail/hotelOrderDetail",
     "pages/serviceOrderDetail/serviceOrderDetail",
-    "pages/alliance/alliance",   
+    "pages/marketPay/marketPay",
+    "pages/supermarket/supermarket",
+    "pages/alliance/alliance",
     "pages/hotelRim/hotelRim",
     "pages/hotelFacility/hotelFacility",
     "pages/morningVolume/morningVolume",
@@ -15,9 +16,9 @@
     "pages/bookingOrder/bookingOrder",
     "pages/vipCenter/vipCenter",
     "pages/orderList/orderList",
-    "pages/marketOrder/marketOrder",  
-    "pages/supermarket/supermarket",
+    "pages/marketOrder/marketOrder",
     "components/goods/goods"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

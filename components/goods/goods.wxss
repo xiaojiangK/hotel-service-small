@@ -31,13 +31,10 @@
   font-size: 42rpx;
   color: #E93A3D;
 }
-<<<<<<< HEAD
 .goods-current-num{
   font-size: 32rpx;
   color: #666;
 }
-=======
->>>>>>> ca0cb237537cb913ccba8953e050ca2651546c43
 .goods-car{
   display: block;
   width: 36rpx;

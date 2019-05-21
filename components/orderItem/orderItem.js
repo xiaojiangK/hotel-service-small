@@ -1,5 +1,4 @@
 // components/orderItem/orderItem.js
-import { countDown } from '../../utils/tool.js'
 var app = getApp();
 
 Component({
@@ -26,40 +25,49 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    goDetail(e) {
+    goDetail() {
       wx.navigateTo({
-        url: `/pages/hotelOrderDetail/hotelOrderDetail?id=${e.currentTarget.dataset.id}`
+        url: `/pages/hotelOrderDetail/hotelOrderDetail?id=${this.data.data.id}`
       });
     },
-    cancelOrder(e) {
+    cancelOrder() {
       wx.showModal({
         title: '提示',
         content: '确定取消此订单吗?',
         cancelText: '取消',
         confirmText: '确定',
-        success: () => {
-          app.util.request({
-            url: "entry/wxapp/CancelOrder",
-            data: {
-              order_id: e.currentTarget.dataset.id
-            },
-            success:(res) => {
-              if (res.data == 1) {
-                wx.showToast({
-                  title: '取消成功',
-                  icon: 'none'
-                });
+        success: (e) => {
+          if (e.confirm) {
+            app.util.request({
+              url: "entry/wxapp/CancelOrder",
+              data: {
+                order_id: this.data.data.id
+              },
+              success:(res) => {
+                if (res.data == 1) {
+                  wx.showToast({
+                    title: '取消成功',
+                    icon: 'none'
+                  });
+                  const data = this.data.data;
+                  this.setData({
+                    data: {
+                      ...data,
+                      status: 3
+                    }
+                  });
+                }
               }
-            }
-          });
+            });
+          }
         }
       });
     },
-    goPay(e) {
+    goPay() {
       app.util.request({
         url: "entry/wxapp/pay",
         data: {
-          order_id: e.currentTarget.dataset.id
+          order_id: this.data.data.id
         },
         success:(res) => {
           wx.requestPayment({

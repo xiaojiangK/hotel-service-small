@@ -6,16 +6,18 @@
     <view class="superMarket-meg">在线下单送至客房，懂你所需 </view> 
     <image class="superMarket-arrow" src="/assets/image/index-arrow.png"/>     
   </view>
-  <view class="superMarket-main" wx:for="{{list}}" wx:key="index">
-    <view class="superMarket-lf">
-      <image class="superMarket-commodity" src="{{item.goods_img}}" />     
-    </view>
-    <view class="superMarket-rg">
-      <view class="main-title" >{{item.goods_name}}</view>
-      <view class="main-bt">
-        <view><label class="main-bt-sign">￥</label> <text class="main-bt-nub">{{item.specifications[0].goods_price}}</text></view> 
-        <image class="main-shopping" src="/assets/image/index-shopping.png" />
+  <block wx:for="{{list}}" wx:key="index">
+    <view class="superMarket-main" wx:if="{{index < 2}}">
+      <view class="superMarket-lf">
+        <image class="superMarket-commodity" src="{{item.goods_img}}" />     
+      </view>
+      <view class="superMarket-rg">
+        <view class="main-title" >{{item.goods_name}}</view>
+        <view class="main-bt">
+          <view><label class="main-bt-sign">￥</label> <text class="main-bt-nub">{{item.specifications[0].goods_price}}</text></view> 
+          <image class="main-shopping" src="/assets/image/index-shopping.png" />
+        </view>
       </view>
     </view>
-  </view>
+  </block>
 </view>

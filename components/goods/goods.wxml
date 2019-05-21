@@ -17,14 +17,10 @@
           <image class="goods-car" src="/assets/image/shop-car.png" />
         </view>
       </view>
-
     </view>
-    <view  class="goods-delete">
+    <view wx:if='{{ isStepper }}' class="goods-delete">
       <image class="icon-delete" data-id="{{item.goods_id}}" bind:tap="delete" src="/assets/image/icon-delete.png" />
     </view>
-  </view>
-  <view wx:if='{{ isStepper }}' class="goods-delete">
-    <image class="icon-delete" src="/assets/image/icon-delete.png" />
   </view>
 </block>
 

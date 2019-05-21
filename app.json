@@ -18,7 +18,6 @@
     "pages/orderList/orderList",
     "pages/marketOrder/marketOrder",
     "components/goods/goods"
-
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,6 +1,6 @@
 <view>
   <view class='good-list'>
-    <goods data="{{list}}"></goods>
+    <goods isCar= "1" data="{{list}}"></goods>
   </view>
   <view class='submit-bar'>
     <view class='totle-num'>已选<text class='red'>{{list.length}}</text>件商品</view>

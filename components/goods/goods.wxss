@@ -31,6 +31,10 @@
   font-size: 42rpx;
   color: #E93A3D;
 }
+.goods-current-num{
+  font-size: 32rpx;
+  color: #666;
+}
 .goods-car{
   display: block;
   width: 36rpx;

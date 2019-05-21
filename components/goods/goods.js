@@ -9,6 +9,15 @@ Component({
       observer: function(newVal, oldVal) {
         this.setData({ list: newVal });
       }
+    },
+    isCurrentNum:{
+      type: Number
+    },
+    isCar: {
+      type: Number
+    },
+    isStepper: {
+      type: Number
     }
   },
 
@@ -16,7 +25,10 @@ Component({
    * 组件的初始数据
    */
   data: {
-    list: []
+    list: [],
+    isStepper: false,
+    isCurrentNum:false,
+    isCar:false
   },
 
   /**

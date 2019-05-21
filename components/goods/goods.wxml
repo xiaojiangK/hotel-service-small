@@ -5,17 +5,26 @@
     <view class="good-right">
       <view class="goods-title">{{item.goods_name}}</view>
       <view class="goods-content">
+        <!-- price -->
         <view class="goods-price">￥{{item.specifications[0].goods_price}}</view>
-        <view class="goods-num">
+        <!-- step -->
+        <view wx:if='{{ isStepper }}' class="goods-num">
           <stepper></stepper>
         </view>
-        <view class="goods-add">
+        <!-- currentNum --> 
+        <view wx:if='{{ isCurrentNum }}' class='goods-current-num'>x12</view>
+        <view wx:if='{{ isCar }}' class="goods-add">
           <image class="goods-car" src="/assets/image/shop-car.png" />
         </view>
       </view>
+
     </view>
     <view  class="goods-delete">
       <image class="icon-delete" data-id="{{item.goods_id}}" bind:tap="delete" src="/assets/image/icon-delete.png" />
     </view>
   </view>
+  <view wx:if='{{ isStepper }}' class="goods-delete">
+    <image class="icon-delete" src="/assets/image/icon-delete.png" />
+  </view>
 </block>
+

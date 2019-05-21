@@ -1,5 +1,8 @@
 {
   "pages": [
+    "pages/marketPay/marketPay",
+    "pages/marketOrder/marketOrder",
+    "pages/supermarket/supermarket",
     "pages/index/index",
     "pages/hotelOrderDetail/hotelOrderDetail",
     "pages/serviceOrderDetail/serviceOrderDetail",
@@ -15,9 +18,8 @@
     "pages/orderList/orderList",
     "pages/marketOrder/marketOrder",
     "pages/payComplete/payComplete",
-    "pages/marketPay/marketPay",
-    "pages/supermarket/supermarket",
     "components/goods/goods"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

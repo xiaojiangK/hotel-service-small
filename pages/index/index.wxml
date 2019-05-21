@@ -10,10 +10,10 @@
   </view>
   
   <!-- 授权窗口 -->
-  <view class='user-alert' wx:if="{{ isGetUserInfo }}">
-    <view class='alert-content'>
-      <view>想体验全部功能，请点击授权</view>
+  <cover-view class='user-alert' wx:if="{{ isGetUserInfo }}">
+    <cover-view class='alert-content'>
+      <cover-view>想体验全部功能，请点击授权</cover-view>
       <button class='getUser-btn' bindgetuserinfo='getUserInfo' open-type="getUserInfo">立即授权</button>
-    </view>
-  </view>
+    </cover-view>
+  </cover-view>
 </view>

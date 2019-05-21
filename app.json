@@ -18,7 +18,6 @@
     "pages/marketOrder/marketOrder",
     "pages/payComplete/payComplete",
     "components/goods/goods"
-
   ],
   "window": {
     "backgroundTextStyle": "light",

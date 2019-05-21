@@ -24,22 +24,6 @@ Page({
     this.loadData();
   },
   loadData() {
-    // 倒计时
-    this.c3 = new $wuxCountDown({
-      date: +(new Date) + 10000,
-      onEnd() {
-        this.setData({
-          c3: '重新获取'
-        })
-      },
-      render(date) {
-        const min = this.leadingZeros(date.min, 2) + ' 分 ';
-        const sec = this.leadingZeros(date.sec, 2) + ' 秒 ';
-        this.setData({
-          c3: min + sec
-        });
-      }
-    });
     app.util.request({
       url: "entry/wxapp/orderdetails",
       data: {
@@ -60,12 +44,29 @@ Page({
         for (let i = 0; i < detail.days; i++) {
           totalPrice += Number.parseInt(detail.price);
         }
-        for (let i = 0; i < detail.num; i++) {
+        for (let i = 0; i < detail.days; i++) {
           roomNum.push(i);
         }
         this.setData({
           roomNum,
           totalPrice: totalPrice * Number.parseInt(detail.num)
+        });
+        
+        // 倒计时
+        this.c3 = new $wuxCountDown({
+          date: +(d.time) + (60 * 30 * 1000),
+          onEnd() {
+            this.setData({
+              c3: '重新获取'
+            })
+          },
+          render(date) {
+            const min = this.leadingZeros(date.min, 2) + ' 分 ';
+            const sec = this.leadingZeros(date.sec, 2) + ' 秒 ';
+            this.setData({
+              c3: min + sec
+            });
+          }
         });
       }
     });
@@ -87,6 +88,13 @@ Page({
               wx.showToast({
                 title: '取消成功',
                 icon: 'none'
+              });
+              const d = this.data.detail;
+              this.setData({
+                detail: {
+                  ...d,
+                  status: 3
+                }
               });
             }
           }
@@ -122,7 +130,6 @@ Page({
             wx.hideLoading();
           }
         });
-        console.log(res.data);
       }
     });
   },

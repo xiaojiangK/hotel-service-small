@@ -37,7 +37,7 @@
     </view>
     <view class="form-group">
       <label for="">到店时间</label>
-      <picker mode="date" value="{{checkInTime}}" start="{{startCheckInTime}}" bindchange="bindDateChange">
+      <picker mode="time" value="{{checkInTime}}" start="14:00" bindchange="bindDateChange">
         <text class="{{checkInTime ? '':'placeholder'}}">{{checkInTime ? checkInTime:'预计办理入住时间'}}</text>
       </picker>
       <image class="icon-right" src="/assets/image/icon-right.png" mode="aspectFill"></image>

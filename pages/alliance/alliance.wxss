@@ -1,11 +1,17 @@
-/* pages/alliance/alliance.wxss */
-.wrapper {
-  width: 100%;
+page {
   height: 100%;
-  background: white;
+  background: #232533;
   position: relative;
 }
 .banner {
   width: 750rpx;
-  height: 570rpx;
+  height: 960rpx;
+}
+.foot-logo {
+  position: fixed;
+  left: 50%;
+  margin-left: -200rpx;
+  bottom: 60rpx;
+  width: 400rpx;
+  height: 48rpx;
 }

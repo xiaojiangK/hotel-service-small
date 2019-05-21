@@ -24,6 +24,7 @@
     <view class="day">{{endWeek}}</view>
   </view>
 </view>
+
 <!-- duration end -->
 <!-- room list start -->
 <view class="room-list">
@@ -44,3 +45,10 @@
     <calendar id="rili" />
 </view>
 <!-- room list end -->
+ <!-- 授权窗口 -->
+<!-- <view class='user-alert' wx:if="{{isGetPhoneNumber}}">
+  <view class='alert-content'>
+    <view>想体验全部功能，请点击授权手机号</view>
+    <button class='getUser-btn' bindgetphonenumber='getUserPhoneNumber' open-type="getPhoneNumber">立即授权</button>
+  </view>
+</view> -->

@@ -12,7 +12,7 @@
 }
 
 .user-alert{
-  position: absolute;
+  position: fixed;
   top:0;
   left: 0;
   width: 100%;
@@ -20,7 +20,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0,0,0,0.5)
+  background: rgba(0,0,0,0.5);
 }
 .alert-content{
   display: flex;

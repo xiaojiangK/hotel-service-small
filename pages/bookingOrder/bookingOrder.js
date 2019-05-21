@@ -9,7 +9,7 @@ Page({
     //  房间数
     roomNumber: 1,
     //  预计办理入住时间起始值
-    startCheckInTime: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate(),
+    // startCheckInTime: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate(),
     //  预计办理入住时间
     checkInTime: '',
     //  是否显示金额明细

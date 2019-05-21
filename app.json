@@ -1,12 +1,13 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/subOrder/subOrder",   
+    "pages/payComplete/payComplete",  
     "pages/hotelOrderDetail/hotelOrderDetail",
     "pages/serviceOrderDetail/serviceOrderDetail",
     "pages/marketPay/marketPay",
     "pages/supermarket/supermarket",
     "pages/alliance/alliance",
-    "pages/subOrder/subOrder",
     "pages/hotelRim/hotelRim",
     "pages/hotelFacility/hotelFacility",
     "pages/morningVolume/morningVolume",
@@ -16,7 +17,6 @@
     "pages/vipCenter/vipCenter",
     "pages/orderList/orderList",
     "pages/marketOrder/marketOrder",
-    "pages/payComplete/payComplete",
     "components/goods/goods"
   ],
   "window": {
@@ -45,7 +45,7 @@
         "selectedIconPath": "assets/image/booking-orange.png"
       },
       {
-        "text": "酒店直订",
+        "text": "今夜特价",
         "pagePath": "pages/alliance/alliance",
         "iconPath": "assets/image/alliance.png",
         "selectedIconPath": "assets/image/alliance-orange.png"
@@ -63,6 +63,6 @@
       "desc": "您的位置信息用于地图导航"
     }
   },
-  "debug": true,
+  "debug": false,
   "sitemapLocation": "sitemap.json"
 }

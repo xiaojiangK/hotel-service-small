@@ -108,4 +108,38 @@ Page({
       });
     }
   }
+  // changeUserInfo(){//判断用户是否已经授权
+  //   var that = this
+  //   if(app.globalData.userInfo != '')
+  //     that.setData({
+  //       isGetUserInfo:false
+  //     })
+  //   else
+  //     that.setData({
+  //       isGetUserInfo:true
+  //     }) 
+  // },
+  // getUserInfo(e){//获取用户信息
+    // wx.login({
+    //   success(res) {
+    //     if (res.code) {
+    //       // 发起网络请求
+    //       wx.request({
+    //         url: '',
+    //         data: {
+    //           code: res.code
+    //         },
+    //         success(res) {
+    //           // console.log(res.data.openid)
+    //         }
+    //       })
+    //     }
+    //   }
+    // })
+    // if(e.detail.userInfo){ //同意授权
+    //   app.globalData.userInfo = e.detail.userInfo
+    //   wx.setStorageSync('userInfo',e.detail.userInfo)
+    //   this.changeUserInfo()
+    // }
+  // }
 })

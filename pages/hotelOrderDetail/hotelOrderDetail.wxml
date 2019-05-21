@@ -2,14 +2,12 @@
 <view class='wrapper'>
   <view class='pay-box'>
     <view class='pay-status'>
-      <block wx:if="{{detail.status == '1'}}">未付款</block>
-      <block wx:if="{{detail.status == '2'}}">已付款</block>
+      <block wx:if="{{detail.status == '1'}}">待支付</block>
+      <block wx:if="{{detail.status == '2'}}">已支付</block>
+      <block wx:if="{{detail.status == '10'}}">待入住</block>
       <block wx:if="{{detail.status == '3'}}">已取消</block>
       <block wx:if="{{detail.status == '4'}}">已完成</block>
-      <block wx:if="{{detail.status == '5'}}">已入住</block>
-      <block wx:if="{{detail.status == '6'}}">申请退款</block>
       <block wx:if="{{detail.status == '7'}}">已退款</block>
-      <block wx:if="{{detail.status == '8'}}">拒绝退款</block>
     </view>
     <view class='pay-text'>
       <block wx:if="{{detail.status == '1'}}">
@@ -18,7 +16,7 @@
       </block>
       <view class='pay-s' wx:if="{{detail.status == '2'}}">等待酒店确认</view>
       <view class='pay-s' wx:if="{{detail.status == '10'}}">等待已确认，等待入住</view>
-      <view class='pay-s' wx:if="{{detail.status == '5'}}">已入住，欢迎再次光临！</view>
+      <view class='pay-s' wx:if="{{detail.status == '4'}}">已入住，欢迎再次光临！</view>
       <view class='pay-thank' wx:if="{{detail.status == '3'}}">感谢您再次光临！</view>
     </view>
   </view>
@@ -51,7 +49,7 @@
     <view class='payment-box'>
       <view class='cancel-payment' wx:if="{{detail.status == '1'}}" bindtap="cancelOrder">取消订单</view>
       <view class='sub-payment' wx:if="{{detail.status == '1'}}" bindtap="goPay">去支付</view>
-      <!-- <view class='book-again' wx:if="{{detail.status == '3' || detail.status == '5' || detail.status == '10'}}" bindtap="goReserve">再次预定</view> -->
+      <view class='book-again' wx:else bindtap="goReserve">再次预定</view>
     </view>
     <view class='payment-meg'>预订成功后不可取消/变更订单</view>
   </view>

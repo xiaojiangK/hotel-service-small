@@ -1,8 +1,10 @@
+var app = getApp();
 
 Page({
   data: {
     //数量
     code: 1,
+    name: '',
     money: 22,
     totalPrice: ""
   },
@@ -10,15 +12,23 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad(op) {
+    this.setData({
+      name: op.name,
+      money: op.price
+    });
     this.count_price()
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    
+  pay() {
+    app.util.request({
+      url: "entry/wxapp/AddGoodsOrder",
+      data: {
+        
+      },
+      success:(res) => {
+        
+      }
+    });
   },
   //监听子组件的传值
   onMyevent: function (e) {

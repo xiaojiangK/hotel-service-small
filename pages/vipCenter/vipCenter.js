@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    page: 1,
     userInfo: {},
     orderList: [],
     totalPrice: 0,
@@ -63,7 +64,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
+  onShow() {
     this.loadData();
   }
 })

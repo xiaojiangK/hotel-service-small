@@ -15,30 +15,31 @@
     <view class='look-all'>查看全部</view>
   </navigator>
 
-  <block wx:for="{{orderList}}" wx:key="index">
-    <view wx:if='{{ userInfo.openid && orderList.length == 1 }}' class='order'>
-      <view class='order-header'>
-        <view class='order-title'>
-          <image class='icon-title' mode="aspectFill" src='/assets/image/goods-img.png'></image>
-          <view>酒店超市</view>
+  <block wx:if="{{userInfo.openid}}">
+    <block wx:for="{{orderList}}" wx:key="index">
+      <view wx:if='{{ orderList.length == 1 }}' class='order'>
+        <view class='order-header'>
+          <view class='order-title'>
+            <image class='icon-title' mode="aspectFill" src='/assets/image/goods-img.png'></image>
+            <view>酒店超市</view>
+          </view>
+          <view class='order-status'>已提交</view>
+        </view>  
+          
+        <view class='order-content' data-id="{{item.id}}" bind:tap="goDetail">
+          <image class='order-img' src='{{item.room_logo}}'></image>
+          <view>{{item.room_type}}</view>
         </view>
-        <view class='order-status'>已提交</view>
-      </view>  
-        
-      <view class='order-content' data-id="{{item.id}}" bind:tap="goDetail">
-        <image class='order-img' src='{{item.room_logo}}'></image>
-        <view>{{item.room_type}}</view>
-      </view>
-      <view class='order-statistics'>
-        <view class='statistics-right'>
-          <view>共1件商品</view>
-          <view class='statistics-price'>实付金额：<text class='price-font'>￥{{item.price}}</text></view>
+        <view class='order-statistics'>
+          <view class='statistics-right'>
+            <view>共1件商品</view>
+            <view class='statistics-price'>实付金额：<text class='price-font'>￥{{item.price}}</text></view>
+          </view>
         </view>
       </view>
-    </view>
-  </block>
+    </block>
 
-    <view wx:if='{{ userInfo.openid && orderList.length > 1  }}' class='order'>
+    <view wx:if='{{ orderList.length > 1  }}' class='order'>
       <view class='order-header'>
         <view class='order-title'>
           <image class='icon-title' src='/assets/image/goods-img.png'></image>
@@ -59,6 +60,7 @@
         </view>
       </view>
     </view>
+  </block>
   <view wx:else class='order-no'>登录后查看订单</view>
 
   <view class='hotel-tel'>

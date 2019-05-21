@@ -32,7 +32,7 @@
       <view class="foot-text">实付金额：</view>
       <view class="strong"><label class="order-sign red-nub">￥</label> <text class="order-nub red-nub">{{totalPrice}}</text></view>
     </view> 
-    <view class="btnSubmit">立即购买</view>
+    <view class="btnSubmit" bind:tap="pay">立即购买</view>
   </view>
       
 </view>

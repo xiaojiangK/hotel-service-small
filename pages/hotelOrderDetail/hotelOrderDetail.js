@@ -42,7 +42,7 @@ Page({
         let totalPrice = 0;
         let roomNum = [];
         for (let i = 0; i < detail.days; i++) {
-          totalPrice += Number.parseInt(detail.price);
+          totalPrice += Number.parseFloat(detail.price);
         }
         for (let i = 0; i < detail.days; i++) {
           roomNum.push(i);
@@ -54,7 +54,7 @@ Page({
         
         // 倒计时
         this.c3 = new $wuxCountDown({
-          date: +(d.time) + (60 * 30 * 1000),
+          date: +(d.time * 1000) + (60 * 30 * 1000),
           onEnd() {
             this.setData({
               c3: '重新获取'
@@ -77,38 +77,40 @@ Page({
       content: '确定取消此订单吗?',
       cancelText: '取消',
       confirmText: '确定',
-      success: () => {
-        app.util.request({
-          url: "entry/wxapp/CancelOrder",
-          data: {
-            order_id: this.data.id
-          },
-          success:(res) => {
-            if (res.data == 1) {
-              wx.showToast({
-                title: '取消成功',
-                icon: 'none'
-              });
-              const d = this.data.detail;
-              this.setData({
-                detail: {
-                  ...d,
-                  status: 3
-                }
-              });
+      success: (e) => {
+        if (e.confirm) {
+          app.util.request({
+            url: "entry/wxapp/CancelOrder",
+            data: {
+              order_id: this.data.id
+            },
+            success:(res) => {
+              if (res.data == 1) {
+                wx.showToast({
+                  title: '取消成功',
+                  icon: 'none'
+                });
+                const d = this.data.detail;
+                this.setData({
+                  detail: {
+                    ...d,
+                    status: 3
+                  }
+                });
+              }
             }
-          }
-        });
+          });
+        }
       }
     });
   },
   goPay() {
     app.util.request({
-      url: "entry/wxapp/pay",
+      url: "entry/wxapp/Pay",
       data: {
         order_id: this.data.id
       },
-      success:(res) => {
+      success:(e) => {
         wx.requestPayment({
           timeStamp: e.data.timeStamp,
           nonceStr: e.data.nonceStr,
@@ -119,6 +121,9 @@ Page({
             wx.showToast({
               title: '恭喜您，支付成功!',
               icon: 'none'
+            });
+            wx.navigateTo({
+              url: '/pages/orderList/orderList'
             });
           },
           fail:(e) => {
@@ -133,5 +138,9 @@ Page({
       }
     });
   },
-  goReserve() {}
+  goReserve() {
+    wx.switchTab({
+      url: '/pages/booking/booking'
+    });
+  }
 })

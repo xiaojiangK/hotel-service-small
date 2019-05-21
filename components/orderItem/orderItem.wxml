@@ -3,14 +3,25 @@
     <view class='order-header'>
       <view class='order-title'>
         <image class='icon-title' src='/assets/image/icon-order.png'></image>
-        <view>酒店超市</view>
+        <view>{{data.room_type}}</view>
+        <!-- <view>酒店超市</view> -->
       </view>
-      <view class='order-status'>已提交</view>
+      <view class='order-status'>
+        <block wx:if="{{data.status == '1'}}">待支付</block>
+        <block wx:if="{{data.status == '2'}}">已支付</block>
+        <block wx:if="{{data.status == '10'}}">待入住</block>
+        <block wx:if="{{data.status == '3'}}">已取消</block>
+        <block wx:if="{{data.status == '4'}}">已完成</block>
+        <block wx:if="{{data.status == '7'}}">已退款</block>
+      </view>
     </view>  
       
     <view class='order-content' bindtap="goDetail">
       <image class='order-img' src='{{data.room_logo}}'></image>
-      <view>{{data.room_type}}</view>
+      <view>
+        <view>{{data.size}}  {{data.windows == '1' ? '有' : '无'}}窗  {{data.breakfast == '0' ? '不' : ''}}含早</view>
+        <view>{{data.arrival_time}} 至 {{data.departure_time}} {{data.days}}晚/{{data.num}}间</view>
+      </view>
     </view>
     <view class='order-statistics'>
       <view class='statistics-right'>
@@ -19,14 +30,17 @@
       </view>
     </view>
     <view class='more-oprate'>
-      <view class='oprate-notice' wx:if="{{data.status == '1'}}">
-        <image class='icon-notice' src='/assets/image/icon-order.png'></image>
-        <view class='notice-content'>剩余支付时间{{data.time}}</view>
+      <view class='oprate-notice'>
+        <image class='icon-notice' wx:if="{{data.status == '1' || data.status == '2' || data.status == '10' || data.status == '4'}}" src='/assets/image/icon-sum-detail.png'></image>
+        <view class='notice-content' wx:if="{{data.status == '1'}}">剩余支付时间{{data.time}}</view>
+        <view class='pay-s' wx:if="{{data.status == '2'}}">等待酒店确认</view>
+        <view class='pay-s' wx:if="{{data.status == '10'}}">等待已确认，等待入住</view>
+        <view class='pay-s' wx:if="{{data.status == '4'}}">已入住，欢迎再次光临！</view>
       </view>
       <view class='operate-right'>
         <view class='oprate-btn' wx:if="{{data.status == '1'}}" bindtap="cancelOrder">取消订单</view>
         <view class='oprate-btn orange' wx:if="{{data.status == '1'}}" bindtap="goPay">去支付</view>
-        <!-- <view class='oprate-btn' wx:if="{{detail.status == '3' || detail.status == '5' || detail.status == '10'}}" bindtap="goReserve">再次预定</view> -->
+        <view class='oprate-btn' wx:else bindtap="goReserve">再次预定</view>
       </view>
     </view>
   </view>

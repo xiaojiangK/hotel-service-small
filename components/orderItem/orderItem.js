@@ -65,11 +65,11 @@ Component({
     },
     goPay() {
       app.util.request({
-        url: "entry/wxapp/pay",
+        url: "entry/wxapp/Pay",
         data: {
           order_id: this.data.data.id
         },
-        success:(res) => {
+        success:(e) => {
           wx.requestPayment({
             timeStamp: e.data.timeStamp,
             nonceStr: e.data.nonceStr,
@@ -80,6 +80,9 @@ Component({
               wx.showToast({
                 title: '恭喜您，支付成功!',
                 icon: 'none'
+              });
+              wx.navigateTo({
+                url: '/pages/orderList/orderList'
               });
             },
             fail:(e) => {
@@ -94,6 +97,10 @@ Component({
         }
       });
     },
-    goReserve() {}
+    goReserve() {
+      wx.switchTab({
+        url: '/pages/booking/booking'
+      });
+    }
   }
 })

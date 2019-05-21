@@ -1,4 +1,5 @@
 <!--pages/marketPay/marketPay.wxml-->
+<!-- 购物单页 -->
 <view class='pages'>     
   <view class='title'>收货信息<text>(以便送至客房)</text></view>
   <view class='input-item'>

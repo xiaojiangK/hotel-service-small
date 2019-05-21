@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "goods": "/components/goods/goods"
-  }
+    "order-goods": "/components/order-goods/order-goods"
+  },
+  "navigationBarTitleText": "订单详情"
 }

@@ -11,6 +11,7 @@ Page({
   data: {
     c3: '',
     id: 0,
+    flag: 0,
     detail: {},
     roomNum: [],
     totalPrice: 0
@@ -20,13 +21,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad (op) {
-    this.setData({ id: op.id });
+    this.setData({
+      id: op.id,
+      flag: op.flag
+    });
     this.loadData();
   },
   loadData() {
     app.util.request({
       url: "entry/wxapp/orderdetails",
       data: {
+        flag: this.data.flag,
         order_id: this.data.id
       },
       success:(res) => {
@@ -82,6 +87,7 @@ Page({
           app.util.request({
             url: "entry/wxapp/CancelOrder",
             data: {
+              flag: this.data.flag,
               order_id: this.data.id
             },
             success:(res) => {
@@ -97,6 +103,9 @@ Page({
                     status: 3
                   }
                 });
+                wx.navigateTo({
+                  url: `/pages/payComplete/payComplete?type=1`
+                });
               }
             }
           });
@@ -105,34 +114,45 @@ Page({
     });
   },
   goPay() {
-    app.util.request({
-      url: "entry/wxapp/Pay",
-      data: {
-        order_id: this.data.id
-      },
-      success:(e) => {
-        wx.requestPayment({
-          timeStamp: e.data.timeStamp,
-          nonceStr: e.data.nonceStr,
-          package: e.data.package,
-          signType: e.data.signType,
-          paySign: e.data.paySign,
+    wx.showLoading({
+      title: '支付中...',
+      mask: true
+    });
+    wx.getStorage({
+      key: 'userinfo',
+      success: (res) => {
+        app.util.request({
+          url: "entry/wxapp/Pay",
+          data: {
+            flag: this.data.flag,
+            openid: res.data.openid,
+            order_id: this.data.data.id
+          },
           success:(e) => {
-            wx.showToast({
-              title: '恭喜您，支付成功!',
-              icon: 'none'
+            wx.requestPayment({
+              timeStamp: e.data.timeStamp,
+              nonceStr: e.data.nonceStr,
+              package: e.data.package,
+              signType: e.data.signType,
+              paySign: e.data.paySign,
+              success:() => {
+                wx.showToast({
+                  title: '恭喜您，支付成功!',
+                  icon: 'none'
+                });
+                wx.navigateTo({
+                  url: `/pages/payComplete/payComplete`
+                });
+              },
+              fail:() => {
+                wx.showToast({
+                  title: "支付失败"
+                });
+              },
+              complete:() => {
+                wx.hideLoading();
+              }
             });
-            wx.navigateTo({
-              url: '/pages/orderList/orderList'
-            });
-          },
-          fail:(e) => {
-            wx.showToast({
-              title: "支付失败"
-            });
-          },
-          complete:() => {
-            wx.hideLoading();
           }
         });
       }

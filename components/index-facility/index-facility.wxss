@@ -1,7 +1,7 @@
 /* components/index-facility/index-facility.wxss */
 .hotel-facility {
   width: 100%;
-  height: 670rpx;
+  padding: 0 0 40rpx;
   background: white;
   margin-bottom: 20rpx;
 }

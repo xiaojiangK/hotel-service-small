@@ -151,7 +151,8 @@ Page({
             room_logo: room.logo,
             openid: data.openid,
             user_id: data.userid,
-            seller_id: h.id
+            seller_id: h.id,
+            flag: 0
           },
           success:(e) => {
             wx.requestPayment({
@@ -160,13 +161,16 @@ Page({
               package: e.data.package,
               signType: e.data.signType,
               paySign: e.data.paySign,
-              success:(e) => {
+              success:() => {
                 wx.showToast({
                   title: '恭喜您，支付成功!',
                   icon: 'none'
                 });
+                wx.navigateTo({
+                  url: '/pages/payComplete/payComplete'
+                });
               },
-              fail:(e) => {
+              fail:() => {
                 wx.showToast({
                   title: "支付失败"
                 });

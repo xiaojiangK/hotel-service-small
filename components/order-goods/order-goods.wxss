@@ -1,4 +1,3 @@
-/* components/goods/goods.wxss */
 .goods{
   position: relative;
   display: flex;

@@ -1,25 +1,26 @@
 <!--pages/serviceOrderDetail/serviceOrderDetail.wxml-->
+<!-- 早餐券订单详情 -->
 <view class="wrapper">  
   <view class="hotel-facility">
     <view class="facility-banner">
-      <image src="{{bannerUrl}}" />
+      <image src="{{orderInfo.goods[0].img}}" />
     </view>   
   </view>
   <view class="order-item">
-    <view class="order-meg">金额</view>
+    <view class="order-meg">{{orderInfo.goods[0].name}}</view>
      <view class="order-rg">
-       <view><label class="order-sign">￥</label> <text class="order-nub">11.33</text></view>
+       <view><label class="order-sign">￥</label> <text class="order-nub">{{orderInfo.goods_info[0].price}}</text></view>
      </view> 
   </view>
   <view class="order-item">
-    <view class="order-meg">数量</view>
+    <view class="order-meg">使用数量</view>
      <view class="order-rg">
-       <view><text class="order-nub red-nub">1</text></view>
+       <view><text class="order-nub red-nub">{{orderInfo.goods_info[0].number}}</text></view>
      </view> 
   </view>
   <view class="text-box">
-    <view class="sub-success">用餐前，主动出示条形码</view>
-    <view class="sub-faill">该早餐券已于2019-09-21 15:20:22使用</view>  
+    <view class="sub-faill" wx:if="{{orderInfo.status == '4'}}">该早餐券已于2019-09-21 15:20:22使用</view>  
+    <view class="sub-success" wx:else>用餐前，主动出示条形码</view>
   </view>
   <view class="bar-code">
     <image class="" src=""></image>

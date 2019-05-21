@@ -7,17 +7,19 @@
     <image class="rim-arrow" src="/assets/image/index-arrow.png"/>     
   </view>
   <block wx:for="{{list}}" wx:key="index">
-    <view class="rim-banner">
-      <image src="{{item.img}}" mode="aspectFill"/>
-    </view>
-    <view class="rim-bt">
-      <view class="rim-lf">
-        <view class="rim-lf-text">{{item.name}}</view>
-        <view class="rim-lf-meg">{{item.subheading}}</view>
+    <block wx:if="{{item.state == '1'}}">
+      <view class="rim-banner">
+        <image src="{{item.img}}" mode="aspectFill"/>
       </view>
-      <view class="rim-rg">
-        <image class="rim-rg-img" data-tel="{{item.phone}}" bindtap="goCall" src="/assets/image/index-iphone.png"></image>
+      <view class="rim-bt">
+        <view class="rim-lf">
+          <view class="rim-lf-text">{{item.name}}</view>
+          <view class="rim-lf-meg">{{item.subheading}}</view>
+        </view>
+        <view class="rim-rg">
+          <image class="rim-rg-img" data-tel="{{item.phone}}" bindtap="goCall" src="/assets/image/index-iphone.png"></image>
+        </view>
       </view>
-    </view>
+    </block>
   </block>
 </view> 

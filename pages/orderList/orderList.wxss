@@ -2,8 +2,6 @@
 page{
   background-color: #f1f1f1;
 }
-
-
 .complete{
   display: flex;
   flex-direction: column;
@@ -22,4 +20,11 @@ page{
   margin-top: 50rpx;
   font-size: 30rpx;
   color: #666;
+}
+.no-order{
+  width: 100%;
+  color: #999;
+  font-size: 28rpx;
+  margin: 40rpx 0;
+  text-align: center;
 }

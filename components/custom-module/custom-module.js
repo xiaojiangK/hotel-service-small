@@ -26,8 +26,12 @@ Component({
   methods: {
     handleToOrder(e) {
       const item = e.currentTarget.dataset.item;
+      wx.setStorage({
+        key: 'goods',
+        data: item
+      });
       api.navigateTo({
-        url: `../../pages/subOrder/subOrder?name=${item.goods_name}&price=${item.specifications[0].goods_price}`
+        url: '../../pages/subOrder/subOrder'
       })
     }
   }

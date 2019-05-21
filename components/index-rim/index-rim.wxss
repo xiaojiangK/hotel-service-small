@@ -1,7 +1,7 @@
 /* components/index-rim/index-rim.wxss */
 .hotel-rim {
   width: 100%;
-  height: 654rpx;
+  padding: 0 0 40rpx;
   background: white;
   margin-bottom: 20rpx;
 }

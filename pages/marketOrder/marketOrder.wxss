@@ -35,8 +35,7 @@
   
 }
 .goods-list-title{
-  margin-bottom: 30rpx;
-  padding: 0 20rpx;
+  padding: 20rpx;
   font-weight: bold;
 }
 .goods-list{

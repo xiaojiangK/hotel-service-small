@@ -1,6 +1,7 @@
 /* components/index-supermarket/index-supermarket.wxss */
 .hotel-superMarket {
   width: 100%;
+  padding: 0 0 40rpx;
   background: white;
   margin-bottom: 20rpx;
 }
@@ -56,7 +57,9 @@
   height: 100%;
   border-bottom: 1px solid #E1E1E1;
 }
-
+.superMarket-main:last-child .superMarket-rg{
+  border: none;
+}
 .main-title {
   width: 376rpx;
   height: auto;

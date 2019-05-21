@@ -84,13 +84,16 @@ page{
 .order-content{
   display: flex;
   padding: 26rpx;
+  overflow: hidden;
   align-items: center;
   font-size: 34rpx;
+  overflow-x: auto;
   background-color: #fafafa;
 }
 .order-img{
   width: 126rpx;
   height: 126rpx;
+  min-width: 126rpx;
   margin-right: 36rpx; 
 }
 .order-statistics{

@@ -1,35 +1,40 @@
 const api = require("../../utils/api.js");
-const request = require("../../utils/request.js");
+let latitude = 0;
+let longitude = 0;
 
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    // title: {
-    //   type: String,
-    //   value: '太原圣美精品酒店'
-    // },
-    // meg: {
-    //   type: String,
-    //   value: '太原迎泽区柳巷南路86号'
-    // }
+    data: {
+      type: Object,
+      observer: function(newVal, oldVal) {
+        if (newVal.coordinates instanceof Array) {
+          latitude = Number.parseFloat(newVal.coordinates[0]);
+          longitude = Number.parseFloat(newVal.coordinates[1]);
+          this.setData({
+            data: newVal,
+            markers: [{
+              iconPath: '/assets/image/index-radius.png',
+              id: 0,
+              width: 14,
+              height: 14,
+              latitude,
+              longitude
+            }]
+          });
+        }
+      }
+    }
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    markers: [{
-      iconPath: '/assets/image/index-radius.png',
-      id: 0,
-      latitude: 23.099994,
-      longitude: 113.324520,
-      width: 14,
-      height: 14
-    }],
-    phone: '1340000',
-    title: '太原圣美精品酒店'
+    data: {},
+    markers: []
   },
 
   /**
@@ -38,17 +43,16 @@ Component({
   methods: {
     openPhoneCall() {
       api.makePhoneCall({
-        phoneNumber: this.data.phone
+        phoneNumber: this.data.data.link_tel
       })
     },
     openMap() {
-      var latitude = 39.924451
-      var longitude =116.319454
       api.openLocation ({
-        latitude: latitude,
-        longitude: longitude,
-        address: "大苏打撒旦",
-        scale: 18
+        latitude,
+        longitude,
+        scale: 18,
+        name: this.data.data.name,
+        address: this.data.data.address
       })
     }
   }

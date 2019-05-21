@@ -2,10 +2,10 @@
 <view class='center'>
   <view class='center-header'>
     <view class='vip-photo'>
-      <image src='/assets/image/goods-img.png'></image>
+      <image src="{{userInfo.img ? userInfo.img : '/assets/image/goods-img.png'}}"></image>
     </view>
     <view>
-      <view class='vip-name'>用户名</view>
+      <view class='vip-name'>{{userInfo.name ? userInfo.name : '用户名'}}</view>
       <view class='vip-notice'>使用微信快捷登录</view>
     </view>
   </view>
@@ -15,55 +15,55 @@
     <view class='look-all'>查看全部</view>
   </navigator>
 
-  <view wx:if='{{ isLogin }}' class='order'>
-    <view class='order-header'>
-      <view class='order-title'>
-        <image class='icon-title' src='/assets/image/goods-img.png'></image>
-        <view>酒店超市</view>
+  <block wx:for="{{orderList}}" wx:key="index">
+    <view wx:if='{{ userInfo.openid && orderList.length == 1 }}' class='order'>
+      <view class='order-header'>
+        <view class='order-title'>
+          <image class='icon-title' mode="aspectFill" src='/assets/image/goods-img.png'></image>
+          <view>酒店超市</view>
+        </view>
+        <view class='order-status'>已提交</view>
+      </view>  
+        
+      <view class='order-content' data-id="{{item.id}}" bind:tap="goDetail">
+        <image class='order-img' src='{{item.room_logo}}'></image>
+        <view>{{item.room_type}}</view>
       </view>
-      <view class='order-status'>已提交</view>
-    </view>  
-      
-    <view class='order-content'>
-      <image class='order-img' src='/assets/image/goods-img.png'></image>
-      <view>酒店超市</view>
-    </view>
-    <view class='order-statistics'>
-      <view class='statistics-right'>
-        <view>共1件商品</view>
-        <view class='statistics-price'>实付金额：<text class='price-font'>￥1888.21</text></view>
+      <view class='order-statistics'>
+        <view class='statistics-right'>
+          <view>共1件商品</view>
+          <view class='statistics-price'>实付金额：<text class='price-font'>￥{{item.price}}</text></view>
+        </view>
       </view>
     </view>
-  </view>
+  </block>
 
-  <view wx:if='{{ isLogin }}' class='order'>
-    <view class='order-header'>
-      <view class='order-title'>
-        <image class='icon-title' src='/assets/image/goods-img.png'></image>
-        <view>酒店超市</view>
+    <view wx:if='{{ userInfo.openid && orderList.length > 1  }}' class='order'>
+      <view class='order-header'>
+        <view class='order-title'>
+          <image class='icon-title' src='/assets/image/goods-img.png'></image>
+          <view>酒店超市</view>
+        </view>
+        <view class='order-status'>已提交</view>
+      </view>  
+        
+      <view class='order-content'>
+        <block wx:for="{{orderList}}" wx:key="index">
+          <image class='order-img' data-id="{{item.id}}" bind:tap="goDetail" mode="aspectFill" src='{{item.room_logo}}'></image>
+        </block>
       </view>
-      <view class='order-status'>已提交</view>
-    </view>  
-      
-    <view class='order-content'>
-      <image class='order-img' src='/assets/image/goods-img.png'></image>
-      <image class='order-img' src='/assets/image/goods-img.png'></image>
-      <image class='order-img' src='/assets/image/goods-img.png'></image>
-      <image class='order-img' src='/assets/image/goods-img.png'></image>
-      <image class='order-img' src='/assets/image/goods-img.png'></image>
-    </view>
-    <view class='order-statistics'>
-      <view class='statistics-right'>
-        <view>共1件商品</view>
-        <view class='statistics-price'>实付金额：<text class='price-font'>￥1888.21</text></view>
+      <view class='order-statistics'>
+        <view class='statistics-right'>
+          <view>共{{orderList.length}}件商品</view>
+          <view class='statistics-price'>实付金额：<text class='price-font'>￥{{totalPrice}}</text></view>
+        </view>
       </view>
     </view>
-  </view>
   <view wx:else class='order-no'>登录后查看订单</view>
 
   <view class='hotel-tel'>
     <image class='icon-tel' src='/assets/image/icon-tel.png'></image>
-    <view class='number-tel' bind:tap="goCall" data-tel="010-78775658">酒店客服电话：010-78775658</view>
+    <view class='number-tel' bind:tap="goCall">酒店客服电话：{{tel}}</view>
   </view>
 
 </view>

@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "custom-module": "/components/custom-module/custom-module"
+    "custom-module": "/components/custom-module/custom-module",
+    "stepper": "/components/stepper/stepper"
   },
   "navigationBarTextStyle": "black",
   "navigationBarTitleText": "提交订单"

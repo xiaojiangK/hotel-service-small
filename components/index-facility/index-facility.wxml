@@ -6,17 +6,19 @@
     <view class="facility-meg">游泳池、健身房、会议厅等你享用 </view> 
     <image class="facility-arrow" src="/assets/image/index-arrow.png"/>     
   </view>
-  <view class="facility-banner">
-    <image src="{{bannerUrl}}" />
-  </view>
-  <view class="facility-bt">
-    <view class="facility-lf">
-      <view class="facility-lf-text" > {{title}}</view>
-      <view class="facility-lf-meg" > {{meg}} </view>
+  <block wx:for="{{list}}" wx:key="index">
+    <view class="facility-banner" wx:if="{{item.goods_is_open == '1'}}">
+      <image src="{{item.goods_img}}" mode="aspectFill"/>
     </view>
-    <view class="facility-rg">
-      <view style="margin-top: 16rpx"><label class="facility-rg-sign">￥</label> <text class="facility-rg-nub">{{number}}</text></view>   
-      <view class="handleTap" >立即购买</view>
-    </view>       
-  </view>   
+    <view class="facility-bt">
+      <view class="facility-lf">
+        <view class="facility-lf-text">{{item.goods_name}}</view>
+        <view class="facility-lf-meg">{{item.goods_subheading}}</view>
+      </view>
+      <view class="facility-rg">
+        <view style="margin-top: 16rpx"><label class="facility-rg-sign">￥</label> <text class="facility-rg-nub">{{item.specifications[0].goods_price}}</text></view>   
+        <view class="handleTap" bindtap="handleToOrder">立即购买</view>
+      </view>
+    </view>
+  </block>
 </view>

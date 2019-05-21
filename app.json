@@ -1,0 +1,69 @@
+{
+  "pages": [
+    "pages/orderList/orderList",
+    "pages/marketPay/marketPay",
+    "pages/supermarket/supermarket",
+    "pages/index/index",
+    "pages/hotelOrderDetail/hotelOrderDetail",
+    "pages/serviceOrderDetail/serviceOrderDetail",
+    "pages/alliance/alliance",
+    "pages/subOrder/subOrder",
+    "pages/hotelRim/hotelRim",
+    "pages/hotelFacility/hotelFacility",
+    "pages/morningVolume/morningVolume",
+    "pages/booking/booking",
+    "pages/user/user",
+    "pages/bookingOrder/bookingOrder",
+    "pages/vipCenter/vipCenter",
+    "pages/marketOrder/marketOrder",
+    "pages/payComplete/payComplete",
+    "components/goods/goods"
+
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "太原圣美精品酒店",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#595959",
+    "selectedColor": "#ff6634",
+    "backgroundColor": "#fff",
+    "position": "bottom",
+    "borderStyle": "black",
+    "list": [
+      {
+        "text": "主页",
+        "pagePath": "pages/index/index",
+        "iconPath": "assets/image/home.png",
+        "selectedIconPath": "assets/image/home-orange.png"
+      },
+      {
+        "text": "酒店预订",
+        "pagePath": "pages/booking/booking",
+        "iconPath": "assets/image/booking.png",
+        "selectedIconPath": "assets/image/booking-orange.png"
+      },
+      {
+        "text": "酒店直订",
+        "pagePath": "pages/alliance/alliance",
+        "iconPath": "assets/image/alliance.png",
+        "selectedIconPath": "assets/image/alliance-orange.png"
+      },
+      {
+        "text": "会员中心",
+        "pagePath": "pages/vipCenter/vipCenter",
+        "iconPath": "assets/image/user.png",
+        "selectedIconPath": "assets/image/user-orange.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息用于地图导航"
+    }
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
+}

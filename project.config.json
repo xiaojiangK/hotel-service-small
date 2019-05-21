@@ -14,13 +14,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.0",
-<<<<<<< HEAD
-	"appid": "wxc848024bcd4e738c",
-	"projectname": "hotel",
-=======
-	"appid": "wx719731f3dbc7e372",
+	"appid": "wx7a7e4df482d7357a",
 	"projectname": "hotel_service_small",
->>>>>>> ca0cb237537cb913ccba8953e050ca2651546c43
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

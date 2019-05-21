@@ -1,26 +1,26 @@
 <!--components/goods/goods.wxml-->
-<view class="goods">
-  <image class="goods-img" src="/assets/image/goods-img.png"></image>
-  <view class="good-right">
-    <view class="goods-title">益达口香糖就是这个味道，好吃的受不了的感觉，feeling</view>
-    <view class="goods-content">
-      <!-- price -->
-      <view class="goods-price">￥18.02</view>
-      <!-- step -->
-      <view wx:if='{{ isStepper }}' class="goods-num">
-        <stepper></stepper>
+<block wx:for="{{list}}" wx:key="index">
+  <view class="goods" wx:if="{{item.goods_is_open == '1'}}">
+    <image class="goods-img" src="{{item.goods_img}}"></image>
+    <view class="good-right">
+      <view class="goods-title">{{item.goods_name}}</view>
+      <view class="goods-content">
+        <!-- price -->
+        <view class="goods-price">￥{{item.specifications[0].goods_price}}</view>
+        <!-- step -->
+        <view wx:if='{{ isStepper }}' class="goods-num">
+          <stepper></stepper>
+        </view>
+        <!-- currentNum --> 
+        <view wx:if='{{ isCurrentNum }}' class='goods-current-num'>x12</view>
+        <view wx:if='{{ isCar }}' class="goods-add">
+          <image class="goods-car" src="/assets/image/shop-car.png" />
+        </view>
       </view>
-      <!-- currentNum --> 
-      <view wx:if='{{ isCurrentNum }}' class='goods-current-num'>x12</view>
-      <!-- joinShopCar -->
-      <view wx:if='{{ isCar }}' class="goods-add">
-        <image class="goods-car" src="/assets/image/shop-car.png" />
-      </view>
-
+    </view>
+    <view wx:if='{{ isStepper }}' class="goods-delete">
+      <image class="icon-delete" data-id="{{item.goods_id}}" bind:tap="delete" src="/assets/image/icon-delete.png" />
     </view>
   </view>
-  <view wx:if='{{ isStepper }}' class="goods-delete">
-    <image class="icon-delete" src="/assets/image/icon-delete.png" />
-  </view>
-</view>
+</block>
 

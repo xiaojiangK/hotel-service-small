@@ -23,4 +23,16 @@
   color: #666;
   text-align: center;
   line-height: 60rpx;
+  padding-top: 6rpx;
+}
+
+
+/*普通样式*/
+.stepper .normal{
+	color: black;
+}
+ 
+/*禁用样式*/
+.stepper .disabled{
+	color: #ccc;
 }

@@ -56,7 +56,9 @@
   height: 100%;
   border-bottom: 1rpx solid #E1E1E1;
 }
-
+.hotel-superMarket .superMarket-main:last-of-type .superMarket-rg {
+  border-bottom: none;
+}
 .main-title {
   width: 376rpx;
   height: 76rpx;

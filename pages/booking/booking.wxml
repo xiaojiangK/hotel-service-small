@@ -1,4 +1,3 @@
-<import src="../../components/date/dateChoice.wxml" />
 <!-- 酒店预订页 -->
 <!-- banner start -->
 <view class="banner">
@@ -9,18 +8,17 @@
 <view class="duration">
   <view class="col">
     <view class="status">入住</view>
-    <view class="date">04月28日</view>
-    <view class="day">周日</view>
+    <view class="date"></view>
+    <view class="day"></view>
   </view>
-  <view class="col sum">共1晚</view>
+  <view class="col sum">共晚</view>
   <view class="col">
     <view class="status">离店</view>
-    <view class="date">04月29日</view>
-    <view class="day">周一</view>
+    <view class="date"></view>
+    <view class="day"></view>
   </view>
 </view>
 
-<template is="date-choice" catchtap="changeType"/>
 <!-- duration end -->
 <!-- room list start -->
 <view class="room-list">
@@ -70,3 +68,10 @@
   </navigator>
 </view>
 <!-- room list end -->
+ <!-- 授权窗口 -->
+<!-- <view class='user-alert' wx:if="{{isGetPhoneNumber}}">
+  <view class='alert-content'>
+    <view>想体验全部功能，请点击授权手机号</view>
+    <button class='getUser-btn' bindgetphonenumber='getUserPhoneNumber' open-type="getPhoneNumber">立即授权</button>
+  </view>
+</view> -->

@@ -13,7 +13,6 @@
         latitude="23.099994"
         scale="16"
         markers="{{markers}}"
-        bindregionchange="regionchange"
         enable-zoom = "{{false}}"
         enable-scroll = "{{false}}"
         enable-rotate = "{{false}}"

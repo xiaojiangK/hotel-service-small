@@ -7,13 +7,16 @@ Page({
     //  房间数
     roomNumber: 1,
     //  预计办理入住时间起始值
-    startCheckInTime: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate(),
+    // startCheckInTime: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate(),
     //  预计办理入住时间
     checkInTime: '',
     //  是否显示金额明细
     isSumDetail: false
   },
-  //
+  onLoad: function (optiones) {
+    
+  },
+
   bindRoomNumberChange: function (e) {
     this.setData({
       roomNumberIndex: e.detail.value,
@@ -31,5 +34,10 @@ Page({
     this.setData({
       isSumDetail: !this.data.isSumDetail
     });
+  },
+  navigatorToPay() {
+    wx.navigateTo({
+      url: '/pages/payComplete/payComplete'
+    })
   }
 })

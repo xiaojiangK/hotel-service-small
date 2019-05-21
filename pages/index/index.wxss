@@ -20,7 +20,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0,0,0,0.5)
+  background: rgba(0,0,0,0.5);
 }
 .alert-content{
   display: flex;

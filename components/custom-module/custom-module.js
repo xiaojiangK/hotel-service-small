@@ -24,7 +24,12 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    handleToOrder() {
+    handleToOrder(e) {
+      const item = e.currentTarget.dataset.item;
+      wx.setStorage({
+        key: 'goods',
+        data: item
+      });
       api.navigateTo({
         url: '../../pages/subOrder/subOrder'
       })

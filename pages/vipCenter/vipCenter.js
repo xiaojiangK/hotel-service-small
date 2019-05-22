@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    page: 1,
     userInfo: {},
     orderList: [],
     totalPrice: 0,
@@ -53,9 +54,20 @@ Page({
     });
   },
   goDetail(e) {
-    wx.navigateTo({
-      url: `/pages/hotelOrderDetail/hotelOrderDetail?id=${e.currentTarget.dataset.id}`
-    });
+    const item = e.currentTarget.dataset.item;
+    if (item.flag == '0') {
+      wx.navigateTo({
+        url: `/pages/hotelOrderDetail/hotelOrderDetail?id=${item.id}&flag=${item.flag}`
+      });
+    } else if (item.flag == '1') {
+      wx.navigateTo({
+        url: `/pages/marketOrder/marketOrder?id=${item.id}&flag=${item.flag}`
+      });
+    } else {
+      wx.navigateTo({
+        url: `/pages/serviceOrderDetail/serviceOrderDetail?id=${item.id}&flag=${item.flag}`
+      });
+    }
   },
   onPullDownRefresh() {
     this.loadData();
@@ -63,7 +75,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
+  onShow() {
     this.loadData();
   }
 })

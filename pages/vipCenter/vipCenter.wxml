@@ -15,30 +15,78 @@
     <view class='look-all'>查看全部</view>
   </navigator>
 
-  <block wx:for="{{orderList}}" wx:key="index">
-    <view wx:if='{{ userInfo.openid && orderList.length == 1 }}' class='order'>
-      <view class='order-header'>
-        <view class='order-title'>
-          <image class='icon-title' mode="aspectFill" src='/assets/image/goods-img.png'></image>
-          <view>酒店超市</view>
+  <block wx:if="{{userInfo.openid}}">
+    <block wx:for="{{orderList}}" wx:key="index">
+      <view class='order' wx:if="{{index == 0}}">
+        <view class='order-header'>
+          <view class='order-title'>
+            <block wx:if="{{item.flag == '0'}}">
+              <image class='icon-title' mode="aspectFill" src='/assets/image/icon-order.png'></image>
+              <view>{{item.room_type}}</view>
+            </block>
+            <block wx:if="{{item.flag == '1'}}">
+              <image class='icon-title' src='/assets/image/index-supermarket.png'></image>
+              <view>酒店超市</view>
+            </block>
+            <block wx:if="{{item.flag == '2'}}">
+              <image class='icon-title' src='/assets/image/index-facility.png'></image>
+              <view>酒店设施</view>
+            </block>
+            <block wx:if="{{item.flag == '3'}}">
+              <image class='icon-title' src='/assets/image/index-volume.png'></image>
+              <view>早餐券</view>
+            </block>
+          </view>
+          <view class='order-status'>
+            <block wx:if="{{item.flag == '0'}}">
+              <block wx:if="{{item.status == '1'}}">待支付</block>
+              <block wx:if="{{item.status == '2'}}">已支付</block>
+              <block wx:if="{{item.status == '10'}}">待入住</block>
+              <block wx:if="{{item.status == '3'}}">已取消</block>
+              <block wx:if="{{item.status == '4'}}">已完成</block>
+              <block wx:if="{{item.status == '7'}}">已退款</block>
+            </block>
+            <block wx:if="{{item.flag == '1'}}">
+              <block wx:if="{{item.status == '1'}}">待支付</block>
+              <block wx:if="{{item.status == '2'}}">待配送</block>
+              <block wx:if="{{item.status == '3'}}">已取消</block>
+              <block wx:if="{{item.status == '4'}}">已完成</block>
+            </block>
+            <block wx:if="{{item.flag == '2'}}">
+              <block wx:if="{{item.status == '1'}}">待支付</block>
+              <block wx:if="{{item.status == '2'}}">待使用</block>
+              <block wx:if="{{item.status == '3'}}">已取消</block>
+              <block wx:if="{{item.status == '4'}}">已使用</block>
+            </block>
+            <block wx:if="{{item.flag == '3'}}">
+              <block wx:if="{{item.status == '1'}}">待支付</block>
+              <block wx:if="{{item.status == '2'}}">待用餐</block>
+              <block wx:if="{{item.status == '3'}}">已取消</block>
+              <block wx:if="{{item.status == '4'}}">已使用</block>
+            </block>
+          </view>
+        </view>  
+          
+        <view class='order-content' data-item="{{item}}" bind:tap="goDetail">
+          <block wx:if="{{item.flag == '0'}}">
+            <image class='order-img' src='{{item.room_logo}}'></image>
+            <view>{{item.room_type}}</view>
+          </block>
+          <block wx:else>
+            <image class='order-img' src='{{item.goods_info[0].img}}'></image>
+            <view>{{item.goods_info[0].name}}</view>
+          </block>
         </view>
-        <view class='order-status'>已提交</view>
-      </view>  
-        
-      <view class='order-content' data-id="{{item.id}}" bind:tap="goDetail">
-        <image class='order-img' src='{{item.room_logo}}'></image>
-        <view>{{item.room_type}}</view>
-      </view>
-      <view class='order-statistics'>
-        <view class='statistics-right'>
-          <view>共1件商品</view>
-          <view class='statistics-price'>实付金额：<text class='price-font'>￥{{item.price}}</text></view>
+        <view class='order-statistics'>
+          <view class='statistics-right'>
+            <view>共1件商品</view>
+            <view class='statistics-price'>实付金额：<text class='price-font'>￥{{item.price}}</text></view>
+          </view>
         </view>
       </view>
-    </view>
-  </block>
+    </block>
 
-    <view wx:if='{{ userInfo.openid && orderList.length > 1  }}' class='order'>
+    <!-- <view wx:if='{{ orderList.length > 1  }}' class='order'>
       <view class='order-header'>
         <view class='order-title'>
           <image class='icon-title' src='/assets/image/goods-img.png'></image>
@@ -49,7 +97,7 @@
         
       <view class='order-content'>
         <block wx:for="{{orderList}}" wx:key="index">
-          <image class='order-img' data-id="{{item.id}}" bind:tap="goDetail" mode="aspectFill" src='{{item.room_logo}}'></image>
+          <image class='order-img' data-item="{{item}}" bind:tap="goDetail" mode="aspectFill" src='{{item.room_logo}}'></image>
         </block>
       </view>
       <view class='order-statistics'>
@@ -58,7 +106,8 @@
           <view class='statistics-price'>实付金额：<text class='price-font'>￥{{totalPrice}}</text></view>
         </view>
       </view>
-    </view>
+    </view> -->
+  </block>
   <view wx:else class='order-no'>登录后查看订单</view>
 
   <view class='hotel-tel'>

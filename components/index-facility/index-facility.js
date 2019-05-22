@@ -18,11 +18,6 @@ Component({
   data: {
     list: []
   },
-  handleToOrder() {
-    wx.navigateTo({
-      url: '../../pages/subOrder/subOrder'
-    })
-  },
   /**
    * 组件的方法列表
    */
@@ -30,6 +25,12 @@ Component({
     handleFacilityTap(e) {
       wx.navigateTo({
         url: '/pages/hotelFacility/hotelFacility'
+      })
+    },
+    handleToOrder(e) {
+      const item = e.currentTarget.dataset.item;
+      wx.navigateTo({
+        url: `/pages/subOrder/subOrder?name=${item.goods_name}&price=${item.specifications[0].goods_price}`
       })
     }
   }

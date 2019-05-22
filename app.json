@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/supermarket/supermarket",
     "pages/index/index",
+    "pages/supermarket/supermarket",
+    
     "pages/subOrder/subOrder",
     "pages/payComplete/payComplete",
     "pages/hotelOrderDetail/hotelOrderDetail",

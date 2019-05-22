@@ -1,6 +1,5 @@
 // components/orderItem/orderItem.js
-var app = getApp();
-
+import { resetTime } from '../../utils/common.js'
 Component({
   /**
    * 组件的属性列表
@@ -14,30 +13,42 @@ Component({
     }
   },
 
+  lifetimes: {
+    // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
+    attached() { 
+      this.startCountDown()
+    },
+    moved() { },
+    detached() { },
+  },
   /**
    * 组件的初始数据
    */
   data: {
-    c3: '',
-    data: {}
+    remainTime:''
   },
   /**
    * 组件的方法列表
    */
   methods: {
+    startCountDown(){
+      resetTime(130,this)
+    },  
     goDetail() {
-      const flag = this.data.data.flag;
+      const data = this.data.data;
+      const flag = data.flag;
+      const id = data.id;
       if (flag == '0') {
         wx.navigateTo({
-          url: `/pages/hotelOrderDetail/hotelOrderDetail?id=${this.data.data.id}&flag=${flag}`
+          url: `/pages/hotelOrderDetail/hotelOrderDetail?id=${id}&flag=${flag}`
         });
       } else if (flag == '1') {
         wx.navigateTo({
-          url: `/pages/marketOrder/marketOrder?id=${this.data.data.id}&flag=${flag}`
+          url: `/pages/marketOrder/marketOrder?id=${id}&flag=${flag}`
         });
       } else {
         wx.navigateTo({
-          url: `/pages/serviceOrderDetail/serviceOrderDetail?id=${this.data.data.id}&flag=${flag}`
+          url: `/pages/serviceOrderDetail/serviceOrderDetail?id=${id}&flag=${flag}&source=order`
         });
       }
     },
@@ -49,11 +60,12 @@ Component({
         confirmText: '确定',
         success: (e) => {
           if (e.confirm) {
+            const data = this.data.data;
             app.util.request({
               url: "entry/wxapp/CancelOrder",
               data: {
-                flag: this.data.data.flag,
-                order_id: this.data.data.id
+                flag: data.flag,
+                order_id: data.id
               },
               success:(res) => {
                 if (res.data == 1) {
@@ -61,7 +73,6 @@ Component({
                     title: '取消成功',
                     icon: 'none'
                   });
-                  const data = this.data.data;
                   this.setData({
                     data: {
                       ...data,
@@ -69,7 +80,7 @@ Component({
                     }
                   });
                   wx.navigateTo({
-                    url: `/pages/payComplete/payComplete?type=1`
+                    url: '/pages/payComplete/payComplete?type=1'
                   });
                 }
               }
@@ -106,7 +117,7 @@ Component({
                     icon: 'none'
                   });
                   wx.navigateTo({
-                    url: `/pages/payComplete/payComplete`
+                    url: '/pages/payComplete/payComplete'
                   });
                 },
                 fail:() => {
@@ -124,9 +135,24 @@ Component({
       });
     },
     goReserve() {
-      wx.switchTab({
-        url: '/pages/booking/booking'
-      });
+      const flag = this.data.data.flag;
+      if (flag == '0') {
+        wx.switchTab({
+          url: '/pages/booking/booking'
+        });
+      } else if (flag == '1') {
+        wx.navigateTo({
+          url: '/pages/supermarket/supermarket'
+        });
+      } else if (flag == '2') {
+        wx.navigateTo({
+          url: '/pages/hotelFacility/hotelFacility'
+        });
+      } else if (flag == '3') {
+        wx.navigateTo({
+          url: '/pages/morningVolume/morningVolume'
+        });
+      }
     }
   }
 })

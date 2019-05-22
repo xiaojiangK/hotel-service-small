@@ -1,4 +1,3 @@
-<!-- 酒店预订页 -->
 <!-- banner start -->
 <view class="banner">
   <swiper interval="2000" duration="500" circular="true">
@@ -34,9 +33,13 @@
     <view class="desc">{{item.size}} {{item.windows == '1' ? '有窗' : '无窗'}}</view>
     <view class="breakfast">{{item.breakfast == '0' ? '不' : ''}}含早</view>
     <view class="price">{{item.price}}</view>
-    <view class="status">
+    <view class="status" wx:if="{{item.total_num > 0}}">
       <view>预订</view>
       <view>仅剩{{item.total_num}}间</view>
+    </view>
+    <view class="status full" wx:else>
+      <view>满房</view>
+      <view>满房</view>
     </view>
   </view>
 </view>

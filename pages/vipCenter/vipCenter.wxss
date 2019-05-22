@@ -83,12 +83,17 @@ page{
 }
 .order-content{
   display: flex;
-  padding: 26rpx;
+  padding: 28rpx;
   overflow: hidden;
   align-items: center;
-  font-size: 34rpx;
+  font-size: 28rpx;
   overflow-x: auto;
   background-color: #fafafa;
+  -webkit-overflow-scrolling: touch;
+}
+.order-content .sub{
+  font-size: 26rpx;
+  color: #666;
 }
 .order-img{
   width: 126rpx;

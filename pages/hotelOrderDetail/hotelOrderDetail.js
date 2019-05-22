@@ -104,7 +104,7 @@ Page({
                   }
                 });
                 wx.navigateTo({
-                  url: `/pages/payComplete/payComplete?type=1`
+                  url: '/pages/payComplete/payComplete?type=1'
                 });
               }
             }
@@ -126,7 +126,7 @@ Page({
           data: {
             flag: this.data.flag,
             openid: res.data.openid,
-            order_id: this.data.data.id
+            order_id: this.data.id
           },
           success:(e) => {
             wx.requestPayment({
@@ -141,7 +141,7 @@ Page({
                   icon: 'none'
                 });
                 wx.navigateTo({
-                  url: `/pages/payComplete/payComplete`
+                  url: '/pages/payComplete/payComplete'
                 });
               },
               fail:() => {

@@ -13,11 +13,15 @@ Page({
     swiper: []
   },
   goPay(e) {
+    const room = e.currentTarget.dataset.room;
+    if (room.total_num == 0) {
+      return;
+    }
     const data = this.data;
     wx.setStorage({
       key: 'room',
       data: {
-        ...e.currentTarget.dataset.room,
+        ...room,
         startWeek: data.startWeek,
         endWeek: data.endWeek,
         dayNum: data.dayNum,
@@ -95,10 +99,13 @@ Page({
           success:(res) => {
             let swiper = [];
             const roomList = res.data.map(item => {
-              swiper.push(app.globalData.url + item.logo);
+              if (item.state == '1') {
+                swiper.push(app.globalData.url + item.logo);
+              }
               return {
                 ...item,
-                logo: app.globalData.url + item.logo
+                logo: app.globalData.url + item.logo,
+                price: Number.isInteger(Number.parseFloat(item.price)) ? Number.parseInt(item.price) : item.price
               }
             });
             this.setData({ roomList, swiper });

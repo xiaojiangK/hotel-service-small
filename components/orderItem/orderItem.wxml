@@ -51,14 +51,14 @@
       
     <view class='order-content' bindtap="goDetail">
       <block wx:if="{{data.flag == '0'}}">
-        <image class='order-img' src='{{data.room_logo}}'></image>
+        <image class='order-img' mode="aspectFill" src='{{data.room_logo}}'></image>
         <view>
           <view>{{data.size}}  {{data.windows == '1' ? '有' : '无'}}窗  {{data.breakfast == '0' ? '不' : ''}}含早</view>
           <view>{{data.arrival_time}} 至 {{data.departure_time}} {{data.days}}晚/{{data.num}}间</view>
         </view>
       </block>
       <block wx:else>
-        <image class='order-img' src='{{data.goods_info[0].img}}'></image>
+        <image class='order-img' mode="aspectFill" src='{{data.goods_info[0].img}}'></image>
         <view>
           <view>{{data.goods_info[0].name}}</view>
           <view>{{data.goods[0].goods_subheading}}</view>

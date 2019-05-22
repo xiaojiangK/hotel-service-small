@@ -1,5 +1,6 @@
 // pages/vipCenter/vipCenter.js
 var app = getApp();
+import { formatDate } from '../../utils/tool.js'
 
 Page({
 
@@ -10,8 +11,9 @@ Page({
     page: 1,
     userInfo: {},
     orderList: [],
-    totalPrice: 0,
-    tel: 13800138000
+    hotelName: '',
+    tel: 13800138000,
+    url: app.globalData.url
   },
   goCall () {
     wx.makePhoneCall({
@@ -32,14 +34,23 @@ Page({
             page: this.data.page
           },
           success:(res) => {
-            let totalPrice = 0;
-            for (let i of res.data) {
-              totalPrice += Number.parseFloat(i.price);
-            }
-            this.setData({
-              totalPrice,
-              orderList: res.data
+            const orderList = res.data.map(item => {
+              let totalNum = 0;
+              if (item.goods_info) {
+                for (let i of item.goods_info) {
+                  totalNum += Number.parseInt(i.number);
+                }
+              } else {
+                totalNum = item.num;
+              }
+              return {
+                ...item,
+                totalNum,
+                arrival_time: formatDate(item.arrival_time * 1000),
+                departure_time: formatDate(item.departure_time * 1000)
+              }
             });
+            this.setData({ orderList });
             wx.hideLoading();
             wx.hideNavigationBarLoading();
           }
@@ -49,7 +60,11 @@ Page({
     wx.getStorage({
       key: 'hotel',
       success: (res)=>{
-        this.setData({ tel: res.data.tel });
+        const data = res.data;
+        this.setData({
+          tel: data.tel,
+          hotelName: data.name
+        });
       }
     });
   },
@@ -65,7 +80,7 @@ Page({
       });
     } else {
       wx.navigateTo({
-        url: `/pages/serviceOrderDetail/serviceOrderDetail?id=${item.id}&flag=${item.flag}`
+        url: `/pages/serviceOrderDetail/serviceOrderDetail?id=${item.id}&flag=${item.flag}&source=order`
       });
     }
   },

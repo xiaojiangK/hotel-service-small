@@ -28,9 +28,16 @@
 .order-content{
   display: flex;
   padding: 26rpx;
+  overflow: hidden;
   align-items: center;
   font-size: 28rpx;
+  overflow-x: auto;
   background-color: #fafafa;
+  -webkit-overflow-scrolling: touch;
+}
+.order-content .sub{
+  color: #666;
+  font-size: 26rpx;
 }
 .order-img{
   flex: 0 0 126rpx;

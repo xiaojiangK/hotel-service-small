@@ -1,7 +1,7 @@
 <!--components/goods/goods.wxml-->
 <block wx:for="{{list}}" wx:key="index">
   <view class="goods" wx:if="{{item.goods_is_open == '1'}}">
-    <image class="goods-img" src="{{item.goods_img}}"></image>
+    <image class="goods-img" mode="aspectFill" src="{{item.goods_img}}"></image>
     <view class="good-right">
       <view class="goods-title">{{item.goods_name}}</view>
       <view class="goods-content">
@@ -9,17 +9,23 @@
         <view class="goods-price">￥{{item.specifications[0].goods_price}}</view>
         <!-- step -->
         <view wx:if='{{ isStepper }}' class="goods-num">
-          <stepper></stepper>
+          <!-- <stepper getNum="{{ item.num }}"></stepper> -->
+
+          <view class='stepper'>
+            <view class='minus btn' bindtap='minus' data-gid="{{ item.goods_id }}" >-</view>
+            <input class='num' type='text' disabled value='{{ item.num }}'></input>
+            <view class='add btn'bindtap='add' data-gid="{{ item.goods_id }}">+</view>
+          </view>
         </view>
         <!-- currentNum --> 
         <view wx:if='{{ isCurrentNum }}' class='goods-current-num'>x12</view>
-        <view wx:if='{{ isCar }}' class="goods-add">
-          <image class="goods-car" bindtap="addCar" src="/assets/image/shop-car.png" />
+        <view wx:if='{{ isCar }}' class="goods-add" bindtap='addShopCar' data-goods="{{ item }}">
+          <image class="goods-car" src="/assets/image/shop-car.png" />
         </view>
       </view>
     </view>
     <view wx:if='{{ isStepper }}' class="goods-delete">
-      <image class="icon-delete" data-id="{{item.goods_id}}" bind:tap="delete" src="/assets/image/icon-delete.png" />
+      <image class="icon-delete" data-gid="{{item.goods_id}}" bind:tap="delete" src="/assets/image/icon-delete.png" />
     </view>
   </view>
 </block>

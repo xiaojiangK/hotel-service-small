@@ -3,15 +3,3 @@ page {
   background: #232533;
   position: relative;
 }
-.banner {
-  width: 750rpx;
-  height: 960rpx;
-}
-.foot-logo {
-  position: fixed;
-  left: 50%;
-  margin-left: -200rpx;
-  bottom: 60rpx;
-  width: 400rpx;
-  height: 48rpx;
-}

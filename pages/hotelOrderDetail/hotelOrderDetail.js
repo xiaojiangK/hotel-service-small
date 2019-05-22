@@ -126,7 +126,7 @@ Page({
           data: {
             flag: this.data.flag,
             openid: res.data.openid,
-            order_id: this.data.data.id
+            order_id: this.data.id
           },
           success:(e) => {
             wx.requestPayment({

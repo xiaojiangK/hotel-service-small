@@ -26,18 +26,20 @@ Component({
    */
   methods: {
     goDetail() {
-      const flag = this.data.data.flag;
+      const data = this.data.data;
+      const flag = data.flag;
+      const id = data.id;
       if (flag == '0') {
         wx.navigateTo({
-          url: `/pages/hotelOrderDetail/hotelOrderDetail?id=${this.data.data.id}&flag=${flag}`
+          url: `/pages/hotelOrderDetail/hotelOrderDetail?id=${id}&flag=${flag}`
         });
       } else if (flag == '1') {
         wx.navigateTo({
-          url: `/pages/marketOrder/marketOrder?id=${this.data.data.id}&flag=${flag}`
+          url: `/pages/marketOrder/marketOrder?id=${id}&flag=${flag}`
         });
       } else {
         wx.navigateTo({
-          url: `/pages/serviceOrderDetail/serviceOrderDetail?id=${this.data.data.id}&flag=${flag}`
+          url: `/pages/serviceOrderDetail/serviceOrderDetail?id=${id}&flag=${flag}`
         });
       }
     },
@@ -49,11 +51,12 @@ Component({
         confirmText: '确定',
         success: (e) => {
           if (e.confirm) {
+            const data = this.data.data;
             app.util.request({
               url: "entry/wxapp/CancelOrder",
               data: {
-                flag: this.data.data.flag,
-                order_id: this.data.data.id
+                flag: data.flag,
+                order_id: data.id
               },
               success:(res) => {
                 if (res.data == 1) {
@@ -61,7 +64,6 @@ Component({
                     title: '取消成功',
                     icon: 'none'
                   });
-                  const data = this.data.data;
                   this.setData({
                     data: {
                       ...data,

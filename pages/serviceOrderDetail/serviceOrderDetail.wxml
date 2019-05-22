@@ -3,7 +3,7 @@
 <view class="wrapper">  
   <view class="hotel-facility">
     <view class="facility-banner">
-      <image src="{{orderInfo.goods[0].img}}" />
+      <image src="{{orderInfo.goods[0].img}}" mode="aspectFill" />
     </view>   
   </view>
   <view class="order-item">
@@ -19,11 +19,15 @@
      </view> 
   </view>
   <view class="text-box">
-    <view class="sub-faill" wx:if="{{orderInfo.status == '4'}}">该早餐券已于2019-09-21 15:20:22使用</view>  
-    <view class="sub-success" wx:else>用餐前，主动出示条形码</view>
+    <view class="sub-faill" wx:if="{{orderInfo.status == '1'}}">该订单未支付</view>
+    <view class="sub-success" wx:if="{{orderInfo.status == '2'}}">使用前，主动出示条形码</view>
+    <view class="sub-faill" wx:if="{{orderInfo.status == '3'}}">该订单已取消</view>
+    <view class="sub-faill" wx:if="{{orderInfo.status == '4'}}">该订单已于2019-09-21 15:20:22使用</view>
   </view>
-  <view class="bar-code">
-    <image class="" src=""></image>
-  </view>
-  <view class="bar-code-nub" >4372 8948 9237 0199</view>    
+  <block wx:if="{{orderInfo.status == '2'}}">
+    <view class="bar-code">
+      <image class="" src=""></image>
+    </view>
+    <view class="bar-code-nub" >4372 8948 9237 0199</view>    
+  </block>
 </view>

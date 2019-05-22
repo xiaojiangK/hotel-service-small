@@ -78,6 +78,6 @@ App({
   util: require("utils/util.js"),
   globalData: {
     userInfo: null,
-    url: 'http://msp.showboom.cn/attachment/'
+    url: 'http://j.showboom.cn/attachment/'
   }
 })

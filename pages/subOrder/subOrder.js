@@ -17,7 +17,7 @@ Page({
     wx.getStorage({
       key: 'hotel',
       success: (res) => {
-        this.setData({ hotelid: res.data.id });
+        this.data.hotelid = res.data.id;
       }
     });
     wx.getStorage({
@@ -75,7 +75,7 @@ Page({
                   icon: 'none'
                 });
                 wx.navigateTo({
-                  url: '/pages/orderList/orderList'
+                  url: `/pages/payComplete/payComplete`
                 });
               },
               fail:() => {
@@ -94,10 +94,7 @@ Page({
   },
   //监听子组件的传值
   onMyevent: function (e) {
-    var code = e.detail
-    this.setData({
-      code: code
-    })
+    this.data.code = e.detail;
     this.count_price()
   },
   /**

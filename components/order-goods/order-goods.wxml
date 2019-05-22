@@ -1,6 +1,6 @@
 <block wx:for="{{list}}" wx:for-index="idx" wx:key="idx">
   <view class="goods">
-    <image class="goods-img" src="{{item.goods_img}}"></image>
+    <image class="goods-img" mode="aspectFill" src="{{item.goods_img}}"></image>
     <view class="good-right">
       <view class="goods-title">{{item.goods_name}}</view>
       <view class="goods-content">

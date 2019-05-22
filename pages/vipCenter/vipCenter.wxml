@@ -2,7 +2,7 @@
 <view class='center'>
   <view class='center-header'>
     <view class='vip-photo'>
-      <image src="{{userInfo.img ? userInfo.img : '/assets/image/goods-img.png'}}"></image>
+      <image src="{{userInfo.img ? userInfo.img : '/assets/image/goods-img.png'}}" mode="aspectFill" />
     </view>
     <view>
       <view class='vip-name'>{{userInfo.name ? userInfo.name : '用户名'}}</view>
@@ -21,7 +21,7 @@
         <view class='order-header'>
           <view class='order-title'>
             <block wx:if="{{item.flag == '0'}}">
-              <image class='icon-title' mode="aspectFill" src='/assets/image/icon-order.png'></image>
+              <image class='icon-title' src='/assets/image/icon-order.png'></image>
               <view>{{item.room_type}}</view>
             </block>
             <block wx:if="{{item.flag == '1'}}">
@@ -69,11 +69,11 @@
           
         <view class='order-content' data-item="{{item}}" bind:tap="goDetail">
           <block wx:if="{{item.flag == '0'}}">
-            <image class='order-img' src='{{item.room_logo}}'></image>
+            <image class='order-img' mode="aspectFill" src='{{item.room_logo}}'></image>
             <view>{{item.room_type}}</view>
           </block>
           <block wx:else>
-            <image class='order-img' src='{{item.goods_info[0].img}}'></image>
+            <image class='order-img' mode="aspectFill" src='{{item.goods_info[0].img}}'></image>
             <view>{{item.goods_info[0].name}}</view>
           </block>
         </view>

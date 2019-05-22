@@ -15,6 +15,8 @@ Component({
           longitude = Number.parseFloat(newVal.coordinates[1]);
           this.setData({
             data: newVal,
+            latitude,
+            longitude,
             markers: [{
               iconPath: '/assets/image/index-radius.png',
               id: 0,
@@ -34,7 +36,9 @@ Component({
    */
   data: {
     data: {},
-    markers: []
+    markers: [],
+    latitude: 0,
+    longitude: 0
   },
 
   /**

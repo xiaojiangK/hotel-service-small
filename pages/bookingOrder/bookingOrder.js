@@ -63,11 +63,9 @@ Page({
     const idx = e.currentTarget.dataset.idx;
     if (idx == 'name') {
         this.setData({ name: e.detail.value });
-        return;
     }
     if (idx == 'phone') {
         this.setData({ phone: e.detail.value });
-        return;
     }
 },
   bindRoomNumberChange (e) {
@@ -109,8 +107,8 @@ Page({
     }
     if (!data.checkInTime) {
         wx.showToast({
-            title: '请选择预计入住时间!',
-            icon: 'none'
+          title: '请选择预计入住时间!',
+          icon: 'none'
         });
         return;
     }

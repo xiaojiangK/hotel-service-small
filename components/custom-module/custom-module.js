@@ -31,7 +31,7 @@ Component({
         data: item
       });
       api.navigateTo({
-        url: '../../pages/subOrder/subOrder'
+        url: '/pages/subOrder/subOrder'
       })
     }
   }

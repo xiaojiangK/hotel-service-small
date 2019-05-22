@@ -89,6 +89,7 @@ page{
   font-size: 34rpx;
   overflow-x: auto;
   background-color: #fafafa;
+  -webkit-overflow-scrolling: touch;
 }
 .order-img{
   width: 126rpx;

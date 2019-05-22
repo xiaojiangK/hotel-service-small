@@ -17,7 +17,7 @@
     <view>手机号</view>
     <view>{{orderInfo.tel}}</view>
   </view>
-  <view class='cancel-btn' wx:if="{{orderInfo.status == '1'}}">取消订单</view>
+  <view class='cancel-btn' bind:tap="cancelOrder" wx:if="{{orderInfo.status == '1'}}">取消订单</view>
   <view class='goods-list-title'>商品信息</view>
   <view class='goods-list'>
     <order-goods isCurrentNum= "1" goods="{{orderInfo.goods}}" info="{{orderInfo.goods_info}}"></order-goods>

@@ -1,7 +1,7 @@
 <!--components/goods/goods.wxml-->
 <block wx:for="{{list}}" wx:key="index">
   <view class="goods" wx:if="{{item.goods_is_open == '1'}}">
-    <image class="goods-img" src="{{item.goods_img}}"></image>
+    <image class="goods-img" mode="aspectFill" src="{{item.goods_img}}"></image>
     <view class="good-right">
       <view class="goods-title">{{item.goods_name}}</view>
       <view class="goods-content">

@@ -1,6 +1,6 @@
 // pages/booking/booking.js
-
 const app = getApp()
+
 Page({
   data: {
     start: [],
@@ -10,7 +10,8 @@ Page({
     startWeek: '',
     dateVisible: true,
     roomList: [],
-    swiper: []
+    swiper: [],
+    isGetPhoneNumber: false
   },
   goPay(e) {
     const room = e.currentTarget.dataset.room;
@@ -120,25 +121,28 @@ Page({
   onLoad (options) {
     this.init();
     this.loadData();
+  },
+  onShow() {
+    this.changePhoneNumber();
+  },
+  changePhoneNumber() {
+    const isGetPhoneNumber = wx.getStorageSync('isGetPhoneNumber');
+    if(isGetPhoneNumber) {
+      this.setData({
+        isGetPhoneNumber: false
+      });
+    } else {
+      this.setData({
+        isGetPhoneNumber: true
+      });
+    }
+  },
+  getUserPhoneNumber(e){
+    if(e.detail.errMsg == "getPhoneNumber:ok") {
+      wx.setStorageSync('isGetPhoneNumber', true);
+      this.setData({
+        isGetPhoneNumber: false
+      });
+    }
   }
-
-  // changePhoneNumber() {
-  //   var that = this
-  //   if(app.globalData.phoneNumber != '')
-  //     that.setData({
-  //       isGetPhoneNumber:false
-  //     })
-  //   else
-  //     that.setData({
-  //       isGetPhoneNumber:true
-  //     }) 
-  // },
-  // getUserPhoneNumber(e){
-  //   console.log(e.detail.phoneNumber)
-  //   if(e.detail.phoneNumber) {
-  //     app.globalData.phoneNumber = e.detail.phoneNumber
-  //     wx.setStorageSync('phoneNumber',e.detail.phoneNumber)
-  //     this.changePhoneNumber()
-  //   }
-  // }
 })

@@ -10,9 +10,9 @@ Page({
     tel: '',
     goods: [],
     roomNum: '',
-    list:[],
     allNum:0,
-    allPrice:0
+    allPrice:0,
+    hotelid: 0
   },
 
   /**
@@ -26,8 +26,12 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    console.log('aaa')
-    console.log(app.globalData.shopCar)
+    wx.getStorage({
+      key: 'hotel',
+      success: (res) => {
+        this.data.hotelid = res.data.id;
+      }
+    });
     let hash = {}
     let newArr = []
     newArr = app.globalData.shopCar.reduce((pre, item) => {
@@ -43,7 +47,6 @@ Page({
       }
       return pre
     }, [])
-    console.log(newArr + 'sssss')
     //console.log(hash)
     app.globalData.newArr = newArr
 
@@ -53,33 +56,18 @@ Page({
       allPrice += i.specifications[0].goods_price * i.num
       allNum += i.num
     })
-    console.log(allPrice + '~~~~~~' + allNum)
     this.setData({
-      list: newArr,
+      goods: newArr,
       allPrice,
       allNum
     })
   },
   getGoods(e){
     let { allPrice, allNum } = e.detail
-    console.log(allPrice, allNum)
     this.setData({
       allPrice,
       allNum
     })
-  },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
   },
   roomChange(e) {
     this.setData({
@@ -116,6 +104,20 @@ Page({
       success: (res) => {
         const d = res.data;
         const g = data.goods;
+        let orderGoods = [];
+        for (let i of g) {
+          if (i.specifications instanceof Array) {
+            orderGoods.push({
+              spec_id: i.specifications[0].id,
+              name: i.goods_name,
+              img: i.goods_img,
+              type: i.goods_attribute,
+              price: i.specifications[0].goods_price,
+              number: i.num,
+              total_price: data.allPrice
+            });
+          }
+        }
         app.util.request({
           url: "entry/wxapp/AddGoodsOrder",
           data: {
@@ -123,21 +125,11 @@ Page({
             user_id: d.id,
             uniacid: d.uniacid,
             seller_id: data.hotelid,
-            price: data.totalPrice,
-            type: g.goods_attribute,
+            price: data.allPrice,
+            type: g[0].goods_attribute,
             room_num: data.roomNum,
             tel: data.tel,
-            orderGoods: [
-              {
-                spec_id: g.specifications[0].id,
-                name: g.goods_name,
-                img: g.goods_img,
-                type: g.goods_attribute,
-                price: data.money,
-                number: data.code,
-                total_price: data.money * data.code
-              }
-            ]
+            orderGoods
           },
           success:(e) => {
             wx.requestPayment({
@@ -168,12 +160,5 @@ Page({
         });
       }
     });
-  },
-  loadData() {},
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad (op) {
-    this.loadData();
   }
 })

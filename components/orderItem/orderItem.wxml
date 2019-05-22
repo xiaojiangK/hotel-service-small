@@ -58,23 +58,25 @@
         </view>
       </block>
       <block wx:else>
-        <image class='order-img' mode="aspectFill" src='{{data.goods_info[0].img}}'></image>
-        <view>
-          <view>{{data.goods_info[0].name}}</view>
-          <view>{{data.goods[0].goods_subheading}}</view>
-        </view>
+        <block wx:for="{{data.goods_info}}" wx:key="index">
+          <image class='order-img' mode="aspectFill" src='{{item.img}}'></image>
+          <view wx:if="{{data.goods_info.length == 1}}">
+            <view>{{item.name}}</view>
+            <view>{{item.goods_subheading}}</view>
+          </view>
+        </block>
       </block>
     </view>
     <view class='order-statistics'>
       <view class='statistics-right'>
-        <view>共{{data.num}}件商品</view>
+        <view>共{{data.totalNum}}件商品</view>
         <view class='statistics-price'>实付金额：<text class='price-font'>￥{{data.price}}</text></view>
       </view>
     </view>
     <view class='more-oprate'>
       <view class='oprate-notice'>
         <image class='icon-notice' wx:if="{{data.status == '1' || data.status == '2' || data.status == '10' || data.status == '4'}}" src='/assets/image/icon-sum-detail.png'></image>
-        <view class='notice-content' wx:if="{{data.status == '1'}}">剩余支付时间{{data.pay_time}}</view>
+        <view class='notice-content' wx:if="{{data.status == '1'}}">剩余支付时间 {{time}}</view>
         <view class='pay-s' wx:if="{{data.status == '2'}}">等待酒店确认</view>
         <view class='pay-s' wx:if="{{data.status == '10'}}">等待已确认，等待入住</view>
         <view class='pay-s' wx:if="{{data.status == '4'}}">已入住，欢迎再次光临！</view>

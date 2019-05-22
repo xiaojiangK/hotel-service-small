@@ -28,7 +28,7 @@
   font-size: 30rpx;
 }
 .totle-price{
-  margin-right: 50rpx;
+  margin-right: 25rpx;
   font-size: 30rpx;
 }
 .totle-price > text{

@@ -12,8 +12,16 @@
   <!-- 授权窗口 -->
   <cover-view class="user-alert" scroll-top="0" wx:if="{{ isGetUserInfo }}">
     <cover-view class='alert-content'>
-      <cover-view>想体验全部功能，请点击授权</cover-view>
+      <cover-view>请允许授权，体验更多酒店服务</cover-view>
       <button class='getUser-btn' bindgetuserinfo='getUserInfo' open-type="getUserInfo">立即授权</button>
+    </cover-view>
+  </cover-view>
+
+  <!-- 授权手机窗口 -->
+  <cover-view class='user-alert' wx:if="{{isGetPhoneNumber}}">
+    <cover-view class='alert-content'>
+      <cover-view>请绑定手机，便于给您提供更优质服务</cover-view>
+      <button class='getUser-btn' bindgetphonenumber='getUserPhoneNumber' open-type="getPhoneNumber">立即绑定</button>
     </cover-view>
   </cover-view>
 </view>

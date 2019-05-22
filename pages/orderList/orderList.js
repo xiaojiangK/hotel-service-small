@@ -34,16 +34,7 @@ Page({
             const orderList = res.data.map(item => {
               // 大于下单时间半个小时，则取消订单
               if (item.status == 1) {
-                if (item.flag == '0' && Date.now() - item.time * 1000 > (60 * 30 * 1000)) {
-                  item.status = 3;
-                  app.util.request({
-                    url: "entry/wxapp/CancelOrder",
-                    data: {
-                      flag: item.flag,
-                      order_id: item.id
-                    }
-                  });
-                } else if (Date.now() - item.create_time * 1000 > (60 * 30 * 1000)) {
+                if (Date.now() - item.create_time * 1000 > (60 * 30 * 1000)) {
                   item.status = 3;
                   app.util.request({
                     url: "entry/wxapp/CancelOrder",
@@ -62,11 +53,9 @@ Page({
               } else {
                 totalNum = item.num;
               }
-              const time = item.time ? item.time : item.create_time;
               return {
                 ...item,
                 totalNum,
-                pay_time: formatDate(time * 1000),
                 arrival_time: formatDate(item.arrival_time * 1000),
                 departure_time: formatDate(item.departure_time * 1000)
               }

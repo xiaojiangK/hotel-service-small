@@ -11,8 +11,8 @@
   height: 240rpx;
 }
 .good-right{
-  width: 485rpx;
-  padding: 0 24rpx;
+  width: 460rpx;
+  margin-left: 24rpx;
   border-bottom: 2rpx solid #E1E1E1;
 }
 .goods-title{
@@ -50,4 +50,34 @@
 .icon-delete{
   width: 46rpx;
   height: 46rpx;
+}
+
+
+/* stepper */
+.stepper{
+  display: flex;
+  width: 180rpx;
+  height: 60rpx;
+  border: 2rpx solid #e1e1e1;
+  border-radius: 8rpx;
+}
+.btn{
+  flex: 0 0 60rpx;
+  color: #999;
+  line-height: 60rpx;
+  text-align: center;
+}
+.add{
+  border-left: 2rpx solid #e1e1e1;
+}
+.minus{
+  border-right: 2rpx solid #e1e1e1;
+}
+.num{
+  flex-grow: 1;
+  font-size: 28rpx;
+  color: #666;
+  text-align: center;
+  line-height: 60rpx;
+  padding-top: 6rpx;
 }

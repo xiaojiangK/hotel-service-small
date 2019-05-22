@@ -1,5 +1,6 @@
 const config = require('./../config/index');
 const api = require('./api');
+import dayjs from './dayjs.js';
 
 //  接口地址前缀
 const baseURL = config.baseURL;
@@ -36,6 +37,23 @@ let post = (op = {}) => {
     return res.data;
   });
 };
+
+// 倒计时
+export function countDown(time) {
+  const date1 = dayjs(time * 1000 + (60 * 30 * 1000));
+  const date2 = dayjs(Date.now());
+  if (date1 > date2) {
+      const hour = date1.diff(date2, 'hour');
+      const date3 = date2.add(hour, 'hour');
+      const minute = date1.diff(date3, 'minute');
+      const date4 = date3.add(minute, 'minute');
+      const second = date1.diff(date4, 'second');
+      return [minute < 10 ? '0'+minute : minute || '00', second < 10 ? '0'+second : second || '00'];
+  }
+  else {
+      return [];
+  }
+}
 
 // 日期时间
 export function formatDateTime(time) {

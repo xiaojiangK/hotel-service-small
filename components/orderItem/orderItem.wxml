@@ -73,16 +73,11 @@
     </view>
     <view class='more-oprate'>
       <view class='oprate-notice'>
-<<<<<<< HEAD
-        <image class='icon-notice' src='/assets/image/icon-order.png'></image>
-        <view class='notice-content'>剩余支付时间 {{ remainTime }}</view>
-=======
         <image class='icon-notice' wx:if="{{data.status == '1' || data.status == '2' || data.status == '10' || data.status == '4'}}" src='/assets/image/icon-sum-detail.png'></image>
         <view class='notice-content' wx:if="{{data.status == '1'}}">剩余支付时间{{data.pay_time}}</view>
         <view class='pay-s' wx:if="{{data.status == '2'}}">等待酒店确认</view>
         <view class='pay-s' wx:if="{{data.status == '10'}}">等待已确认，等待入住</view>
         <view class='pay-s' wx:if="{{data.status == '4'}}">已入住，欢迎再次光临！</view>
->>>>>>> 1d00657c70e0fab541e8d11d87a119b614fcd760
       </view>
       <view class='operate-right'>
         <view class='oprate-btn' wx:if="{{data.status == '1'}}" bindtap="cancelOrder">取消订单</view>

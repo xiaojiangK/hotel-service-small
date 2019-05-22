@@ -10,16 +10,13 @@
   </view>
 
   <view class='goods-list'>
-    <goods isStepper="1"></goods>
-    <goods isStepper="1"></goods>
-    <goods isStepper="1"></goods>
-    <goods isStepper="1"></goods>
-    <goods isStepper="1"></goods>
-    <goods isStepper="1"></goods>
+    
+    <goods data="{{list}}" isStepper="1" bind:myevent="getGoods"></goods>
+    
   </view>
   <view class='submit-bar'>
-    <view class='totle-num'>已选<text class='red'>{{goods.length}}</text>件商品</view>
-    <view class='totle-price'>合计<text class='red'>￥196.21</text></view>
-    <view class='submit-btn' bindtap="goPay">去结算</view>
+    <view class='totle-num'>已选<text class='red'>{{ allNum }}</text>件商品</view>
+    <view class='totle-price'>合计<text class='red'>￥ {{ allPrice }}</text></view>
+    <view class='submit-btn'>去结算</view>
   </view>
 </view>

@@ -1,6 +1,4 @@
 <!--pages/marketOrder/marketOrder.wxml-->
-<!--pages/marketPay/marketPay.wxml-->
-<!-- 商品订单详情页 -->
 <view class='pages'>     
   <view class='title'>
     当前状态：

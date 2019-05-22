@@ -2,8 +2,8 @@
   "pages": [
     "pages/supermarket/supermarket",
     "pages/index/index",
-    "pages/subOrder/subOrder",   
-    "pages/payComplete/payComplete",  
+    "pages/subOrder/subOrder",
+    "pages/payComplete/payComplete",
     "pages/hotelOrderDetail/hotelOrderDetail",
     "pages/serviceOrderDetail/serviceOrderDetail",
     "pages/marketPay/marketPay",

@@ -104,7 +104,7 @@ Page({
                   }
                 });
                 wx.navigateTo({
-                  url: `/pages/payComplete/payComplete?type=1`
+                  url: '/pages/payComplete/payComplete?type=1'
                 });
               }
             }
@@ -141,7 +141,7 @@ Page({
                   icon: 'none'
                 });
                 wx.navigateTo({
-                  url: `/pages/payComplete/payComplete`
+                  url: '/pages/payComplete/payComplete'
                 });
               },
               fail:() => {

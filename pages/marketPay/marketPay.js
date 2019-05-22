@@ -152,7 +152,7 @@ Page({
                   icon: 'none'
                 });
                 wx.navigateTo({
-                  url: `/pages/payComplete/payComplete`
+                  url: '/pages/payComplete/payComplete'
                 });
               },
               fail:() => {

@@ -39,7 +39,7 @@ Page({
                   }
                 });
                 wx.navigateTo({
-                  url: `/pages/payComplete/payComplete?type=1`
+                  url: '/pages/payComplete/payComplete?type=1'
                 });
               }
             }

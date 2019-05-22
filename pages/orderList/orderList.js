@@ -54,17 +54,30 @@ Page({
                   });
                 }
               }
+              let totalNum = 0;
+              if (item.goods_info) {
+                for (let i of item.goods_info) {
+                  totalNum += Number.parseInt(i.number);
+                }
+              } else {
+                totalNum = item.num;
+              }
+              const time = item.time ? item.time : item.create_time;
               return {
                 ...item,
+                totalNum,
+                pay_time: formatDate(time * 1000),
                 arrival_time: formatDate(item.arrival_time * 1000),
                 departure_time: formatDate(item.departure_time * 1000)
               }
             });
             this.setData({ orderList });
-            wx.hideLoading();
-            wx.hideNavigationBarLoading();
           }
         });
+      },
+      complete: () => {
+        wx.hideLoading();
+        wx.hideNavigationBarLoading();
       }
     });
   },

@@ -39,7 +39,7 @@ Component({
         });
       } else {
         wx.navigateTo({
-          url: `/pages/serviceOrderDetail/serviceOrderDetail?id=${id}&flag=${flag}`
+          url: `/pages/serviceOrderDetail/serviceOrderDetail?id=${id}&flag=${flag}&source=order`
         });
       }
     },
@@ -71,7 +71,7 @@ Component({
                     }
                   });
                   wx.navigateTo({
-                    url: `/pages/payComplete/payComplete?type=1`
+                    url: '/pages/payComplete/payComplete?type=1'
                   });
                 }
               }
@@ -108,7 +108,7 @@ Component({
                     icon: 'none'
                   });
                   wx.navigateTo({
-                    url: `/pages/payComplete/payComplete`
+                    url: '/pages/payComplete/payComplete'
                   });
                 },
                 fail:() => {
@@ -126,9 +126,24 @@ Component({
       });
     },
     goReserve() {
-      wx.switchTab({
-        url: '/pages/booking/booking'
-      });
+      const flag = this.data.data.flag;
+      if (flag == '0') {
+        wx.switchTab({
+          url: '/pages/booking/booking'
+        });
+      } else if (flag == '1') {
+        wx.navigateTo({
+          url: '/pages/supermarket/supermarket'
+        });
+      } else if (flag == '2') {
+        wx.navigateTo({
+          url: '/pages/hotelFacility/hotelFacility'
+        });
+      } else if (flag == '3') {
+        wx.navigateTo({
+          url: '/pages/morningVolume/morningVolume'
+        });
+      }
     }
   }
 })

@@ -1,66 +1,71 @@
 // pages/marketOrder/marketOrder.js
+var app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    id: 0,
+    flag: 0,
+    orderInfo: {}
   },
-
+  cancelOrder() {
+    wx.showModal({
+      title: '提示',
+      content: '确定取消此订单吗?',
+      cancelText: '取消',
+      confirmText: '确定',
+      success: (e) => {
+        if (e.confirm) {
+          app.util.request({
+            url: "entry/wxapp/CancelOrder",
+            data: {
+              flag: this.data.flag,
+              order_id: this.data.id
+            },
+            success:(res) => {
+              if (res.data == 1) {
+                wx.showToast({
+                  title: '取消成功',
+                  icon: 'none'
+                });
+                const d = this.data.orderInfo;
+                this.setData({
+                  orderInfo: {
+                    ...d,
+                    status: 3
+                  }
+                });
+                wx.navigateTo({
+                  url: `/pages/payComplete/payComplete?type=1`
+                });
+              }
+            }
+          });
+        }
+      }
+    });
+  },
+  loadData() {
+    app.util.request({
+      url: "entry/wxapp/orderdetails",
+      data: {
+        flag: this.data.flag,
+        order_id: this.data.id
+      },
+      success:(res) => {
+        this.setData({ orderInfo: res.data });
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  onLoad(op) {
+    this.data.id = op.id;
+    this.data.flag = op.flag;
+    this.loadData();
   }
 })

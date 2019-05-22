@@ -1,19 +1,20 @@
 <!--components/custom-module/custom-module.wxml-->
-<view class="wrapper">  
-  <view class="hotel-facility">
-    <view class="facility-banner">
-      <image src="{{bannerUrl}}" />
-    </view>
-    <view class="facility-bt">
-      <view class="facility-lf">
-        <view class="facility-lf-text" > 双人早餐</view>
-        <view class="facility-lf-meg" >自助早餐 就餐时间：6:30 - 10:00 </view>
+<view class="wrapper">
+  <block wx:for="{{list}}" wx:key="{{index}}">
+    <view class="hotel-facility" wx:if="{{item.goods_is_open == '1'}}">
+      <view class="facility-banner">
+        <image src="{{item.goods_img}}" mode="aspectFill"/>
       </view>
-      <view class="facility-rg">
-        <view style="margin-top: 16rpx"><label class="facility-rg-sign">￥</label> <text class="facility-rg-nub">44</text></view>   
-        <view class="handleTap" bindtap="handleToOrder">立即购买</view>
-      </view>       
-    </view>   
-  </view>
-
+      <view class="facility-bt">
+        <view class="facility-lf">
+          <view class="facility-lf-text" >{{item.goods_name}}</view>
+          <view class="facility-lf-meg" >{{item.goods_subheading}}</view>
+        </view>
+        <view class="facility-rg">
+          <view style="margin-top: 16rpx"><label class="facility-rg-sign">￥</label> <text class="facility-rg-nub">{{item.specifications[0].goods_price}}</text></view>   
+          <view class="handleTap" data-item="{{item}}" bindtap="handleToOrder">立即购买</view>
+        </view>       
+      </view>   
+    </view>
+  </block>
 </view>

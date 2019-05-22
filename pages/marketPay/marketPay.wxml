@@ -1,11 +1,12 @@
 <!--pages/marketPay/marketPay.wxml-->
+<!-- 购物单页 -->
 <view class='pages'>     
   <view class='title'>收货信息<text>(以便送至客房)</text></view>
   <view class='input-item'>
-    <input type='text' placeholder='房间号'></input>
+    <input type='text' bindchange="roomChange" placeholder='房间号'></input>
   </view>
   <view class='input-item'>
-    <input type='text' placeholder='手机号'></input>
+    <input type='text' bindchange="telChange" placeholder='手机号'></input>
   </view>
 
   <view class='goods-list'>
@@ -17,8 +18,8 @@
     <goods isStepper="1"></goods>
   </view>
   <view class='submit-bar'>
-    <view class='totle-num'>已选<text class='red'>3</text>件商品</view>
+    <view class='totle-num'>已选<text class='red'>{{goods.length}}</text>件商品</view>
     <view class='totle-price'>合计<text class='red'>￥196.21</text></view>
-    <view class='submit-btn'>选好了</view>
+    <view class='submit-btn' bindtap="goPay">去结算</view>
   </view>
 </view>

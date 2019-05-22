@@ -2,10 +2,10 @@
 <view class='center'>
   <view class='center-header'>
     <view class='vip-photo'>
-      <image src='/assets/image/goods-img.png'></image>
+      <image src="{{userInfo.img ? userInfo.img : '/assets/image/goods-img.png'}}" mode="aspectFill" />
     </view>
     <view>
-      <view class='vip-name'>用户名</view>
+      <view class='vip-name'>{{userInfo.name ? userInfo.name : '用户名'}}</view>
       <view class='vip-notice'>使用微信快捷登录</view>
     </view>
   </view>
@@ -15,55 +15,104 @@
     <view class='look-all'>查看全部</view>
   </navigator>
 
-  <view wx:if='{{ isLogin }}' class='order'>
-    <view class='order-header'>
-      <view class='order-title'>
-        <image class='icon-title' src='/assets/image/goods-img.png'></image>
-        <view>酒店超市</view>
+  <block wx:if="{{userInfo.openid}}">
+    <block wx:for="{{orderList}}" wx:key="index">
+      <view class='order' wx:if="{{index == 0}}">
+        <view class='order-header'>
+          <view class='order-title'>
+            <block wx:if="{{item.flag == '0'}}">
+              <image class='icon-title' src='/assets/image/icon-order.png'></image>
+              <view>{{item.room_type}}</view>
+            </block>
+            <block wx:if="{{item.flag == '1'}}">
+              <image class='icon-title' src='/assets/image/index-supermarket.png'></image>
+              <view>酒店超市</view>
+            </block>
+            <block wx:if="{{item.flag == '2'}}">
+              <image class='icon-title' src='/assets/image/index-facility.png'></image>
+              <view>酒店设施</view>
+            </block>
+            <block wx:if="{{item.flag == '3'}}">
+              <image class='icon-title' src='/assets/image/index-volume.png'></image>
+              <view>早餐券</view>
+            </block>
+          </view>
+          <view class='order-status'>
+            <block wx:if="{{item.flag == '0'}}">
+              <block wx:if="{{item.status == '1'}}">待支付</block>
+              <block wx:if="{{item.status == '2'}}">已支付</block>
+              <block wx:if="{{item.status == '10'}}">待入住</block>
+              <block wx:if="{{item.status == '3'}}">已取消</block>
+              <block wx:if="{{item.status == '4'}}">已完成</block>
+              <block wx:if="{{item.status == '7'}}">已退款</block>
+            </block>
+            <block wx:if="{{item.flag == '1'}}">
+              <block wx:if="{{item.status == '1'}}">待支付</block>
+              <block wx:if="{{item.status == '2'}}">待配送</block>
+              <block wx:if="{{item.status == '3'}}">已取消</block>
+              <block wx:if="{{item.status == '4'}}">已完成</block>
+            </block>
+            <block wx:if="{{item.flag == '2'}}">
+              <block wx:if="{{item.status == '1'}}">待支付</block>
+              <block wx:if="{{item.status == '2'}}">待使用</block>
+              <block wx:if="{{item.status == '3'}}">已取消</block>
+              <block wx:if="{{item.status == '4'}}">已使用</block>
+            </block>
+            <block wx:if="{{item.flag == '3'}}">
+              <block wx:if="{{item.status == '1'}}">待支付</block>
+              <block wx:if="{{item.status == '2'}}">待用餐</block>
+              <block wx:if="{{item.status == '3'}}">已取消</block>
+              <block wx:if="{{item.status == '4'}}">已使用</block>
+            </block>
+          </view>
+        </view>  
+          
+        <view class='order-content' data-item="{{item}}" bind:tap="goDetail">
+          <block wx:if="{{item.flag == '0'}}">
+            <image class='order-img' mode="aspectFill" src='{{item.room_logo}}'></image>
+            <view>{{item.room_type}}</view>
+          </block>
+          <block wx:else>
+            <image class='order-img' mode="aspectFill" src='{{item.goods_info[0].img}}'></image>
+            <view>{{item.goods_info[0].name}}</view>
+          </block>
+        </view>
+        <view class='order-statistics'>
+          <view class='statistics-right'>
+            <view>共1件商品</view>
+            <view class='statistics-price'>实付金额：<text class='price-font'>￥{{item.price}}</text></view>
+          </view>
+        </view>
       </view>
-      <view class='order-status'>已提交</view>
-    </view>  
-      
-    <view class='order-content'>
-      <image class='order-img' src='/assets/image/goods-img.png'></image>
-      <view>酒店超市</view>
-    </view>
-    <view class='order-statistics'>
-      <view class='statistics-right'>
-        <view>共1件商品</view>
-        <view class='statistics-price'>实付金额：<text class='price-font'>￥1888.21</text></view>
-      </view>
-    </view>
-  </view>
+    </block>
 
-  <view wx:if='{{ isLogin }}' class='order'>
-    <view class='order-header'>
-      <view class='order-title'>
-        <image class='icon-title' src='/assets/image/goods-img.png'></image>
-        <view>酒店超市</view>
+    <!-- <view wx:if='{{ orderList.length > 1  }}' class='order'>
+      <view class='order-header'>
+        <view class='order-title'>
+          <image class='icon-title' src='/assets/image/goods-img.png'></image>
+          <view>酒店超市</view>
+        </view>
+        <view class='order-status'>已提交</view>
+      </view>  
+        
+      <view class='order-content'>
+        <block wx:for="{{orderList}}" wx:key="index">
+          <image class='order-img' data-item="{{item}}" bind:tap="goDetail" mode="aspectFill" src='{{item.room_logo}}'></image>
+        </block>
       </view>
-      <view class='order-status'>已提交</view>
-    </view>  
-      
-    <view class='order-content'>
-      <image class='order-img' src='/assets/image/goods-img.png'></image>
-      <image class='order-img' src='/assets/image/goods-img.png'></image>
-      <image class='order-img' src='/assets/image/goods-img.png'></image>
-      <image class='order-img' src='/assets/image/goods-img.png'></image>
-      <image class='order-img' src='/assets/image/goods-img.png'></image>
-    </view>
-    <view class='order-statistics'>
-      <view class='statistics-right'>
-        <view>共1件商品</view>
-        <view class='statistics-price'>实付金额：<text class='price-font'>￥1888.21</text></view>
+      <view class='order-statistics'>
+        <view class='statistics-right'>
+          <view>共{{orderList.length}}件商品</view>
+          <view class='statistics-price'>实付金额：<text class='price-font'>￥{{totalPrice}}</text></view>
+        </view>
       </view>
-    </view>
-  </view>
+    </view> -->
+  </block>
   <view wx:else class='order-no'>登录后查看订单</view>
 
   <view class='hotel-tel'>
     <image class='icon-tel' src='/assets/image/icon-tel.png'></image>
-    <view class='number-tel' bind:tap="goCall" data-tel="010-78775658">酒店客服电话：010-78775658</view>
+    <view class='number-tel' bind:tap="goCall">酒店客服电话：{{tel}}</view>
   </view>
 
 </view>

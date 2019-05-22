@@ -11,7 +11,7 @@ Component({
           url: '/assets/image/index-volume.png',
           text: '早餐卷',
         }, {
-          navigator: '../morningVolume/morningVolume',
+          navigator: '../supermarket/supermarket',
           url: '/assets/image/index-supermarket.png',
           text: '酒店超市',
         }, {

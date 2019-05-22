@@ -1,3 +1,6 @@
+page{
+  background: #fff;
+}
 .wrapper {
   padding-top: 22rpx; 
 }

@@ -1,7 +1,7 @@
 /* components/index-supermarket/index-supermarket.wxss */
 .hotel-superMarket {
   width: 100%;
-  height: 580rpx;
+  padding: 0 0 40rpx;
   background: white;
   margin-bottom: 20rpx;
 }
@@ -55,16 +55,22 @@
   float: left;
   width: 514rpx;
   height: 100%;
-  border-bottom: 1px solid #E1E1E1;
+  border-bottom: 1rpx solid #E1E1E1;
 }
-
+.superMarket-main:last-child .superMarket-rg{
+  border: none;
+}
 .main-title {
   width: 376rpx;
-  height: auto;
+  height: 76rpx;
   line-height: 39rpx;
   font-size: 30rpx;
   color: #333333;
   margin: 42rpx 0 30rpx 24rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 .main-bt {
   width: 100%;

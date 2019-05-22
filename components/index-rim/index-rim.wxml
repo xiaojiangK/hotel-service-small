@@ -6,16 +6,20 @@
     <view class="rim-meg">美食、咖啡、酒吧</view> 
     <image class="rim-arrow" src="/assets/image/index-arrow.png"/>     
   </view>
-  <view class="rim-banner">
-    <image src="{{bannerUrl}}" />
-  </view>
-  <view class="rim-bt">
-    <view class="rim-lf">
-      <view class="rim-lf-text" > 柳巷美食城百旗氏</view>
-      <view class="rim-lf-meg" > 太原市迎泽区柳巷南路三圣庵工贸大厦三层(长风… </view>
-    </view>
-    <view class="rim-rg">
-      <image class="rim-rg-img" src="/assets/image/index-iphone.png"></image>
-    </view>       
-  </view>   
+  <block wx:for="{{list}}" wx:key="index">
+    <block wx:if="{{item.state == '1'}}">
+      <view class="rim-banner">
+        <image src="{{item.img}}" mode="aspectFill"/>
+      </view>
+      <view class="rim-bt">
+        <view class="rim-lf">
+          <view class="rim-lf-text">{{item.name}}</view>
+          <view class="rim-lf-meg">{{item.subheading}}</view>
+        </view>
+        <view class="rim-rg">
+          <image class="rim-rg-img" data-tel="{{item.phone}}" bindtap="goCall" src="/assets/image/index-iphone.png"></image>
+        </view>
+      </view>
+    </block>
+  </block>
 </view> 

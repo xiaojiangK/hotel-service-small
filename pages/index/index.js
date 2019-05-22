@@ -2,7 +2,10 @@ const app = getApp()
 
 Page({
   data: {
-    swiperData: [],
+    detail: {},
+    volume: [],
+    goods: [],
+    periphery: [],
     isGetUserInfo: false
   },
 
@@ -12,66 +15,78 @@ Page({
   onLoad: function (options) {
     this.bindGetUserInfo();
     this.loadData();
-  },
-
-  
-  //  生命周期函数--监听页面初次渲染完成
-  onReady: function () {
-
-  },
+  }, 
   loadData(){
-    // 酒店周边
+    // 酒店详情
     app.util.request({
-      url: "entry/wxapp/Periphery",
+      url: "entry/wxapp/GetSystem",
       success:(res) => {
-        console.log(res);
-      }
-    });
-    // 酒店超市
-    app.util.request({
-      url: "entry/wxapp/Goods",
-      success:(res) => {
-        console.log(res);
-      }
-    });
-    // 酒店服务
-    app.util.request({
-      url: "entry/wxapp/Service",
-      success:(res) => {
-        console.log(res);
+        app.util.request({
+          url: "entry/wxapp/PjDetails",
+          data: {
+            seller_id: res.data.id
+          },
+          success:(res) => {
+            const item = res.data;
+            const detail = {
+              ...item,
+              img: item.img.split(',').map(item => {
+                return app.globalData.url + item
+              }),
+              coordinates: item.coordinates.split(',')
+            }
+            wx.setStorage({
+              key: 'hotel',
+              data: detail
+            });
+            this.setData({ detail });
+          }
+        });
+        wx.setStorage({
+          key: 'system',
+          data: res.data
+        });
       }
     });
     // 酒店设施
     app.util.request({
       url: "entry/wxapp/Volume",
       success:(res) => {
-        console.log(res);
+        const volume = res.data.map(item => {
+          return {
+            ...item,
+            goods_img: app.globalData.url + item.goods_img
+          }
+        });
+        this.setData({ volume });
       }
     });
-    // 酒店详情
+    // 酒店超市
     app.util.request({
-      url: "entry/wxapp/PjDetails",
-      data: {
-        seller_id: 1
-      },
+      url: "entry/wxapp/Goods",
       success:(res) => {
-        console.log(res);
+        const goods = res.data.map(item => {
+          return {
+            ...item,
+            goods_img: app.globalData.url + item.goods_img
+          }
+        });
+        this.setData({ goods });
       }
     });
-    
-    // var res = {
-    //   state:"ok",
-    //   data:[
-    //     'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
-    //     'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
-    //     'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
-    //   ]
-    // }
-    // if(res.state == 'ok'){
-    //   this.setData({
-    //     swiperData: res.data
-    //   })
-    // }
+    // 酒店周边
+    app.util.request({
+      url: "entry/wxapp/Periphery",
+      success:(res) => {
+        const periphery = res.data.map(item => {
+          return {
+            ...item,
+            img: app.globalData.url + item.img
+          }
+        });
+        this.setData({ periphery });
+      }
+    });
   },
 
   bindGetUserInfo() {
@@ -93,4 +108,38 @@ Page({
       });
     }
   }
+  // changeUserInfo(){//判断用户是否已经授权
+  //   var that = this
+  //   if(app.globalData.userInfo != '')
+  //     that.setData({
+  //       isGetUserInfo:false
+  //     })
+  //   else
+  //     that.setData({
+  //       isGetUserInfo:true
+  //     }) 
+  // },
+  // getUserInfo(e){//获取用户信息
+    // wx.login({
+    //   success(res) {
+    //     if (res.code) {
+    //       // 发起网络请求
+    //       wx.request({
+    //         url: '',
+    //         data: {
+    //           code: res.code
+    //         },
+    //         success(res) {
+    //           // console.log(res.data.openid)
+    //         }
+    //       })
+    //     }
+    //   }
+    // })
+    // if(e.detail.userInfo){ //同意授权
+    //   app.globalData.userInfo = e.detail.userInfo
+    //   wx.setStorageSync('userInfo',e.detail.userInfo)
+    //   this.changeUserInfo()
+    // }
+  // }
 })

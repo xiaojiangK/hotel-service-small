@@ -1,0 +1,15 @@
+{
+  "extEnable": true,
+  "extAppid": "wx719731f3dbc7e372",
+  "directCommit": false,
+  "ext": {
+    "name": "wechat",
+    "_appids": [
+      "wx719731f3dbc7e372"
+    ],
+    "extAppid": "wx719731f3dbc7e372",
+    "isCorporation": true,
+    "isCircle": false,
+    "extAppName": ""
+  }
+}

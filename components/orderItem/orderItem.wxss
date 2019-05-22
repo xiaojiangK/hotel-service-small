@@ -70,9 +70,12 @@
   align-items: center;
 }
 .icon-notice{
-  width: 32rpx;
-  height: 32rpx;
-  margin-right: 10rpx;
+  width: 26rpx;
+  height: 26rpx;
+  vertical-align: middle;
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+  margin-right: 16rpx;
 }
 .notice-content{
   font-size: 28rpx;

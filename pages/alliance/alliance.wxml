@@ -1,6 +1,4 @@
-<!--pages/alliance/alliance.wxml-->
-<view class="wrapper">
-  <image class="banner" src="/assets/image/alliance-banner.png"/>
-    
-</view>
+<web-view src="http://test.factzone.cn/s/offer/dist/index.html" bindmessage=""></web-view>
+      
+
   

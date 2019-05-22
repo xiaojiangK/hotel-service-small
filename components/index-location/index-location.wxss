@@ -1,7 +1,7 @@
 /* components/index-location/index-location.wxss */
 .location {
   width: 100%;
-  height: 428rpx;
+  padding: 0 0 32rpx;
   background: white;
   margin-bottom: 20rpx;
   overflow: hidden;

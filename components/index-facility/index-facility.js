@@ -4,21 +4,11 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    bannerUrl: {
-      type: String,
-      value: 'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640'
-    },
-    title: {
-      type: String,
-      value: '畅游蓝海游泳池（单人票价）'
-    },
-    meg: {
-      type: String,
-      value: '入住豪华双人房间及以上可免费试用'
-    },
-    number: {
-      type: Number,
-      value: 44
+    data: {
+      type: Array,
+      observer: function(newVal, oldVal) {
+        this.setData({ list: newVal  });
+      }
     }
   },
 
@@ -26,9 +16,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    list: []
   },
-
   /**
    * 组件的方法列表
    */
@@ -36,6 +25,16 @@ Component({
     handleFacilityTap(e) {
       wx.navigateTo({
         url: '/pages/hotelFacility/hotelFacility'
+      })
+    },
+    handleToOrder(e) {
+      const item = e.currentTarget.dataset.item;
+      wx.setStorage({
+        key: 'goods',
+        data: item
+      });
+      wx.navigateTo({
+        url: '/pages/subOrder/subOrder'
       })
     }
   }

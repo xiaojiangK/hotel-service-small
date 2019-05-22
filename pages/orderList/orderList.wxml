@@ -1,13 +1,11 @@
 <!--pages/orderList/orderList.wxml-->
 <view wx:if='{{ orderList.length>0 }}'>
-  <order-item></order-item>
-  <order-item></order-item>
-  <order-item></order-item>
-  <order-item></order-item>
-  <order-item></order-item>
-  <order-item></order-item>
+  <block wx:for="{{orderList}}" wx:key="index">
+    <order-item data="{{item}}"></order-item>
+  </block>
+  <view class="no-order">没有了，就这些...</view>
 </view>
 <view wx:else class='complete'>
-  <image class='complete-img' src='/assets/image/complete.png'></image>
+  <image class='complete-img' src='/assets/image/noInfo.png'></image>
   <view class='complete-confirm'>没有订单信息</view>
 </view>

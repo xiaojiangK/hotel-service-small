@@ -1,66 +1,38 @@
 // pages/hotelRim/hotelRim.js
+var app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    list: []
   },
-
+  loadData() {
+    // 酒店周边
+    app.util.request({
+      url: "entry/wxapp/Periphery",
+      success:(res) => {
+        const list = res.data.map(item => {
+          return {
+            ...item,
+            img: app.globalData.url + item.img
+          }
+        });
+        this.setData({ list });
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad (options) {
+    this.loadData();
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  goCall(e) {
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.dataset.tel
+    });
   }
 })

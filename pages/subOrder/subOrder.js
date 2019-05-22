@@ -1,66 +1,112 @@
-// pages/subOrder/subOrder.js
+var app = getApp();
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    //数量
+    code: 1,
+    goods: {},
+    money: 0,
+    hotelid: {},
+    totalPrice: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad() {
+    wx.getStorage({
+      key: 'hotel',
+      success: (res) => {
+        this.data.hotelid = res.data.id;
+      }
+    });
+    wx.getStorage({
+      key: 'goods',
+      success: (res) => {
+        this.setData({
+          goods: res.data,
+          money: res.data.specifications[0].goods_price
+        });
+        this.count_price()
+      }
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  pay() {
+    wx.showLoading({
+      title: '支付中...',
+      mask: true
+    });
+    wx.getStorage({
+      key: 'userinfo',
+      success: (res) => {
+        const d = res.data;
+        const g = this.data.goods;
+        app.util.request({
+          url: "entry/wxapp/AddGoodsOrder",
+          data: {
+            openid: d.openid,
+            user_id: d.id,
+            uniacid: d.uniacid,
+            seller_id: this.data.hotelid,
+            price: this.data.totalPrice,
+            type: g.goods_attribute,
+            orderGoods: [
+              {
+                spec_id: g.specifications[0].id,
+                name: g.goods_name,
+                img: g.goods_img,
+                type: g.goods_attribute,
+                price: this.data.money,
+                number: this.data.code,
+                total_price: this.data.money * this.data.code
+              }
+            ]
+          },
+          success:(e) => {
+            wx.requestPayment({
+              timeStamp: e.data.timeStamp,
+              nonceStr: e.data.nonceStr,
+              package: e.data.package,
+              signType: e.data.signType,
+              paySign: e.data.paySign,
+              success:() => {
+                wx.showToast({
+                  title: '恭喜您，支付成功!',
+                  icon: 'none'
+                });
+                wx.navigateTo({
+                  url: `/pages/payComplete/payComplete`
+                });
+              },
+              fail:() => {
+                wx.showToast({
+                  title: "支付失败"
+                });
+              },
+              complete:() => {
+                wx.hideLoading();
+              }
+            });
+          }
+        });
+      }
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  //监听子组件的传值
+  onMyevent: function (e) {
+    this.data.code = e.detail;
+    this.count_price()
   },
-
   /**
-   * 生命周期函数--监听页面隐藏
+   * 计算总价
    */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  count_price() {
+    var num = this.data.code  
+    var money = this.data.money
+    var needPay = num*money
+    this.setData({
+      totalPrice: needPay
+    })
   }
+    
 })

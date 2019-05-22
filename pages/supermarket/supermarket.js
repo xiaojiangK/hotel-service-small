@@ -1,66 +1,42 @@
 // pages/supermarket/supermarket.js
+var app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    list: [],
+    selected: [],
+    totalPrice: 0
   },
-
+  loadData() {
+    // 酒店超市
+    app.util.request({
+      url: "entry/wxapp/Goods",
+      success:(res) => {
+        let totalPrice = 0;
+        const list = res.data.map(item => {
+          totalPrice += Number.parseFloat(item.specifications[0].goods_price);
+          return {
+            ...item,
+            goods_img: app.globalData.url + item.goods_img
+          }
+        });
+        this.setData({ list, totalPrice });
+      }
+    });
+  },
+  selected() {
+    wx.navigateTo({
+      url: '/pages/marketPay/marketPay'
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  onLoad (options) {
+    this.loadData();
   }
 })

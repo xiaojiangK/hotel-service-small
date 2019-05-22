@@ -11,11 +11,13 @@
   height: 240rpx;
 }
 .good-right{
-  margin-left: 24rpx;
-  padding-right: 52rpx;
+  width: 485rpx;
+  padding: 0 24rpx;
   border-bottom: 2rpx solid #E1E1E1;
 }
 .goods-title{
+  height: 96rpx;
+  overflow: hidden;
   margin-top: 10rpx;
   font-size: 30rpx;
   color: #333;

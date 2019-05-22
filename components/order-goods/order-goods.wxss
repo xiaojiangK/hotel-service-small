@@ -1,0 +1,52 @@
+.goods{
+  position: relative;
+  display: flex;
+  height: 240rpx;
+  background-color: #fff; 
+}
+.goods-img{
+  display: block;
+  flex: 0 0 240rpx;
+  height: 240rpx;
+}
+.good-right{
+  width: 485rpx;
+  padding: 0 24rpx;
+  border-bottom: 2rpx solid #E1E1E1;
+}
+.goods-title{
+  height: 96rpx;
+  overflow: hidden;
+  margin-top: 10rpx;
+  font-size: 30rpx;
+  color: #333;
+  line-height: 48rpx;
+}
+.goods-content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50rpx;
+}
+.goods-price{
+  font-size: 42rpx;
+  color: #E93A3D;
+}
+.goods-current-num{
+  font-size: 32rpx;
+  color: #666;
+}
+.goods-car{
+  display: block;
+  width: 36rpx;
+  height: 36rpx;
+}
+.goods-delete{
+  position: absolute;
+  top: 14rpx;
+  right: 10rpx;
+}
+.icon-delete{
+  width: 46rpx;
+  height: 46rpx;
+}

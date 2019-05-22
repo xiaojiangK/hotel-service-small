@@ -1,21 +1,25 @@
 <!--components/index-supermarket/index-supermarket.wxml-->
 <view class="hotel-superMarket">
-  <view class="superMarket-title">
-      <image class="superMarket-img" src="/assets/image/index-supermarket.png"/>
-      <view class="superMarket-text">酒店超市</view>
-      <view class="superMarket-meg">在线下单送至客房，懂你所需 </view> 
-      <image class="superMarket-arrow" src="/assets/image/index-arrow.png"/>     
+  <view class="superMarket-title" bind:tap="goGoods">
+    <image class="superMarket-img" src="/assets/image/index-supermarket.png"/>
+    <view class="superMarket-text">酒店超市</view>
+    <view class="superMarket-meg">在线下单送至客房，懂你所需 </view> 
+    <image class="superMarket-arrow" src="/assets/image/index-arrow.png"/>     
   </view>
-  <view class="superMarket-main" >
-    <view class="superMarket-lf">
-      <image class="superMarket-commodity" src="{{superMarketImg}}" />     
-    </view>
-    <view class="superMarket-rg">
-      <view class="main-title" >益达（Extra）木糖醇无糖口香糖混合味70粒98g单瓶装 </view>
-      <view class="main-bt">
-        <view><label class="main-bt-sign">￥</label> <text class="main-bt-nub">11.33</text></view> 
-        <image class="main-shopping" src="/assets/image/index-shopping.png" />           
-      </view>       
-    </view>
-  </view>
+  <block wx:for="{{list}}" wx:key="index">
+    <block wx:if="{{item.goods_is_open == '1'}}">
+      <view class="superMarket-main" wx:if="{{index < 2}}">
+        <view class="superMarket-lf">
+          <image class="superMarket-commodity" mode="aspectFill" src="{{item.goods_img}}" />     
+        </view>
+        <view class="superMarket-rg">
+          <view class="main-title" >{{item.goods_name}}</view>
+          <view class="main-bt">
+            <view><label class="main-bt-sign">￥</label> <text class="main-bt-nub">{{item.specifications[0].goods_price}}</text></view> 
+            <image class="main-shopping" src="/assets/image/index-shopping.png" />
+          </view>
+        </view>
+      </view>
+    </block>
+  </block>
 </view>

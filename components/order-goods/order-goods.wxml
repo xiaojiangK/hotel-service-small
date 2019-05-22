@@ -1,0 +1,25 @@
+<block wx:for="{{list}}" wx:for-index="idx" wx:key="idx">
+  <view class="goods">
+    <image class="goods-img" mode="aspectFill" src="{{item.goods_img}}"></image>
+    <view class="good-right">
+      <view class="goods-title">{{item.goods_name}}</view>
+      <view class="goods-content">
+        <!-- price -->
+        <view class="goods-price">￥{{info[idx].price}}</view>
+        <!-- step -->
+        <view wx:if='{{ isStepper }}' class="goods-num">
+          <stepper></stepper>
+        </view>
+        <!-- currentNum --> 
+        <view wx:if='{{ isCurrentNum }}' class='goods-current-num'>x{{info[idx].number}}</view>
+        <view wx:if='{{ isCar }}' class="goods-add">
+          <image class="goods-car" bindtap="addCar" src="/assets/image/shop-car.png" />
+        </view>
+      </view>
+    </view>
+    <view wx:if='{{ isStepper }}' class="goods-delete">
+      <image class="icon-delete" data-id="{{item.goods_id}}" bind:tap="delete" src="/assets/image/icon-delete.png" />
+    </view>
+  </view>
+</block>
+

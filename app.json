@@ -1,8 +1,9 @@
 {
   "pages": [
-    "pages/orderList/orderList",
-    "pages/marketPay/marketPay",
     "pages/supermarket/supermarket",
+    "pages/marketPay/marketPay",
+    "pages/orderList/orderList",
+    
     "pages/index/index",
     "pages/hotelOrderDetail/hotelOrderDetail",
     "pages/serviceOrderDetail/serviceOrderDetail",

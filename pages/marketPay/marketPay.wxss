@@ -27,6 +27,7 @@
 
 .goods-list{
   margin-top: 20rpx;
+  padding-bottom: 120rpx;
 }
 
 .submit-bar{

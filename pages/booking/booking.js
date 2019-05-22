@@ -99,7 +99,9 @@ Page({
           success:(res) => {
             let swiper = [];
             const roomList = res.data.map(item => {
-              swiper.push(app.globalData.url + item.logo);
+              if (item.state == '1') {
+                swiper.push(app.globalData.url + item.logo);
+              }
               return {
                 ...item,
                 logo: app.globalData.url + item.logo,

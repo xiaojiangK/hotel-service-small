@@ -9,7 +9,7 @@ Component({
       value: [{
           navigator: '../morningVolume/morningVolume',
           url: '/assets/image/index-volume.png',
-          text: '早餐卷',
+          text: '早餐券',
         }, {
           navigator: '../supermarket/supermarket',
           url: '/assets/image/index-supermarket.png',

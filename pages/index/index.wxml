@@ -12,15 +12,19 @@
   <!-- 授权窗口 -->
   <cover-view class="user-alert" scroll-top="0" wx:if="{{ isGetUserInfo }}">
     <cover-view class='alert-content'>
-      <cover-view>请允许授权，体验更多酒店服务</cover-view>
-      <button class='getUser-btn' bindgetuserinfo='getUserInfo' open-type="getUserInfo">立即授权</button>
+      <cover-image class="alert-banner" src="/assets/image/index-supermarket.png" ></cover-image>    
+      <cover-view class="alert-text"></cover-view>  
+      <cover-view class="alert-title">欢迎入住{{hotelName}}</cover-view>
+      <cover-view class="alert-msg">尽享酒店服务</cover-view>
+      <button class='getUser-btn' bindgetuserinfo='getUserInfo' open-type="getUserInfo">微信授权</button>
     </cover-view>
   </cover-view>
 
   <!-- 授权手机窗口 -->
   <cover-view class='user-alert' wx:if="{{isGetPhoneNumber}}">
-    <cover-view class='alert-content'>
-      <cover-view>请绑定手机，便于给您提供更优质服务</cover-view>
+    <cover-view class='alert-content2'>
+      <cover-view>请绑定手机</cover-view>
+      <cover-view>便于给您提供更优质服务</cover-view>
       <button class='getUser-btn' bindgetphonenumber='getUserPhoneNumber' open-type="getPhoneNumber">立即绑定</button>
     </cover-view>
   </cover-view>

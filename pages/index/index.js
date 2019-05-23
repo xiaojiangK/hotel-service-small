@@ -7,7 +7,8 @@ Page({
     goods: [],
     periphery: [],
     isGetUserInfo: false,
-    isGetPhoneNumber: false
+    isGetPhoneNumber: false,
+    hotelName: ""
   },
 
   /**
@@ -29,6 +30,9 @@ Page({
           },
           success:(res) => {
             const item = res.data;
+            this.setData({
+              hotelName: item.name
+            })
             const detail = {
               ...item,
               img: item.img.split(',').map(item => {

@@ -283,15 +283,7 @@ Component({
       }
 
       if (xuanZheData[1]) {
-        if (xuanZheData[1].chaDay > 28) {
-          wx.showModal({
-            title: '提示',
-            content: '离店日期与当前日期相差不能超过28天!',
-            showCancel: false
-          });
-          return;
-        } 
-        else if (xuanZheData[1].chaDay == 0) {
+        if (xuanZheData[1].chaDay == 0) {
           wx.showModal({
             title: '提示',
             content: '离店日期与当前日期不能同一天!',

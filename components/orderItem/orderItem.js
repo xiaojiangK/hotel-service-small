@@ -14,28 +14,34 @@ Component({
       }
     }
   },
-
+  pageLifetimes: {
+    hide() {
+      clearInterval(this.timer);
+    },
+    show() {
+      this.startCountDown();
+    }
+  },
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
-    attached() { 
+    attached() {
       this.startCountDown()
-    },
-    moved() { },
-    detached() { },
+    }
   },
   /**
    * 组件的初始数据
    */
   data: {
     data: {},
-    time: ''
+    time: '',
+    timer: null
   },
   /**
    * 组件的方法列表
    */
   methods: {
     startCountDown(){
-      setInterval(() => {
+      this.timer = setInterval(() => {
         countDown(this.data.data.create_time, this);
       }, 1000);
     },  
@@ -95,49 +101,7 @@ Component({
       });
     },
     goPay() {
-      wx.showLoading({
-        title: '支付中...',
-        mask: true
-      });
-      wx.getStorage({
-        key: 'userinfo',
-        success: (res) => {
-          app.util.request({
-            url: "entry/wxapp/Pay",
-            data: {
-              flag: this.data.data.flag,
-              openid: res.data.openid,
-              order_id: this.data.data.id
-            },
-            success:(e) => {
-              wx.requestPayment({
-                timeStamp: e.data.timeStamp,
-                nonceStr: e.data.nonceStr,
-                package: e.data.package,
-                signType: e.data.signType,
-                paySign: e.data.paySign,
-                success:() => {
-                  wx.showToast({
-                    title: '恭喜您，支付成功!',
-                    icon: 'none'
-                  });
-                  wx.navigateTo({
-                    url: '/pages/payComplete/payComplete'
-                  });
-                },
-                fail:() => {
-                  wx.showToast({
-                    title: "支付失败"
-                  });
-                },
-                complete:() => {
-                  wx.hideLoading();
-                }
-              });
-            }
-          });
-        }
-      });
+      app.goPay(this.data.data.id, this.data.data.flag);
     },
     goReserve() {
       const flag = this.data.data.flag;

@@ -94,7 +94,7 @@ Page({
   },
   //监听子组件的传值
   onMyevent: function (e) {
-    this.data.code = e.detail;
+    this.setData({ code: e.detail });
     this.count_price()
   },
   /**

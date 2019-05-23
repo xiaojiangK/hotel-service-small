@@ -1,0 +1,64 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/user_center/user_center",
+    "pages/hotel_list/hotel_list",
+    "pages/logs/logs",
+    "pages/hotel_detail/hotel_detail",
+    "pages/hotel_detail/hotel_mp",
+    "pages/favorite/favorite_list"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "秀豹酒店直订",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "light"
+  },
+  "networkTimeout": {
+    "request": 20000,
+    "connectSocket": 20000,
+    "uploadFile": 20000,
+    "downloadFile": 20000
+  },
+  "tabBar": {
+    "color": "#595959",
+    "selectedColor": "#ff6634",
+    "backgroundColor": "#fff",
+    "position": "bottom",
+    "borderStyle": "white",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "images/tabbar_home_g.png",
+        "selectedIconPath": "images/tabbar_home_o.png"
+      },
+      {
+        "text": "返利酒店",
+        "pagePath": "pages/hotel_list/hotel_list",
+        "iconPath": "images/tabbar_fanli_g.png",
+        "selectedIconPath": "images/tabbar_fanli_o.png"
+      },
+      {
+        "text": "我的收藏",
+        "pagePath": "pages/favorite/favorite_list",
+        "iconPath": "images/tabbar_collect_g.png",
+        "selectedIconPath": "images/tabbar_collect_o.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/user_center/user_center",
+        "iconPath": "images/tabbar_user_g.png",
+        "selectedIconPath": "images/tabbar_user_o.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "将根据您的位置给您推荐更多便宜的好酒店"
+    }
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
+}

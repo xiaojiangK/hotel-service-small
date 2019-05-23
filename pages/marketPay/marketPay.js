@@ -49,7 +49,9 @@ Page({
   },
   getGoods(e){
     let { allPrice, allNum } = e.detail
+    let goods = app.globalData.newArr
     this.setData({
+      goods,
       allPrice,
       allNum
     })

@@ -32,10 +32,12 @@
         <label>￥</label><text>{{totalPrice}}</text>
       </view>
     </view>
-    <view class='charge-item' wx:for="{{roomNum}}" wx:key="index">
-      <view class='item-text'>{{detail.inDate}}</view>
-      <view class='item-nub black'>
-        <label>{{detail.num > 1 ? detail.num+'x' : ''}}</label><label>￥</label><text>{{detail.price}}</text>
+    <view class="charge-box">
+      <view class='charge-item' wx:for="{{roomNum}}" wx:key="index">
+        <view class='item-text'>{{detail.inDate}}</view>
+        <view class='item-nub black'>
+          <label>{{detail.num > 1 ? detail.num+'x' : ''}}</label><label>￥</label><text>{{detail.price}}</text>
+        </view>
       </view>
     </view>
   </view>

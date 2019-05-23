@@ -17,14 +17,6 @@ Component({
     currentNum:1
   },
 
-
-  /**
-   * 组件的方法列表
-   */
-  attached(){
-    console.log(this.getNum)
-  },
-
   methods: {
     /* 点击减号 */
     minus() {

@@ -15,7 +15,7 @@
     <view class='look-all'>查看全部</view>
   </navigator>
 
-  <block wx:if="{{userInfo.openid}}">
+  <block wx:if="{{userInfo.openid && orderList.length > 0}}">
     <block wx:for="{{orderList}}" wx:for-item="i" wx:key="index">
       <view class='order' wx:if="{{index == 0}}">
         <view class='order-header'>
@@ -94,7 +94,7 @@
       </view>
     </block>
   </block>
-  <view wx:else class='order-no'>登录后查看订单</view>
+  <view wx:else class='order-no'>暂无订单</view>
 
   <view class='hotel-tel'>
     <image class='icon-tel' src='/assets/image/icon-tel.png'></image>

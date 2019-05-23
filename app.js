@@ -26,7 +26,6 @@ App({
                           name: res3.userInfo.nickName
                         },
                         success:(res4) => {
-                          this.globalData.userInfo.openid = res4.data.openid;
                           wx.setStorage({
                             key: 'userinfo',
                             data: res4.data
@@ -42,20 +41,42 @@ App({
         });
       }
     });
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
+  },
+  getUserPhoneNumber(e){
+    const d = e.detail;
+    if(e.detail.errMsg == "getPhoneNumber:ok") {
+      wx.login({
+        success: res => {
+          wx.getStorage({
+            key: 'userinfo',
+            success: (res2) => {
+              this.util.request({
+                url: "entry/wxapp/Jiemi",
+                data: {
+                  iv: d.iv,
+                  code: res.code,
+                  data: d.encryptedData,
+                  openid: res2.data.openid
+                },
+                success:(res3) => {
+                  if (res3.data.status == 200) {
+                    wx.showToast({
+                      title: '绑定成功',
+                      icon: 'none'
+                    });
+                  } else {
+                    wx.showToast({
+                      title: res3.data.info,
+                      icon: 'none'
+                    });
+                  }
+                }
+              });
             }
-          })
+          });
         }
-      }
-    });
+      });
+    }
   },
   // 订单去支付
   goPay(id, flag) {
@@ -123,7 +144,6 @@ App({
   },
   util: require("utils/util.js"),
   globalData: {
-    userInfo: null,
     url: 'http://msp.showboom.cn/attachment/',
     shopCar:[]
   }

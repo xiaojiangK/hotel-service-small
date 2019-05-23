@@ -32,6 +32,10 @@
 .pay-thank {
   color: #929292
 }
+.charge-box{
+  height: 400rpx;
+  overflow-y: auto;
+}
 .charge-details {
   width: 100%;
   height: auto;

@@ -48,7 +48,7 @@
 <!-- sum bar start -->
 <view class="sum-bar">
   <view class="number">
-    实付金额：<text>{{totalPrice * roomNumber}}</text>
+    实付金额：<text>{{totalPrice}}</text>
   </view>
   <view class="detail" bindtap="toggleSumDetail">
     <image src="/assets/image/icon-sum-detail.png" mode="aspectFill"></image>
@@ -66,7 +66,7 @@
     </view>
     <view class="row">
       <view class="item">入住间夜（{{room.dayNum}}晚，{{roomNumber}}间）</view>
-      <view class="price">￥{{totalPrice * roomNumber}}</view>
+      <view class="price">￥{{totalPrice}}</view>
     </view>
     <view class="row" wx:for="{{roomCost}}" wx:key="index">
       <view class="date">{{item.dateday}}</view>
@@ -74,7 +74,7 @@
     </view>
     <view class="row sum">
       <view>实付金额</view>
-      <view class="price">￥{{totalPrice * roomNumber}}</view>
+      <view class="price">￥{{totalPrice}}</view>
     </view>
   </view>
 </view>

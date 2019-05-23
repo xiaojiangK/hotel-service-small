@@ -77,13 +77,13 @@ Page({
                           orderid: this.data.id
                         },
                         success:(res) => {
-                          if (res.status == 200) {
+                          if (res.data.status == 200) {
                             wx.navigateTo({
                               url: '/pages/payComplete/payComplete?type=2'
                             });
                           } else {
                             wx.showToast({
-                              title: res.data,
+                              title: res.data.info,
                               icon: 'none'
                             });
                           }
@@ -111,15 +111,11 @@ Page({
       },
       success:(res) => {
         const data = res.data;
-        const g = data.goods[0];
         this.setData({
           orderInfo: {
             ...data,
+            goods: data.goods_info[0],
             finish_time: formatDateTime(data.finish_time * 1000),
-            goods: [{
-              name: g.goods_name,
-              img: app.globalData.url + g.goods_img
-            }]
           } 
         });
       }

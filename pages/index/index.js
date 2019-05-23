@@ -14,10 +14,12 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad (options) {
     this.loadData();
+  },
+  onShow() {
     this.bindGetUserInfo();
-  }, 
+  },
   loadData(){
     // 酒店详情
     app.util.request({
@@ -93,10 +95,20 @@ Page({
       }
     });
   },
-
   bindGetUserInfo() {
     wx.getStorage({
       key: 'userinfo',
+      success: (res) => {
+        if(res.data.tel) {
+          this.setData({
+            isGetPhoneNumber: false
+          });
+        } else {
+          this.setData({
+            isGetPhoneNumber: true
+          });
+        }
+      },
       fail: () => {
         this.setData({
           isGetUserInfo: true
@@ -110,48 +122,11 @@ Page({
       this.setData({
         isGetUserInfo: false
       });
-      this.changePhoneNumber();
-    }
-  },
-  changePhoneNumber() {
-    const isGetPhoneNumber = wx.getStorageSync('isGetPhoneNumber');
-    if(isGetPhoneNumber) {
-      this.setData({
-        isGetPhoneNumber: false
-      });
-    } else {
-      this.setData({
-        isGetPhoneNumber: true
-      });
     }
   },
   getUserPhoneNumber(e){
-    const d = e.detail;
-    if(e.detail.errMsg == "getPhoneNumber:ok") {
-      wx.login({
-        success: res => {
-          wx.getStorage({
-            key: 'userinfo',
-            success: (res2) => {
-              app.util.request({
-                url: "entry/wxapp/Jiemi",
-                data: {
-                  iv: d.iv,
-                  code: res.code,
-                  data: d.encryptedData,
-                  openid: res2.data.openid
-                },
-                success:(res) => {
-                  wx.setStorageSync('isGetPhoneNumber', true);
-                  this.setData({
-                    isGetPhoneNumber: false
-                  });
-                }
-              });
-            }
-          });
-        }
-      });
-    }
+    app.getUserPhoneNumber(e);
+    app.userLogin();
+    this.bindGetUserInfo();
   }
 })

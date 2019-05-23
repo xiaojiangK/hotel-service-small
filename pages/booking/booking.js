@@ -126,23 +126,24 @@ Page({
     this.changePhoneNumber();
   },
   changePhoneNumber() {
-    const isGetPhoneNumber = wx.getStorageSync('isGetPhoneNumber');
-    if(isGetPhoneNumber) {
-      this.setData({
-        isGetPhoneNumber: false
-      });
-    } else {
-      this.setData({
-        isGetPhoneNumber: true
-      });
-    }
+    wx.getStorage({
+      key: 'userinfo',
+      fail: (res) => {
+        if(res.data.tel) {
+          this.setData({
+            isGetPhoneNumber: false
+          });
+        } else {
+          this.setData({
+            isGetPhoneNumber: true
+          });
+        }
+      }
+    });
   },
   getUserPhoneNumber(e){
-    if(e.detail.errMsg == "getPhoneNumber:ok") {
-      wx.setStorageSync('isGetPhoneNumber', true);
-      this.setData({
-        isGetPhoneNumber: false
-      });
-    }
+    app.getUserPhoneNumber(e);
+    app.userLogin();
+    this.changePhoneNumber();
   }
 })

@@ -53,6 +53,12 @@ Page({
               totalPrice += Number.parseFloat(item.mprice);
               return item;
             });
+            const num = this.data.roomNumber;
+            if (Number.isInteger(totalPrice * num)) {
+              totalPrice = totalPrice * num;
+            } else {
+              totalPrice = (totalPrice * num).toFixed(2);
+            }
             this.setData({ roomCost, totalPrice });
           }
         });

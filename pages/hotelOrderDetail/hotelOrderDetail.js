@@ -52,9 +52,15 @@ Page({
         for (let i = 0; i < detail.days; i++) {
           roomNum.push(i);
         }
+        const num = Number.parseInt(detail.num);
+        if (Number.isInteger(totalPrice * num)) {
+          totalPrice = totalPrice * num;
+        } else {
+          totalPrice = (totalPrice * num).toFixed(2);
+        }
         this.setData({
           roomNum,
-          totalPrice: totalPrice * Number.parseInt(detail.num)
+          totalPrice
         });
         
         // 倒计时

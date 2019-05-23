@@ -7,7 +7,7 @@
     <image class="rim-arrow" src="/assets/image/index-arrow.png"/>     
   </view>
   <block wx:for="{{list}}" wx:key="index">
-    <block wx:if="{{item.state == '1'}}">
+    <block wx:if="{{item.state == '1' && index == 0}}">
       <view class="rim-banner">
         <image src="{{item.img}}" mode="aspectFill"/>
       </view>

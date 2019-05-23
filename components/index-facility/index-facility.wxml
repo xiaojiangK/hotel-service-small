@@ -7,7 +7,7 @@
     <image class="facility-arrow" src="/assets/image/index-arrow.png"/>     
   </view>
   <block wx:for="{{list}}" wx:key="index">
-    <block wx:if="{{item.goods_is_open == '1'}}">
+    <block wx:if="{{item.goods_is_open == '1' && index == 0}}">
       <view class="facility-banner">
         <image src="{{item.goods_img}}" mode="aspectFill"/>
       </view>

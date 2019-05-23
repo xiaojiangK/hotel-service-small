@@ -131,6 +131,9 @@
   margin-left: 30rpx;
   width: 386rpx;
   color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-size: 28rpx;
 }
 .sum-bar .number text {
@@ -175,11 +178,16 @@
   position: absolute;
   bottom: 0;
   width: 100%;
+  height: 400rpx;
+  overflow-x: auto;
   line-height: 1;
+  padding: 90rpx 0 0;
   background: #fff;
 }
 .sum-panel .head {
-  position: relative;
+  position: fixed;
+  bottom: 400rpx;
+  width: 100%;
   height: 90rpx;
   color: #333;
   font-size: 32rpx;

@@ -122,10 +122,31 @@ Page({
     }
   },
   getUserPhoneNumber(e){
+    const d = e.detail;
     if(e.detail.errMsg == "getPhoneNumber:ok") {
-      wx.setStorageSync('isGetPhoneNumber', true);
-      this.setData({
-        isGetPhoneNumber: false
+      wx.login({
+        success: res => {
+          wx.getStorage({
+            key: 'userinfo',
+            success: (res2) => {
+              app.util.request({
+                url: "entry/wxapp/Jiemi",
+                data: {
+                  iv: d.iv,
+                  code: res.code,
+                  data: d.encryptedData,
+                  openid: res2.data.openid
+                },
+                success:(res) => {
+                  wx.setStorageSync('isGetPhoneNumber', true);
+                  this.setData({
+                    isGetPhoneNumber: false
+                  });
+                }
+              });
+            }
+          });
+        }
       });
     }
   }

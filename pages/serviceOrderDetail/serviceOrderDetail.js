@@ -14,49 +14,7 @@ Page({
     orderInfo: []
   },
   goPay() {
-    wx.showLoading({
-      title: '支付中...',
-      mask: true
-    });
-    wx.getStorage({
-      key: 'userinfo',
-      success: (res) => {
-        app.util.request({
-          url: "entry/wxapp/Pay",
-          data: {
-            flag: this.data.flag,
-            openid: res.data.openid,
-            order_id: this.data.id
-          },
-          success:(e) => {
-            wx.requestPayment({
-              timeStamp: e.data.timeStamp,
-              nonceStr: e.data.nonceStr,
-              package: e.data.package,
-              signType: e.data.signType,
-              paySign: e.data.paySign,
-              success:() => {
-                wx.showToast({
-                  title: '恭喜您，支付成功!',
-                  icon: 'none'
-                });
-                wx.navigateTo({
-                  url: '/pages/payComplete/payComplete'
-                });
-              },
-              fail:() => {
-                wx.showToast({
-                  title: "支付失败"
-                });
-              },
-              complete:() => {
-                wx.hideLoading();
-              }
-            });
-          }
-        });
-      }
-    });
+    app.goPay(this.data.id, this.data.flag);
   },
   cancelOrder() {
     wx.showModal({
@@ -112,23 +70,33 @@ Page({
                   success: (e) => {
                     if (e.confirm) {
                       app.util.request({
-                        url: "entry/wxapp/usedetails",
+                        url: "entry/wxapp/Verifygoods",
                         data: {
-                          openid: d.openid
+                          openid: d.openid,
+                          uniacid: d.uniacid,
+                          orderid: this.data.id
                         },
                         success:(res) => {
-                          wx.navigateTo({
-                            url: '/pages/payComplete/payComplete?type=2'
-                          });
+                          if (res.status == 200) {
+                            wx.navigateTo({
+                              url: '/pages/payComplete/payComplete?type=2'
+                            });
+                          } else {
+                            wx.showToast({
+                              title: res.data,
+                              icon: 'none'
+                            });
+                          }
                         }
                       });
                     }
                   }
                 });
+              },
+              fail: () => {
+                app.userLogin();
               }
             });
-          } else {
-            app.userLogin();
           }
         }
       });

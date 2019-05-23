@@ -57,6 +57,52 @@ App({
       }
     });
   },
+  // 订单去支付
+  goPay(id, flag) {
+    wx.showLoading({
+      title: '支付中...',
+      mask: true
+    });
+    wx.getStorage({
+      key: 'userinfo',
+      success: (res) => {
+        this.util.request({
+          url: "entry/wxapp/Pay",
+          data: {
+            flag: flag,
+            order_id: id,
+            openid: res.data.openid
+          },
+          success:(e) => {
+            wx.requestPayment({
+              timeStamp: e.data.timeStamp,
+              nonceStr: e.data.nonceStr,
+              package: e.data.package,
+              signType: e.data.signType,
+              paySign: e.data.paySign,
+              success:() => {
+                wx.showToast({
+                  title: '恭喜您，支付成功!',
+                  icon: 'none'
+                });
+                wx.navigateTo({
+                  url: '/pages/payComplete/payComplete'
+                });
+              },
+              fail:() => {
+                wx.showToast({
+                  title: "支付失败"
+                });
+              },
+              complete:() => {
+                wx.hideLoading();
+              }
+            });
+          }
+        });
+      }
+    });
+  },
   // 小写转大写
   integer(num) {
     let changeNum = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九']; //changeNum[0] = "零"

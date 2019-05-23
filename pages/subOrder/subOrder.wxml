@@ -10,8 +10,8 @@
   <view class="order-item">
     <view class="order-meg">数量</view>
      <view class="order-rg">
-       <view><text class="order-nub">1</text></view>
-       <!-- <stepper bind:myevent='onMyevent' id="stepper"></stepper> -->
+       <!-- <view><text class="order-nub">1</text></view> -->
+       <stepper bind:myevent='onMyevent' getNum="{{code}}" id="stepper"></stepper>
      </view> 
   </view>
   <view class="order-item">

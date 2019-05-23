@@ -55,17 +55,21 @@ Page({
     })
   },
   roomChange(e) {
-    this.setData({
-      roomNum: e.detail.value
-    });
+    this.data.roomNum = e.detail.value;
   },
   telChange(e) {
-    this.setData({
-      tel: e.detail.value
-    });
+    this.data.tel = e.detail.value;
   },
   goPay() {
     const data = this.data;
+    const g = data.goods;
+    if (g && g.length <= 0) {
+      wx.showToast({
+        title: '请选择商品',
+        icon: 'none'
+      });
+      return;
+    }
     if (!data.roomNum) {
       wx.showToast({
         title: '请输入房间号',
@@ -88,7 +92,6 @@ Page({
       key: 'userinfo',
       success: (res) => {
         const d = res.data;
-        const g = data.goods;
         let orderGoods = [];
         for (let i of g) {
           if (i.specifications instanceof Array) {
@@ -123,7 +126,7 @@ Page({
               package: e.data.package,
               signType: e.data.signType,
               paySign: e.data.paySign,
-              success:() => {
+              success:(e) => {
                 wx.showToast({
                   title: '恭喜您，支付成功!',
                   icon: 'none'
@@ -132,7 +135,7 @@ Page({
                   url: '/pages/payComplete/payComplete'
                 });
               },
-              fail:() => {
+              fail:(e) => {
                 wx.showToast({
                   title: "支付失败"
                 });

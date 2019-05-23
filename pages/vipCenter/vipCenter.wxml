@@ -98,7 +98,7 @@
 
   <view class='hotel-tel'>
     <image class='icon-tel' src='/assets/image/icon-tel.png'></image>
-    <view class='number-tel' bind:tap="goCall">酒店客服电话：{{tel}}</view>
+    <view class='number-tel' bind:tap="goCall">酒店客服电话</view>
   </view>
 
 </view>

@@ -1,7 +1,7 @@
 {
   "usingComponents": {},
-  "navigationBarBackgroundColor": "#232533",
+  "navigationBarBackgroundColor": "#ffffff",
   "navigationBarTitleText": "秀豹今夜特价",
-  "navigationBarTextStyle": "white",
+  "navigationBarTextStyle": "black",
   "disableScroll": true
 }

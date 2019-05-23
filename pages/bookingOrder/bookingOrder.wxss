@@ -49,7 +49,7 @@
   font-size: 20rpx;
 }
 .room .duration .sum {
-  margin-left: 39rpx;
+  margin-left: 12rpx;
   color: #4289ff;
   font-size: 24rpx;
   line-height: 24rpx;

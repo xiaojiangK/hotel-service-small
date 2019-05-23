@@ -6,7 +6,9 @@ Page({
     volume: [],
     goods: [],
     periphery: [],
-    isGetUserInfo: false
+    isGetUserInfo: false,
+    hotelName: "",
+    hotelBanner: ""
   },
 
   /**
@@ -28,6 +30,10 @@ Page({
           },
           success:(res) => {
             const item = res.data;
+            this.setData({
+              hotelName: item.name,
+              hotelBanner: app.globalData.url + item.ewm_logo
+            })
             const detail = {
               ...item,
               img: item.img.split(',').map(item => {

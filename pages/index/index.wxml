@@ -12,8 +12,11 @@
   <!-- 授权窗口 -->
   <cover-view class="user-alert" scroll-top="0" wx:if="{{ isGetUserInfo }}">
     <cover-view class='alert-content'>
-      <cover-view>想体验全部功能，请点击授权</cover-view>
-      <button class='getUser-btn' bindgetuserinfo='getUserInfo' open-type="getUserInfo">立即授权</button>
+      <cover-image class="alert-banner" src="{{hotelBanner}}" ></cover-image>    
+      <cover-view class="alert-text"></cover-view>  
+      <cover-view class="alert-title">欢迎入住{{hotelName}}</cover-view>
+        <cover-view class="alert-msg">尽享酒店服务</cover-view>
+      <button class='getUser-btn' bindgetuserinfo='getUserInfo' open-type="getUserInfo">微信授权</button>
     </cover-view>
   </cover-view>
 </view>

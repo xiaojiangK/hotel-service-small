@@ -53,9 +53,21 @@ page{
   background-color: #fff; 
 }
 .look-all{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   font-size: 24rpx;
   color: #929292
 }
+.right-arrow{
+  width: 12rpx;
+  height: 12rpx;
+  margin-left: 12rpx;
+  border-right: 2rpx solid #929292;
+  border-bottom: 2rpx solid #929292;
+  transform: rotate(-45deg);
+}
+
 .order{
   border-top:2rpx solid #e1e1e1;
   margin-top: 76rpx;

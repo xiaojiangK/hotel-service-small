@@ -12,7 +12,7 @@
 
   <navigator url="/pages/orderList/orderList" hover-class="none" class='vip-order'>
     <view>我的订单</view>
-    <view class='look-all'>查看全部</view>
+    <view class='look-all'>查看全部<view class="right-arrow"></view></view>
   </navigator>
 
   <block wx:if="{{userInfo.openid}}">

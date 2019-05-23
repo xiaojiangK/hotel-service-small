@@ -80,5 +80,6 @@ App({
     userInfo: null,
     url: 'http://msp.showboom.cn/attachment/',
     shopCar:[],
+    newArr:[]
   }
 })

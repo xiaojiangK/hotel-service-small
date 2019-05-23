@@ -58,18 +58,71 @@ Component({
     },
     addShopCar(e){
       let goodsItem = e.currentTarget.dataset.goods
-      app.globalData.shopCar.push(goodsItem)
-      let totalCount = app.globalData.shopCar.length
+      let goodId = goodsItem.goods_id
+      let totalCount = 0
       let totalPrice = 0
-      app.globalData.shopCar.forEach( item => {
-        totalPrice = totalPrice + Number(item.specifications[0].goods_price)
-      })
-      this.setData({
-        totalCount,
-        totalPrice
+
+      let hash = {}
+      //let newArr = []
+      let flag = false
+
+      
+      if (app.globalData.newArr.length>0){
+        //let flag = false
+        let c = app.globalData.newArr.find(item => { 
+          return item.goods_id == goodId
+          })
+         
+        if(c){
+          c.num++
+        }else{
+          goodsItem.num = 1
+          app.globalData.newArr.push(goodsItem)
+        }
+      }else{
+        goodsItem.num = 1
+        app.globalData.newArr.push(goodsItem)
+      }
+      console.log(app.globalData.newArr)
+      // newArr.forEach(item => {
+      //   if (item.goods_id == goodId){
+      //     flag = true
+      //     return
+      //   }
+      // })
+      // if (app.globalData.shopCar.length>0){
+      //   newArr = app.globalData.shopCar.reduce((pre, item) => {
+      //     if (hash[item.goods_id]) {
+      //       let a = pre.find(c => c.goods_id == item.goods_id)
+      //       a.num += 1
+      //       hash[item.goods_id] += 1
+      //       item.num += 1
+      //     } else {
+      //       hash[item.goods_id] = 1
+      //       item.num = 1
+      //       pre.push(item)
+      //     }
+      //     return pre
+      //   }, [])
+      //   console.log(newArr)
+      // }else{
+      //   app.globalData.shopCar.push(goodsItem)
+      //   goodsItem.num = 1
+      //   newArr.push(goodsItem)
+      // }
+      
+      let newArr = app.globalData.newArr
+      newArr.forEach(i => {
+        totalPrice += i.specifications[0].goods_price * i.num
+        totalCount += i.num
       })
 
-      this.triggerEvent('emitData', { totalPrice: totalPrice, totalCount: totalCount }, { bubbles: false })
+      this.setData({ totalPrice, totalCount })
+
+
+
+
+      this.triggerEvent('emitData', { totalPrice,totalCount }, { bubbles: false })
     },
     /* 点击减号 */
     minus(e) {

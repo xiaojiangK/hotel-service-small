@@ -20,19 +20,29 @@
   font-size: 32rpx;
   line-height: 100rpx;
   background-color: #fff;
-  
 }
-
-.cancel-btn{
+.btn-group{
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+}
+.order-btn{
+  float: left;
   width: 150rpx;
-  margin: 40rpx auto;
+  margin: 30rpx 20rpx 10rpx;
   padding: 4px 16rpx;
-  border: 2rpx solid #FF6342;
+  background: #f1f1f1;
   border-radius:40rpx; 
   font-size: 32rpx;
   text-align: center;
-  color: #FF6342;
-  
+  color: #333;
+}
+.cancel-btn{
+  border: 1px solid #999;
+}
+.pay-btn{
+  color: #fff;
+  background: #FF6634;
 }
 .goods-list-title{
   padding: 20rpx;
@@ -41,7 +51,6 @@
 .goods-list{
   margin-top: 20rpx;
 }
-
 .submit-bar{
   position: fixed;
   bottom: 0;

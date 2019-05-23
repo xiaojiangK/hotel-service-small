@@ -1,13 +1,12 @@
 {
   "pages": [
-    "pages/supermarket/supermarket",
     "pages/index/index",
+    "pages/supermarket/supermarket",
     "pages/subOrder/subOrder",
     "pages/payComplete/payComplete",
     "pages/hotelOrderDetail/hotelOrderDetail",
     "pages/serviceOrderDetail/serviceOrderDetail",
     "pages/marketPay/marketPay",
-    
     "pages/alliance/alliance",
     "pages/hotelRim/hotelRim",
     "pages/hotelFacility/hotelFacility",

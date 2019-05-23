@@ -1,5 +1,7 @@
 // components/orderItem/orderItem.js
-import { resetTime } from '../../utils/common.js'
+import { countDown } from '../../utils/tool.js'
+var app = getApp();
+
 Component({
   /**
    * 组件的属性列表
@@ -25,14 +27,17 @@ Component({
    * 组件的初始数据
    */
   data: {
-    remainTime:''
+    data: {},
+    time: ''
   },
   /**
    * 组件的方法列表
    */
   methods: {
     startCountDown(){
-      resetTime(130,this)
+      setInterval(() => {
+        countDown(this.data.data.create_time, this);
+      }, 1000);
     },  
     goDetail() {
       const data = this.data.data;

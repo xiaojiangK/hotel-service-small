@@ -15,7 +15,7 @@
   </view>
   <view class='submit-bar'>
     <view class='totle-num'>已选<text class='red'>{{ allNum }}</text>件商品</view>
-    <view class='totle-price'>合计<text class='red'>￥ {{ allPrice }}</text></view>
+    <view class='totle-price'>合计<text class='red'><text class='small-size'>￥</text> {{ allPrice }}</text></view>
     <view class='submit-btn' bind:tap="goPay">去结算</view>
   </view>
 </view>

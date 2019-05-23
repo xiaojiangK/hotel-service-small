@@ -49,7 +49,8 @@ page{
   height:96rpx;
   padding: 0 4%;
   border-radius: 20rpx;
-  font-size: 32rpx;
+  font-size: 30rpx;
+  font-weight: bold;
   background-color: #fff; 
 }
 .look-all{
@@ -83,6 +84,7 @@ page{
   display: flex;
   align-items: center;
   font-size: 30rpx;
+  font-weight: bold;
 }
 .icon-title{
   width: 50rpx;

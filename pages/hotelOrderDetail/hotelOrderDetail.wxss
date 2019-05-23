@@ -33,6 +33,7 @@
   color: #929292
 }
 .charge-box{
+  min-height: 120rpx;
   max-height: 400rpx;
   overflow-y: auto;
 }

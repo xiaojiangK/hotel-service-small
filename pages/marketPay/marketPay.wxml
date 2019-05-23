@@ -5,17 +5,17 @@
     <input type='text' bindchange="roomChange" placeholder='房间号'></input>
   </view>
   <view class='input-item'>
-    <input type='text' bindchange="telChange" placeholder='手机号'></input>
+    <input type='text' maxlength="11" bindchange="telChange" placeholder='手机号'></input>
   </view>
 
   <view class='goods-list'>
     
-    <goods data="{{list}}" isStepper="1" bind:myevent="getGoods"></goods>
+    <goods data="{{goods}}" isStepper="1" bind:myevent="getGoods"></goods>
     
   </view>
   <view class='submit-bar'>
     <view class='totle-num'>已选<text class='red'>{{ allNum }}</text>件商品</view>
     <view class='totle-price'>合计<text class='red'>￥ {{ allPrice }}</text></view>
-    <view class='submit-btn'>去结算</view>
+    <view class='submit-btn' bind:tap="goPay">去结算</view>
   </view>
 </view>

@@ -7,16 +7,16 @@ Page({
     goods: [],
     periphery: [],
     isGetUserInfo: false,
-    hotelName: "",
-    hotelBanner: ""
+    isGetPhoneNumber: false,
+    hotelName: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.bindGetUserInfo();
     this.loadData();
+    this.bindGetUserInfo();
   }, 
   loadData(){
     // 酒店详情
@@ -31,8 +31,7 @@ Page({
           success:(res) => {
             const item = res.data;
             this.setData({
-              hotelName: item.name,
-              hotelBanner: app.globalData.url + item.ewm_logo
+              hotelName: item.name
             })
             const detail = {
               ...item,
@@ -105,47 +104,33 @@ Page({
       }
     });
   },
-
   getUserInfo(e){
     if (e.detail.errMsg == "getUserInfo:ok") {
       app.userLogin();
       this.setData({
         isGetUserInfo: false
       });
+      this.changePhoneNumber();
+    }
+  },
+  changePhoneNumber() {
+    const isGetPhoneNumber = wx.getStorageSync('isGetPhoneNumber');
+    if(isGetPhoneNumber) {
+      this.setData({
+        isGetPhoneNumber: false
+      });
+    } else {
+      this.setData({
+        isGetPhoneNumber: true
+      });
+    }
+  },
+  getUserPhoneNumber(e){
+    if(e.detail.errMsg == "getPhoneNumber:ok") {
+      wx.setStorageSync('isGetPhoneNumber', true);
+      this.setData({
+        isGetPhoneNumber: false
+      });
     }
   }
-  // changeUserInfo(){//判断用户是否已经授权
-  //   var that = this
-  //   if(app.globalData.userInfo != '')
-  //     that.setData({
-  //       isGetUserInfo:false
-  //     })
-  //   else
-  //     that.setData({
-  //       isGetUserInfo:true
-  //     }) 
-  // },
-  // getUserInfo(e){//获取用户信息
-    // wx.login({
-    //   success(res) {
-    //     if (res.code) {
-    //       // 发起网络请求
-    //       wx.request({
-    //         url: '',
-    //         data: {
-    //           code: res.code
-    //         },
-    //         success(res) {
-    //           // console.log(res.data.openid)
-    //         }
-    //       })
-    //     }
-    //   }
-    // })
-    // if(e.detail.userInfo){ //同意授权
-    //   app.globalData.userInfo = e.detail.userInfo
-    //   wx.setStorageSync('userInfo',e.detail.userInfo)
-    //   this.changeUserInfo()
-    // }
-  // }
 })

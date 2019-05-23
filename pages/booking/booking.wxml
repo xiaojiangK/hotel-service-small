@@ -49,9 +49,10 @@
 </view>
 <!-- room list end -->
  <!-- 授权窗口 -->
-<!-- <view class='user-alert' wx:if="{{isGetPhoneNumber}}">
-  <view class='alert-content'>
-    <view>想体验全部功能，请点击授权手机号</view>
-    <button class='getUser-btn' bindgetphonenumber='getUserPhoneNumber' open-type="getPhoneNumber">立即授权</button>
-  </view>
-</view> -->
+<cover-view class='user-alert' wx:if="{{isGetPhoneNumber}}">
+  <cover-view class='alert-content2'>
+    <cover-view>请绑定手机</cover-view>
+    <cover-view>便于给您提供更优质服务</cover-view>
+    <button class='getUser-btn' bindgetphonenumber='getUserPhoneNumber' open-type="getPhoneNumber">立即绑定</button>
+  </cover-view>
+</cover-view>

@@ -39,7 +39,7 @@ let post = (op = {}) => {
 };
 
 // 倒计时
-export function countDown(time) {
+export function countDown(time, that) {
   const date1 = dayjs(time * 1000 + (60 * 30 * 1000));
   const date2 = dayjs(Date.now());
   if (date1 > date2) {
@@ -48,10 +48,9 @@ export function countDown(time) {
       const minute = date1.diff(date3, 'minute');
       const date4 = date3.add(minute, 'minute');
       const second = date1.diff(date4, 'second');
-      return [minute < 10 ? '0'+minute : minute || '00', second < 10 ? '0'+second : second || '00'];
-  }
-  else {
-      return [];
+      that.setData({
+        time: (minute < 10 ? '0'+minute : minute || '00') +':'+ (second < 10 ? '0'+second : second || '00')
+      });
   }
 }
 

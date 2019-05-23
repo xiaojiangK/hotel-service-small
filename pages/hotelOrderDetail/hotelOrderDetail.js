@@ -66,8 +66,8 @@ Page({
             })
           },
           render(date) {
-            const min = this.leadingZeros(date.min, 2) + ' 分 ';
-            const sec = this.leadingZeros(date.sec, 2) + ' 秒 ';
+            const min = this.leadingZeros(date.min, 2) + ':';
+            const sec = this.leadingZeros(date.sec, 2);
             this.setData({
               c3: min + sec
             });

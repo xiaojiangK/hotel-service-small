@@ -55,7 +55,7 @@ Component({
       var year = myDate.getFullYear()
       var month = myDate.getMonth() + 1
       var day = myDate.getDate()
-      var jiaYue = month + 1;//要循环的月份
+      var jiaYue = month + 6;//需要循环几个月
       var shangBu;
       var xiabu;
       if (jiaYue > 12) {
@@ -178,7 +178,7 @@ Component({
       panXZhong.xainData = riLi
       panXZhong.shangData = shangY
       panXZhong.xiaData = xiaY
-      if (xianxuNZ.length < 2) {
+      if (xianxuNZ.length < 6) {    // 需要循环几个月
         xianxuNZ.push(panXZhong);
       }
     },

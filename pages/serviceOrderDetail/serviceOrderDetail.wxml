@@ -19,7 +19,10 @@
   </view>
   <block wx:if="{{source == 'order'}}">
     <view class="text-box">
-      <view class="sub-faill" wx:if="{{orderInfo.status == '1'}}">该订单未支付</view>
+      <view class="btn-group" wx:if="{{orderInfo.status == '1'}}">
+        <view class='order-btn cancel' bind:tap="cancelOrder">取消订单</view>
+        <view class='order-btn pay' bind:tap="goPay">去支付</view>
+      </view>
       <view class="sub-success" wx:if="{{orderInfo.status == '2'}}">使用前，主动出示条形码</view>
       <view class="sub-faill" wx:if="{{orderInfo.status == '3'}}">该订单已取消</view>
       <view class="sub-faill" wx:if="{{orderInfo.status == '4'}}">该订单已于{{orderInfo.finish_time}}使用</view>

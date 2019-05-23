@@ -45,7 +45,6 @@ Component({
         return item.goods_id != goodsId
       });
       app.globalData.newArr = list
-      console.log(list)
       this.setData({
         list
       })
@@ -55,15 +54,11 @@ Component({
         allPrice += i.specifications[0].goods_price * i.num
         allNum += i.num
       })
-
-
       this.triggerEvent('myevent', { allPrice, allNum }, { bubbles: false });
-      console.log(allPrice + '~~~~~~' + allNum)
     },
     addShopCar(e){
       let goodsItem = e.currentTarget.dataset.goods
       app.globalData.shopCar.push(goodsItem)
-      console.log(app.globalData.shopCar)
       let totalCount = app.globalData.shopCar.length
       let totalPrice = 0
       app.globalData.shopCar.forEach( item => {
@@ -75,22 +70,15 @@ Component({
       })
 
       this.triggerEvent('emitData', { totalPrice: totalPrice, totalCount: totalCount }, { bubbles: false })
-      console.log(totalCount + '----' + totalPrice)
     },
     /* 点击减号 */
-    getCount(e){
-      console.log(e.detail.value)
-    },
     minus(e) {
       let goodsId = e.currentTarget.dataset.gid
       let allGoods = app.globalData.newArr
-      console.log(allGoods)
       let cIndex = allGoods.findIndex( (c,i)=> c.goods_id == goodsId)
-      console.log(cIndex)
       if (allGoods[cIndex].num>1){
         allGoods[cIndex].num--
       }
-      console.log(allGoods)
       this.setData({
         list: allGoods
       })
@@ -102,18 +90,14 @@ Component({
       })
 
       this.triggerEvent('myevent', { allPrice, allNum}, { bubbles: false });
-      console.log(allPrice + '~~~~~~' + allNum)
     },
 
     /* 点击加号 */
     add(e) {
       let goodsId = e.currentTarget.dataset.gid
       let allGoods = app.globalData.newArr
-      console.log(allGoods)
       let cIndex = allGoods.findIndex((c, i) => c.goods_id == goodsId)
-      console.log(cIndex)
       allGoods[cIndex].num++
-      console.log(allGoods)
       this.setData({
         list: allGoods
       })
@@ -125,7 +109,6 @@ Component({
       })
 
       this.triggerEvent('myevent', { allPrice, allNum }, { bubbles: false });
-      console.log(allPrice + '~~~~~~' + allNum)
     }
 
   }

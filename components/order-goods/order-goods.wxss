@@ -36,17 +36,3 @@
   font-size: 32rpx;
   color: #666;
 }
-.goods-car{
-  display: block;
-  width: 36rpx;
-  height: 36rpx;
-}
-.goods-delete{
-  position: absolute;
-  top: 14rpx;
-  right: 10rpx;
-}
-.icon-delete{
-  width: 46rpx;
-  height: 46rpx;
-}

@@ -99,3 +99,23 @@ page{
   margin: 150rpx auto 80rpx;
   background-color: #E93A3D;
 }
+.btn-group{
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+}
+.order-btn{
+  float: left;
+  width: 150rpx;
+  margin: 30rpx 20rpx 10rpx;
+  padding: 4px 16rpx;
+  background: #f1f1f1;
+  border-radius:40rpx; 
+  font-size: 32rpx;
+  text-align: center;
+  color: #333;
+}
+.pay{
+  color: #fff;
+  background: #FF6634;
+}

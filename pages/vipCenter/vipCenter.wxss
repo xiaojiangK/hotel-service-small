@@ -84,6 +84,7 @@ page{
   display: flex;
   align-items: center;
   font-size: 30rpx;
+  font-weight: bold;
 }
 .icon-title{
   width: 50rpx;

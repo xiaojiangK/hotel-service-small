@@ -145,6 +145,7 @@ App({
   util: require("utils/util.js"),
   globalData: {
     url: 'http://msp.showboom.cn/attachment/',
-    shopCar:[]
+    shopCar:[],
+    newArr:[]
   }
 })

@@ -24,8 +24,10 @@ Page({
           }
         });
         this.setData({ list });
+        
       }
     });
+   
   },
   getEmitData(e){
     let { totalPrice, totalCount } = e.detail
@@ -44,5 +46,21 @@ Page({
    */
   onLoad (options) {
     this.loadData();
+  },
+  onShow(){
+    let totalPrice = 0
+    let totalCount = 0
+    let currentList = app.globalData.newArr
+    if (currentList && currentList.length>0){
+      currentList.forEach(i => {
+        totalPrice += i.specifications[0].goods_price * i.num
+        totalCount += i.num
+      })
+    }
+    this.setData({
+      totalPrice,
+      totalCount
+    })
   }
+
 })

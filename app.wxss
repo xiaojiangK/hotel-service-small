@@ -57,6 +57,7 @@ page {
   justify-content: center;
   align-items: center;
   background: rgba(0,0,0,0.5);
+  z-index: 99;
 }
 .phone-tel{
   z-index: 998;
@@ -69,7 +70,7 @@ page {
   height: 500rpx;
   z-index: 999;
   background-color: #fff;
-  border-radius: 10rpx; 
+  border-radius: 20rpx; 
 }
 .getUser-btn{
   width: 50%;
@@ -83,7 +84,7 @@ page {
 }
 .alert-banner {
   width: 100%;
-  height: 278rpx;
+  height: 236rpx;
   background: #E1E1E1;
 }
 .alert-title {
@@ -93,7 +94,8 @@ page {
   color: #333333;
   overflow:hidden;
   text-overflow:ellipsis;
-  white-space:nowrap
+  white-space: nowrap;
+  margin-top: 30rpx;
 }
 .alert-msg {
   font-size: 28rpx;
@@ -114,13 +116,17 @@ page {
 .alert-content2{
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   width: 68%;
   z-index: 999;
+  height: 286rpx;
   color: #666;
   font-size: 30rpx;
-  padding: 60rpx 20rpx;
+  /* padding: 60rpx 20rpx; */
   background-color: #fff;
   border-radius: 10rpx; 
+}
+.getIphone-btn {
+  margin-top: 46rpx;
 }

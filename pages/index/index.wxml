@@ -1,10 +1,12 @@
 <view class="wrapper">
-  <custom-swiper data="{{detail}}"> </custom-swiper>
-  <index-service></index-service>
-  <index-location data="{{detail}}"></index-location>
-  <index-facility data="{{volume}}"></index-facility>
-  <index-supermarket data="{{goods}}"></index-supermarket>
-  <index-rim data="{{periphery}}"></index-rim> 
+  <block wx:for="{{widgets}}" wx:key="index">
+    <custom-swiper wx:if="{{item.type == 'banner'}}" widget="{{item}}" data="{{detail}}"> </custom-swiper>
+    <index-service wx:if="{{item.type == 'menu'}}" widget="{{item}}"></index-service>
+    <index-location wx:if="{{item.type == 'addresspicture'}}" widget="{{item}}" data="{{detail}}"></index-location>
+    <index-facility wx:if="{{item.type == 'facilitiespicture'}}" widget="{{item}}" data="{{volume}}"></index-facility>
+    <index-supermarket wx:if="{{item.type == 'goods'}}" widget="{{item}}" data="{{goods}}"></index-supermarket>
+    <index-rim wx:if="{{item.type == 'peripherypicture'}}" widget="{{item}}" data="{{periphery}}"></index-rim> 
+  </block>
   <view class="foot">
     精彩旅行，从酒店生活开始…
   </view>

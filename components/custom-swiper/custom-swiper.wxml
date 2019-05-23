@@ -1,5 +1,5 @@
 <!--components/swiper/swiper.wxml-->
-<view class="banner-box">
+<view class="banner-box" style="background: {{style.background}}">
   <swiper class="swiper-box"
     indicator-dots="{{indicatorDots}}"
     interval="{{interval}}"

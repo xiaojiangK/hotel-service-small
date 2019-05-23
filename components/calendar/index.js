@@ -355,18 +355,18 @@ Component({
         });
         return;
       }
-      const date = new Date();
-      const toDay = date.getDate();
-      const toMonth = date.getMonth() + 1;
-      const selectMonth = xuanZheData[0].xuanShiJian.split('-')[1];
-      if (date.getHours() >= 12 && (selectMonth == toMonth && xuanZheData[0].xuanDayShi == toDay)) {
-        wx.showModal({
-          title: '提示',
-          content: '超过中午12点只能选择明天开始!',
-          showCancel: false
-        });
-        return;
-      }
+      // const date = new Date();
+      // const toDay = date.getDate();
+      // const toMonth = date.getMonth() + 1;
+      // const selectMonth = xuanZheData[0].xuanShiJian.split('-')[1];
+      // if (date.getHours() >= 12 && (selectMonth == toMonth && xuanZheData[0].xuanDayShi == toDay)) {
+      //   wx.showModal({
+      //     title: '提示',
+      //     content: '超过中午12点只能选择明天开始!',
+      //     showCancel: false
+      //   });
+      //   return;
+      // }
 
       var chang = windowHeight;
       var that = this;

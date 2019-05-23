@@ -24,6 +24,14 @@ Component({
           text: '酒店周边',
         }
       ] 
+    },
+    widget: {
+      type: Object,
+      observer: function(newVal, oldVal) {
+        this.setData({
+          style: newVal.style
+        });
+      }
     }
   },
 
@@ -31,7 +39,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    style: {}
   },
 
   /**

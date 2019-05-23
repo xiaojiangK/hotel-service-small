@@ -79,6 +79,14 @@ Page({
       roomNumberIndex: e.detail.value,
       roomNumber: this.data.roomNumberArray[e.detail.value]
     });
+    const num = this.data.roomNumber;
+    let totalPrice = this.data.totalPrice;
+    if (Number.isInteger(totalPrice * num)) {
+      totalPrice = totalPrice * num;
+    } else {
+      totalPrice = (totalPrice * num).toFixed(2);
+    }
+    this.setData({ totalPrice });
   },
   //  选择预计办理入住时间
   bindDateChange (e) {
@@ -144,7 +152,7 @@ Page({
             coordinates: `${h.coordinates[0]},${h.coordinates[1]}`,
             arrival_time: `${room.start[0]}-${room.start[1]}-${room.start[2]}`,
             departure_time: `${room.end[0]}-${room.end[1]}-${room.end[2]}`,
-            add_time: data.checkInTime,
+            dd_time: data.checkInTime,
             tel: data.phone,
             name: data.name,
             room_id: room.id,

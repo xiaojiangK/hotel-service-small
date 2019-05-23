@@ -1,7 +1,7 @@
 <!--components/index-supermarket/index-supermarket.wxml-->
 <view class="hotel-superMarket" bind:tap="goGoods">
   <view class="superMarket-title">
-    <image class="superMarket-img" src="/assets/image/index-supermarket.png"/>
+    <image class="superMarket-img" src="{{params.iconurl ? params.iconurl : '/assets/image/index-supermarket.png'}}" />
     <view class="superMarket-text">酒店超市</view>
     <view class="superMarket-meg">在线下单送至客房，懂你所需 </view> 
     <image class="superMarket-arrow" src="/assets/image/index-arrow.png"/>     
@@ -10,12 +10,25 @@
     <block wx:if="{{item.goods_is_open == '1'}}">
       <view class="superMarket-main" wx:if="{{index < 2}}">
         <view class="superMarket-lf">
+          <view class="icon" wx:if="{{params.showicon != '0'}}">
+            <block wx:if="{{params.showicon == '1'}}">
+              <view class="reco bgColor {{style.iconstyle}}">
+                  <text class="t" wx:if="{{style.goodsicon == 'recommand'}}">推荐</text>
+                  <text class="t" wx:if="{{style.goodsicon == 'hotsale'}}">热销</text>
+                  <text class="t" wx:if="{{style.goodsicon == 'isnew'}}">新上</text>
+                  <text class="t" wx:if="{{style.goodsicon == 'sendfree'}}">包邮</text>
+                  <text class="t" wx:if="{{style.goodsicon == 'istime'}}">限时卖</text>
+                  <text class="t" wx:if="{{style.goodsicon == 'bigsale'}}">促销</text>
+              </view>
+            </block>
+            <view class="custom" wx:else style="background: url('{{params.goodsiconsrc}}') {{params.iconposition}} no-repeat; background-size: {{style.iconzoom}}% auto; margin: {{style.iconpaddingtop * 2}}rpx 0 0 {{style.iconpaddingleft * 2}}rpx;"></view>
+          </view>
           <image class="superMarket-commodity" mode="aspectFill" src="{{item.goods_img}}" />     
         </view>
         <view class="superMarket-rg">
-          <view class="main-title" >{{item.goods_name}}</view>
+          <view class="main-title" wx:if="{{params.showtitle == '1'}}" style="color: {{style.titlecolor}}">{{item.goods_name}}</view>
           <view class="main-bt">
-            <view><label class="main-bt-sign">￥</label> <text class="main-bt-nub">{{item.specifications[0].goods_price}}</text></view> 
+            <view wx:if="{{params.showprice == '1'}}" style="color: {{style.pricecolor}}"><label class="main-bt-sign">￥</label> <text class="main-bt-nub">{{item.specifications[0].goods_price}}</text></view> 
             <image class="main-shopping" src="/assets/image/index-shopping.png" />
           </view>
         </view>

@@ -1,6 +1,6 @@
 // pages/hotelOrderDetail/hotelOrderDetail.js
 import { $wuxCountDown } from '../../dist/index';
-import { formatMonth, formatDate, formatDateTime } from '../../utils/tool.js'
+import { formatMonth, formatDate, formatDateTime, formatTime } from '../../utils/tool.js'
 var app = getApp();
 
 Page({

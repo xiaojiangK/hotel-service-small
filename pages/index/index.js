@@ -8,7 +8,8 @@ Page({
     periphery: [],
     isGetUserInfo: false,
     isGetPhoneNumber: false,
-    hotelName: ""
+    hotelName: "",
+    widgets: []
   },
 
   /**
@@ -92,6 +93,19 @@ Page({
           }
         });
         this.setData({ periphery });
+      }
+    });
+    // 挂件数据
+    wx.request({
+      url: 'http://j.showboom.cn/api/index.php',
+      data: {
+        method: 'get_page',
+        uniacid: 1
+      },
+      header: {'content-type': 'application/x-www-form-urlencoded'},
+      method: 'POST',
+      success: (res) => {
+        this.setData({ widgets: res.data });
       }
     });
   },

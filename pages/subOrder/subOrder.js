@@ -63,6 +63,17 @@ Page({
             ]
           },
           success:(e) => {
+            // 零元不走微信支付
+            if (e.data.code == 1) {
+              wx.showToast({
+                title: '恭喜您，支付成功!',
+                icon: 'none'
+              });
+              wx.navigateTo({
+                url: '/pages/payComplete/payComplete'
+              });
+              return;
+            }
             wx.requestPayment({
               timeStamp: e.data.timeStamp,
               nonceStr: e.data.nonceStr,

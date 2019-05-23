@@ -45,7 +45,67 @@
   float: left;
   width: 236rpx;
   height: 222rpx;
+  position: relative;
   background: #EFEFEF;
+}
+.superMarket-lf .reco{
+  left: 0;
+  top: 0;
+  color: #fff;
+  z-index: 9;
+  position: absolute;
+  font-size: 26rpx;
+  background-size: 100% 100% !important;
+}
+.superMarket-lf .circle{
+  border-radius: 50%;
+  background: #ffb805;
+}
+.superMarket-lf .square{
+  background: #19dbab;
+}
+.superMarket-lf .bgColor{
+  width: 75rpx;
+  height: 75rpx;
+  color: #fff;
+  line-height: 75rpx;
+  text-align: center;
+}
+.superMarket-lf .rectangle{
+  width: 90rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  background: #04a6f8;
+}
+.superMarket-lf .echelon{
+  width: 120rpx;
+  height: 120rpx;
+  line-height: 43rpx;
+  text-align: left;
+  background: url('https://pbwci.qun.hk/Fn3T2X-QOEAfNWXVnYe8xwMbWYC-') left top no-repeat;
+}
+.superMarket-lf .triangle{
+  width: 110rpx;
+  height: 110rpx;
+  line-height: 38rpx;
+  text-align: left;
+  background: url('https://pbwci.qun.hk/FtXYugoS4OEdbemdGW5xCeQvmYrD') left top no-repeat;
+}
+.superMarket-lf .echelon .t, .superMarket-lf .triangle .t{
+  display: block;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.superMarket-lf .img{
+  width: 100%;
+  height: 344rpx;
+}
+.superMarket-lf .custom{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .superMarket-lf image {
   width: 100%;
@@ -82,12 +142,10 @@
 }
 .main-bt-sign {
   font-size: 24rpx;
-  color: #E93A3D;
   margin-left: 24rpx;
 }
 .main-bt-nub {
   font-size: 42rpx;
-  color: #E93A3D;
   font-weight: bold;
 }
 .main-shopping {

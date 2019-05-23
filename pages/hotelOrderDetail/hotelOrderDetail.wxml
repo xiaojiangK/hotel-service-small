@@ -76,7 +76,7 @@
     </view>
     <view class='info-item' style='margin-bottom: 0'>
       <view class='info-item-lf'>预计到店时间</view>
-      <view class='info-item-rg'>{{detail.arrival_time}} 14:00之前</view>
+      <view class='info-item-rg'>{{detail.arrival_time}} {{detail.dd_time}}之前</view>
     </view>
     <view class='info-item-a'>
       <view class='info-item-meg'>(不影响酒店留房)</view>

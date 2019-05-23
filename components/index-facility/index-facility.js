@@ -9,6 +9,15 @@ Component({
       observer: function(newVal, oldVal) {
         this.setData({ list: newVal  });
       }
+    },
+    widget: {
+      type: Object,
+      observer: function(newVal, oldVal) {
+        this.setData({
+          style: newVal.style,
+          params: newVal.params
+        });
+      }
     }
   },
 
@@ -16,7 +25,9 @@ Component({
    * 组件的初始数据
    */
   data: {
-    list: []
+    list: [],
+    style: {},
+    params: {}
   },
   /**
    * 组件的方法列表

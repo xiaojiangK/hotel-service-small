@@ -28,6 +28,15 @@ Component({
           });
         }
       }
+    },
+    widget: {
+      type: Object,
+      observer: function(newVal, oldVal) {
+        this.setData({
+          style: newVal.style,
+          params: newVal.params
+        });
+      }
     }
   },
 
@@ -38,7 +47,9 @@ Component({
     data: {},
     markers: [],
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    style: {},
+    params: {}
   },
 
   /**

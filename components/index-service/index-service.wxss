@@ -31,35 +31,40 @@
 .services-nav {
   width: 100%;
   height: auto;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  margin-bottom: 60rpx;
+  overflow: hidden;
 }
 .services-item {
-  position: relative;
+  width: 25%;
+  float: left;
   overflow: hidden;
-  width: 13.33%;
-  height: 0;
-  padding-bottom: 16.43%;
+  margin: 0 auto 60rpx;
+}
+.hotel-services.line .services-nav {
+  display: flex;
+  overflow-x: auto;
+  align-items: center;
+}
+.hotel-services .col-3 .services-item{
+  width: 33.33%;
+}
+.hotel-services .col-5 .services-item{
+  width: 20%;
+}
+.line .col-3 .services-item{
+  min-width: 250rpx;
+}
+.line .col-5 .services-item{
+  min-width: 150rpx;
+}
+.hotel-services .img-box{
+  text-align: center;
 }
 .services-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 38rpx;
   width: 84rpx;
   height: 84rpx;
-  margin: 0 auto;
+  margin: 0 0 10rpx;
 }
 .services-text {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
   height: 24rpx;
   line-height: 24rpx;
   color: #666666;

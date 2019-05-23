@@ -1,13 +1,13 @@
 <!--components/index-service/index-service.wxml-->
-<view class="hotel-services">
+<view class="hotel-services {{style.showtype == '1' ? 'line' : ''}}" style="background: {{style.background}}">
   <view class="services-title">
     <image class="services-title-img" src="/assets/image/index-left.png"/>         
     <view>酒店服务</view>
     <image class="services-title-img" src="/assets/image/index-right.png"/> 
   </view>
-  <view class="services-nav">
-    <view  class="services-item" wx:for="{{service}}" wx:key='index'>
-      <navigator url="{{item.navigator}}" hover-class="none">
+  <view class="services-nav col-{{style.rownum}}">
+    <view class="services-item" wx:for="{{service}}" wx:key='index'>
+      <navigator url="{{item.navigator}}" class="img-box" hover-class="none">
         <image class="services-img" src="{{item.url}}" ></image>
         <view class="services-text">{{item.text}}</view>
       </navigator>

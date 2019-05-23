@@ -1,7 +1,7 @@
 <!--components/index-rim/index-rim.wxml-->
-<view class="hotel-rim">
+<view class="hotel-rim" style="background: {{style.background}}; padding: {{style.paddingtop * 2}}rpx {{style.paddingleft * 2}}rpx">
   <view class="rim-title" bindtap="handleRimTap">
-    <image class="rim-img" src="/assets/image/index-periphery-sm.png"/>
+    <image class="rim-img" src="{{params.iconurl ? params.iconurl : '/assets/image/index-periphery-sm.png'}}" />
     <view class="rim-text">酒店周边</view>
     <view class="rim-meg">美食、咖啡、酒吧</view> 
     <image class="rim-arrow" src="/assets/image/index-arrow.png"/>     

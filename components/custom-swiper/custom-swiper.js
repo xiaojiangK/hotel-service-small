@@ -11,6 +11,14 @@ Component({
       observer: function(newVal, oldVal) {
         this.setData({ data: newVal  });
       }
+    },
+    widget: {
+      type: Object,
+      observer: function(newVal, oldVal) {
+        this.setData({
+          style: newVal.style
+        });
+      }
     }
   },
 
@@ -22,7 +30,8 @@ Component({
     data: {},
     indicatorDots: false,
     interval: 2000,
-    duration: 1000
+    duration: 1000,
+    style: {}
   },
 
   /**

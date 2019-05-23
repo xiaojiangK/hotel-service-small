@@ -1,7 +1,7 @@
 <!--components/index-facility/index-facility.wxml-->
-<view class="hotel-facility">
+<view class="hotel-facility" style="background: {{style.background}}; padding: {{style.paddingtop * 2}}rpx {{style.paddingleft * 2}}rpx">
   <view class="facility-title" bindtap="handleFacilityTap">
-    <image class="facility-img" src="/assets/image/index-facility.png"/>
+    <image class="facility-img" src="{{params.iconurl ? params.iconurl : '/assets/image/index-facility.png'}}"/>
     <view class="facility-text">酒店设施</view>
     <view class="facility-meg">游泳池、健身房、会议厅等你享用 </view> 
     <image class="facility-arrow" src="/assets/image/index-arrow.png"/>     

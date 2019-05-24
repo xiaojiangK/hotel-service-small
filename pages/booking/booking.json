@@ -1,6 +1,4 @@
 {
-  "usingComponents": {
-      "calendar": "../../components/calendar/index"
-  },
+  "usingComponents": {},
   "navigationBarTitleText": "酒店预定"
 }

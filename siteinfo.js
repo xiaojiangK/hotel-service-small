@@ -5,7 +5,7 @@ var siteinfo = {
     acid: "873",
     multiid: "1",
     version: "1.0.0",
-    siteroot: "http://j.showboom.cn/",
+    siteroot: "https://j.showboom.cn/",
     design_method: "3"
 };
 

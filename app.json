@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/calendar/index",
     "pages/subOrder/subOrder",
     "pages/payComplete/payComplete",
     "pages/hotelOrderDetail/hotelOrderDetail",

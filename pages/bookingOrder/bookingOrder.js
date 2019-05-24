@@ -14,7 +14,7 @@ Page({
     checkInTime: '',
     //  是否显示金额明细
     isSumDetail: false,
-    room: { dayNum: 1 },
+    room: { days: 1 },
     roomCost: [],
     totalPrice: 0,
     name: '',
@@ -159,7 +159,7 @@ Page({
             room_type: room.name,
             num: data.roomNumber,
             uniacid: data.uniacid,
-            days: room.dayNum,
+            days: room.days,
             room_logo: room.logo,
             openid: data.openid,
             user_id: data.userid,

@@ -1,7 +1,16 @@
 //app.js
-App({
+var Moment = require("./utils/moment.js");
 
+App({
   onLaunch () {
+    //设缓存缓存起来的日期
+    wx.setStorage({
+      key: 'ROOM_SOURCE_DATE',
+      data: {
+        checkInDate: Moment(new Date()).format('YYYY-MM-DD'),
+        checkOutDate: Moment(new Date()).add(1, 'day').format('YYYY-MM-DD')
+      }
+    });
   },
   userLogin() {
     // 登录

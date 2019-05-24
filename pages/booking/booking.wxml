@@ -11,13 +11,13 @@
 <!-- banner end -->
 <!-- duration start -->
 <view class="duration">
-  <view class="col" bind:tap="yunxin">
+  <view class="col" bind:tap="selectDate">
     <view class="status">入住</view>
     <view class="date">{{start[1]}}月{{start[2]}}日</view>
     <view class="day">{{startWeek}}</view>
   </view>
-  <view class="col sum">共{{dayNum}}晚</view>
-  <view class="col" bind:tap="yunxin">
+  <view class="col sum">共{{days}}晚</view>
+  <view class="col" bind:tap="selectDate">
     <view class="status">离店</view>
     <view class="date">{{end[1]}}月{{end[2]}}日</view>
     <view class="day">{{endWeek}}</view>
@@ -44,9 +44,6 @@
   </view>
 </view>
 
-<view hidden="{{dateVisible}}">
-    <calendar id="rili" />
-</view>
 <!-- room list end -->
  <!-- 授权窗口 -->
 <cover-view class='user-alert' wx:if="{{isGetPhoneNumber}}">

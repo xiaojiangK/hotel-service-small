@@ -12,7 +12,7 @@
       <text class="divider">—</text>
       <text class="date">{{room.end[1]}}月{{room.end[2]}}日</text>
       <text class="status">{{room.endWeek}}离店</text>
-      <text class="sum">共{{room.dayNum}}晚</text>
+      <text class="sum">共{{room.days}}晚</text>
     </view>
   </view>
   <!-- room end -->
@@ -65,7 +65,7 @@
       <image class="close" src="/assets/image/icon-close.png" mode="aspectFill" bindtap="toggleSumDetail"></image>
     </view>
     <view class="row">
-      <view class="item">入住间夜（{{room.dayNum}}晚，{{roomNumber}}间）</view>
+      <view class="item">入住间夜（{{room.days}}晚，{{roomNumber}}间）</view>
       <view class="price">￥{{totalPrice}}</view>
     </view>
     <view class="row" wx:for="{{roomCost}}" wx:key="index">

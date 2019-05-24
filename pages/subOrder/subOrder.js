@@ -7,7 +7,8 @@ Page({
     goods: {},
     money: 0,
     hotelid: {},
-    totalPrice: ""
+    totalPrice: "",
+    isBreakfast: false
   },
 
   /**
@@ -23,6 +24,11 @@ Page({
     wx.getStorage({
       key: 'goods',
       success: (res) => {
+        if (res.data.goods_attribute == '3') {
+          this.setData({
+            isBreakfast: true
+          });
+        }
         this.setData({
           goods: res.data,
           money: res.data.specifications[0].goods_price

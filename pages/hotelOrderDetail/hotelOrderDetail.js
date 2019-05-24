@@ -13,7 +13,6 @@ Page({
     id: 0,
     flag: 0,
     detail: {},
-    roomNum: [],
     totalPrice: 0
   },
 
@@ -39,28 +38,32 @@ Page({
         const detail = {
           ...d,
           time: formatDateTime(d.time * 1000),
-          inDate: formatDate(d.arrival_time * 1000),
           arrival_time: formatMonth(d.arrival_time * 1000),
           departure_time: formatMonth(d.departure_time * 1000)
         }
-        this.setData({ detail });
-        let totalPrice = 0;
-        let roomNum = [];
-        for (let i = 0; i < detail.days; i++) {
-          totalPrice += Number.parseFloat(detail.price);
-        }
-        for (let i = 0; i < detail.days; i++) {
-          roomNum.push(i);
-        }
-        const num = Number.parseInt(detail.num);
-        if (Number.isInteger(totalPrice * num)) {
-          totalPrice = totalPrice * num;
-        } else {
-          totalPrice = (totalPrice * num).toFixed(2);
-        }
-        this.setData({
-          roomNum,
-          totalPrice
+        // 订单明细
+        app.util.request({
+          url: "entry/wxapp/GetRoomCost",
+          data: {
+            room_id: d.room_id,
+            end: formatDate(d.departure_time * 1000),
+            start: formatDate(d.arrival_time * 1000)
+          },
+          success: (res) => {
+            
+            let totalPrice = 0;
+            const roomCost = res.data.map(item => {
+              totalPrice += Number.parseFloat(item.mprice);
+              return item;
+            });
+            const num = detail.num;
+            if (Number.isInteger(totalPrice * num)) {
+              totalPrice = totalPrice * num;
+            } else {
+              totalPrice = (totalPrice * num).toFixed(2);
+            }
+            this.setData({ detail, roomCost, totalPrice });
+          }
         });
         
         // 倒计时

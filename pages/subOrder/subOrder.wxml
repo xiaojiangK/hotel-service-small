@@ -21,7 +21,7 @@
      </view> 
   </view>
   <view class="order-caption">商品说明：</view>
-  <view class="order-caption-a" >
+  <view class="order-caption-a" wx:if="{{isBreakfast}}">
     · 请在早餐时间6:30 - 10:00使用
   </view>
   <view class="order-caption-a" >

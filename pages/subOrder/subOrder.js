@@ -74,30 +74,37 @@ Page({
               });
               return;
             }
-            wx.requestPayment({
-              timeStamp: e.data.timeStamp,
-              nonceStr: e.data.nonceStr,
-              package: e.data.package,
-              signType: e.data.signType,
-              paySign: e.data.paySign,
-              success:() => {
-                wx.showToast({
-                  title: '恭喜您，支付成功!',
-                  icon: 'none'
-                });
-                wx.navigateTo({
-                  url: '/pages/payComplete/payComplete'
-                });
-              },
-              fail:() => {
-                wx.showToast({
-                  title: "支付失败"
-                });
-              },
-              complete:() => {
-                wx.hideLoading();
-              }
-            });
+            if (e.data.code == 0) {
+              wx.showToast({
+                title: e.data.msg,
+                icon: 'none'
+              });
+            } else {
+              wx.requestPayment({
+                timeStamp: e.data.timeStamp,
+                nonceStr: e.data.nonceStr,
+                package: e.data.package,
+                signType: e.data.signType,
+                paySign: e.data.paySign,
+                success:() => {
+                  wx.showToast({
+                    title: '恭喜您，支付成功!',
+                    icon: 'none'
+                  });
+                  wx.navigateTo({
+                    url: '/pages/payComplete/payComplete'
+                  });
+                },
+                fail:() => {
+                  wx.showToast({
+                    title: "支付失败"
+                  });
+                },
+                complete:() => {
+                  wx.hideLoading();
+                }
+              });
+            }
           }
         });
       }

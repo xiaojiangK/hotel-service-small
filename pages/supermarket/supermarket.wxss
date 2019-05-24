@@ -1,4 +1,7 @@
 /* pages/supermarket/supermarket.wxss */
+.good-list{
+  padding: 0 0 110rpx;
+}
 .submit-bar{
   position: fixed;
   bottom: 0;

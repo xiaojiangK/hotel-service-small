@@ -6,5 +6,6 @@
     "index-facility": "/components/index-facility/index-facility",
     "index-supermarket": "/components/index-supermarket/index-supermarket",
     "index-rim": "/components/index-rim/index-rim"
-  }
+  },
+  "navigationBarTitleText": "圣美精品酒店"
 }

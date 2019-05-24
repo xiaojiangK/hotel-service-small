@@ -40,6 +40,7 @@ Page({
     });
   },
   initDate() {
+    // 保存的日期
     wx.getStorage({
       key: 'ROOM_SOURCE_DATE',
       success: (res) => {

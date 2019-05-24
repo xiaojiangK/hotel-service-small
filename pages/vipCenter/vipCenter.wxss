@@ -7,15 +7,15 @@ page{
   align-items: center;
   width: 100%;
   height: 240rpx;
-  background-color: #FF8234;
+  background:linear-gradient(0deg,rgba(255,102,52,1) 0%,rgba(255,130,52,1) 100%);
 }
-.center-header{
+/* .center-header{
   display: flex;
   align-items: center;
   width: 100%;
   height: 240rpx;
   background-color: #FF8234; 
-}
+} */
 .vip-photo{
   width: 126rpx;
   height: 126rpx;
@@ -58,7 +58,8 @@ page{
   justify-content: flex-end;
   align-items: center;
   font-size: 24rpx;
-  color: #929292
+  color: #929292;
+  font-weight: 400;
 }
 .right-arrow{
   width: 12rpx;
@@ -70,7 +71,7 @@ page{
 }
 
 .order{
-  border-top:2rpx solid #e1e1e1;
+  border-top:1rpx dashed #e1e1e1;
   margin-top: 76rpx;
   background-color: #fff;
 }

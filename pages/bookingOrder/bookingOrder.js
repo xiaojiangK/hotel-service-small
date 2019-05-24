@@ -174,6 +174,13 @@ Page({
             flag: 0
           },
           success:(e) => {
+            if (e.data.code == 0) {
+              wx.showToast({
+                title: e.data.msg,
+                icon: 'none'
+              });
+              return;
+            }
             wx.requestPayment({
               timeStamp: e.data.timeStamp,
               nonceStr: e.data.nonceStr,

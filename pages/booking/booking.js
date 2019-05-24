@@ -15,7 +15,7 @@ Page({
   },
   goPay(e) {
     const room = e.currentTarget.dataset.room;
-    if (room.total_num == 0) {
+    if (!room.min_num || room.min_num == '0') {
       return;
     }
     const data = this.data;
@@ -54,6 +54,7 @@ Page({
         let endWeek = this.formatWeek(w2);
         const days = Moment(endDate).differ(startDate);
         this.setData({ days, start, end, startWeek, endWeek });
+        this.loadData();
       }
     });
   },
@@ -64,6 +65,8 @@ Page({
         app.util.request({
           url: "entry/wxapp/RoomList",
           data: {
+            start: this.data.start.join('-'),
+            end: this.data.end.join('-'),
             seller_id: res.data.id
           },
           success:(res) => {
@@ -83,12 +86,6 @@ Page({
         });
       }
     });
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad (options) {
-    this.loadData();
   },
   formatWeek(w) {
     if (w == 0) {

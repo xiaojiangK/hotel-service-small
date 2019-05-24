@@ -137,10 +137,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad (op) {
-    if (op.scene) {
-      const scene = decodeURIComponent(op.scene).split(',');
-      this.data.id = scene.id;
-      this.data.flag = scene.flag;
+    if (app.globalData.scene) {
+      const scene = app.globalData.scene;
+      this.data.id = scene[0];
+      this.data.flag = scene[1];
     } else {
       this.data.id = op.id;
       this.data.flag = op.flag;

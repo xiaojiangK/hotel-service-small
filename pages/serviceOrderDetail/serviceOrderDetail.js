@@ -120,14 +120,34 @@ Page({
         });
       }
     });
+    // 生成二维码
+    app.util.request({
+      url: "entry/wxapp/QrCode",
+      data: {
+        flag: this.data.flag,
+        order_id: this.data.id
+      },
+      success:(res) => {
+        const data = res.data;
+        console.log(data);
+      }
+    });
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad (op) {
-    this.data.id = op.id;
-    this.data.flag = op.flag;
-    this.setData({ source: op.source });
+    if (op.scene) {
+      const scene = decodeURIComponent(op.scene).split(',');
+      this.data.id = scene.id;
+      this.data.flag = scene.flag;
+    } else {
+      this.data.id = op.id;
+      this.data.flag = op.flag;
+      this.setData({
+        source: op.source
+      });
+    }
     this.loadData();
   }
 })

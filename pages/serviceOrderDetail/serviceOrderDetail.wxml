@@ -31,7 +31,6 @@
       <view class="bar-code">
         <image class="" src=""></image>
       </view>
-      <view class="bar-code-nub" >4372 8948 9237 0199</view>    
     </block>
   </block>
   <block wx:else>

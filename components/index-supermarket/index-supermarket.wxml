@@ -26,9 +26,9 @@
           <image class="superMarket-commodity" mode="aspectFill" src="{{item.goods_img}}" />     
         </view>
         <view class="superMarket-rg">
-          <view class="main-title" wx:if="{{params.showtitle == '1'}}" style="color: {{style.titlecolor}}">{{item.goods_name}}</view>
-          <view class="main-bt">
-            <view wx:if="{{params.showprice == '1'}}" style="color: {{style.pricecolor}}"><label class="main-bt-sign">￥</label> <text class="main-bt-nub">{{item.specifications[0].goods_price}}</text></view> 
+          <view class="main-title" style="color: {{style.titlecolor}}"><block wx:if="{{params.showtitle == '1'}}">{{item.goods_name}}</block></view>
+          <view class="main-bt" wx:if="{{params.showprice == '1'}}">
+            <view style="color: {{style.pricecolor}}"><label class="main-bt-sign">￥</label> <text class="main-bt-nub">{{item.specifications[0].goods_price}}</text></view> 
             <image class="main-shopping" src="/assets/image/index-shopping.png" />
           </view>
         </view>

@@ -88,7 +88,7 @@
         <view class='order-statistics'>
           <view class='statistics-right'>
             <view>共{{i.totalNum}}件商品</view>
-            <view class='statistics-price'>实付金额：<text class='price-font'>￥{{i.price}}</text></view>
+            <view class='statistics-price'>实付金额：<text class='price-font'>￥{{i.total_cost ? i.total_cost : i.price}}</text></view>
           </view>
         </view>
       </view>

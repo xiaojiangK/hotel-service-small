@@ -112,6 +112,14 @@ Page({
   },
   submit() {
     const data = this.data;
+    const room = data.room;
+    if (data.roomNumber > room.total_num) {
+      wx.showToast({
+        title: '房型不足!',
+        icon: 'none'
+      });
+      return;
+    }
     if (!data.name) {
       wx.showToast({
         title: '名字不能为空!',
@@ -141,7 +149,6 @@ Page({
       key: 'hotel',
       success: (res)=>{
         const h = res.data;
-        const room = data.room;
         app.util.request({
           url: "entry/wxapp/AddOrder",
           data: {

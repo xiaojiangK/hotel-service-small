@@ -146,7 +146,7 @@ Page({
           url: "entry/wxapp/AddOrder",
           data: {
             price: data.roomCost[0].mprice,
-            total_cost: data.totalPrice * data.roomNumber,
+            total_cost: data.totalPrice,
             seller_name: h.name,
             seller_address: h.address,
             coordinates: `${h.coordinates[0]},${h.coordinates[1]}`,

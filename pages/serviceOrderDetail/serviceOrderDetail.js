@@ -11,6 +11,7 @@ Page({
     id: 0.,
     flag: 0,
     source: '',
+    qrcode: '',
     orderInfo: []
   },
   goPay() {
@@ -128,8 +129,7 @@ Page({
         order_id: this.data.id
       },
       success:(res) => {
-        const data = res.data;
-        console.log(data);
+        this.setData({ qrcode: res.data });
       }
     });
   },

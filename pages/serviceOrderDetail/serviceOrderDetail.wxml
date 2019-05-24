@@ -29,7 +29,8 @@
     </view>
     <block wx:if="{{orderInfo.status == '2'}}">
       <view class="bar-code">
-        <image class="" src=""></image>
+        {{qrcode}}
+        <image class="{{qrcode}}" src=""></image>
       </view>
     </block>
   </block>

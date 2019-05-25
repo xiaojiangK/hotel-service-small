@@ -17,6 +17,10 @@
        <view><text class="order-nub red-nub">{{orderInfo.goods.number}}</text></view>
      </view> 
   </view>
+
+  <view>{{sceneTest}}</view> 
+  <view>参数：{{scene}}</view>
+
   <block wx:if="{{source == 'order'}}">
     <view class="text-box">
       <view class="btn-group" wx:if="{{orderInfo.status == '1'}}">
@@ -29,8 +33,7 @@
     </view>
     <block wx:if="{{orderInfo.status == '2'}}">
       <view class="bar-code">
-        {{qrcode}}
-        <image class="{{qrcode}}" src=""></image>
+        <image src="{{qrcode}}"></image>
       </view>
     </block>
   </block>

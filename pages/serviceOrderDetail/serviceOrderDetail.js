@@ -1,5 +1,6 @@
 // pages/serviceOrderDetail/serviceOrderDetail.js
 var app = getApp();
+const config = require('../../config/index');
 import { formatDateTime } from '../../utils/tool.js'
 
 Page({
@@ -12,7 +13,9 @@ Page({
     flag: 0,
     source: '',
     qrcode: '',
-    orderInfo: []
+    orderInfo: [],
+    sceneTest: '',
+    scene: ''
   },
   goPay() {
     app.goPay(this.data.id, this.data.flag);
@@ -129,7 +132,7 @@ Page({
         order_id: this.data.id
       },
       success:(res) => {
-        this.setData({ qrcode: res.data });
+        this.setData({ qrcode: config.baseURL + res.data });
       }
     });
   },
@@ -137,17 +140,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad (op) {
-    if (app.globalData.scene) {
-      const scene = app.globalData.scene;
-      this.data.id = scene[0];
-      this.data.flag = scene[1];
-    } else {
-      this.data.id = op.id;
-      this.data.flag = op.flag;
-      this.setData({
-        source: op.source
-      });
-    }
+
+    // TEST
+    this.setData({
+      scene: app.globalData.scene,
+      sceneTest: app.globalData.sceneTest
+    });
+
+    this.data.id = op.id;
+    this.data.flag = op.flag;
+    this.setData({
+      source: op.source
+    });
+      
+    // if (app.globalData.scene) {
+    //   const scene = app.globalData.scene;
+    //   this.data.id = scene[0];
+    //   this.data.flag = scene[1];
+    // } else {
+    //   this.data.id = op.id;
+    //   this.data.flag = op.flag;
+    //   this.setData({
+    //     source: op.source
+    //   });
+    // }
     this.loadData();
   }
 })

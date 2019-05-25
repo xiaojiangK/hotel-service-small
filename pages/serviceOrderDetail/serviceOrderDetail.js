@@ -13,9 +13,7 @@ Page({
     flag: 0,
     source: '',
     qrcode: '',
-    orderInfo: [],
-    sceneTest: '',
-    scene: ''
+    orderInfo: []
   },
   goPay() {
     app.goPay(this.data.id, this.data.flag);
@@ -106,6 +104,11 @@ Page({
       });
     }
   },
+  preview() {
+    wx.previewImage({
+      urls: [this.data.qrcode]
+    });
+  },
   loadData() {
     app.util.request({
       url: "entry/wxapp/orderdetails",
@@ -124,46 +127,35 @@ Page({
         });
       }
     });
-    // 生成二维码
-    app.util.request({
-      url: "entry/wxapp/QrCode",
-      data: {
-        flag: this.data.flag,
-        order_id: this.data.id
-      },
-      success:(res) => {
-        this.setData({ qrcode: config.baseURL + res.data });
-      }
-    });
+    if (this.data.source == 'order') {
+      // 生成二维码
+      app.util.request({
+        url: "entry/wxapp/QrCode",
+        data: {
+          flag: this.data.flag,
+          order_id: this.data.id
+        },
+        success:(res) => {
+          this.setData({ qrcode: config.baseURL + res.data });
+        }
+      });
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad (op) {
-
-    // TEST
-    this.setData({
-      scene: app.globalData.scene,
-      sceneTest: app.globalData.sceneTest
-    });
-
-    this.data.id = op.id;
-    this.data.flag = op.flag;
-    this.setData({
-      source: op.source
-    });
-      
-    // if (app.globalData.scene) {
-    //   const scene = app.globalData.scene;
-    //   this.data.id = scene[0];
-    //   this.data.flag = scene[1];
-    // } else {
-    //   this.data.id = op.id;
-    //   this.data.flag = op.flag;
-    //   this.setData({
-    //     source: op.source
-    //   });
-    // }
+    if (app.globalData.scene && app.globalData.scene.length == 2) {
+      const scene = app.globalData.scene;
+      this.data.id = scene[0];
+      this.data.flag = scene[1];
+    } else {
+      this.data.id = op.id;
+      this.data.flag = op.flag;
+      this.setData({
+        source: op.source
+      });
+    }
     this.loadData();
   }
 })

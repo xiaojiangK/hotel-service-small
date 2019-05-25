@@ -3,17 +3,10 @@ var Moment = require("./utils/moment.js");
 
 App({
   onLaunch (option) {
-    console.log(option);
-    this.globalData.sceneTest = `query.scene:${option.query.scene}------------------------
-
-                                query:${JSON.stringify(option.query)}------------------------------
-
-                                scene:${option.scene}`
-    this.globalData.scene = decodeURIComponent(option.query.scene).split(',');
-    // if (typeof option.query.scene == 'string') {
-    //   this.globalData.sceneTest = `query.scene:${option.query.scene}；query:${option.query}；scene:${option.scene}`
-    //   this.globalData.scene = decodeURIComponent(option.query.scene).split(',');
-    // }
+    // 存入参数
+    if (option.query.order && option.query.flag) {
+      this.globalData.scene = [option.query.flag, option.query.order];
+    }
     //设缓存缓存起来的日期
     wx.setStorage({
       key: 'ROOM_SOURCE_DATE',
@@ -167,7 +160,6 @@ App({
     url: 'http://msp.showboom.cn/attachment/',
     shopCar:[],
     newArr:[],
-    scene: null,
-    sceneTest: ''
+    scene: null
   }
 })

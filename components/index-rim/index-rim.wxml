@@ -9,7 +9,7 @@
   <block wx:for="{{list}}" wx:key="index">
     <block wx:if="{{item.state == '1' && index == 0}}">
       <view class="rim-banner">
-        <image src="{{item.img}}" mode="aspectFill"/>
+        <image src="{{item.img}}" class="img" mode="aspectFill"/>
       </view>
       <view class="rim-bt">
         <view class="rim-lf">

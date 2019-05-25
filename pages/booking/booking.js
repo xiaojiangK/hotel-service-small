@@ -78,7 +78,7 @@ Page({
               return {
                 ...item,
                 logo: app.globalData.url + item.logo,
-                price: Number.isInteger(Number.parseFloat(item.price)) ? Number.parseInt(item.price) : item.price
+                price: Number.isInteger(Number.parseFloat(item.min_price)) ? Number.parseInt(item.min_price) : item.min_price.toFixed(2)
               }
             });
             this.setData({ roomList, swiper });

@@ -1,4 +1,5 @@
 var app = getApp();
+let price = 0;
 
 Page({
   data: {
@@ -59,6 +60,7 @@ Page({
             } else {
               totalPrice = (totalPrice * num).toFixed(2);
             }
+            price = totalPrice;
             this.setData({ roomCost, totalPrice });
           }
         });
@@ -80,11 +82,11 @@ Page({
       roomNumber: this.data.roomNumberArray[e.detail.value]
     });
     const num = this.data.roomNumber;
-    let totalPrice = this.data.totalPrice;
-    if (Number.isInteger(totalPrice * num)) {
-      totalPrice = totalPrice * num;
+    let totalPrice = 0;
+    if (Number.isInteger(price * num)) {
+      totalPrice = price * num;
     } else {
-      totalPrice = (totalPrice * num).toFixed(2);
+      totalPrice = (price * num).toFixed(2);
     }
     this.setData({ totalPrice });
   },

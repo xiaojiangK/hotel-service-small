@@ -13,7 +13,7 @@ Page({
     flag: 0,
     source: '',
     qrcode: '',
-    orderInfo: []
+    orderInfo: {}
   },
   goPay() {
     app.goPay(this.data.id, this.data.flag);
@@ -127,7 +127,7 @@ Page({
         });
       }
     });
-    if (this.data.source == 'order') {
+    if (this.data.source == 'order' && this.orderInfo.status == '2') {
       // 生成二维码
       app.util.request({
         url: "entry/wxapp/QrCode",

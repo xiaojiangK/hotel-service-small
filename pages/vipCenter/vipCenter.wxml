@@ -96,7 +96,7 @@
   </block>
   <view wx:else class='order-no'>暂无订单</view>
 
-  <view class='hotel-tel'>
+  <view class='hotel-tel' bind:tap="goCall">
     <image class='icon-tel' src='/assets/image/icon-tel.png'></image>
     <view class='number-tel' bind:tap="goCall">酒店客服电话</view>
   </view>

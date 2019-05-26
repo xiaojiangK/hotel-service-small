@@ -9,7 +9,7 @@
   <block wx:for="{{list}}" wx:key="index">
     <block wx:if="{{item.goods_is_open == '1' && index == 0}}">
       <view class="facility-banner">
-        <image src="{{item.goods_img}}" mode="aspectFill"/>
+        <image src="{{item.goods_img}}" class="img" mode="aspectFill"/>
       </view>
       <view class="facility-bt">
         <view class="facility-lf">

@@ -142,10 +142,10 @@ page{
   height: 240rpx;
   font-size: 28rpx;
   color: #666;
+  margin-top: 76rpx;
   background-color: #fff;
+  border-top:1rpx dashed #e1e1e1;
 }
-
-
 .hotel-tel{
   display: flex;
   align-items: center;

@@ -3,8 +3,9 @@ var Moment = require("./utils/moment.js");
 
 App({
   onLaunch (option) {
-    if (typeof option.query.scene == 'string') {
-      this.globalData.scene = decodeURIComponent(option.query.scene).split(',');
+    // 存入参数
+    if (option.query.order && option.query.flag) {
+      this.globalData.scene = [option.query.flag, option.query.order];
     }
     // 设缓存缓存起来的日期
     wx.setStorage({

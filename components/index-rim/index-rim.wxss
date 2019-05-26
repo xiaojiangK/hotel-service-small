@@ -46,7 +46,7 @@
   position: relative;
   overflow: hidden;
 }
-.rim-banner image {
+.rim-banner .img {
   position: absolute;
   top: 0;
   left: 0;

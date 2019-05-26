@@ -1,5 +1,6 @@
 // pages/serviceOrderDetail/serviceOrderDetail.js
 var app = getApp();
+const config = require('../../config/index');
 import { formatDateTime } from '../../utils/tool.js'
 
 Page({
@@ -12,7 +13,7 @@ Page({
     flag: 0,
     source: '',
     qrcode: '',
-    orderInfo: []
+    orderInfo: {}
   },
   goPay() {
     app.goPay(this.data.id, this.data.flag);
@@ -103,6 +104,11 @@ Page({
       });
     }
   },
+  preview() {
+    wx.previewImage({
+      urls: [this.data.qrcode]
+    });
+  },
   loadData() {
     app.util.request({
       url: "entry/wxapp/orderdetails",
@@ -121,23 +127,25 @@ Page({
         });
       }
     });
-    // 生成二维码
-    app.util.request({
-      url: "entry/wxapp/QrCode",
-      data: {
-        flag: this.data.flag,
-        order_id: this.data.id
-      },
-      success:(res) => {
-        this.setData({ qrcode: res.data });
-      }
-    });
+    if (this.data.source == 'order' && this.orderInfo.status == '2') {
+      // 生成二维码
+      app.util.request({
+        url: "entry/wxapp/QrCode",
+        data: {
+          flag: this.data.flag,
+          order_id: this.data.id
+        },
+        success:(res) => {
+          this.setData({ qrcode: config.baseURL + res.data });
+        }
+      });
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad (op) {
-    if (app.globalData.scene) {
+    if (app.globalData.scene && app.globalData.scene.length == 2) {
       const scene = app.globalData.scene;
       this.data.id = scene[0];
       this.data.flag = scene[1];

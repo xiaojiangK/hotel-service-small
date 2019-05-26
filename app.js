@@ -6,7 +6,7 @@ App({
     if (typeof option.query.scene == 'string') {
       this.globalData.scene = decodeURIComponent(option.query.scene).split(',');
     }
-    //设缓存缓存起来的日期
+    // 设缓存缓存起来的日期
     wx.setStorage({
       key: 'ROOM_SOURCE_DATE',
       data: {

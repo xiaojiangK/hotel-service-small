@@ -1,24 +1,25 @@
 /* pages/marketOrder/marketOrder.wxss */
-/* .pages{
-  background-color: #F2F2F2;
-} */
+page{
+  background-color: #fff;
+}
 .title{
   height: 100rpx;
   line-height: 100rpx;
-  font-size: 36rpx;
+  font-size: 46rpx;
   font-weight: bold;
   color: #111;
-  text-indent: 22rpx;
+  padding: 0 30rpx;
   background: #fff;
 }
 .input-item{
   display: flex;
   justify-content: space-between;
-  height: 100rpx;
-  padding: 0 20rpx;
-  border-bottom: 2px solid #f2f2f2;
-  font-size: 32rpx;
-  line-height: 100rpx;
+  height: 130rpx;
+  margin: 0 30rpx;
+  border-bottom: 2rpx solid #e1e1e1;
+  font-size: 36rpx;
+  color: #666;
+  line-height: 130rpx;
   background-color: #fff;
 }
 .btn-group{
@@ -38,19 +39,26 @@
   color: #333;
 }
 .cancel-btn{
-  border: 1px solid #999;
+  width: 148rpx;
+  padding: 4px 14rpx;
+  border: 2rpx solid #FF6634;
+  color: #FF6634;
+  background-color: #fff;
 }
 .pay-btn{
   color: #fff;
   background: #FF6634;
 }
 .goods-list-title{
-  padding: 20rpx;
+  margin-top: 40rpx;
+  padding: 30rpx;
+  border-bottom: 2rpx solid #e1e1e1;
+  font-size: 46rpx;
   font-weight: bold;
 }
-.goods-list{
+/* .goods-list{
   margin-top: 20rpx;
-}
+} */
 .submit-bar{
   position: fixed;
   bottom: 0;
@@ -86,4 +94,40 @@
 }
 .totle-price > text{
   font-size: 40rpx;
+}
+/* 取消订单 */
+.cancle-page{
+  position: absolute;
+  top:0;
+  left:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5)
+}
+.cancle-content{
+  width: 580rpx;
+  height: 310rpx;
+  border-radius: 18rpx;
+  background: #fff;
+}
+.cancle-notice{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height:210rpx;
+  line-height: 50rpx;
+  font-size: 32rpx;
+  color: #333;
+}
+.cancle-confirm{
+  height: 100rpx;
+  border-top: 2rpx solid #e1e1e1;
+  font-size: 36rx;
+  color:#E93A3D;
+  text-align: center;
+  line-height: 100rpx;
 }

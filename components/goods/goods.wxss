@@ -11,15 +11,15 @@
   height: 240rpx;
 }
 .good-right{
-  width: 460rpx;
-  margin-left: 24rpx;
-  border-bottom: 2rpx solid #E1E1E1;
+  width:485rpx;
+  padding:0 24rpx;
+  border-bottom:2rpx solid #E1E1E1;
 }
 .goods-title{
-  height: 96rpx;
+  height: 104rpx;
   overflow: hidden;
-  margin-top: 10rpx;
-  font-size: 30rpx;
+  margin-top: 26rpx;
+  font-size: 34rpx;
   color: #333;
   line-height: 48rpx;
 }
@@ -27,11 +27,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 50rpx;
+  margin-top: 24rpx;
 }
 .goods-price{
-  font-size: 42rpx;
+  font-size: 24rpx;
   color: #E93A3D;
+}
+.goods-price>text{
+  display: inline-block;
+  margin-left: 2rpx;
+  font-size: 42rpx;
 }
 .goods-current-num{
   font-size: 32rpx;
@@ -41,6 +46,10 @@
   display: block;
   width: 36rpx;
   height: 36rpx;
+}
+.no-goods-num{
+  font-size: 26rpx;
+  color: #aaa;
 }
 .goods-delete{
   position: absolute;
@@ -74,10 +83,11 @@
   border-right: 2rpx solid #e1e1e1;
 }
 .num{
+  display: flex;
   flex-grow: 1;
+  height: 100%;
   font-size: 28rpx;
   color: #666;
   text-align: center;
-  line-height: 60rpx;
-  padding-top: 6rpx;
+  line-height: 100%;
 }

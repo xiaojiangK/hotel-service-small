@@ -6,7 +6,7 @@
       <view class="goods-title">{{item.goods_name}}</view>
       <view class="goods-content">
         <!-- price -->
-        <view class="goods-price">￥{{item.price}}</view>
+        <view class="goods-price">￥<text>{{item.price}}</text></view>
         <!-- step -->
         <view wx:if='{{ isStepper }}' class="goods-num">
           <!-- <stepper getNum="{{ item.num }}"></stepper> -->
@@ -19,9 +19,15 @@
         </view>
         <!-- currentNum --> 
         <view wx:if='{{ isCurrentNum }}' class='goods-current-num'>x12</view>
-        <view wx:if='{{ isCar }}' class="goods-add" bindtap='addShopCar' data-goods="{{ item }}">
-          <image class="goods-car" src="/assets/image/shop-car.png" />
-        </view>
+        <block wx:if='{{ isCar }}'>
+          <view wx:if='{{ item.specifications[0].goods_stock>0 }}' class="goods-add" bindtap='addShopCar' data-goods="{{ item }}">
+            <image class="goods-car" src="/assets/image/shop-car.png" />
+          </view>
+          <view wx:else class='no-goods-num'>
+            暂时缺货
+          </view>
+        </block>
+        
       </view>
     </view>
     <view wx:if='{{ isStepper }}' class="goods-delete">

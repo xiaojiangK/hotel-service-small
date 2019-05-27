@@ -1,0 +1,41 @@
+<view class="tab">
+  <text class="label">抬头类型</text>
+  <text class="tab-nav  {{type == 1 ? 'active':''}}" data-type="{{1}}" bindtap="typeSwitch">个人</text>
+  <text class="tab-nav {{type == 0 ? 'active':''}}" data-type="{{0}}" bindtap="typeSwitch">单位</text>
+</view>
+<form bindsubmit="save">
+  <view class="company" wx:if="{{type == 0}}">
+    <view>
+      <text>名称</text>
+      <input type="text" name="title" placeholder="公司名称" value="{{title}}" />
+    </view>
+    <view>
+      <text>税号</text>
+      <input type="text" name="taxNumber" placeholder="15-20位" value="{{taxNumber}}" />
+    </view>
+    <view>
+      <text>单位名称</text>
+      <input type="text" name="company" placeholder="" value="{{company}}" />
+    </view>
+    <view>
+      <text>电话号码</text>
+      <input type="text" name="telephone" placeholder="公司电话" value="{{telephone}}" />
+    </view>
+    <view>
+      <text>开户银行</text>
+      <input type="text" name="bankName" placeholder="开户银行" value="{{bankName}}" />
+    </view>
+    <view>
+      <text>银行账户</text>
+      <input type="text" name="bankAccount" placeholder="银行账户" value="{{bankAccount}}" />
+    </view>
+  </view>
+  <view class="person" wx:if="{{type == 1}}">
+    <view>
+      <text>名称</text>
+      <input type="text" name="title" placeholder="姓名" value="{{username}}" />
+    </view>
+  </view>
+  <button type="primary" form-type="submit">保存</button>
+</form>
+<button type="primary" bindtap="getTitle">选择发票抬头</button>

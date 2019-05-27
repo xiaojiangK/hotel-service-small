@@ -1,0 +1,50 @@
+page {
+  background: #f0f0f0;
+}
+.tab {
+  padding: 20rpx 20rpx;
+  color: #333;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  background: #fff;
+}
+.tab .tab-nav {
+  display: inline-block;
+  margin-left: 100rpx;
+  border: 2rpx solid #eee;
+  border-radius: 10rpx;
+  width: 150rpx;
+  height: 40rpx;
+  color: #333;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  text-align: center;
+  background: #ececec;
+} 
+.tab .tab-nav.active {
+  border-color: #37ba5f;
+  color: #37ba5f;
+}
+.company view,
+.person view {
+  border-bottom: 1rpx solid #eee;
+  padding: 20rpx 20rpx;
+  color: #333;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  background: #fff;
+}
+form text,
+form input {
+  display: inline-block;
+  vertical-align: top;
+}
+form text {
+  width: 140rpx;
+}
+form input {
+  width: 570rpx;
+}
+button {
+  margin: 80rpx 120rpx 0;
+}

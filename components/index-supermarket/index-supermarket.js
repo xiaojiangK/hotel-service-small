@@ -7,7 +7,14 @@ Component({
     data: {
       type: Array,
       observer: function(newVal, oldVal) {
-        this.setData({ list: newVal  });
+        const list = newVal.map(item => {
+          const goods_price = Number.parseFloat(item.specifications[0].goods_price);
+          return {
+            ...item,
+            price: Number.isInteger(goods_price) ? Number.parseInt(goods_price) : goods_price.toFixed(2)
+          }
+        });
+        this.setData({ list });
       }
     },
     widget: {

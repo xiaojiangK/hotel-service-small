@@ -53,7 +53,7 @@
       <block wx:if="{{data.flag == '0'}}">
         <image class='order-img' mode="aspectFill" src='{{data.room_logo}}'></image>
         <view>
-          <view>{{data.size}}  {{data.windows == '1' ? '有' : '无'}}窗  {{data.breakfast == '0' ? '不' : ''}}含早</view>
+          <view><block wx:if="{{data.size}}">{{data.size}}</block>  {{data.windows == '1' ? '有' : '无'}}窗  {{data.breakfast == '0' ? '不' : ''}}含早</view>
           <view>{{data.arrival_time}} 至 {{data.departure_time}} {{data.days}}晚/{{data.num}}间</view>
         </view>
       </block>
@@ -62,7 +62,7 @@
           <image class='order-img' mode="aspectFill" src='{{item.img}}'></image>
           <view wx:if="{{data.goods_info.length == 1}}">
             <view>{{item.name}}</view>
-            <view>{{item.goods_subheading}}</view>
+            <view wx:if="{{item.goods_subheading}}">{{item.goods_subheading}}</view>
           </view>
         </block>
       </block>

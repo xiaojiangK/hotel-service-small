@@ -58,44 +58,44 @@ Page({
       }
     });
     // 酒店设施
-    app.util.request({
-      url: "entry/wxapp/Volume",
-      success:(res) => {
-        const volume = res.data.map(item => {
-          return {
-            ...item,
-            goods_img: app.globalData.url + item.goods_img
-          }
-        });
-        this.setData({ volume });
-      }
-    });
+    // app.util.request({
+    //   url: "entry/wxapp/Volume",
+    //   success:(res) => {
+    //     const volume = res.data.map(item => {
+    //       return {
+    //         ...item,
+    //         goods_img: app.globalData.url + item.goods_img
+    //       }
+    //     });
+    //     this.setData({ volume });
+    //   }
+    // });
     // 酒店超市
-    app.util.request({
-      url: "entry/wxapp/Goods",
-      success:(res) => {
-        const goods = res.data.map(item => {
-          return {
-            ...item,
-            goods_img: app.globalData.url + item.goods_img
-          }
-        });
-        this.setData({ goods });
-      }
-    });
+    // app.util.request({
+    //   url: "entry/wxapp/Goods",
+    //   success:(res) => {
+    //     const goods = res.data.map(item => {
+    //       return {
+    //         ...item,
+    //         goods_img: app.globalData.url + item.goods_img
+    //       }
+    //     });
+    //     this.setData({ goods });
+    //   }
+    // });
     // 酒店周边
-    app.util.request({
-      url: "entry/wxapp/Periphery",
-      success:(res) => {
-        const periphery = res.data.map(item => {
-          return {
-            ...item,
-            img: app.globalData.url + item.img
-          }
-        });
-        this.setData({ periphery });
-      }
-    });
+    // app.util.request({
+    //   url: "entry/wxapp/Periphery",
+    //   success:(res) => {
+    //     const periphery = res.data.map(item => {
+    //       return {
+    //         ...item,
+    //         img: app.globalData.url + item.img
+    //       }
+    //     });
+    //     this.setData({ periphery });
+    //   }
+    // });
     // 挂件数据
     wx.request({
       url: `${config.baseURL}api/index.php`,

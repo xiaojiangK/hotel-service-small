@@ -125,21 +125,22 @@ Page({
             finish_time: formatDateTime(data.finish_time * 1000),
           } 
         });
+
+        // 生成二维码
+        if (this.data.source == 'order' && data.status == '2') {
+          app.util.request({
+            url: "entry/wxapp/QrCode",
+            data: {
+              flag: this.data.flag,
+              order_id: this.data.id
+            },
+            success:(res) => {
+              this.setData({ qrcode: config.baseURL + res.data });
+            }
+          });
+        }
       }
     });
-    if (this.data.source == 'order' && this.orderInfo.status == '2') {
-      // 生成二维码
-      app.util.request({
-        url: "entry/wxapp/QrCode",
-        data: {
-          flag: this.data.flag,
-          order_id: this.data.id
-        },
-        success:(res) => {
-          this.setData({ qrcode: config.baseURL + res.data });
-        }
-      });
-    }
   },
   /**
    * 生命周期函数--监听页面加载

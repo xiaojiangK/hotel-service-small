@@ -25,7 +25,7 @@
               <view>{{i.room_type}}</view>
             </block>
             <block wx:if="{{i.flag == '1'}}">
-              <image class='icon-title' src='/assets/image/index-supermarket.png'></image>
+              <image class='icon-title' src='/assets/image/index-super-sm.png'></image>
               <view>酒店超市</view>
             </block>
             <block wx:if="{{i.flag == '2'}}">

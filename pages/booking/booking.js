@@ -15,7 +15,7 @@ Page({
   },
   goPay(e) {
     const room = e.currentTarget.dataset.room;
-    if (room.total_num == 0) {
+    if (!room.min_num || room.min_num == '0') {
       return;
     }
     const data = this.data;
@@ -40,6 +40,7 @@ Page({
     });
   },
   initDate() {
+    // 保存的日期
     wx.getStorage({
       key: 'ROOM_SOURCE_DATE',
       success: (res) => {
@@ -53,6 +54,7 @@ Page({
         let endWeek = this.formatWeek(w2);
         const days = Moment(endDate).differ(startDate);
         this.setData({ days, start, end, startWeek, endWeek });
+        this.loadData();
       }
     });
   },
@@ -63,6 +65,8 @@ Page({
         app.util.request({
           url: "entry/wxapp/RoomList",
           data: {
+            start: this.data.start.join('-'),
+            end: this.data.end.join('-'),
             seller_id: res.data.id
           },
           success:(res) => {
@@ -74,7 +78,7 @@ Page({
               return {
                 ...item,
                 logo: app.globalData.url + item.logo,
-                price: Number.isInteger(Number.parseFloat(item.price)) ? Number.parseInt(item.price) : item.price
+                price: Number.isInteger(Number.parseFloat(item.min_price)) ? Number.parseInt(item.min_price) : item.min_price.toFixed(2)
               }
             });
             this.setData({ roomList, swiper });
@@ -82,12 +86,6 @@ Page({
         });
       }
     });
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad (options) {
-    this.loadData();
   },
   formatWeek(w) {
     if (w == 0) {

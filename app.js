@@ -2,8 +2,12 @@
 var Moment = require("./utils/moment.js");
 
 App({
-  onLaunch () {
-    //设缓存缓存起来的日期
+  onLaunch (option) {
+    // 存入参数
+    if (option.query.order && option.query.flag) {
+      this.globalData.scene = [option.query.flag, option.query.order];
+    }
+    // 设缓存缓存起来的日期
     wx.setStorage({
       key: 'ROOM_SOURCE_DATE',
       data: {
@@ -155,6 +159,7 @@ App({
   globalData: {
     url: 'http://msp.showboom.cn/attachment/',
     shopCar:[],
-    newArr:[]
+    newArr:[],
+    scene: null
   }
 })

@@ -1,7 +1,6 @@
 /* components/index-rim/index-rim.wxss */
 .hotel-rim {
   width: 100%;
-  padding: 0 0 40rpx;
   background: white;
   margin-bottom: 20rpx;
 }
@@ -47,7 +46,7 @@
   position: relative;
   overflow: hidden;
 }
-.rim-banner image {
+.rim-banner .img {
   position: absolute;
   top: 0;
   left: 0;
@@ -64,6 +63,7 @@
   margin: 0 auto;
   overflow: hidden;
   display: flex;
+  padding: 0 0 40rpx;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;

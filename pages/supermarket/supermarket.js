@@ -37,9 +37,19 @@ Page({
     })
   },
   selected(){
-    wx.navigateTo({
-      url: '/pages/marketPay/marketPay',
-    })
+    let totalCount = this.data.totalCount
+    if(totalCount <= 0) {
+      wx.showToast({
+        icon: "none",
+        title: '未选择任何商品'
+      })
+      return;
+    }else {
+      wx.navigateTo({
+        url: '/pages/marketPay/marketPay',
+      })
+    }
+    
   },
   /**
    * 生命周期函数--监听页面加载

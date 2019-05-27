@@ -33,9 +33,13 @@
     <view class="desc">{{item.size}} {{item.windows == '1' ? '有窗' : '无窗'}}</view>
     <view class="breakfast">{{item.breakfast == '0' ? '不' : ''}}含早</view>
     <view class="price">{{item.price}}</view>
-    <view class="status" wx:if="{{item.total_num > 0}}">
+    <view class="status" wx:if="{{item.min_num > 0}}">
       <view>预订</view>
-      <view>仅剩{{item.total_num}}间</view>
+      <view>
+        <block wx:if="{{item.min_num == 0}}">已售完</block>
+        <block wx:if="{{item.min_num > 10}}">在线付</block>
+        <block wx:else>仅剩{{item.min_num}}间</block>
+      </view>
     </view>
     <view class="status full" wx:else>
       <view>满房</view>

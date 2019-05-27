@@ -1,4 +1,5 @@
-const app = getApp()
+const app = getApp();
+const config = require('../../config/index');
 
 Page({
   data: {
@@ -97,12 +98,14 @@ Page({
     });
     // 挂件数据
     wx.request({
-      url: 'https://j.showboom.cn/api/index.php',
+      url: `${config.baseURL}api/index.php`,
       data: {
         method: 'get_page',
         uniacid: 1
       },
-      header: {'content-type': 'application/x-www-form-urlencoded'},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
       method: 'POST',
       success: (res) => {
         this.setData({ widgets: res.data });

@@ -1,6 +1,6 @@
 /* pages/dateSelect/dateSelect.wxss */
-page{
-    background: #fff;
+page {
+  background: white;
 }
 .date-day{
     display: flex;

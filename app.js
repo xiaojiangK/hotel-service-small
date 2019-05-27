@@ -7,7 +7,7 @@ App({
     if (option.query.order && option.query.flag) {
       this.globalData.scene = [option.query.flag, option.query.order];
     }
-    //设缓存缓存起来的日期
+    // 设缓存缓存起来的日期
     wx.setStorage({
       key: 'ROOM_SOURCE_DATE',
       data: {

@@ -31,7 +31,7 @@ Page({
         }
         this.setData({
           goods: res.data,
-          money: res.data.specifications[0].goods_price
+          money: res.data.price
         });
         this.count_price()
       }

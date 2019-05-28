@@ -2,7 +2,6 @@
   "pages": [
     "pages/index/index",
     "pages/joinVip/joinVip",
-    
     "pages/subOrder/subOrder",
     "pages/payComplete/payComplete",
     "pages/hotelOrderDetail/hotelOrderDetail",

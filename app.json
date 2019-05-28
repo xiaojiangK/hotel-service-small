@@ -19,7 +19,8 @@
     "pages/orderList/orderList",
     "pages/marketOrder/marketOrder",
     "components/goods/goods",
-    "pages/registerVip/registerVip"
+    "pages/registerVip/registerVip",
+    "pages/invoice/invoice"
   ],
   "window": {
     "backgroundTextStyle": "light",

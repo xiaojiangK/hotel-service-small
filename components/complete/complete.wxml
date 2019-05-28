@@ -2,6 +2,6 @@
 <view class='complete'>
   <image class='complete-img' src='/assets/image/complete.png'></image>
   <view class='complete-status'>{{param.msgTitle}}</view>
-    <view class='complete-confirm'>{{param.msgContent}}</view>
+    <view class='complete-confirm'>{{param.msgContent == '支付金额将原路退回' ? '': 'param.msgContent'}}</view>
   <navigator open-type="redirect" url="{{param.link}}" hover-class="none" class='complete-btn'>查看订单</navigator>
 </view> 

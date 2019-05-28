@@ -18,7 +18,9 @@
     "pages/vipCenter/vipCenter",
     "pages/orderList/orderList",
     "pages/marketOrder/marketOrder",
-    "components/goods/goods"
+    "components/goods/goods",
+    "pages/wifiFail/wifiFail",
+    "pages/wifiList/wifiList"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -74,3 +74,48 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+
+/**wifi模块**/
+.wifi-box {
+  width: 670rpx;
+  height: 98rpx;
+  background: #F0F9FE;
+  border-radius: 8rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 auto 40rpx auto;
+}
+.wifi-lf {
+  width: 48rpx;
+  height: 36rpx;
+  margin-left: 38rpx;
+}
+.wifi-nav {
+  width: 342rpx;
+  height: auto;
+  margin-left: 28rpx;
+}
+.wifi-btn {
+  width: 156rpx;
+  height: 48rpx;
+  background:rgba(74,144,227,1);
+  border-radius: 24rpx;
+  color: white;
+  font-size: 24rpx;
+  line-height: 48rpx;
+}
+.wifi-btn::after {
+  border: none;
+}
+.wifi-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #494A4A;
+}
+.btnToDetail {
+  font-size: 22rpx;
+  color: #4A90E3;
+}

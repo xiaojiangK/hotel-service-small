@@ -1,0 +1,23 @@
+/* pages/wifiList/wifiList.wxss */
+page {
+  height: 100%;
+  background: white;
+  padding-bottom: 40rpx;
+}
+.list-item {
+  width: 90%;
+  height: 80rpx;
+  margin: 20rpx auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.wifiName {
+  color: #333333;
+  font-size: 28rpx;
+}
+.wifi-img {
+  width: 40rpx;
+  height: 40rpx;
+}

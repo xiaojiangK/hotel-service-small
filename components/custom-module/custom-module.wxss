@@ -1,6 +1,7 @@
 /* components/custom-module/custom-module.wxss */
 .wrapper {
   padding-top: 22rpx; 
+  padding-bottom: 40rpx;
 }
 .hotel-facility {
   width: 100%;

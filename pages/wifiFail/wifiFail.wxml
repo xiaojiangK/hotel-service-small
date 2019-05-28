@@ -1,0 +1,20 @@
+<view class="top" >
+  <image class="img-warning" src="/assets/image/wifi-warning.png"></image>
+  <view class="text bold">酒店WiFi账号密码</view>
+  <view class="msg">可以尝试手动连接</view> 
+  <view class="wifi-ssid" >
+    <image class="icon-wifi" src="/assets/image/icon-wifi.png"/>
+    <view class="wifi-text" >{{ssid}}</view>  
+  </view>
+  <view class="wifi-ssid" >
+    <image class="icon-wifi" src="/assets/image/icon-pad.png"/>
+    <text class="wifi-text password" selectable='true'>{{pwd}}</text>
+    <button class="btn-copy" bindtap="copyBtn">复制密码</button>  
+  </view>  
+</view>
+<view class="bottom" >
+  <view class="wifi-text bold" > 如果连接遇到问题：</view>
+  <view class="wifi-text mt" > 1、可能WiFi信号弱 </view> 
+  <view class="wifi-text mt" > 2、仅 Android 6与 iOS 11 以上版本支持</view>
+</view>
+  

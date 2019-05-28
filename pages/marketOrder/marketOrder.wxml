@@ -23,5 +23,15 @@
   <view class='goods-list'>
     <order-goods data="{{orderInfo.goods_info}}"></order-goods>
   </view>
+
+  <view wx:if="{{ isCancle }}" class='cancle-page' catchtap='closeCancle'>
+    <view class='cancle-content'>
+      <view class='cancle-notice'>
+        <view>确认取消订单？</view>
+        <view>消费金额将原路返回</view>
+      </view>
+      <view class='cancle-confirm' catchtap='confirmCancle'>取消订单</view>
+    </view>
+  </view>
 </view>
 

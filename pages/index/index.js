@@ -145,5 +145,7 @@ Page({
     app.getUserPhoneNumber(e);
     app.userLogin();
     this.bindGetUserInfo();
+  },
+  onShareAppMessage: function (res) {
   }
 })

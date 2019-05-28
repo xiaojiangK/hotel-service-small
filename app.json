@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/calendar/index",
+    "pages/joinVip/joinVip",
     "pages/subOrder/subOrder",
     "pages/payComplete/payComplete",
     "pages/hotelOrderDetail/hotelOrderDetail",
@@ -20,7 +20,8 @@
     "pages/marketOrder/marketOrder",
     "components/goods/goods",
     "pages/wifiFail/wifiFail",
-    "pages/wifiList/wifiList"
+    "pages/wifiList/wifiList",
+    "pages/registerVip/registerVip"
   ],
   "window": {
     "backgroundTextStyle": "light",

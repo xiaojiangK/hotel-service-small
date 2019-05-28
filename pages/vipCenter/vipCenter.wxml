@@ -25,7 +25,7 @@
               <view>{{i.room_type}}</view>
             </block>
             <block wx:if="{{i.flag == '1'}}">
-              <image class='icon-title' src='/assets/image/index-supermarket.png'></image>
+              <image class='icon-title' src='/assets/image/index-super-sm.png'></image>
               <view>酒店超市</view>
             </block>
             <block wx:if="{{i.flag == '2'}}">
@@ -71,7 +71,7 @@
           <block wx:if="{{i.flag == '0'}}">
             <image class='order-img' mode="aspectFill" src='{{i.room_logo}}'></image>
             <view>
-              <view>{{i.size}}  {{i.windows == '1' ? '有' : '无'}}窗  {{i.breakfast == '0' ? '不' : ''}}含早</view>
+              <view><block wx:if="{{i.size}}">{{i.size}}</block>  {{i.windows == '1' ? '有' : '无'}}窗  {{i.breakfast == '0' ? '不' : ''}}含早</view>
               <view class="sub">{{i.arrival_time}} 至 {{i.departure_time}} {{i.days}}晚/{{i.num}}间</view>
             </view>
           </block>
@@ -80,7 +80,7 @@
               <image class='order-img' mode="aspectFill" src='{{j.img}}'></image>
               <view wx:if="{{i.goods_info.length == 1}}">
                 <view>{{j.name}}</view>
-                <view class="sub">{{j.goods_subheading}}</view>
+                <view class="sub" wx:if="{{j.goods_subheading}}">{{j.goods_subheading}}</view>
               </view>
             </block>
           </block>

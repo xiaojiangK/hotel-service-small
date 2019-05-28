@@ -7,15 +7,15 @@
           <view>{{data.room_type}}</view>
         </block>
         <block wx:if="{{data.flag == '1'}}">
-          <image class='icon-title' src='/assets/image/index-supermarket.png'></image>
+          <image class='icon-title' src='/assets/image/index-super-sm.png'></image>
           <view>酒店超市</view>
         </block>
         <block wx:if="{{data.flag == '2'}}">
-          <image class='icon-title' src='/assets/image/index-facility.png'></image>
+          <image class='icon-title' src='/assets/image/icon-hotel.png'></image>
           <view>酒店设施</view>
         </block>
         <block wx:if="{{data.flag == '3'}}">
-          <image class='icon-title' src='/assets/image/index-volume.png'></image>
+          <image class='icon-title' src='/assets/image/icon-breakfast.png'></image>
           <view>早餐券</view>
         </block>
       </view>
@@ -53,7 +53,7 @@
       <block wx:if="{{data.flag == '0'}}">
         <image class='order-img' mode="aspectFill" src='{{data.room_logo}}'></image>
         <view>
-          <view>{{data.size}}  {{data.windows == '1' ? '有' : '无'}}窗  {{data.breakfast == '0' ? '不' : ''}}含早</view>
+          <view><block wx:if="{{data.size}}">{{data.size}}</block>  {{data.windows == '1' ? '有' : '无'}}窗  {{data.breakfast == '0' ? '不' : ''}}含早</view>
           <view>{{data.arrival_time}} 至 {{data.departure_time}} {{data.days}}晚/{{data.num}}间</view>
         </view>
       </block>
@@ -62,7 +62,7 @@
           <image class='order-img' mode="aspectFill" src='{{item.img}}'></image>
           <view wx:if="{{data.goods_info.length == 1}}">
             <view>{{item.name}}</view>
-            <view>{{item.goods_subheading}}</view>
+            <view wx:if="{{item.goods_subheading}}">{{item.goods_subheading}}</view>
           </view>
         </block>
       </block>

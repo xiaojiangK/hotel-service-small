@@ -10,10 +10,14 @@ Page({
     list: [],
     selected: [],
     totalPrice: 0,
-    totalCount: 0
+    totalCount: 0,
+    NoList:false
   },
   loadData() {
     // 酒店超市
+    wx.showLoading({
+      title: '加载中...',
+    })
     app.util.request({
       url: "entry/wxapp/Goods",
       success:(res) => {
@@ -24,6 +28,10 @@ Page({
           }
         });
         this.setData({ list });
+        wx.hideLoading();
+        if (list.length == 0){
+          this.setData({ NoList:true });
+        }
         
       }
     });

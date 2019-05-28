@@ -29,11 +29,11 @@
               <view>酒店超市</view>
             </block>
             <block wx:if="{{i.flag == '2'}}">
-              <image class='icon-title' src='/assets/image/index-facility.png'></image>
+              <image class='icon-title' src='/assets/image/icon-hotel.png'></image>
               <view>酒店设施</view>
             </block>
             <block wx:if="{{i.flag == '3'}}">
-              <image class='icon-title' src='/assets/image/index-volume.png'></image>
+              <image class='icon-title' src='/assets/image/icon-breakfast.png'></image>
               <view>早餐券</view>
             </block>
           </view>

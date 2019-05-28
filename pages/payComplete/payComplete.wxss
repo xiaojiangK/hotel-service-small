@@ -1,1 +1,4 @@
 /* pages/payComplete/payComplete.wxss */
+page{
+  background-color: #fff;
+}

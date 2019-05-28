@@ -5,7 +5,7 @@ App({
   onLaunch (option) {
     // 存入参数
     if (option.query.order && option.query.flag) {
-      this.globalData.scene = [option.query.flag, option.query.order];
+      this.globalData.scene = [option.query.order, option.query.flag];
     }
     // 设缓存缓存起来的日期
     wx.setStorage({

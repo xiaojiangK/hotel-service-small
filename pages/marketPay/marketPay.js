@@ -161,6 +161,11 @@ Page({
                 },
                 complete:() => {
                   wx.hideLoading();
+                  if (res.errMsg === 'requestPayment:fail cancel') {
+                    wx.navigateTo({
+                      url: '/pages/orderList/orderList'
+                    });
+                  }
                 }
               });
             }

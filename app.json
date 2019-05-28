@@ -22,7 +22,8 @@
     "pages/calendar/index",
     "pages/wifiFail/wifiFail",
     "pages/wifiList/wifiList",
-    "pages/registerVip/registerVip"
+    "pages/registerVip/registerVip",
+    "pages/invoice/invoice"
   ],
   "window": {
     "backgroundTextStyle": "light",

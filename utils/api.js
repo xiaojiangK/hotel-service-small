@@ -66,18 +66,22 @@ let apiSpace = {
   ],
   //  开放接口
   openAPI: [
-    //  授权
-    'authorize',
     //  登录
     'login',
     'checkSession',
+    //  帐号信息
+    'getAccountInfoSync',
+    //  用户信息
+    'getUserInfo',
     //  支付
     'requestPayment',
+    //  授权
+    'authorize',
     //  设置
     'getSetting',
     'openSetting',
-    //  用户信息
-    'getUserInfo'
+    //  发票
+    'chooseInvoiceTitle'
   ],
   //  地图
   map: [

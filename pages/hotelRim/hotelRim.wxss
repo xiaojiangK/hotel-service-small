@@ -4,6 +4,7 @@ page {
 }
 .wrapper {
   padding-top: 22rpx;
+  padding-bottom: 40rpx;
 }
 .hotel-rim {
   width: 100%;

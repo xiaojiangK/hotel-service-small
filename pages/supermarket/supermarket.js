@@ -41,6 +41,7 @@ Page({
     if(totalCount <= 0) {
       wx.showToast({
         icon: "none",
+        image: "/assets/image/icon-warn.png",
         title: '未选择任何商品'
       })
       return;

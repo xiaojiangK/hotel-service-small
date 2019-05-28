@@ -205,6 +205,9 @@ Page({
               },
               complete:() => {
                 wx.hideLoading();
+                wx.navigateTo({
+                  url: '/pages/orderList/orderList'
+                });
               }
             });
           }

@@ -19,6 +19,7 @@ page{
   border-radius:12rpx;
   text-align: center;
   position: relative;
+  overflow: hidden;
 }
 .facility-banner image {
   position: absolute;

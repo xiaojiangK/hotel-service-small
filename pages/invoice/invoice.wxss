@@ -1,104 +1,15 @@
 page {
+  padding-top: 323rpx;
+  text-align: center;
   background: #fff;
 }
-/*切换*/
-.tab {
-  margin: 0 40rpx;
-  border-bottom: 1rpx solid #e1e1e1;
-  line-height: 126rpx;
+.icon-build {
+  width: 260rpx;
+  height: 260rpx;
 }
-.tab .tab-nav {
-  display: inline-block;
-  margin: 0 27rpx;
-  border: 2rpx solid #e1e1e1;
-  border-radius: 30rpx;
-  width: 176rpx;
-  height: 56rpx;
-  color: #e1e1e1;
-  font-size: 28rpx;
+.desc {
+  margin-top: 60rpx;
+  color: #919191;
+  font-size: 36rpx;
   font-weight: 400;
-  line-height: 56rpx;
-  text-align: center;
-} 
-.tab .tab-nav.active {
-  border-color: #ff8034;
-  color: #ff8034;
-}
-/*表单*/
-.form .row {
-  position: relative;
-  margin: 0 40rpx;
-  border-bottom: 1rpx solid #e1e1e1;
-  line-height: 99rpx;
-}
-.label,
-.form input {
-  display: inline-block;
-  vertical-align: top;
-}
-.label {
-  width: 156rpx;
-  color: #333;
-  font-size: 32rpx;
-  font-weight: 400;
-}
-form input {
-  display: inline-block;
-  padding: 23rpx 0 23rpx;
-  width: 514rpx;
-  font-size: 32rpx;
-  line-height: 59rpx;
-  font-weight: 400;
-}
-.row:nth-of-type(1) .label::after,
-.row:nth-of-type(2) .label::after {
-  content: '*';
-  color: #f90808;
-  font-size: 32rpx;
-}
-.row:nth-of-type(1) input {
-  width: 400rpx;
-}
-.select {
-  position: absolute;
-  top: 36rpx;
-  right: 0;
-  color: #FF8034;
-  font-size: 28rpx;
-  font-weight: 400;
-  line-height: 28rpx;
-}
-.datalist {
-  position: absolute;
-  top: 100rpx;
-  left: 156rpx;
-  z-index: 100;
-  box-shadow: 0 0 10rpx rgba(0, 0, 0, .5);
-  background: #fff;
-}
-.datalist .item {
-  border-bottom: 1rpx solid #e1e1e1;
-  padding: 10rpx 25rpx;
-  color: #333;
-  font-size: 28rpx;
-  line-height: 1.5;
-}
-.datalist .item:last-of-type {
-  border-bottom: none;
-}
-/*申请*/
-button::after{ 
-  border: none; 
-}
-.apply {
-  margin: 85rpx 40rpx 0;
-  border: none;
-  border-radius: 101rpx;
-  padding: 0;
-  color: #fff;
-  font-size: 32rpx;
-  font-weight: 400;
-  line-height: 101rpx;
-  text-align: center;
-  background: #ff8034;
 }

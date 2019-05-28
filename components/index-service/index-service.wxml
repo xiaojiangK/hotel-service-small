@@ -13,4 +13,10 @@
       </navigator>
     </view>
   </view>
+  <view class="invoice">
+    <navigator class="link" url="/pages/invoice/invoice">开发票</navigator>
+    <image class="icon-invoice" src="/assets/image/icon-invoice.png" mode="aspectFill" />
+    <view class="slogan">极速开票</view>
+    <view class="desc">可检索企业开票信息，自动提交</view>
+  </view>
 </view>

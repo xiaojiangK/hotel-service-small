@@ -24,6 +24,9 @@ Page({
   },
   loadData(){
     // 酒店详情
+    wx.showLoading({
+      title: '加载中',
+    })
     app.util.request({
       url: "entry/wxapp/GetSystem",
       success:(res) => {
@@ -110,6 +113,7 @@ Page({
       method: 'POST',
       success: (res) => {
         this.setData({ widgets: res.data });
+        wx.hideLoading();
       }
     });
   },

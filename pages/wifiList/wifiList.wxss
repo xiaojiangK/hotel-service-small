@@ -5,19 +5,24 @@ page {
   padding-bottom: 40rpx;
 }
 .list-item {
-  width: 90%;
-  height: 80rpx;
+  /* width: 100%; */
+  height: 100rpx;
+  padding: 0 30rpx;
   margin: 20rpx auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  overflow: hidden;
 }
 .wifiName {
   color: #333333;
-  font-size: 28rpx;
+  font-size: 32rpx;
 }
 .wifi-img {
   width: 40rpx;
   height: 40rpx;
+}
+.btnBg {
+  background: #f1f1f1;
 }

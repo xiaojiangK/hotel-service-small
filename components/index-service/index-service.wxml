@@ -11,7 +11,7 @@
     <view class="wifi-nav" >
       <view class="wifi-title" >欢迎使用酒店WiFi</view>
       <!-- 判断使用哪种wifi模式连接 -->        
-      <navigator class="btnToDetail" hover-class="none" url="{{wifiType == 'list' ? '/pages/wifiList/wifiList' : '/pages/wifiFail/wifiFail?name=' + bssid +'&pwd='+ password}}">wifi密码,点这里</navigator> 
+      <navigator class="btnToDetail" hover-class="none" url="{{wifiType == 'list' ? '/pages/wifiList/wifiList' : '/pages/wifiFail/wifiFail?name=' + bssid +'&pwd='+ password}}">WiFi密码,点这里</navigator> 
     </view>
     <button class="wifi-btn" bindtap="{{wifiType == 'list' ? 'goList' : 'connectWifi'}}">一键连接</button>   
   </view>

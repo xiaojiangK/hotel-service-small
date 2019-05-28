@@ -18,7 +18,8 @@
     "pages/vipCenter/vipCenter",
     "pages/orderList/orderList",
     "pages/marketOrder/marketOrder",
-    "components/goods/goods"
+    "components/goods/goods",
+    "pages/invoice/invoice"
   ],
   "window": {
     "backgroundTextStyle": "light",

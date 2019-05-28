@@ -1,139 +1,145 @@
+const api = require('./../../utils/api');
+
 Page({
   data: {
-    access_token: '21_cPQEaIv47btu0zfLR0vo98xmRXmUNf4akRd7OWNFmcNVMNSEdFbIZx_O7uRM0MDYpYJE6Qfs0lOfnJmxizrUM6_xqtVnxDNzGVJw1jsHdtvaWcVMDa9RklecURBMilc_kC4fVx4cBxJmHFD2XVAiAEAFDI',
-    //  发票类型
+    //  appId
+    appId: '',
+    //  开票类型
     type: 0,
-    //  用户姓名
-    username: '',
-    //  抬头
+    //  抬头名称
     title: '',
     //  税号
     taxNumber: '',
-    //  单位名称
-    company: '',
-    //  电话号码
+    //  单位地址
+    companyAddress: '',
+    //  单位电话
     telephone: '',
     //  开户银行
     bankName: '',
-    //  银行账户
-    bankAccount: ''
+    //  银行账号
+    bankAccount: '',
+    //  房间号
+    roomNumber: '',
+    //  留言
+    comment: '',
+    //  列表
+    datalist: []
   },
   //  页面加载
   onLoad: function () {
-    wx.authorize({
-      scope: 'scope.invoiceTitle',
-      success() {
-        wx.showToast({
-          title: '授权成功',
-          duration: 2000
-        })
-      },
-      fail() {
-        wx.showToast({
-          title: '授权失败',
-          duration: 2000
-        })
-      }
+    const accountInfo = wx.getAccountInfoSync();
+    this.setData({
+      appId: accountInfo.miniProgram.appId
     });
-    const accountInfo = wx.getAccountInfoSync()
-    console.log(accountInfo.miniProgram.appId) // 小程序 appId
-
+    this.getLocalInfo();
   },
-  //  切换类型
-  typeSwitch: function (e) {
+  //  获取上次存储的发票信息
+  getLocalInfo: function () {
+    api.getStorage({
+      key: 'invoice'
+    })
+    .then(res => {
+      if ( res.data ) {
+        this.setData({
+          ...res.data
+        });
+      }
+    }, err => {
+    });
+  },
+  //  选择类型
+  chooseType: function (e) {
     let { type } = e.currentTarget.dataset;
     this.setData({
       type
     });
   },
-  save1: function (e) {
-    let { username, title, taxNumber, company, telephone, bankName, bankAccount } = e.detail.value;
-    if (this.data.type == 0) {
-      // 企业
-      wx.request({
-        url: `https://api.weixin.qq.com/card/invoice/biz/getusertitleurl?access_token=${this.data.access_token}`,
-        data: {
-          title,
-          tax_no: taxNumber,
-          phone: telephone,
-          bank_type: bankName,
-          bank_no: bankAccount
-        },
-        method: 'POST', 
-        success: function(res){
-          if (res.data.errcode == 0) {
-            console.log(res.data.url);
-            wx.redirectTo({
-              url: `${res.data.url}`
-            })
-          }
-        },
-        fail: function(res) {
-          console.log(res);
-        }
+  //  搜索发票抬头
+  searchTitle: function (e) {
+    let { value } = e.detail;
+    if ( !value ) {
+      this.setData({
+        datalist: []
       });
     } else {
-      // 个人
-      wx.request({
-        url: `https://api.weixin.qq.com/card/invoice/biz/getusertitleurl?access_token=${this.data.access_token}`,
-        data: {
-          title: username,
-          tax_no: '',
-          phone: '',
-          bank_type: '',
-          bank_no: ''
-        },
-        method: 'POST', 
-        success: function(res){
-          console.log(res);
-        },
-        fail: function(res) {
-          console.log(res);
-        }
-      })
+      this.setData({
+        datalist: [
+          { title: '北京秀豹科技有限公司'},
+          { title: '北京秀豹科技有限公司'},
+          { title: '北京秀豹科技有限公司北京秀豹科技有限公司'},
+          { title: '北京秀豹科技有限公司'}
+        ]
+      });
     }
-    
   },
-  save: function () {
-    wx.showToast({
-      title: '已发送'
+  //  选择公司
+  chooseCompany: function (e) {
+    let { title } = e.currentTarget.dataset;
+    this.setData({
+      datalist: []
     });
   },
-  getTitle: function () {
-    wx.showLoading();
-    const _this = this;
-    wx.chooseInvoiceTitle({
-      success(res) {
-        let { type, title, taxNumber, telephone, bankName, bankAccount } = res;
-        if (type == 0) {
-          //  企业
-          _this.setData({
-            type,
-            title,
-            taxNumber,
-            company: title,
-            telephone,
-            bankName,
-            bankAccount
-          });
-        } else {
-          //  个人
-          _this.setData({
-            type,
-            username: title
-          });
-        }
-      },
-      complete(res) {
-        wx.hideLoading();
+  //  申请开票
+  apply: function (e) {
+    let { appId, type } = this.data;
+    let { title, taxNumber, companyAddress, telephone, bankName, bankAccount, roomNumber } = e.detail.value;
+    if ( !title.length ) {
+      this.showToast('请输入抬头名称');
+    } else if ( !taxNumber ) {
+      this.showToast('请输入税号');
+    } else if ( taxNumber.length < 15) {
+      this.showToast('请正确输入税号');
+    } else {
+      console.log('去申请');
+      this.setInfo(e.detail.value);
+    }
+  },
+  //  保存本次发票信息
+  setInfo: function (invoice) {
+    let { type, title, taxNumber, companyAddress, telephone, bankName, bankAccount } = invoice;
+    api.setStorage({
+      key: 'invoice',
+      data: {
+        type, 
+        title, 
+        taxNumber, 
+        companyAddress, 
+        telephone, 
+        bankName, 
+        bankAccount
       }
     })
-
-
-    // wx.chooseInvoiceTitle({
-    //   success(res) {
-    //     console.log(res);
-    //   }
-    // })
-  }
+  },
+  //  提示信息
+  showToast: function (content) {
+    wx.showToast({
+      title: content,
+      duration: 2000
+    });
+  },
+  //  选择微信里的发票抬头
+  chooseTitle: function () {
+    api.chooseInvoiceTitle()
+    .then(res => {
+      let { type, title, taxNumber, companyAddress, telephone, bankName, bankAccount } = res;
+      if (type == 0) {
+        //  企业
+        this.setData({
+          type,
+          title,
+          taxNumber,
+          companyAddress,
+          telephone,
+          bankName,
+          bankAccount
+        });
+      } else {
+        //  个人
+        this.setData({
+          type,
+          title
+        });
+      }
+    });
+  },
 })

@@ -1,50 +1,104 @@
 page {
-  background: #f0f0f0;
-}
-.tab {
-  padding: 20rpx 20rpx;
-  color: #333;
-  font-size: 30rpx;
-  line-height: 50rpx;
   background: #fff;
+}
+/*切换*/
+.tab {
+  margin: 0 40rpx;
+  border-bottom: 1rpx solid #e1e1e1;
+  line-height: 126rpx;
 }
 .tab .tab-nav {
   display: inline-block;
-  margin-left: 100rpx;
-  border: 2rpx solid #eee;
-  border-radius: 10rpx;
-  width: 150rpx;
-  height: 40rpx;
-  color: #333;
-  font-size: 26rpx;
-  line-height: 40rpx;
+  margin: 0 27rpx;
+  border: 2rpx solid #e1e1e1;
+  border-radius: 30rpx;
+  width: 176rpx;
+  height: 56rpx;
+  color: #e1e1e1;
+  font-size: 28rpx;
+  font-weight: 400;
+  line-height: 56rpx;
   text-align: center;
-  background: #ececec;
 } 
 .tab .tab-nav.active {
-  border-color: #37ba5f;
-  color: #37ba5f;
+  border-color: #ff8034;
+  color: #ff8034;
 }
-.company view,
-.person view {
-  border-bottom: 1rpx solid #eee;
-  padding: 20rpx 20rpx;
-  color: #333;
-  font-size: 30rpx;
-  line-height: 50rpx;
-  background: #fff;
+/*表单*/
+.form .row {
+  position: relative;
+  margin: 0 40rpx;
+  border-bottom: 1rpx solid #e1e1e1;
+  line-height: 99rpx;
 }
-form text,
-form input {
+.label,
+.form input {
   display: inline-block;
   vertical-align: top;
 }
-form text {
-  width: 140rpx;
+.label {
+  width: 156rpx;
+  color: #333;
+  font-size: 32rpx;
+  font-weight: 400;
 }
 form input {
-  width: 570rpx;
+  display: inline-block;
+  padding: 23rpx 0 23rpx;
+  width: 514rpx;
+  font-size: 32rpx;
+  line-height: 59rpx;
+  font-weight: 400;
 }
-button {
-  margin: 80rpx 120rpx 0;
+.row:nth-of-type(1) .label::after,
+.row:nth-of-type(2) .label::after {
+  content: '*';
+  color: #f90808;
+  font-size: 32rpx;
+}
+.row:nth-of-type(1) input {
+  width: 400rpx;
+}
+.select {
+  position: absolute;
+  top: 36rpx;
+  right: 0;
+  color: #FF8034;
+  font-size: 28rpx;
+  font-weight: 400;
+  line-height: 28rpx;
+}
+.datalist {
+  position: absolute;
+  top: 100rpx;
+  left: 156rpx;
+  z-index: 100;
+  box-shadow: 0 0 10rpx rgba(0, 0, 0, .5);
+  background: #fff;
+}
+.datalist .item {
+  border-bottom: 1rpx solid #e1e1e1;
+  padding: 10rpx 25rpx;
+  color: #333;
+  font-size: 28rpx;
+  line-height: 1.5;
+}
+.datalist .item:last-of-type {
+  border-bottom: none;
+}
+/*申请*/
+button::after{ 
+  border: none; 
+}
+.apply {
+  margin: 85rpx 40rpx 0;
+  border: none;
+  border-radius: 101rpx;
+  padding: 0;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 400;
+  line-height: 101rpx;
+  text-align: center;
+  background: #ff8034;
 }

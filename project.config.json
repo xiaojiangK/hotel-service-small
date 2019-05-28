@@ -47,7 +47,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 2,
 			"list": [
 				{
 					"id": 0,
@@ -61,6 +61,12 @@
 					"name": "酒店预订订单页",
 					"pathName": "pages/bookingOrder/bookingOrder",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "发票页",
+					"pathName": "pages/invoice/invoice",
 					"scene": null
 				}
 			]

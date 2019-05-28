@@ -1,0 +1,15 @@
+page {
+  padding-top: 323rpx;
+  text-align: center;
+  background: #fff;
+}
+.icon-build {
+  width: 260rpx;
+  height: 260rpx;
+}
+.desc {
+  margin-top: 60rpx;
+  color: #919191;
+  font-size: 36rpx;
+  font-weight: 400;
+}

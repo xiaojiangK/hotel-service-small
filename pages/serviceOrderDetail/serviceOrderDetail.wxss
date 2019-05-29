@@ -66,7 +66,7 @@ page{
   color: #FF6342; 
 }
 .sub-faill {
-  color: #929292; 
+  color: #FF6342; 
 }
 .bar-code {
   width: 300rpx;
@@ -98,6 +98,10 @@ page{
   line-height: 110rpx;
   margin: 150rpx auto 80rpx;
   background-color: #E93A3D;
+}
+.use-box .use.no{
+  color: #929292;
+  background: #DDD;
 }
 .use-box .back{
   margin: 20rpx 0;

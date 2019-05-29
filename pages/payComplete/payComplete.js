@@ -37,7 +37,7 @@ Page({
         msg: {
           msgTitle: '下单成功',
           link: `/pages/orderList/orderList`,
-          msgContent: '酒店将尽快与您确认订单'
+          msgContent: '使用时与酒店确认订单'
         }
       });
     }

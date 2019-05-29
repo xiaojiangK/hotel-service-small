@@ -21,7 +21,7 @@ Page({
         msg: {
           msgTitle: '取消成功',
           link: '/pages/orderList/orderList',
-          msgContent: '支付金额将原路退回'
+          msgContent: ''
         }
       })
     } else if (op.type && op.type == '2'){

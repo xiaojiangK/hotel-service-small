@@ -155,6 +155,7 @@ Page({
                   wx.navigateTo({
                     url: '/pages/payComplete/payComplete?type=2'
                   });
+                  clearInterval(timer);
                 }
               }
             });

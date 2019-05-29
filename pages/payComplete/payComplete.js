@@ -27,9 +27,9 @@ Page({
     } else if (op.type && op.type == '2'){
       this.setData({
         msg: {
-          msgTitle: '早餐券已使用',
+          msgTitle: '此券已使用',
           link: `/pages/orderList/orderList`,
-          msgContent: '祝您用餐愉快'
+          msgContent: '欢迎再次购买'
         }
       })
     } else {

@@ -35,9 +35,15 @@
   </block>
   <block wx:else>
     <view class="text-box use-box">
+      <block wx:if="{{isUse}}">
+        <view class="use no">已核销</view>
+        <view class="sub-faill">此券已核销，无法使用</view>
+      </block>
+      <block wx:else>
       <button class='use' bindgetuserinfo='goUse' open-type="getUserInfo">确认核销</button>
-      <view class="sub-faill">使用前，主动出示此页面</view>
-      <view class="sub-faill">确认使用后此券失效，请勿随意点击</view>
+        <view class="sub-faill">使用前，主动出示</view>
+        <view class="sub-faill">确认核销后此券失效，请勿随意点击</view>
+      </block>
       <navigator url="/pages/index/index" open-type="switchTab" hover-class="none" class="back">返回首页</navigator>
       <view style="word-break:break-all;">参数：{{query}}</view>
     </view>

@@ -13,7 +13,8 @@ Page({
     flag: 0,
     source: '',
     qrcode: '',
-    orderInfo: {}
+    orderInfo: {},
+    query: ''
   },
   goPay() {
     app.goPay(this.data.id, this.data.flag);
@@ -142,21 +143,28 @@ Page({
       }
     });
   },
+  onShow() {
+    var opt = wx.getLaunchOptionsSync();
+    this.setData({
+      query: JSON.stringify(opt)
+    });
+    // 接受参数
+    if (opt.query.order && opt.query.flag) {
+      this.data.id = opt.query.order;
+      this.data.flag = opt.query.flag;
+    }
+    this.loadData();
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad (op) {
-    if (app.globalData.scene && app.globalData.scene.length == 2) {
-      const scene = app.globalData.scene;
-      this.data.id = scene[0];
-      this.data.flag = scene[1];
-    } else {
+    if (op.source == 'order') {
       this.data.id = op.id;
       this.data.flag = op.flag;
       this.setData({
         source: op.source
       });
     }
-    this.loadData();
   }
 })

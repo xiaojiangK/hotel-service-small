@@ -6,6 +6,7 @@ Page({
     code: 1,
     goods: {},
     money: 0,
+    phone: '',
     hotelid: {},
     totalPrice: "",
     isBreakfast: false
@@ -15,6 +16,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
+    wx.getStorage({
+      key: 'userinfo',
+      success: (res) => {
+        this.setData({
+          phone: res.data.tel
+        });
+      }
+    });
     wx.getStorage({
       key: 'hotel',
       success: (res) => {

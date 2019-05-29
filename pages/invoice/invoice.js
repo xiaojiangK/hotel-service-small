@@ -1,4 +1,5 @@
 const api = require('./../../utils/api');
+const request = require('./../../utils/request');
 
 Page({
   data: {
@@ -7,7 +8,7 @@ Page({
     //  酒店标识
     seller_id: '',
     //  开票类型
-    type: 0,
+    type: 1,
     //  抬头名称
     title: '',
     //  税号
@@ -24,40 +25,54 @@ Page({
     roomNumber: '',
     //  留言
     comment: '',
-    //  列表
-    datalist: []
+    //  是否在搜索
+    isSearch: false,
+    //  抬头列表
+    titleList: []
   },
   //  页面加载
   onLoad: function () {
-    this.getHotelInfo();
-    this.getLocalInvoice();
+    this.getInfo();
   },
   //  获取用户标识酒店标识
-  getHotelInfo: function () {
-    api.getStorage({key: 'hotel'})
+  getInfo: function () {
+    //  获取用户标识
+    api.getStorage({key: 'userinfo'})
     .then(res => {
-      console.log(res);
       if ( res.data ) {
-        let { user_id, id:seller_id } = res.data;
         this.setData({
-          user_id,
-          seller_id
+          user_id: res.data.id
+        });
+        this.getLastInvoice();
+      }
+    });
+    //  获取酒店标识
+    api.getStorage({key: 'system'})
+    .then(res => {
+      if ( res.data ) {
+        this.setData({
+          seller_id: res.data.seller_id
         });
       }
     });
   },
-  //  获取上次存储的发票信息
-  getLocalInvoice: function () {
-    api.getStorage({
-      key: 'invoice'
+  //  获取最后申请的发票信息
+  getLastInvoice: function () {
+    request.getLastInvoice({
+      user_id: this.data.user_id
     })
     .then(res => {
-      if ( res.data ) {
+      if ( res ) {
         this.setData({
-          ...res.data
+          type: res.type,
+          title: res.title,
+          taxNumber: res.tax_number,
+          companyAddress: res.company_address,
+          telephone: res.telephone,
+          bankName: res.bank_name,
+          bankAccount: res.bank_account
         });
       }
-    }, err => {
     });
   },
   //  选择类型
@@ -67,99 +82,103 @@ Page({
       type
     });
   },
-
-
-
-
   //  搜索发票抬头
   searchTitle: function (e) {
     let { value } = e.detail;
-    if ( !value ) {
+    if ( this.data.type == 2 ) {
+      return;
+    } else if ( !value ) {
       this.setData({
-        datalist: []
+        isSearch: false,
+        titleList: []
       });
-    } else {
-      this.setData({
-        datalist: [
-          { title: '北京秀豹科技有限公司'},
-          { title: '北京秀豹科技有限公司'},
-          { title: '北京秀豹科技有限公司北京秀豹科技有限公司'},
-          { title: '北京秀豹科技有限公司'}
-        ]
+    } else if ( value.length > 1 ) {
+      request.searchTitle({
+        user_id: this.data.user_id,
+        seller_id: this.data.seller_id,
+        title: value
+      })
+      .then(res => {
+        if ( res ) {
+          this.setData({
+            isSearch: true,
+            titleList: res
+          });
+        }
       });
     }
   },
-  //  选择公司
-  chooseCompany: function (e) {
-    let { title } = e.currentTarget.dataset;
+  //  选择发票抬头
+  chooseTitle: function (e) {
+    let { title:invoice } = e.currentTarget.dataset;
     this.setData({
-      datalist: []
+      isSearch: false,
+      titleList: [],
+      title: invoice.title,
+      taxNumber: invoice.tax_number,
+      companyAddress: invoice.company_address,
+      telephone: invoice.telephone,
+      bankName: invoice.bank_name,
+      bankAccount: invoice.bank_account
     });
   },
   //  申请开票
-  apply: function (e) {
-    let { user_id, seller_id, type } = this.data;
-    let { title, taxNumber, companyAddress, telephone, bankName, bankAccount, roomNumber } = e.detail.value;
+  applyInvoice: function (e) {
+    let { user_id, seller_id, type, title, taxNumber, roomNumber, comment } = e.detail.value;
+    let params = null;
     if ( !title.length ) {
-      this.showToast('请输入抬头名称');
+      wx.showToast({
+        title: '请填写抬头名称',
+        icon: 'none'
+      });
+      return;
     } else if ( !taxNumber ) {
-      this.showToast('请输入税号');
+      wx.showToast({
+        title: '请填写税号',
+        icon: 'none'
+      });
+      return;
     } else if ( taxNumber.length < 15) {
-      this.showToast('请正确输入税号');
-    } else {
-      this.setLocalInvoice(e.detail.value);
+      wx.showToast({
+        title: '请正确填写税号',
+        icon: 'none'
+      });
+      return;
+    } else if ( type == 1 ) {
+      //  单位类型参数
+      params = e.detail.value;
+    } else if ( type == 2 ) {
+      //  个人类型参数
+      params = {
+        user_id,
+        seller_id,
+        type,
+        title,
+        taxNumber,
+        roomNumber,
+        comment 
+      };
     }
-  },
-
-
-
-  
-  //  保存本次发票信息
-  setLocalInvoice: function (invoice) {
-    let { type, title, taxNumber, companyAddress, telephone, bankName, bankAccount } = invoice;
-    api.setStorage({
-      key: 'invoice',
-      data: {
-        type, 
-        title, 
-        taxNumber, 
-        companyAddress, 
-        telephone, 
-        bankName, 
-        bankAccount
-      }
+    request.applyInvoice({
+      ...params
     })
-  },
-  //  提示信息
-  showToast: function (content) {
-    wx.showToast({
-      title: content,
-      duration: 2000
+    .then(res => {
+      if ( res == 1 ) {
+        wx.redirectTo({
+          url: '/pages/invoiceResult/invoiceResult'
+        })
+      }
     });
   },
   //  选择微信里的发票抬头
-  chooseTitle: function () {
+  chooseWXTitle: function () {
     api.chooseInvoiceTitle()
     .then(res => {
-      let { type, title, taxNumber, companyAddress, telephone, bankName, bankAccount } = res;
-      if (type == 0) {
-        //  企业
-        this.setData({
-          type,
-          title,
-          taxNumber,
-          companyAddress,
-          telephone,
-          bankName,
-          bankAccount
-        });
-      } else {
-        //  个人
-        this.setData({
-          type,
-          title
-        });
-      }
+      let type = res.type == 0 ? 1 : 2;
+      this.setData({
+        ...res,
+        type
+      });
     });
-  },
+  }
 })

@@ -1,0 +1,3 @@
+<image class="icon" src="/assets/image/complete.png" mode="aspectFill"></image>
+<view class="state">申请开票成功</view>
+<view class="desc">尽快与前台确认</view>

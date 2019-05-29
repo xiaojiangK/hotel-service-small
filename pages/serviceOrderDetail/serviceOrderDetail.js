@@ -2,6 +2,7 @@
 var app = getApp();
 const config = require('../../config/index');
 import { formatDateTime } from '../../utils/tool.js'
+var timer = null;
 
 Page({
 
@@ -14,6 +15,7 @@ Page({
     source: '',
     qrcode: '',
     orderInfo: {},
+    isUse: false,
     query: ''
   },
   goPay() {
@@ -81,9 +83,7 @@ Page({
                         },
                         success:(res) => {
                           if (res.data.status == 200) {
-                            wx.navigateTo({
-                              url: '/pages/payComplete/payComplete?type=2'
-                            });
+                            this.setData({ isUse: true });
                           } else {
                             wx.showToast({
                               title: res.data.info,
@@ -126,6 +126,9 @@ Page({
             finish_time: formatDateTime(data.finish_time * 1000),
           } 
         });
+        if (data.status == '4') {
+          this.setData({ isUse: true });
+        }
 
         // 生成二维码
         if (this.data.source == 'order' && data.status == '2') {
@@ -139,6 +142,23 @@ Page({
               this.setData({ qrcode: config.baseURL + res.data });
             }
           });
+
+          // 监听订单状态
+          timer = setInterval(() => {
+            app.util.request({
+              url: "entry/wxapp/OrderStatus",
+              data: {
+                id: this.data.id
+              },
+              success:(res) => {
+                if (res.data.status == 200 && res.data.data.status == 4) {
+                  wx.navigateTo({
+                    url: '/pages/payComplete/payComplete?type=2'
+                  });
+                }
+              }
+            });
+          }, 3000);
         }
       }
     });
@@ -166,5 +186,8 @@ Page({
         source: op.source
       });
     }
+  },
+  onHide() {
+    clearInterval(timer);
   }
 })

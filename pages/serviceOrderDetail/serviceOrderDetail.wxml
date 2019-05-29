@@ -35,7 +35,7 @@
   </block>
   <block wx:else>
     <view class="text-box use-box">
-      <block wx:if="{{orderInfo.status == '4'}}">
+      <block wx:if="{{isUse}}">
         <view class="use no">已核销</view>
         <view class="sub-faill">此券已核销，无法使用</view>
       </block>

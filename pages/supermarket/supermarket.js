@@ -18,21 +18,29 @@ Page({
     wx.showLoading({
       title: '加载中...',
     })
-    app.util.request({
-      url: "entry/wxapp/Goods",
-      success:(res) => {
-        const list = res.data.map(item => {
-          return {
-            ...item,
-            goods_img: app.globalData.url + item.goods_img
+    wx.getStorage({
+      key: 'hotel',
+      success: (res) => {
+        app.util.request({
+          url: "entry/wxapp/Goods",
+          data: {
+            seller_id: res.data.id
+          },
+          success:(res) => {
+            const list = res.data.map(item => {
+              return {
+                ...item,
+                goods_img: app.globalData.url + item.goods_img
+              }
+            });
+            this.setData({ list });
+            wx.hideLoading();
+            if (list.length == 0){
+              this.setData({ NoList:true });
+            }
+            
           }
         });
-        this.setData({ list });
-        wx.hideLoading();
-        if (list.length == 0){
-          this.setData({ NoList:true });
-        }
-        
       }
     });
    

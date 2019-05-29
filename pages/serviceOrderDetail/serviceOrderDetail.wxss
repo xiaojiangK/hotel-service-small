@@ -99,6 +99,11 @@ page{
   margin: 150rpx auto 80rpx;
   background-color: #E93A3D;
 }
+.use-box .back{
+  margin: 20rpx 0;
+  color: #409eff;
+  font-size: 28rpx;
+}
 .btn-group{
   display: flex;
   overflow: hidden;

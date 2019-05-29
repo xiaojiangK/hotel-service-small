@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 3,
 			"list": [
 				{
 					"id": 0,
@@ -68,6 +68,14 @@
 					"id": -1,
 					"name": "发票页",
 					"pathName": "pages/invoice/invoice",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "确认核销",
+					"pathName": "pages/serviceOrderDetail/serviceOrderDetail",
+					"query": "order=270&flag=3",
 					"scene": null
 				}
 			]

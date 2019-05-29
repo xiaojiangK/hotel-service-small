@@ -13,7 +13,8 @@ Page({
     flag: 0,
     source: '',
     qrcode: '',
-    orderInfo: {}
+    orderInfo: {},
+    query: ''
   },
   goPay() {
     app.goPay(this.data.id, this.data.flag);
@@ -144,6 +145,9 @@ Page({
   },
   onShow() {
     var opt = wx.getLaunchOptionsSync();
+    this.setData({
+      query: JSON.stringify(opt)
+    });
     // 接受参数
     if (opt.query.order && opt.query.flag) {
       this.data.id = opt.query.order;

@@ -26,6 +26,7 @@
           <block wx:if="{{data.status == '10'}}">待入住</block>
           <block wx:if="{{data.status == '3'}}">已取消</block>
           <block wx:if="{{data.status == '4'}}">已完成</block>
+          <block wx:if="{{data.status == '5'}}">已入住</block>
           <block wx:if="{{data.status == '7'}}">已退款</block>
         </block>
         <block wx:if="{{data.flag == '1'}}">

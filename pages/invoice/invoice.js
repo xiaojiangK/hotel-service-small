@@ -177,7 +177,9 @@ Page({
       let type = res.type == 0 ? 1 : 2;
       this.setData({
         ...res,
-        type
+        type,
+        isSearch: false,
+        titleList: []
       });
     });
   }

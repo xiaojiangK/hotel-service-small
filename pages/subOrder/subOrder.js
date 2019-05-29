@@ -58,7 +58,7 @@ Page({
             type: g.goods_attribute,
             orderGoods: [
               {
-                spec_id: g.specifications[0].id,
+                spec_id: g.specifications[0].goods_id,
                 name: g.goods_name,
                 img: g.goods_img,
                 type: g.goods_attribute,
@@ -108,9 +108,11 @@ Page({
                 },
                 complete:() => {
                   wx.hideLoading();
-                  wx.navigateTo({
-                    url: '/pages/orderList/orderList'
-                  });
+                  if (res.errMsg === 'requestPayment:fail cancel') {
+                    wx.navigateTo({
+                      url: '/pages/orderList/orderList'
+                    });
+                  }
                 }
               });
             }

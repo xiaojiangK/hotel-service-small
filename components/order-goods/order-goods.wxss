@@ -15,10 +15,10 @@
   border-bottom: 2rpx solid #E1E1E1;
 }
 .goods-title{
-  height: 96rpx;
+  height: 104rpx;
   overflow: hidden;
-  margin-top: 10rpx;
-  font-size: 30rpx;
+  margin-top: 26rpx;
+  font-size: 34rpx;
   color: #333;
   line-height: 48rpx;
 }
@@ -26,11 +26,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 50rpx;
+  margin-top: 40rpx;
 }
 .goods-price{
-  font-size: 42rpx;
+  font-size: 24rpx;
   color: #E93A3D;
+}
+.goods-price>text{
+  display: inline-block;
+  margin-left: 2rpx;
+  font-size: 42rpx;
 }
 .goods-current-num{
   font-size: 32rpx;

@@ -30,7 +30,9 @@ Component({
       observer: function(newVal, oldVal) {
         this.setData({
           style: newVal.style
+          // wifiType: "list"
         });
+        console.log(this.data.wifiType)
       }
     }
   },
@@ -39,13 +41,92 @@ Component({
    * 组件的初始数据
    */
   data: {
-    style: {}
+    style: {},
+    wifiType: 'list',
+    accountNumber: 'DaTangNet-Staff',//Wi-Fi 的SSID，即账号
+    bssid: 'DaTangNet-Staff',//Wi-Fi 的ISSID
+    password: 'DaTangnet@2018',//Wi-Fi 的密码
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-
+    goList:function () {
+      wx.navigateTo({
+        url: '/pages/wifiList/wifiList',
+      })
+    },
+    connectWifi: function () {
+      const that = this;
+      //检测手机型号
+      wx.getSystemInfo({
+        success: function (res) {
+          var system = '';
+          that.setData({
+            isPlatform: res.platform
+          });
+          if (res.platform == 'android') system = parseInt(res.system.substr(8));
+          if (res.platform == 'ios') system = parseInt(res.system.substr(4));
+          if (res.platform == 'android' && system < 6) {
+            wx.showToast({
+              title: '手机版本支持6以上',
+            })
+            return
+          }
+          if (res.platform == 'ios' && system < 11.2) {
+            wx.showToast({
+              title: '手机版本支持11以上',
+            })
+            return
+          }
+          //2.初始化 Wi-Fi 模块
+          that.startWifi();
+        }
+      })
+    },
+    //初始化 Wi-Fi 模块
+    startWifi: function () {
+      const that = this
+      const SSID = that.data.bssid;
+      const password = that.data.password;
+      wx.startWifi({
+        success: function (res) {
+          wx.showLoading({
+            title: '连接中',
+          })
+          //请求成功连接Wifi
+          that.Connected();    
+        },
+        fail: function (res) {
+          wx.navigateTo({  
+            url: "/pages/wifiFail/wifiFail?name=" + SSID +"&pwd="+ password
+          })
+        }
+      })
+    },
+    Connected: function () {
+      const that = this;
+      const SSID = that.data.bssid;
+      const password = that.data.password;
+      wx.connectWifi({
+        SSID: that.data.accountNumber,
+        BSSID: that.data.bssid,
+        password: that.data.password,
+        success: function (res) {
+          wx.showToast({
+            title: 'wifi连接成功',
+          })
+        },
+        fail: function (res) {
+          wx.stopWifi({
+            success(res) {}
+          })
+          wx.navigateTo({  
+            url: "/pages/wifiFail/wifiFail?name=" + SSID +"&pwd="+ password
+          })
+        }
+      })
+    }
   }
 })

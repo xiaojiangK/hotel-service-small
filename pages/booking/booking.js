@@ -118,5 +118,7 @@ Page({
     app.getUserPhoneNumber(e);
     app.userLogin();
     this.changePhoneNumber();
+  },
+  onShareAppMessage: function (res) {
   }
 })

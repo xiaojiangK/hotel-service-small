@@ -1,0 +1,10 @@
+<!--pages/wiifList/wifiList.wxml-->
+<view>
+  <block wx:for="{{list}}"  wx:key="index">
+    <view class='list-item' data-id="{{item.ssid}}" hover-class="btnBg" data-pwd="{{item.pwd}}" bindtap='connectWifi'>
+      <view class='wifiName'>{{item.ssid}}</view>
+      <image class='wifi-img' src='/assets/image/icon-wifi.png'></image>
+    </view>  
+  </block>
+</view>
+

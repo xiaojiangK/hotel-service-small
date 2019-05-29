@@ -22,8 +22,8 @@
   font-size: 28rpx;
   color: #666;
   text-align: center;
+  height: 60rpx;
   line-height: 60rpx;
-  padding-top: 6rpx;
 }
 
 

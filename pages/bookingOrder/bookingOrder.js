@@ -203,11 +203,13 @@ Page({
                   title: "支付失败"
                 });
               },
-              complete:() => {
+              complete:(res) => {
                 wx.hideLoading();
-                wx.navigateTo({
-                  url: '/pages/orderList/orderList'
-                });
+                if (res.errMsg === 'requestPayment:fail cancel') {
+                  wx.navigateTo({
+                    url: '/pages/orderList/orderList'
+                  });
+                }
               }
             });
           }

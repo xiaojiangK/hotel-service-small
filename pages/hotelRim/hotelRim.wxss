@@ -4,12 +4,13 @@ page {
 }
 .wrapper {
   padding-top: 22rpx;
+  padding-bottom: 40rpx;
 }
 .hotel-rim {
   width: 100%;
   height: auto;
   background: white;
-  margin-bottom: 90rpx;
+  margin-bottom: 60rpx;
 }
 .rim-banner {
   width: 90.67%;

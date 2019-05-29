@@ -92,5 +92,7 @@ Page({
    */
   onShow() {
     this.loadData();
+  },
+  onShareAppMessage: function (res) {
   }
 })

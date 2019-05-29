@@ -9,7 +9,7 @@
       <view class='submit-btn' bind:tap="selected" >选好了 </view>
     </view>
   </block>
-  <view wx:else class="noCon">
+  <view wx:if="{{ NoList }}" class="noCon">
     <image src="/assets/image/noInfo.png" />
     <text>没有任何信息</text>
     <text>您可以致电前台咨询</text>

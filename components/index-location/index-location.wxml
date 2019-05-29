@@ -1,7 +1,7 @@
 <!--components/index-location/index-location.wxml-->
 <view class="location" style="background: {{style.background}}; padding: {{style.paddingtop * 2}}rpx {{style.paddingleft * 2}}rpx">
   <view class="location-title">
-    <image class="location-img" src="{{params.iconurl ? params.iconurl : '/assets/image/index-location.png'}}"/>
+    <image class="location-img" mode="aspectFill" src="{{params.iconurl ? params.iconurl : '/assets/image/index-location.png'}}"/>
     <view class="location-text">酒店位置</view>
     <view class="location-meg">去哪里也不怕找不到回家的路 </view>      
   </view>

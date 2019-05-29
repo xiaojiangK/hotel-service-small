@@ -98,7 +98,7 @@ Page({
         for (let i of g) {
           if (i.specifications instanceof Array) {
             orderGoods.push({
-              spec_id: i.specifications[0].id,
+              spec_id: i.specifications[0].goods_id,
               name: i.goods_name,
               img: i.goods_img,
               type: i.goods_attribute,
@@ -161,9 +161,11 @@ Page({
                 },
                 complete:() => {
                   wx.hideLoading();
-                  wx.navigateTo({
-                    url: '/pages/orderList/orderList'
-                  });
+                  if (res.errMsg === 'requestPayment:fail cancel') {
+                    wx.navigateTo({
+                      url: '/pages/orderList/orderList'
+                    });
+                  }
                 }
               });
             }

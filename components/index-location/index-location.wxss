@@ -15,8 +15,8 @@
   align-items: center;
 }
 .location-img {
-  width: 45rpx;
-  height: 45rpx;
+  width: 44rpx;
+  height: 44rpx;
 }
 .location-text {
   font-size: 36rpx;

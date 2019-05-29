@@ -17,9 +17,9 @@
   font-weight: bold;
 }
 .icon-title{
-  width: 50rpx;
-  height: 50rpx;
-  margin-right: 8rpx;
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 14rpx;
   border-radius: 50rpx;
 }
 .order-status{

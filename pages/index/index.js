@@ -24,6 +24,9 @@ Page({
   },
   loadData(){
     // 酒店详情
+    wx.showLoading({
+      title: '加载中',
+    })
     app.util.request({
       url: "entry/wxapp/GetSystem",
       success:(res) => {
@@ -39,6 +42,7 @@ Page({
             })
             const detail = {
               ...item,
+              logo: app.globalData.url + item.ewm_logo,
               img: item.img.split(',').map(item => {
                 return app.globalData.url + item
               }),
@@ -109,6 +113,7 @@ Page({
       method: 'POST',
       success: (res) => {
         this.setData({ widgets: res.data });
+        wx.hideLoading();
       }
     });
   },
@@ -145,5 +150,7 @@ Page({
     app.getUserPhoneNumber(e);
     app.userLogin();
     this.bindGetUserInfo();
+  },
+  onShareAppMessage: function (res) {
   }
 })

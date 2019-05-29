@@ -8,5 +8,5 @@ page {
   font-size: 28rpx;
   color: #C6C6C6;
   text-align: center;
-  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
 }

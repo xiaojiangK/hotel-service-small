@@ -10,7 +10,7 @@ page {
   width: 100%;
   height: auto;
   background: white;
-  margin-bottom: 90rpx;
+  margin-bottom: 60rpx;
 }
 .rim-banner {
   width: 90.67%;

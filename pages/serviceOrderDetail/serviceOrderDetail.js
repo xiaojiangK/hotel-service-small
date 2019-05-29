@@ -2,6 +2,7 @@
 var app = getApp();
 const config = require('../../config/index');
 import { formatDateTime } from '../../utils/tool.js'
+var timer = null;
 
 Page({
 
@@ -13,7 +14,9 @@ Page({
     flag: 0,
     source: '',
     qrcode: '',
-    orderInfo: {}
+    orderInfo: {},
+    isUse: false,
+    query: ''
   },
   goPay() {
     app.goPay(this.data.id, this.data.flag);
@@ -80,9 +83,7 @@ Page({
                         },
                         success:(res) => {
                           if (res.data.status == 200) {
-                            wx.navigateTo({
-                              url: '/pages/payComplete/payComplete?type=2'
-                            });
+                            this.setData({ isUse: true });
                           } else {
                             wx.showToast({
                               title: res.data.info,
@@ -125,6 +126,9 @@ Page({
             finish_time: formatDateTime(data.finish_time * 1000),
           } 
         });
+        if (data.status == '4') {
+          this.setData({ isUse: true });
+        }
 
         // 生成二维码
         if (this.data.source == 'order' && data.status == '2') {
@@ -138,25 +142,52 @@ Page({
               this.setData({ qrcode: config.baseURL + res.data });
             }
           });
+
+          // 监听订单状态
+          timer = setInterval(() => {
+            app.util.request({
+              url: "entry/wxapp/OrderStatus",
+              data: {
+                id: this.data.id
+              },
+              success:(res) => {
+                if (res.data.status == 200 && res.data.data.status == 4) {
+                  wx.navigateTo({
+                    url: '/pages/payComplete/payComplete?type=2'
+                  });
+                }
+              }
+            });
+          }, 3000);
         }
       }
     });
+  },
+  onShow() {
+    var opt = wx.getLaunchOptionsSync();
+    this.setData({
+      query: JSON.stringify(opt)
+    });
+    // 接受参数
+    if (opt.query.order && opt.query.flag) {
+      this.data.id = opt.query.order;
+      this.data.flag = opt.query.flag;
+    }
+    this.loadData();
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad (op) {
-    if (app.globalData.scene && app.globalData.scene.length == 2) {
-      const scene = app.globalData.scene;
-      this.data.id = scene[0];
-      this.data.flag = scene[1];
-    } else {
+    if (op.source == 'order') {
       this.data.id = op.id;
       this.data.flag = op.flag;
       this.setData({
         source: op.source
       });
     }
-    this.loadData();
+  },
+  onHide() {
+    clearInterval(timer);
   }
 })

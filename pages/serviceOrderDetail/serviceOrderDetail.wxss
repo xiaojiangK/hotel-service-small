@@ -2,7 +2,7 @@ page{
   background: #fff;
 }
 .wrapper {
-  padding-top: 22rpx; 
+  padding: 22rpx 0 90rpx;
 }
 .hotel-facility {
   width: 100%;
@@ -66,7 +66,7 @@ page{
   color: #FF6342; 
 }
 .sub-faill {
-  color: #929292; 
+  color: #FF6342; 
 }
 .bar-code {
   width: 300rpx;
@@ -98,6 +98,23 @@ page{
   line-height: 110rpx;
   margin: 150rpx auto 80rpx;
   background-color: #E93A3D;
+}
+.use-box .use.no{
+  color: #929292;
+  background: #DDD;
+}
+.use-box .back{
+  color: #333;
+  font-size: 32rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90rpx;
+  background: #fff;
+  line-height: 90rpx;
+  text-align: center;
+  border-top: 1rpx solid #ddd;
 }
 .btn-group{
   display: flex;

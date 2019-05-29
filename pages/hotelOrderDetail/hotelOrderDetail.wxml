@@ -7,6 +7,7 @@
       <block wx:if="{{detail.status == '10'}}">待入住</block>
       <block wx:if="{{detail.status == '3'}}">已取消</block>
       <block wx:if="{{detail.status == '4'}}">已完成</block>
+      <block wx:if="{{detail.status == '5'}}">已入住</block>
       <block wx:if="{{detail.status == '7'}}">已退款</block>
     </view>
     <view class='pay-text'>

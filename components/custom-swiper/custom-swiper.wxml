@@ -7,11 +7,14 @@
     circular="true"
     autoplay="true"
   >
-    <block wx:for="{{data.img}}" wx:key='index'>
+    <!-- <block wx:for="{{data.img}}" wx:key='index'>
       <swiper-item class="swiper-item">
         <image src="{{item}}" class="slide-image" mode="aspectFill"/>
       </swiper-item>
-    </block>
+    </block> -->
+    <swiper-item class="swiper-item">
+      <image src="{{data.logo}}" class="slide-image" mode="aspectFill"/>
+    </swiper-item>
   </swiper>
   <view class="welcome">
     <view class="welcome-tp">{{data.prompt}}</view>

@@ -13,11 +13,59 @@ Page({
     orderList: [],
     hotelName: '',
     tel: 13800138000,
-    url: app.globalData.url
+    url: app.globalData.url,
+    isVerify: 0
   },
   goCall () {
     wx.makePhoneCall({
       phoneNumber: this.data.tel
+    });
+  },
+  verifygoods() {
+    // 允许从相机和相册扫码
+    wx.scanCode({
+      success (data) {
+        wx.getStorage({
+          key: 'userinfo',
+          success: (res) => {
+            const d = res.data;
+            wx.showModal({
+              title: '提示',
+              content: '确认使用后，该券将失效',
+              cancelText: '取消',
+              confirmText: '确定',
+              success: (e) => {
+                if (e.confirm) {
+                  app.util.request({
+                    url: "entry/wxapp/Verifygoods",
+                    data: {
+                      openid: d.openid,
+                      uniacid: d.uniacid,
+                      orderid: data.result
+                    },
+                    success:(res) => {
+                      if (res.data.status == 200) {
+                        wx.showToast({
+                          title: '核销成功',
+                          icon: 'none'
+                        });
+                      } else {
+                        wx.showToast({
+                          title: res.data.info,
+                          icon: 'none'
+                        });
+                      }
+                    }
+                  });
+                }
+              }
+            });
+          },
+          fail: () => {
+            app.userLogin();
+          }
+        });
+      }
     });
   },
   loadData() {
@@ -25,6 +73,20 @@ Page({
     wx.getStorage({
       key: 'userinfo',
       success: (res)=>{
+        
+        app.util.request({
+          url: "entry/wxapp/Write_off",
+          data: {
+            openid: res.data.openid,
+            uniacid: res.data.uniacid
+          },
+          success: (res) => {
+            this.setData({
+              isVerify: res.data.code
+            });
+          }
+        });
+
         this.setData({ userInfo: res.data });
         app.util.request({
           url: "entry/wxapp/MyOrder",

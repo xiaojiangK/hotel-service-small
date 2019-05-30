@@ -1,7 +1,8 @@
 // pages/serviceOrderDetail/serviceOrderDetail.js
 var app = getApp();
 const config = require('../../config/index');
-import { formatDateTime } from '../../utils/tool.js'
+import { formatDateTime } from '../../utils/tool.js';
+import { qrcode } from '../../utils/qrcode.js';
 var timer = null;
 
 Page({
@@ -149,7 +150,6 @@ Page({
     });
   },
   loadData() {
-    wx.clearStorage();
     app.util.request({
       url: "entry/wxapp/orderdetails",
       data: {
@@ -176,18 +176,21 @@ Page({
         if (this.data.source == 'order' && data.status == '2' && this.data.flag == '3') {
           wx.showLoading({
             title: '加载中...',
-          })
-          app.util.request({
-            url: "entry/wxapp/QrCode",
-            data: {
-              flag: this.data.flag,
-              order_id: this.data.id
-            },
-            success:(res) => {
-              this.setData({ qrcode: config.baseURL + res.data });
-              wx.hideLoading();
-            }
           });
+          //二维码
+          qrcode.draw(this.data.id, 'qrcode', 230);
+          wx.hideLoading();
+          // app.util.request({
+          //   url: "entry/wxapp/QrCode",
+          //   data: {
+          //     flag: this.data.flag,
+          //     order_id: this.data.id
+          //   },
+          //   success:(res) => {
+          //     this.setData({ qrcode: config.baseURL + res.data });
+          //     wx.hideLoading();
+          //   }
+          // });
 
           // 监听订单状态
           timer = setInterval(() => {

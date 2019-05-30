@@ -36,9 +36,12 @@
       <view class="sub-faill" wx:if="{{orderInfo.status == '4'}}">该订单已于{{orderInfo.finish_time}}使用</view>
     </view>
     <block wx:if="{{orderInfo.status == '2' && flag == '3'}}">
-      <view class="bar-code">
-        <image src="{{qrcode}}" bindtap="preview"></image>
+      <view class="qrcode">
+        <canvas canvas-id="qrcode" width="420" height="420"/>
       </view>
+      <!-- <view class="bar-code">
+        <image src="{{qrcode}}" bindtap="preview"></image>
+      </view> -->
     </block>
     <block wx:if="{{orderInfo.status == '2'}}">
       <view class="btn-cancel" bind:tap="goRefund">取消订单</view>
@@ -51,7 +54,7 @@
         <view class="sub-faill">此券已核销，无法使用</view>
       </block>
       <block wx:else>
-      <button class='use' bindgetuserinfo='goUse' open-type="getUserInfo">确认核销</button>
+        <button class='use' bindgetuserinfo='goUse' open-type="getUserInfo">确认核销</button>
         <view class="sub-faill">使用前，主动出示</view>
         <view class="sub-faill">确认核销后此券失效，请勿随意点击</view>
       </block>

@@ -48,37 +48,8 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
-			"list": [
-				{
-					"id": 0,
-					"name": "酒店预订页",
-					"pathName": "pages/booking/booking",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "酒店预订订单页",
-					"pathName": "pages/bookingOrder/bookingOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "发票页",
-					"pathName": "pages/invoice/invoice",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 3,
-					"name": "确认核销",
-					"pathName": "pages/serviceOrderDetail/serviceOrderDetail",
-					"query": "order=270&flag=3",
-					"scene": null
-				}
-			]
+			"current": -1,
+			"list": []
 		}
 	}
 }

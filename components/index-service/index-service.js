@@ -7,7 +7,7 @@ Component({
     service: {
       type: Array,
       value: [{
-          navigator: '../morningVolume/morningVolume',
+          navigator: '../morningVolume/morningVolume?type=volume',
           url: '/assets/image/index-volume.png',
           text: '早餐券',
         }, {
@@ -15,7 +15,7 @@ Component({
           url: '/assets/image/index-supermarket.png',
           text: '酒店超市',
         }, {
-          navigator: '../hotelFacility/hotelFacility',
+          navigator: '../hotelFacility/hotelFacility?type=facility',
           url: '/assets/image/index-facility.png',
           text: '酒店设施',
         }, {
@@ -47,15 +47,26 @@ Component({
     bssid: 'DaTangNet-Staff',//Wi-Fi 的ISSID
     password: 'DaTangnet@2018',//Wi-Fi 的密码
   },
-
-  /**
-   * 组件的方法列表
-   */
+  lifetimes: {
+    // 生命周期函数
+    attached: function () {
+      this.loadData()
+    }
+   
+  },
   methods: {
     goList:function () {
       wx.navigateTo({
         url: '/pages/wifiList/wifiList',
       })
+    },
+    loadData() {
+      wx.getStorage({
+        key: 'hotel',
+        success: (res)=>{
+          
+        }
+      });
     },
     connectWifi: function () {
       const that = this;
@@ -63,9 +74,6 @@ Component({
       wx.getSystemInfo({
         success: function (res) {
           var system = '';
-          that.setData({
-            isPlatform: res.platform
-          });
           if (res.platform == 'android') system = parseInt(res.system.substr(8));
           if (res.platform == 'ios') system = parseInt(res.system.substr(4));
           if (res.platform == 'android' && system < 6) {
@@ -105,6 +113,7 @@ Component({
         }
       })
     },
+    //连接wifi
     Connected: function () {
       const that = this;
       const SSID = that.data.bssid;

@@ -27,6 +27,15 @@ Page({
    */
   onReady: function () {
     wx.getStorage({
+      key: 'userinfo',
+      success: (res) => {
+        this.setData({
+          tel: res.data.tel
+        });
+      }
+    });
+    
+    wx.getStorage({
       key: 'hotel',
       success: (res) => {
         this.data.hotelid = res.data.id;

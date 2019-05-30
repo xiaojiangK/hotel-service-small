@@ -16,8 +16,7 @@ Page({
     qrcode: '',
     orderInfo: {},
     isUse: false,
-    query: '',
-    phone: ''
+    query: ''
   },
   goPay() {
     app.goPay(this.data.id, this.data.flag);
@@ -106,20 +105,13 @@ Page({
       });
     }
   },
+  //预览二维码
   preview() {
     wx.previewImage({
       urls: [this.data.qrcode]
     });
   },
   loadData() {
-    wx.getStorage({
-      key: 'userinfo',
-      success: (res) => {
-        this.setData({
-          phone: res.data.tel
-        });
-      }
-    });
     app.util.request({
       url: "entry/wxapp/orderdetails",
       data: {
@@ -144,6 +136,9 @@ Page({
 
         // 生成二维码
         if (this.data.source == 'order' && data.status == '2' && this.data.flag == '3') {
+          wx.showLoading({
+            title: '加载中...',
+          })
           app.util.request({
             url: "entry/wxapp/QrCode",
             data: {
@@ -152,6 +147,7 @@ Page({
             },
             success:(res) => {
               this.setData({ qrcode: config.baseURL + res.data });
+              wx.hideLoading();
             }
           });
 
@@ -196,8 +192,8 @@ Page({
   onLoad (op) {
     if (op.source == 'order') {
       this.setData({
-        id: opt.query.order,
-        flag: opt.query.flag,
+        id: op.id,
+        flag: op.flag,
         source: op.source
       });
     }

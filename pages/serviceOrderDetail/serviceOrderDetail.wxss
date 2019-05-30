@@ -136,3 +136,15 @@ page{
   color: #fff;
   background: #FF6634;
 }
+
+.btn-cancel {
+  width: 160rpx;
+  height: 60rpx;
+  border: 2rpx solid rgba(255,99,66,1);
+  border-radius: 30rpx;
+  text-align: center;
+  line-height: 60rpx;
+  color: #FF6342;
+  font-size: 28rpx;
+  margin: 50rpx auto;
+}

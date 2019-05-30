@@ -20,7 +20,7 @@
   <view class="order-item">
     <view class="order-meg">手机号</view>
      <view class="order-rg">
-       <view><text class="order-nub red-nub">{{phone}}</text></view>
+       <view><text class="order-nub red-nub">{{orderInfo.tel}}</text></view>
      </view> 
   </view>
   <block wx:if="{{source == 'order'}}">
@@ -40,6 +40,9 @@
         <image src="{{qrcode}}" bindtap="preview"></image>
       </view>
     </block>
+    <block wx:if="{{orderInfo.status == '2'}}">
+      <view class="btn-cancel" bind:tap="cancelOrder">取消订单</view>
+    </block>
   </block>
   <block wx:else>
     <view class="text-box use-box">
@@ -53,7 +56,6 @@
         <view class="sub-faill">确认核销后此券失效，请勿随意点击</view>
       </block>
       <navigator url="/pages/index/index" open-type="switchTab" hover-class="none" class="back">返回首页</navigator>
-      /*******************************/
       <view style="word-break:break-all;">参数：{{query}}</view>
     </view>
   </block>

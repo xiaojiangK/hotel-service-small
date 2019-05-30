@@ -41,30 +41,18 @@ Page({
           arrival_time: formatMonth(d.arrival_time * 1000),
           departure_time: formatMonth(d.departure_time * 1000)
         }
-        // 订单明细
-        app.util.request({
-          url: "entry/wxapp/GetRoomCost",
-          data: {
-            room_id: d.room_id,
-            end: formatDate(d.departure_time * 1000),
-            start: formatDate(d.arrival_time * 1000)
-          },
-          success: (res) => {
-            
-            let totalPrice = 0;
-            const roomCost = res.data.map(item => {
-              totalPrice += Number.parseFloat(item.mprice);
-              return item;
-            });
-            const num = detail.num;
-            if (Number.isInteger(totalPrice * num)) {
-              totalPrice = totalPrice * num;
-            } else {
-              totalPrice = (totalPrice * num).toFixed(2);
-            }
-            this.setData({ detail, roomCost, totalPrice });
-          }
+
+        let totalPrice = 0;
+        d.roomCost.map(item => {
+          totalPrice += Number.parseFloat(item.mprice);
         });
+        const num = detail.num;
+        if (Number.isInteger(totalPrice * num)) {
+          totalPrice = totalPrice * num;
+        } else {
+          totalPrice = (totalPrice * num).toFixed(2);
+        }
+        this.setData({ detail, totalPrice });
         
         // 倒计时
         this.c3 = new $wuxCountDown({

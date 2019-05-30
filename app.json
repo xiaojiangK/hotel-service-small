@@ -23,7 +23,8 @@
     "pages/wifiFail/wifiFail",
     "pages/wifiList/wifiList",
     "pages/registerVip/registerVip",
-    "pages/invoice/invoice"
+    "pages/invoice/invoice",
+    "pages/invoiceResult/invoiceResult"
   ],
   "window": {
     "backgroundTextStyle": "light",

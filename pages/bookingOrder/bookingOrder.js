@@ -154,6 +154,7 @@ Page({
         app.util.request({
           url: "entry/wxapp/AddOrder",
           data: {
+            roomCost: this.data.roomCost,
             price: data.roomCost[0].mprice,
             total_cost: data.totalPrice,
             seller_name: h.name,

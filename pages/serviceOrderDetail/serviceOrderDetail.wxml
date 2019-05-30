@@ -41,7 +41,7 @@
       </view>
     </block>
     <block wx:if="{{orderInfo.status == '2'}}">
-      <view class="btn-cancel" bind:tap="cancelOrder">取消订单</view>
+      <view class="btn-cancel" bind:tap="goRefund">取消订单</view>
     </block>
   </block>
   <block wx:else>

@@ -34,7 +34,7 @@
       </view>
     </view>
     <view class="charge-box">
-      <view class='charge-item' wx:for="{{roomCost}}" wx:key="index">
+      <view class='charge-item' wx:for="{{detail.roomCost}}" wx:key="index">
         <view class='item-text'>{{item.dateday}}</view>
         <view class='item-nub black'>
           <label>{{detail.num > 1 ? detail.num+'x' : ''}}</label><label>￥</label><text>{{item.mprice}}</text>

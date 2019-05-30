@@ -31,6 +31,7 @@
       </view>
       <view class="sub-success" wx:if="{{orderInfo.status == '2'}}">使用前，主动出示二维码</view>
       <view class="sub-faill" wx:if="{{orderInfo.status == '3'}}">该订单已取消</view>
+      <view class="sub-faill" wx:if="{{orderInfo.status == '7'}}">已退款</view>
       <view class="sub-faill" wx:if="{{orderInfo.status == '4'}}">该订单已于{{orderInfo.finish_time}}使用</view>
     </view>
     <block wx:if="{{orderInfo.status == '2'}}">

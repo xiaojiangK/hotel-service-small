@@ -6,6 +6,7 @@
     <text wx:if="{{orderInfo.status == '2'}}">待配送</text>
     <text wx:if="{{orderInfo.status == '3'}}">已取消</text>
     <text wx:if="{{orderInfo.status == '4'}}">已完成</text>
+    <text wx:if="{{orderInfo.status == '7'}}">已退款</text>
   </view>
   <view class='input-item'>
     <view>房间号</view>

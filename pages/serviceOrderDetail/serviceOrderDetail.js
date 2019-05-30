@@ -16,7 +16,8 @@ Page({
     qrcode: '',
     orderInfo: {},
     isUse: false,
-    query: ''
+    query: '',
+    phone: ''
   },
   goPay() {
     app.goPay(this.data.id, this.data.flag);
@@ -111,6 +112,14 @@ Page({
     });
   },
   loadData() {
+    wx.getStorage({
+      key: 'userinfo',
+      success: (res) => {
+        this.setData({
+          phone: res.data.tel
+        });
+      }
+    });
     app.util.request({
       url: "entry/wxapp/orderdetails",
       data: {
@@ -152,6 +161,7 @@ Page({
               },
               success:(res) => {
                 if (res.data.status == 200 && res.data.data.status == 4) {
+                  clearInterval(timer);
                   wx.navigateTo({
                     url: '/pages/payComplete/payComplete?type=2'
                   });
@@ -189,5 +199,8 @@ Page({
   },
   onHide() {
     clearInterval(timer);
-  }
+  },
+  onUnload() {
+    clearInterval(timer);
+  },
 })

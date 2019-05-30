@@ -51,18 +51,21 @@
               <block wx:if="{{i.status == '2'}}">待配送</block>
               <block wx:if="{{i.status == '3'}}">已取消</block>
               <block wx:if="{{i.status == '4'}}">已完成</block>
+              <block wx:if="{{i.status == '7'}}">已退款</block>
             </block>
             <block wx:if="{{i.flag == '2'}}">
               <block wx:if="{{i.status == '1'}}">待支付</block>
               <block wx:if="{{i.status == '2'}}">待使用</block>
               <block wx:if="{{i.status == '3'}}">已取消</block>
               <block wx:if="{{i.status == '4'}}">已使用</block>
+              <block wx:if="{{i.status == '7'}}">已退款</block>
             </block>
             <block wx:if="{{i.flag == '3'}}">
               <block wx:if="{{i.status == '1'}}">待支付</block>
               <block wx:if="{{i.status == '2'}}">待用餐</block>
               <block wx:if="{{i.status == '3'}}">已取消</block>
               <block wx:if="{{i.status == '4'}}">已使用</block>
+              <block wx:if="{{i.status == '7'}}">已退款</block>
             </block>
           </view>
         </view>  

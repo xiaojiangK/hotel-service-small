@@ -143,7 +143,7 @@ Page({
         }
 
         // 生成二维码
-        if (this.data.source == 'order' && data.status == '2') {
+        if (this.data.source == 'order' && data.status == '2' && this.data.flag == '3') {
           app.util.request({
             url: "entry/wxapp/QrCode",
             data: {
@@ -183,8 +183,10 @@ Page({
     });
     // 接受参数
     if (opt.query.order && opt.query.flag) {
-      this.data.id = opt.query.order;
-      this.data.flag = opt.query.flag;
+      this.setData({
+        id: opt.query.order,
+        flag: opt.query.flag
+      });
     }
     this.loadData();
   },
@@ -193,9 +195,9 @@ Page({
    */
   onLoad (op) {
     if (op.source == 'order') {
-      this.data.id = op.id;
-      this.data.flag = op.flag;
       this.setData({
+        id: opt.query.order,
+        flag: opt.query.flag,
         source: op.source
       });
     }

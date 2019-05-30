@@ -7,7 +7,7 @@ Component({
     service: {
       type: Array,
       value: [{
-          navigator: '../morningVolume/morningVolume',
+          navigator: '../morningVolume/morningVolume?type=volume',
           url: '/assets/image/index-volume.png',
           text: '早餐券',
         }, {
@@ -15,7 +15,7 @@ Component({
           url: '/assets/image/index-supermarket.png',
           text: '酒店超市',
         }, {
-          navigator: '../hotelFacility/hotelFacility',
+          navigator: '../hotelFacility/hotelFacility?type=facility',
           url: '/assets/image/index-facility.png',
           text: '酒店设施',
         }, {

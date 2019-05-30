@@ -46,7 +46,17 @@ Page({
       }
     });
   },
+  telChange(e){
+    this.data.phone = e.detail.value
+  },
   pay() {
+    if (this.data.phone.length < 11) {
+      wx.showToast({
+        title: '手机号有误',
+        icon: 'none'
+      });
+      return;
+    }
     wx.showLoading({
       title: '支付中...',
       mask: true
@@ -59,6 +69,7 @@ Page({
         app.util.request({
           url: "entry/wxapp/AddGoodsOrder",
           data: {
+            phone: d.phone,
             openid: d.openid,
             user_id: d.id,
             uniacid: d.uniacid,

@@ -9,7 +9,8 @@ Page({
    */
   data: {
     page: 1,
-    orderList: []
+    orderList: [],
+    isOrder: false
   },
   onPullDownRefresh() {
     this.loadData();
@@ -61,6 +62,11 @@ Page({
               }
             });
             this.setData({ orderList });
+            if(orderList.length == 0){
+              this.setData({
+                isOrder:true
+              })
+            }
           }
         });
       },

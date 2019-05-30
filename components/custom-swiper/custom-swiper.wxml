@@ -5,6 +5,7 @@
     interval="{{interval}}"
     duration="{{duration}}"
     circular="true"
+    autoplay="true"
   >
     <block wx:for="{{data.img}}" wx:key='index'>
       <swiper-item class="swiper-item">

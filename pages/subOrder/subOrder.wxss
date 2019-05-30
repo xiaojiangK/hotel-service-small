@@ -57,6 +57,9 @@ page {
   margin-left: 40rpx;
   margin-bottom: 14rpx;
 }
+.order-tel {
+  width: 278rpx;
+}
 .foot {
   position: fixed;
   left: 0;

@@ -48,7 +48,7 @@ function getSign(e, t, n) {
 }
 
 util.url = function(e, t) {
-    var n = require("../siteinfo.js"), a = n.siteroot + "?i=" + n.uniacid + "&t=" + n.multiid + "&v=" + n.version + "&from=wxapp&";
+    var n = require("../siteinfo.js"), a = n.siteroot + "app/index.php?i=" + n.uniacid + "&t=" + n.multiid + "&v=" + n.version + "&from=wxapp&";
     if (e && ((e = e.split("/"))[0] && (a += "c=" + e[0] + "&"), e[1] && (a += "a=" + e[1] + "&"), 
     e[2] && (a += "do=" + e[2] + "&")), t && "object" === (void 0 === t ? "undefined" : _typeof(t))) for (var r in t) r && t.hasOwnProperty(params) && t[r] && (a += r + "=" + t[r] + "&");
     return a;

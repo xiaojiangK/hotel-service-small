@@ -149,6 +149,7 @@ Page({
     });
   },
   loadData() {
+    wx.clearStorage();
     app.util.request({
       url: "entry/wxapp/orderdetails",
       data: {

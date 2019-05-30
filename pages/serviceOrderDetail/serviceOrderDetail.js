@@ -127,7 +127,10 @@ Page({
             finish_time: formatDateTime(data.finish_time * 1000),
           } 
         });
-        if (data.status == '4') {
+        
+        if (data.status == '2') {
+          this.setData({ isUse: false });
+        } else if (data.status == '4') {
           this.setData({ isUse: true });
         }
 

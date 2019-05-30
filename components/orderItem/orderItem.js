@@ -50,14 +50,17 @@ Component({
       const flag = data.flag;
       const id = data.id;
       if (flag == '0') {
+        // 去房间订单详情
         wx.navigateTo({
           url: `/pages/hotelOrderDetail/hotelOrderDetail?id=${id}&flag=${flag}`
         });
       } else if (flag == '1') {
+        // 去超市订单详情
         wx.navigateTo({
           url: `/pages/marketOrder/marketOrder?id=${id}&flag=${flag}`
         });
       } else {
+        // 去早餐券、设施订单详情
         wx.navigateTo({
           url: `/pages/serviceOrderDetail/serviceOrderDetail?id=${id}&flag=${flag}&source=order`
         });

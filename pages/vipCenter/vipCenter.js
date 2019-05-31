@@ -74,6 +74,7 @@ Page({
       key: 'userinfo',
       success: (res)=>{
         
+        // 判断是否有核销权限
         app.util.request({
           url: "entry/wxapp/Write_off",
           data: {

@@ -192,6 +192,8 @@ Page({
           //   }
           // });
 
+        }
+        if (this.data.source == 'order' && data.status == '2') {
           // 监听订单状态
           timer = setInterval(() => {
             app.util.request({

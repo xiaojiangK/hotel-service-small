@@ -158,11 +158,13 @@ Page({
       },
       success:(res) => {
         const data = res.data;
+        const goods_price = Number.parseFloat(data.goods_info[0].price)
         this.setData({
           orderInfo: {
             ...data,
             goods: data.goods_info[0],
             finish_time: formatDateTime(data.finish_time * 1000),
+            price: Number.isInteger(goods_price) ? Number.parseInt(goods_price) : goods_price.toFixed(2)
           } 
         });
         

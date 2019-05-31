@@ -127,7 +127,7 @@ Page({
             price: data.allPrice,
             type: g[0].goods_attribute,
             room_num: data.roomNum,
-            tel: data.tel,
+            phone: data.tel,
             orderGoods
           },
           success:(e) => {

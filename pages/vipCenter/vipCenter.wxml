@@ -101,11 +101,11 @@
 
   <view class='hotel-tel' bind:tap="goCall">
     <image class='icon-tel' src='/assets/image/icon-tel.png'></image>
-    <view class='number-tel' bind:tap="goCall">酒店客服电话</view>
+    <view class='number-tel'>酒店客服电话</view>
   </view>
   <view class='hotel-tel' bindtap="verifygoods" wx:if="{{isVerify == 200}}">
     <image class='icon-tel' src='/assets/image/code.png'></image>
-    <view class='number-tel' bind:tap="goCall">扫码核销</view>
+    <view class='number-tel'>扫码核销</view>
   </view>
 
 </view>

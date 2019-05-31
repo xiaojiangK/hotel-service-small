@@ -22,11 +22,17 @@ Page({
     phone: '',
     userid: '',
     openid: '',
-    uniacid: ''
+    uniacid: '',
+    isIphoneX: false
   },
   onLoad() {
     this.loadData();
+    let isIphoneX =app.globalData.isIphoneX;
+    this.setData({
+      isIphoneX: isIphoneX 
+    })
   },
+ 
   loadData() {
     wx.getStorage({
       key: 'userinfo',

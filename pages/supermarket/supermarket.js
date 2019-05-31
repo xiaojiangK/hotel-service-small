@@ -11,9 +11,14 @@ Page({
     selected: [],
     totalPrice: 0,
     totalCount: 0,
-    NoList:false
+    NoList:false,
+    isIphoneX: false
   },
   loadData() {
+    let isIphoneX =app.globalData.isIphoneX;
+    this.setData({
+      isIphoneX: isIphoneX 
+    })
     // 酒店超市
     wx.showLoading({
       title: '加载中...',

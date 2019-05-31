@@ -12,16 +12,16 @@ page {
 }
 /* phonex底部适配 */
 .fix-iphonex-button {
-  bottom:68rpx!important;
+  padding-bottom:46rpx!important;
 }
-.fix-iphonex-button::after {
+/* .fix-iphonex-button::after {
   content: ' ';
   position: fixed;
   bottom: 0!important;
   height: 68rpx!important;
   width: 100%;
-  background: #fff;
-} 
+  background: white!important;
+}  */
 /* .user-alert {
   position: fixed;
   top:0;

@@ -82,9 +82,11 @@ Page({
             uniacid: res.data.uniacid
           },
           success: (res) => {
-            this.setData({
-              isVerify: res.data.code
-            });
+            if (res.data.code == 200){
+              this.setData({
+                isVerify: res.data.code
+              });
+            }
           }
         });
 

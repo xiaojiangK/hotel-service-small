@@ -153,7 +153,7 @@ page{
   display: flex;
   align-items: center;
   height: 100rpx;
-  margin-top: 30rpx;
+  margin-top: 20rpx;
   padding: 0 40rpx;
   font-size: 36rpx;
   background-color: #fff;

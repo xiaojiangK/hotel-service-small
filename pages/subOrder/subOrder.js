@@ -69,7 +69,7 @@ Page({
         app.util.request({
           url: "entry/wxapp/AddGoodsOrder",
           data: {
-            phone: d.tel,
+            phone: this.data.phone,
             openid: d.openid,
             user_id: d.id,
             uniacid: d.uniacid,

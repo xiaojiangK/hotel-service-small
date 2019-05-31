@@ -3,6 +3,8 @@ const request = require('./../../utils/request');
 
 Page({
   data: {
+    //  状态
+    state: '',
     //  用户标识
     user_id: '',
     //  酒店标识
@@ -31,7 +33,14 @@ Page({
     titleList: []
   },
   //  页面加载
-  onLoad: function () {
+  onLoad: function (opt) {
+    let { state } = opt;
+    if ( state && state == 'build') {
+      this.setData({
+        state
+      });
+      return;
+    }
     this.getInfo();
   },
   //  获取用户标识酒店标识

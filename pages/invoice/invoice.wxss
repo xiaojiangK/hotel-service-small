@@ -1,6 +1,19 @@
 page {
   background: #fff;
 }
+.build {
+  padding-top: 323rpx;
+  text-align: center;
+}
+.build .icon-build {
+  width: 260rpx;
+  height: 260rpx;
+}
+.build .desc {
+  margin-top: 60rpx;
+  color: #919191;
+  font-size: 36rpx;
+}
 /*类型切换*/
 .tab {
   margin: 0 40rpx;

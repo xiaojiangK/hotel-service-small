@@ -5,10 +5,14 @@ Page({
   data: {
     bssid: "",//Wi-Fi 的ISSID
     pwd: "",
-    list: []
+    list: [],
+    type: ""
   },
   onLoad (options) {
     this.loadData();
+    this.setData({  
+      type: options.title
+    }) 
   },
   loadData() {
     const data = wifiData.wifiJsonList.data.a.wifi  //圣美wifi列表
@@ -31,31 +35,39 @@ Page({
   },
   connectWifi: function (e) {
     const that = this;
+    const type = that.data.type;
     const bssid = e.currentTarget.dataset.id
     const pwd = e.currentTarget.dataset.pwd
     this.setData({ bssid, pwd })
-    //检测手机型号
-    wx.getSystemInfo({
-      success: function (res) {
-        var system = '';
-        if (res.platform == 'android') system = parseInt(res.system.substr(8));
-        if (res.platform == 'ios') system = parseInt(res.system.substr(4));
-        if (res.platform == 'android' && system < 6) {
-          wx.showToast({
-            title: '手机版本支持6以上',
-          })
-          return
+    //如果直接点击wifi密码进入 不需连接
+    if (type == "none") {
+      wx.navigateTo({
+        url: "/pages/wifiFail/wifiFail?name=" + bssid +"&pwd="+ pwd
+      })
+    }else {
+       //检测手机型号
+      wx.getSystemInfo({
+        success: function (res) {
+          var system = '';
+          if (res.platform == 'android') system = parseInt(res.system.substr(8));
+          if (res.platform == 'ios') system = parseInt(res.system.substr(4));
+          if (res.platform == 'android' && system < 6) {
+            wx.showToast({
+              title: '手机版本支持6以上',
+            })
+            return
+          }
+          if (res.platform == 'ios' && system < 11.2) {
+            wx.showToast({
+              title: '手机版本支持11以上',
+            })
+            return
+          }
+          //2.初始化 Wi-Fi 模块
+          that.startWifi();
         }
-        if (res.platform == 'ios' && system < 11.2) {
-          wx.showToast({
-            title: '手机版本支持11以上',
-          })
-          return
-        }
-        //2.初始化 Wi-Fi 模块
-        that.startWifi();
-      }
-    })
+      })
+    }
   },
   //初始化 Wi-Fi 模块
   startWifi: function () {

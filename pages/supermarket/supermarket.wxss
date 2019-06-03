@@ -1,6 +1,6 @@
 /* pages/supermarket/supermarket.wxss */
 .good-list{
-  padding: 0 0 110rpx;
+  padding: 0 0 140rpx;
 }
 .submit-bar{
   position: fixed;

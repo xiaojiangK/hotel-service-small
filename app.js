@@ -12,6 +12,17 @@ App({
       }
     });
   },
+  onShow() {
+    //适配iphonex
+    wx.getSystemInfo({
+      success: res =>{ 
+         let modelmes = res.model;   
+         if(modelmes.search('iPhone X') != -1){   
+            this.globalData.isIphoneX = true   
+         }   
+      }
+    })
+  },
   userLogin() {
     // 登录
     wx.login({
@@ -173,7 +184,8 @@ App({
   globalData: {
     url: 'http://msp.showboom.cn/attachment/',
     shopCar:[],
-    newArr:[]
+    newArr:[],
+    isIphonex:false
   },
   onShareAppMessage: function (res) {
     // if (res.from === 'button') {

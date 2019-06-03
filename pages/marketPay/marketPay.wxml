@@ -13,7 +13,7 @@
     <goods data="{{goods}}" isStepper="1" bind:myevent="getGoods"></goods>
     
   </view>
-  <view class='submit-bar'>
+  <view class="submit-bar {{isIphoneX ? 'fix-iphonex-button':''}}">
     <view class='totle-num'>已选<text class='red'>{{ allNum }}</text>件商品</view>
     <view class='totle-price'>合计<text class='red'><text class='small-size'>￥</text> {{ allPrice }}</text></view>
     <view class='submit-btn' bind:tap="goPay">去支付</view>

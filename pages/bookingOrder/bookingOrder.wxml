@@ -46,7 +46,7 @@
   <view class="remark">如需要发票，可向酒店索取</view>
 </view>
 <!-- sum bar start -->
-<view class="sum-bar">
+<view class="sum-bar {{isIphoneX ? 'fix-iphonex-button':''}}">
   <view class="number">
     实付金额：<text>{{totalPrice}}</text>
   </view>

@@ -33,7 +33,7 @@
   <view class="order-caption-a" >
     · 使用时在“我的订单”找到并出示给工作人员                      
   </view>
-  <view class="foot" >
+  <view class="foot {{isIphoneX ? 'fix-iphonex-button':''}}">
     <view class="foot-lf" >
       <view class="foot-text">实付金额：</view>
       <view class="strong"><label class="order-sign red-nub">￥</label> <text class="order-nub red-nub">{{totalPrice}}</text></view>

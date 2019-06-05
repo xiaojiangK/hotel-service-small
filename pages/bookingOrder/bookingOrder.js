@@ -23,6 +23,8 @@ Page({
     userid: '',
     openid: '',
     uniacid: '',
+    vipInfo: {},
+    rebate: 0,
     isIphoneX: false
   },
   onLoad() {
@@ -30,7 +32,7 @@ Page({
     let isIphoneX =app.globalData.isIphoneX;
     this.setData({
       isIphoneX: isIphoneX 
-    })
+    });
   },
  
   loadData() {
@@ -67,7 +69,16 @@ Page({
               totalPrice = (totalPrice * num).toFixed(2);
             }
             price = totalPrice;
-            this.setData({ roomCost, totalPrice });
+            
+            // 获取会员折扣
+            const vipInfo = app.globalData.vipInfo;
+            const rebate = (totalPrice - totalPrice * vipInfo.vip_coupon).toFixed(2)
+            this.setData({
+              rebate,
+              vipInfo,
+              roomCost,
+              totalPrice
+            });
           }
         });
       }
@@ -160,7 +171,9 @@ Page({
         app.util.request({
           url: "entry/wxapp/AddOrder",
           data: {
-            roomCost: this.data.roomCost,
+            is_vip: data.vipInfo.is_vip,
+            vip_coupon: data.vipInfo.is_vip == 1 ? data.vipInfo.vip_coupon : '',
+            roomCost: data.roomCost,
             price: data.roomCost[0].mprice,
             total_cost: data.totalPrice,
             seller_name: h.name,

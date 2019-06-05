@@ -57,6 +57,11 @@ App({
                               iv: res3.iv,
                               openid: res4.data.openid,
                               data: res3.encryptedData
+                            },
+                            success:(res) => {
+                              if (res.data && res.data.code == 0) {
+                                this.globalData.vipInfovipInfo = res.data.data;
+                              }
                             }
                           });
                         }
@@ -194,6 +199,12 @@ App({
     url: 'http://msp.showboom.cn/attachment/',
     shopCar:[],
     newArr:[],
+    vipInfo: {
+      "is_vip": 1, // 1代表是秀豹超级会员， 0代表非秀豹超级会员
+      "unionid": "opzxIv6pFSvTtuBdzUfntn1AtNsc",	
+      "vip_endtime": "2022-03-01 11:30:29",  // 秀豹超级会员到期时间
+      "vip_coupon": 0.95	// 秀豹会员享受的折扣
+    },
     isIphonex:false
   },
   onShareAppMessage: function (res) {

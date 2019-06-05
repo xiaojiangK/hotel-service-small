@@ -50,6 +50,15 @@ App({
                             key: 'userinfo',
                             data: res4.data
                           });
+                          this.util.request({
+                            url: "entry/wxapp/Unionid",
+                            data: {
+                              id: res4.data.id,
+                              iv: res3.iv,
+                              openid: res4.data.openid,
+                              data: res3.encryptedData
+                            }
+                          });
                         }
                       });
                     }

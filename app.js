@@ -57,6 +57,11 @@ App({
                               iv: res3.iv,
                               openid: res4.data.openid,
                               data: res3.encryptedData
+                            },
+                            success:(res) => {
+                              if (res.data && res.data.code == 0) {
+                                this.globalData.vipInfovipInfo = res.data.data;
+                              }
                             }
                           });
                         }
@@ -194,6 +199,7 @@ App({
     url: 'http://msp.showboom.cn/attachment/',
     shopCar:[],
     newArr:[],
+    vipInfo: {},
     isIphonex:false
   },
   onShareAppMessage: function (res) {

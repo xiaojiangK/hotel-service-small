@@ -30,9 +30,7 @@ Component({
       observer: function(newVal, oldVal) {
         this.setData({
           style: newVal.style
-          // wifiType: "list"
         });
-        console.log(this.data.wifiType)
       }
     }
   },
@@ -42,7 +40,8 @@ Component({
    */
   data: {
     style: {},
-    wifiType: 'list',
+    wifiType: '',
+    isShow: true,
     accountNumber: 'DaTangNet-Staff',//Wi-Fi 的SSID，即账号
     bssid: 'DaTangNet-Staff',//Wi-Fi 的ISSID
     password: 'DaTangnet@2018',//Wi-Fi 的密码
@@ -52,7 +51,6 @@ Component({
     attached: function () {
       this.loadData()
     }
-   
   },
   methods: {
     goList:function () {
@@ -64,7 +62,26 @@ Component({
       wx.getStorage({
         key: 'hotel',
         success: (res)=>{
-          
+          const data = res.data.wifiList
+          if (data.length > 1) {
+            this.setData({
+              wifiType: "list"
+            })
+          }else if (data.length = 1) {
+            this.setData({
+              wifiType: "info"
+            })
+          }
+          if (res.data.wifi == "0") {
+            this.setData({
+              isShow: false
+            })
+          }
+          this.setData({
+            accountNumber: data[0].wifi_name,
+            bssid: data[0].wifi_name,
+            password: data[0].wifi_pwd
+          })
         }
       });
     },

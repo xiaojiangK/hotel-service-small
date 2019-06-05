@@ -1,5 +1,4 @@
 const app = getApp();
-const wifiData = require("../../config/json")
 
 Page({
   data: {
@@ -15,9 +14,15 @@ Page({
     }) 
   },
   loadData() {
-    const data = wifiData.wifiJsonList.data.a.wifi  //圣美wifi列表
-    let list = data.sort(this.compare("ssid"))
-    this.setData ({ list })
+    wx.getStorage({
+      key: 'hotel',
+      success: (res)=> {
+        const data = res.data.wifiList
+        let list = data.sort(this.compare("ssid"))
+        this.setData ({ list })
+      }
+    });
+    // const data = wifiData.wifiJsonList.data.a.wifi  //圣美wifi列表
   },
   //房间号升序排列
   compare: function(propertyName) {

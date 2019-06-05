@@ -42,9 +42,9 @@ Component({
     style: {},
     wifiType: '',
     isShow: true,
-    accountNumber: 'DaTangNet-Staff',//Wi-Fi 的SSID，即账号
-    bssid: 'DaTangNet-Staff',//Wi-Fi 的ISSID
-    password: 'DaTangnet@2018',//Wi-Fi 的密码
+    accountNumber: '',//Wi-Fi 的SSID，即账号
+    bssid: '',//Wi-Fi 的ISSID
+    password: '',//Wi-Fi 的密码
   },
   lifetimes: {
     // 生命周期函数

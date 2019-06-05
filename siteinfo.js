@@ -1,5 +1,5 @@
 var siteinfo = {
-    name: "资源邦-志汇酒店营销版",
+    name: "",
     m: 'zh_jdgjb',
     uniacid: "4",
     acid: "873",

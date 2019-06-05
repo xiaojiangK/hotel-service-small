@@ -230,3 +230,11 @@
   border-top: 1rpx solid #e1e1e1;
   padding: 34rpx 54rpx 5rpx 22rpx;
 }
+.sum-panel .member{
+  padding: 20rpx 54rpx 20rpx 22rpx;
+  background: -webkit-linear-gradient(90deg,rgba(219,189,137,1) 0%,rgba(219,189,137,0) 100%);
+  background: linear-gradient(90deg,rgba(219,189,137,1) 0%,rgba(219,189,137,0) 100%);
+}
+.sum-panel .member .title{
+  color: #fff;
+}

@@ -50,6 +50,28 @@ App({
                             key: 'userinfo',
                             data: res4.data
                           });
+                          wx.login({
+                            success: res => {
+                              this.util.request({
+                                url: "entry/wxapp/Unionid",
+                                data: {
+                                  iv: res3.iv,
+                                  code: res.code,
+                                  id: res4.data.id,
+                                  openid: res4.data.openid,
+                                  data: res3.encryptedData
+                                },
+                                success:(res) => {
+                                  if (res.data && res.data.code == 0) {
+                                    wx.setStorage({
+                                      key: 'vipInfo',
+                                      data: res.data.data
+                                    });
+                                  }
+                                }
+                              });
+                            }
+                          });
                         }
                       });
                     }
@@ -185,6 +207,7 @@ App({
     url: 'http://msp.showboom.cn/attachment/',
     shopCar:[],
     newArr:[],
+    vipInfo: {},
     isIphonex:false
   },
   onShareAppMessage: function (res) {

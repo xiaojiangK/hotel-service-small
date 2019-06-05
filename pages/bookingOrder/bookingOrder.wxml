@@ -48,7 +48,7 @@
 <!-- sum bar start -->
 <view class="sum-bar {{isIphoneX ? 'fix-iphonex-button':''}}">
   <view class="number">
-    实付金额：<text>{{totalPrice}}</text>
+    实付金额：<text>{{totalPrice - rebate}}</text>
   </view>
   <view class="detail" bindtap="toggleSumDetail">
     <image src="/assets/image/icon-sum-detail.png" mode="aspectFill"></image>
@@ -72,9 +72,13 @@
       <view class="date">{{item.dateday}}</view>
       <view>{{roomNumber > 1 ? roomNumber+'x' : ''}} ￥{{item.mprice}}</view>
     </view>
+    <view class="row member" wx:if="{{vipInfo.is_vip == 1}}">
+      <view class="title">秀豹超级会员{{vipInfo.vip_coupon * 10}}折</view>
+      <view class="price">-￥{{rebate}}</view>
+    </view>
     <view class="row sum">
       <view>实付金额</view>
-      <view class="price">￥{{totalPrice}}</view>
+      <view class="price">￥{{totalPrice - rebate}}</view>
     </view>
   </view>
 </view>

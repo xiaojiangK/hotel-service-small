@@ -41,6 +41,12 @@ page{
   font-size:28rpx;
   color:#fff;
 }
+.bg-color{
+  padding: 4rpx 20rpx 8rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  background-color: #ce5621;
+}
 .vip-order{
   position: absolute;
   top:220rpx;

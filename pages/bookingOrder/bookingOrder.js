@@ -71,16 +71,21 @@ Page({
             price = totalPrice;
             
             // 获取会员折扣
-            const vipInfo = app.globalData.vipInfo;
-            let rebate = 0;
-            if (vipInfo.is_vip == 1) {
-              rebate = (totalPrice - totalPrice * vipInfo.vip_coupon).toFixed(2)
-            }
-            this.setData({
-              rebate,
-              vipInfo,
-              roomCost,
-              totalPrice
+            wx.getStorage({
+              key: 'vipInfo',
+              success: (res) => {
+                const vipInfo = res.data;
+                let rebate = 0;
+                if (vipInfo.is_vip == 1) {
+                  rebate = (totalPrice - totalPrice * vipInfo.vip_coupon).toFixed(2)
+                }
+                this.setData({
+                  rebate,
+                  vipInfo,
+                  roomCost,
+                  totalPrice
+                });
+              }
             });
           }
         });

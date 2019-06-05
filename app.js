@@ -50,18 +50,26 @@ App({
                             key: 'userinfo',
                             data: res4.data
                           });
-                          this.util.request({
-                            url: "entry/wxapp/Unionid",
-                            data: {
-                              id: res4.data.id,
-                              iv: res3.iv,
-                              openid: res4.data.openid,
-                              data: res3.encryptedData
-                            },
-                            success:(res) => {
-                              if (res.data && res.data.code == 0) {
-                                this.globalData.vipInfovipInfo = res.data.data;
-                              }
+                          wx.login({
+                            success: res => {
+                              this.util.request({
+                                url: "entry/wxapp/Unionid",
+                                data: {
+                                  iv: res3.iv,
+                                  code: res.code,
+                                  id: res4.data.id,
+                                  openid: res4.data.openid,
+                                  data: res3.encryptedData
+                                },
+                                success:(res) => {
+                                  if (res.data && res.data.code == 0) {
+                                    wx.setStorage({
+                                      key: 'vipInfo',
+                                      data: res.data.data
+                                    });
+                                  }
+                                }
+                              });
                             }
                           });
                         }

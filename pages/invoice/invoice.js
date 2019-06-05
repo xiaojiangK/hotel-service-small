@@ -23,8 +23,6 @@ Page({
     bankName: '',
     //  银行账号
     bankAccount: '',
-    //  房间号
-    roomNumber: '',
     //  留言
     comment: '',
     //  是否在搜索
@@ -133,7 +131,7 @@ Page({
   },
   //  申请开票
   applyInvoice: function (e) {
-    let { user_id, seller_id, type, title, taxNumber, roomNumber, comment } = e.detail.value;
+    let { user_id, seller_id, type, title, taxNumber, comment } = e.detail.value;
     let params = null;
     if ( !title.length ) {
       wx.showToast({
@@ -164,7 +162,6 @@ Page({
         type,
         title,
         taxNumber,
-        roomNumber,
         comment 
       };
     }

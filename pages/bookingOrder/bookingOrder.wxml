@@ -72,6 +72,10 @@
       <view class="date">{{item.dateday}}</view>
       <view>{{roomNumber > 1 ? roomNumber+'x' : ''}} ￥{{item.mprice}}</view>
     </view>
+    <view class="row member">
+      <view class="title">秀豹超级会员9.5折</view>
+      <view class="price">-￥60.00</view>
+    </view>
     <view class="row sum">
       <view>实付金额</view>
       <view class="price">￥{{totalPrice}}</view>

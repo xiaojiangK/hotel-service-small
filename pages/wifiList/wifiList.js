@@ -2,9 +2,9 @@ const app = getApp();
 
 Page({
   data: {
+    list: [],
     bssid: "",//Wi-Fi 的ISSID
     pwd: "",
-    list: [],
     type: ""
   },
   onLoad (options) {
@@ -17,12 +17,11 @@ Page({
     wx.getStorage({
       key: 'hotel',
       success: (res)=> {
-        const data = res.data.wifiList
-        let list = data.sort(this.compare("ssid"))
+        const list = res.data.wifiList
+        // let list = data.sort(this.compare("ssid"))
         this.setData ({ list })
       }
     });
-    // const data = wifiData.wifiJsonList.data.a.wifi  //圣美wifi列表
   },
   //房间号升序排列
   compare: function(propertyName) {

@@ -42,8 +42,8 @@
     <input type="text" name="bankAccount" placeholder="银行账号号码（选填）" value="{{bankAccount}}" />
   </view>
   <view class="row" hidden="{{isSearch}}">
-    <text class="label">留言</text>
-    <textarea name="comment" placeholder="房间号（选填）" value="{{comment}}" auto-height></textarea>
+    <text class="label">房间号</text>
+    <textarea name="roomNumber" placeholder="房间号（选填）" value="{{roomNumber}}" auto-height></textarea>
   </view>
   <button class="apply" hidden="{{isSearch}}" form-type="submit">申请开票</button>
 </form>

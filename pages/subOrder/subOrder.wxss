@@ -58,7 +58,7 @@ page {
   margin-bottom: 14rpx;
 }
 .order-tel {
-  width: 278rpx;
+  width: 270rpx;
 }
 .foot {
   position: fixed;

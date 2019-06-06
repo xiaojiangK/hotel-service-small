@@ -6,7 +6,7 @@
     <image class="services-title-img" src="/assets/image/index-right.png"/> 
   </view>
   <!-- wifi -->
-  <view class="wifi-box" >
+  <view class="wifi-box" wx:if="{{ isShow }}">
     <image class="wifi-lf" src="/assets/image/wifi-blue.png" />
     <view class="wifi-nav" >
       <view class="wifi-title" >欢迎使用酒店WiFi</view>

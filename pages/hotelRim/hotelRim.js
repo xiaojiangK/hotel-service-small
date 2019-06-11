@@ -14,13 +14,7 @@ Page({
     app.util.request({
       url: "entry/wxapp/Periphery",
       success:(res) => {
-        const list = res.data.map(item => {
-          return {
-            ...item,
-            img: app.globalData.url + item.img
-          }
-        });
-        this.setData({ list });
+        this.setData({ list: res.data });
       }
     });
   },

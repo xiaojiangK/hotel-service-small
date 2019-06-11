@@ -1,7 +1,8 @@
+let extConfig = wx.getExtConfigSync()
 var siteinfo = {
     name: "",
     m: 'zh_jdgjb',
-    uniacid: "4",
+    uniacid: extConfig.uniacid,
     acid: "873",
     multiid: "1",
     version: "1.0.0",

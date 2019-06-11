@@ -42,7 +42,6 @@ Page({
             })
             const detail = {
               ...item,
-              logo: app.globalData.url + item.ewm_logo,
               img: item.img.split(',').map(item => {
                 return app.globalData.url + item
               }),

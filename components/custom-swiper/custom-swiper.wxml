@@ -13,7 +13,7 @@
       </swiper-item>
     </block> -->
     <swiper-item class="swiper-item">
-      <image src="{{data.logo}}" class="slide-image" mode="aspectFill"/>
+      <image src="{{data.ewm_logo}}" class="slide-image" mode="aspectFill"/>
     </swiper-item>
   </swiper>
   <view class="welcome">

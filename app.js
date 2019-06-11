@@ -28,7 +28,7 @@ App({
     wx.login({
       success: res1 => {
         this.util.request({
-          url: "entry/wxapp/Openid",
+          url: "entry/wxapp/Openids",
           data: {
             code: res1.code
           },
@@ -53,7 +53,7 @@ App({
                           wx.login({
                             success: res => {
                               this.util.request({
-                                url: "entry/wxapp/Unionid",
+                                url: "entry/wxapp/Unionids",
                                 data: {
                                   iv: res3.iv,
                                   code: res.code,
@@ -93,7 +93,7 @@ App({
             key: 'userinfo',
             success: (res2) => {
               this.util.request({
-                url: "entry/wxapp/Jiemi",
+                url: "entry/wxapp/Jiemis",
                 data: {
                   iv: d.iv,
                   code: res.code,

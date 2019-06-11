@@ -69,16 +69,19 @@ Page({
               totalPrice = (totalPrice * num).toFixed(2);
             }
             price = totalPrice;
+            let rebate = 0;
+            let vipInfo = {};
             
             // 获取会员折扣
             wx.getStorage({
               key: 'vipInfo',
               success: (res) => {
-                const vipInfo = res.data;
-                let rebate = 0;
+                vipInfo = res.data;
                 if (vipInfo.is_vip == 1) {
                   rebate = (totalPrice - totalPrice * vipInfo.vip_coupon).toFixed(2)
                 }
+              },
+              complete: () => {
                 this.setData({
                   rebate,
                   vipInfo,

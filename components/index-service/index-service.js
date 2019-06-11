@@ -1,4 +1,3 @@
-// components/index-service/index-service.js
 Component({
   /**
    * 组件的属性列表
@@ -30,29 +29,24 @@ Component({
       observer: function(newVal, oldVal) {
         this.setData({
           style: newVal.style
-          // wifiType: "list"
         });
-        console.log(this.data.wifiType)
       }
     }
   },
 
-  /**
-   * 组件的初始数据
-   */
   data: {
     style: {},
-    wifiType: 'list',
-    accountNumber: 'DaTangNet-Staff',//Wi-Fi 的SSID，即账号
-    bssid: 'DaTangNet-Staff',//Wi-Fi 的ISSID
-    password: 'DaTangnet@2018',//Wi-Fi 的密码
+    wifiType: '',
+    isShow: true, //wifi功能是否隐藏
+    accountNumber: '',//Wi-Fi 的SSID，即账号
+    bssid: '',//Wi-Fi 的ISSID
+    password: '',//Wi-Fi 的密码
   },
   lifetimes: {
     // 生命周期函数
     attached: function () {
       this.loadData()
     }
-   
   },
   methods: {
     goList:function () {
@@ -64,9 +58,30 @@ Component({
       wx.getStorage({
         key: 'hotel',
         success: (res)=>{
-          
+          this.handleTypeSucc(res)       
         }
       });
+    },
+    //wifi类型判断
+    handleTypeSucc(res) {
+      const data = res.data.wifiList
+      if (data.length > 1) {
+        this.setData({
+          wifiType: "list"
+        })
+      }else if (data.length = 1) {
+        this.setData({
+          wifiType: "info",
+          accountNumber: data[0].wifi_name,
+          bssid: data[0].wifi_name,
+          password: data[0].wifi_pwd
+        })
+      }
+      if (res.data.wifi != "1") {
+        this.setData({
+          isShow: false
+        })
+      }
     },
     connectWifi: function () {
       const that = this;
@@ -88,8 +103,7 @@ Component({
             })
             return
           }
-          //2.初始化 Wi-Fi 模块
-          that.startWifi();
+          that.startWifi();//初始化 Wi-Fi 模块
         }
       })
     },
@@ -101,7 +115,7 @@ Component({
       wx.startWifi({
         success: function (res) {
           wx.showLoading({
-            title: '连接中',
+            title: '连接中'
           })
           //请求成功连接Wifi
           that.Connected();    
@@ -124,7 +138,7 @@ Component({
         password: that.data.password,
         success: function (res) {
           wx.showToast({
-            title: 'wifi连接成功',
+            title: 'wifi连接成功'
           })
         },
         fail: function (res) {

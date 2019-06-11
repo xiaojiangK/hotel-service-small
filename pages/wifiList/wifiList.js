@@ -1,11 +1,10 @@
 const app = getApp();
-const wifiData = require("../../config/json")
 
 Page({
   data: {
+    list: [],
     bssid: "",//Wi-Fi 的ISSID
     pwd: "",
-    list: [],
     type: ""
   },
   onLoad (options) {
@@ -15,9 +14,14 @@ Page({
     }) 
   },
   loadData() {
-    const data = wifiData.wifiJsonList.data.a.wifi  //圣美wifi列表
-    let list = data.sort(this.compare("ssid"))
-    this.setData ({ list })
+    wx.getStorage({
+      key: 'hotel',
+      success: (res)=> {
+        const list = res.data.wifiList
+        // let list = data.sort(this.compare("ssid"))
+        this.setData ({ list })
+      }
+    });
   },
   //房间号升序排列
   compare: function(propertyName) {

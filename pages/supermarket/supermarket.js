@@ -32,12 +32,7 @@ Page({
             seller_id: res.data.id
           },
           success:(res) => {
-            const list = res.data.map(item => {
-              return {
-                ...item,
-                goods_img: app.globalData.url + item.goods_img
-              }
-            });
+            const list = res.data;
             this.setData({ list });
             wx.hideLoading();
             if (list.length == 0){

@@ -45,9 +45,7 @@ Page({
             })
             const detail = {
               ...item,
-              img: item.img.split(',').map(item => {
-                return app.globalData.url + item
-              }),
+              img: item.img.split(','),
               coordinates: item.coordinates.split(',')
             }
             wx.setStorage({
@@ -67,39 +65,21 @@ Page({
     // app.util.request({
     //   url: "entry/wxapp/Volume",
     //   success:(res) => {
-    //     const volume = res.data.map(item => {
-    //       return {
-    //         ...item,
-    //         goods_img: app.globalData.url + item.goods_img
-    //       }
-    //     });
-    //     this.setData({ volume });
+    //     this.setData({ volume: res.data });
     //   }
     // });
     // 酒店超市
     // app.util.request({
     //   url: "entry/wxapp/Goods",
     //   success:(res) => {
-    //     const goods = res.data.map(item => {
-    //       return {
-    //         ...item,
-    //         goods_img: app.globalData.url + item.goods_img
-    //       }
-    //     });
-    //     this.setData({ goods });
+    //     this.setData({ goods: res.data });
     //   }
     // });
     // 酒店周边
     // app.util.request({
     //   url: "entry/wxapp/Periphery",
     //   success:(res) => {
-    //     const periphery = res.data.map(item => {
-    //       return {
-    //         ...item,
-    //         img: app.globalData.url + item.img
-    //       }
-    //     });
-    //     this.setData({ periphery });
+    //     this.setData({ periphery: res.data });
     //   }
     // });
     // 挂件数据

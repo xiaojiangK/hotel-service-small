@@ -13,7 +13,6 @@ Page({
     orderList: [],
     hotelName: '',
     tel: 13800138000,
-    url: app.globalData.url,
     isVerify: 0
   },
   goCall () {

@@ -20,13 +20,7 @@ Page({
             seller_id: res.data.id
           },
           success:(res) => {
-            const list = res.data.map(item => {
-              return {
-                ...item,
-                goods_img: app.globalData.url + item.goods_img
-              }
-            });
-            this.setData({ list });
+            this.setData({ list:  res.data });
           }
         });
       }

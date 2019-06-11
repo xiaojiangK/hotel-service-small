@@ -40,6 +40,9 @@ Page({
             this.setData({
               hotelName: item.name
             })
+            wx.setNavigationBarTitle({
+              title: item.name,
+            })
             const detail = {
               ...item,
               img: item.img.split(',').map(item => {

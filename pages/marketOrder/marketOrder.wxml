@@ -1,7 +1,6 @@
 <!--pages/marketOrder/marketOrder.wxml-->
 <view class='pages'>     
-  <view class='title'>
-    当前状态：
+  <view class='title'>当前状态：
     <text wx:if="{{orderInfo.status == '1'}}">待支付</text>
     <text wx:if="{{orderInfo.status == '2'}}">待配送</text>
     <text wx:if="{{orderInfo.status == '3'}}">已取消</text>

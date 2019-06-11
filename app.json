@@ -40,7 +40,7 @@
     "borderStyle": "black",
     "list": [
       {
-        "text": "主页",
+        "text": "首页",
         "pagePath": "pages/index/index",
         "iconPath": "assets/image/home.png",
         "selectedIconPath": "assets/image/home-orange.png"

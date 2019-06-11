@@ -77,7 +77,7 @@ Component({
           password: data[0].wifi_pwd
         })
       }
-      if (res.data.wifi == "0") {
+      if (res.data.wifi != "1") {
         this.setData({
           isShow: false
         })

@@ -54,6 +54,7 @@ Page({
       allPrice += i.specifications[0].goods_price * i.num
       allNum += i.num
     })
+    allPrice = allPrice.toFixed(2)
     this.setData({
       goods: newArr,
       allPrice,

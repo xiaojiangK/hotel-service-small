@@ -96,7 +96,7 @@ Component({
         totalPrice += i.specifications[0].goods_price * i.num
         totalCount += i.num
       })
-
+      totalPrice = totalPrice.toFixed(2)
       this.setData({ totalPrice, totalCount })
 
 
@@ -121,7 +121,7 @@ Component({
         allPrice+=i.specifications[0].goods_price * i.num
         allNum += i.num
       })
-
+      allPrice = allPrice.toFixed(2)
       this.triggerEvent('myevent', { allPrice, allNum}, { bubbles: false });
     },
 
@@ -140,7 +140,7 @@ Component({
         allPrice += i.specifications[0].goods_price * i.num
         allNum += i.num
       })
-
+      allPrice = allPrice.toFixed(2)
       this.triggerEvent('myevent', { allPrice, allNum }, { bubbles: false });
     }
 

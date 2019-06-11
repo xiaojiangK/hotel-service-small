@@ -89,6 +89,7 @@ Page({
         totalCount += i.num
       })
     }
+    totalPrice = totalPrice.toFixed(2)
     this.setData({
       totalPrice,
       totalCount

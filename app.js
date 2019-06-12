@@ -27,8 +27,13 @@ App({
     // 登录
     wx.login({
       success: res1 => {
+        let { uniacid } = wx.getExtConfigSync()
+        let url = "entry/wxapp/Openids"
+        if (uniacid==4){
+          url = "entry/wxapp/Openid"
+        }
         this.util.request({
-          url: "entry/wxapp/Openids",
+          url: url,
           data: {
             code: res1.code
           },
@@ -52,8 +57,13 @@ App({
                           });
                           wx.login({
                             success: res => {
+                              let { uniacid } = wx.getExtConfigSync()
+                              let url = "entry/wxapp/Unionids"
+                              if (uniacid == 4) {
+                                url = "entry/wxapp/Unionid"
+                              }
                               this.util.request({
-                                url: "entry/wxapp/Unionids",
+                                url: url,
                                 data: {
                                   iv: res3.iv,
                                   code: res.code,
@@ -92,6 +102,11 @@ App({
           wx.getStorage({
             key: 'userinfo',
             success: (res2) => {
+              let { uniacid } = wx.getExtConfigSync()
+              let url = "entry/wxapp/Jiemis"
+              if (uniacid == 4) {
+                url = "entry/wxapp/Jiemi"
+              }
               this.util.request({
                 url: "entry/wxapp/Jiemis",
                 data: {

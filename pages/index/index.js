@@ -155,8 +155,8 @@ Page({
       url: 'https://j.showboom.cn/app/index.php?i=4&t=1&v=1.0.0&from=wxapp&c=entry&a=wxapp&do=wxUserAccessLog&m=zh_jdgjb',
       method: 'POST',
       data: {
-        type: 'index',
-        page: 'index',
+        access_type: 'index',
+        access_page: 'index',
         sourcefrom:"hotelmp",
         wx_nick_name:name,
         wxopenid: openid,

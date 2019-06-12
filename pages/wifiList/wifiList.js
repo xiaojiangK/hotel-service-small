@@ -18,6 +18,9 @@ Page({
       key: 'hotel',
       success: (res)=> {
         const list = res.data.wifiList
+        wx.setNavigationBarTitle({
+          title: res.data.name,
+        })
         // let list = data.sort(this.compare("ssid"))
         this.setData ({ list })
       }

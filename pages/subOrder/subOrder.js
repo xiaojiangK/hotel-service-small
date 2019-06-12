@@ -46,10 +46,12 @@ Page({
         this.count_price()
       }
     });
-    let isIphoneX =app.globalData.isIphoneX;
-    this.setData({
-      isIphoneX: isIphoneX 
-    })
+    let isIphoneX = app.globalData.isIphoneX;
+    if (isIphoneX) {
+      this.setData({
+        isIphoneX: isIphoneX
+      })
+    }
   },
   telChange(e){
     this.data.phone = e.detail.value

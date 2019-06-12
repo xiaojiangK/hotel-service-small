@@ -69,7 +69,7 @@ Component({
         this.setData({
           wifiType: "list"
         })
-      }else if (data.length = 1) {
+      }else if (data.length == 1) {
         this.setData({
           wifiType: "info",
           accountNumber: data[0].wifi_name,

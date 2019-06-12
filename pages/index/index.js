@@ -141,7 +141,7 @@ Page({
               code: res1.code
             },
             success: (res2) => {
-             console.log(res2)
+              openid = res2.data.openid
             }
           });
         }
@@ -153,6 +153,7 @@ Page({
       data: {
         type: 'index',
         page: 'index',
+        sourcefrom:"hotelmp",
         wx_nick_name:name,
         wxopenid: openid,
         app_id: a.miniProgram.appId

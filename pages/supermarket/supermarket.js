@@ -16,9 +16,11 @@ Page({
   },
   loadData() {
     let isIphoneX =app.globalData.isIphoneX;
-    this.setData({
-      isIphoneX: isIphoneX 
-    })
+    if (isIphoneX){
+      this.setData({
+        isIphoneX: isIphoneX
+      })
+    }
     // 酒店超市
     wx.showLoading({
       title: '加载中...',

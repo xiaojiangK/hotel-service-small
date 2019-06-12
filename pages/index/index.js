@@ -33,7 +33,7 @@ Page({
         app.util.request({
           url: "entry/wxapp/PjDetails",
           data: {
-            seller_id: res.data.id
+            uniacid: res.data.uniacid
           },
           success:(res) => {
             const item = res.data;

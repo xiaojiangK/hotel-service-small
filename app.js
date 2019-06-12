@@ -1,5 +1,6 @@
 //app.js
 var Moment = require("./utils/moment.js");
+var siteinfo = require("./siteinfo.js");
 
 App({
   onLaunch (option) {
@@ -27,9 +28,8 @@ App({
     // 登录
     wx.login({
       success: res1 => {
-        let { uniacid } = wx.getExtConfigSync()
         let url = "entry/wxapp/Openids"
-        if (uniacid==4){
+        if (siteinfo.uniacid==4){
           url = "entry/wxapp/Openid"
         }
         this.util.request({
@@ -57,9 +57,8 @@ App({
                           });
                           wx.login({
                             success: res => {
-                              let { uniacid } = wx.getExtConfigSync()
                               let url = "entry/wxapp/Unionids"
-                              if (uniacid == 4) {
+                              if (siteinfo.uniacid == 4) {
                                 url = "entry/wxapp/Unionid"
                               }
                               this.util.request({
@@ -102,13 +101,12 @@ App({
           wx.getStorage({
             key: 'userinfo',
             success: (res2) => {
-              let { uniacid } = wx.getExtConfigSync()
               let url = "entry/wxapp/Jiemis"
-              if (uniacid == 4) {
+              if (siteinfo.uniacid == 4) {
                 url = "entry/wxapp/Jiemi"
               }
               this.util.request({
-                url: "entry/wxapp/Jiemis",
+                url: url,
                 data: {
                   iv: d.iv,
                   code: res.code,

@@ -1,52 +1,62 @@
-<!-- banner start -->
-<view class="banner">
-  <swiper interval="2000" duration="500" circular="true">
-    <block wx:for="{{swiper}}" wx:key="index">
-      <swiper-item>
-        <image src="{{item}}" mode="aspectFill"/>
-      </swiper-item>
-    </block>
-  </swiper>
-</view>
-<!-- banner end -->
-<!-- duration start -->
-<view class="duration">
-  <view class="col" bind:tap="selectDate">
-    <view class="status">入住</view>
-    <view class="date">{{start[1]}}月{{start[2]}}日</view>
-    <view class="day">{{startWeek}}</view>
+<block wx:if="{{isMchid}}">
+  <!-- banner start -->
+  <view class="banner">
+    <swiper interval="2000" duration="500" circular="true">
+      <block wx:for="{{swiper}}" wx:key="index">
+        <swiper-item>
+          <image src="{{item}}" mode="aspectFill"/>
+        </swiper-item>
+      </block>
+    </swiper>
   </view>
-  <view class="col sum">共{{days}}晚</view>
-  <view class="col" bind:tap="selectDate">
-    <view class="status">离店</view>
-    <view class="date">{{end[1]}}月{{end[2]}}日</view>
-    <view class="day">{{endWeek}}</view>
+  <!-- banner end -->
+  <!-- duration start -->
+  <view class="duration">
+    <view class="col" bind:tap="selectDate">
+      <view class="status">入住</view>
+      <view class="date">{{start[1]}}月{{start[2]}}日</view>
+      <view class="day">{{startWeek}}</view>
+    </view>
+    <view class="col sum">共{{days}}晚</view>
+    <view class="col" bind:tap="selectDate">
+      <view class="status">离店</view>
+      <view class="date">{{end[1]}}月{{end[2]}}日</view>
+      <view class="day">{{endWeek}}</view>
+    </view>
   </view>
-</view>
 
-<!-- duration end -->
-<!-- room list start -->
-<view class="room-list">
-  <view class="item" wx:for="{{roomList}}" wx:key="index" wx:if="{{item.state == '1'}}" data-room="{{item}}" bindtap="goPay">
-    <image class="img" src="{{item.logo}}" mode="aspectFill"></image>
-    <view class="type">{{item.name}}</view>
-    <view class="desc">{{item.size}} {{item.windows == '1' ? '有窗' : '无窗'}}</view>
-    <view class="breakfast">{{item.breakfast == '0' ? '不' : ''}}含早</view>
-    <view class="price">{{item.price}}</view>
-    <view class="status" wx:if="{{item.min_num > 0}}">
-      <view>预订</view>
-      <view>
-        <block wx:if="{{item.min_num == 0}}">已售完</block>
-        <block wx:if="{{item.min_num > 10}}">在线付</block>
-        <block wx:else>仅剩{{item.min_num}}间</block>
+  <!-- duration end -->
+  <!-- room list start -->
+  <view class="room-list">
+    <view class="item" wx:for="{{roomList}}" wx:key="index" wx:if="{{item.state == '1'}}" data-room="{{item}}" bindtap="goPay">
+      <image class="img" src="{{item.logo}}" mode="aspectFill"></image>
+      <view class="type">{{item.name}}</view>
+      <view class="desc">{{item.size}} {{item.windows == '1' ? '有窗' : '无窗'}}</view>
+      <view class="breakfast">{{item.breakfast == '0' ? '不' : ''}}含早</view>
+      <view class="price {{ isMchid ? '' : 'mr0'}}">{{item.price}}</view>
+      <block wx:if="{{ isMchid }}">
+        <view class="status" wx:if="{{item.min_num > 0}}">
+        <view>预订</view>
+        <view>
+          <block wx:if="{{item.min_num == 0}}">已售完</block>
+          <block wx:if="{{item.min_num > 10}}">在线付</block>
+          <block wx:else>仅剩{{item.min_num}}间</block>
+        </view>
       </view>
-    </view>
-    <view class="status full" wx:else>
-      <view>满房</view>
-      <view>满房</view>
+      <view class="status full" wx:else>
+        <view>满房</view>
+        <view>满房</view>
+      </view>
+      </block>
     </view>
   </view>
-</view>
+</block>
+<block wx:else>
+  <view class="build">
+    <image class="icon-build" src="/assets/image/icon-build.png" mode="aspectFill" />
+    <view class="desc">功能建设中，敬请期待</view>
+  </view>
+</block>
 
 <!-- room list end -->
  <!-- 授权窗口 -->

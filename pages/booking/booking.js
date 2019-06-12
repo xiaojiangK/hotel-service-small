@@ -11,7 +11,8 @@ Page({
     startWeek: '',
     roomList: [],
     swiper: [],
-    isGetPhoneNumber: false
+    isGetPhoneNumber: false,
+    isMchid: ''
   },
   goPay(e) {
     const room = e.currentTarget.dataset.room;
@@ -59,6 +60,9 @@ Page({
     });
   },
   loadData() {
+    this.setData({
+      isMchid:app.globalData.isMchid
+    })
     wx.getStorage({
       key: 'system',
       success: (res)=>{
@@ -81,7 +85,7 @@ Page({
                 price: Math.ceil(item.min_price)
               }
             });
-            this.setData({ roomList, swiper });
+            this.setData({ roomList, swiper, isMchid: app.globalData.isMchid });
           }
         });
       }

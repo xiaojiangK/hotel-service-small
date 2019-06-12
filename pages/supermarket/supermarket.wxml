@@ -3,7 +3,7 @@
     <view class='good-list'>
       <goods isCar= "1" data="{{list}}" bind:emitData="getEmitData"></goods>
     </view>
-    <view class="submit-bar {{isIphoneX ? 'fix-iphonex-button':''}}">
+    <view wx:if="{{ isMchid }}" class="submit-bar {{isIphoneX ? 'fix-iphonex-button':''}}">
       <view class='totle-num'>已选<text class='red'>{{totalCount}}</text>件商品</view>
       <view class='totle-price'>合计<text class='red'><text class='small-size'>￥</text>{{totalPrice}}</text></view>
       <view class='submit-btn' bind:tap="selected" > 查看购物车 </view>

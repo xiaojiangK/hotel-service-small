@@ -221,7 +221,8 @@ App({
     shopCar:[],
     newArr:[],
     vipInfo: {},
-    isIphonex:false
+    isIphonex:false,
+    isMchid:false
   },
   onShareAppMessage: function (res) {
     // if (res.from === 'button') {

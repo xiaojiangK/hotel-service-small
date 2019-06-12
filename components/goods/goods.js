@@ -15,7 +15,8 @@ Component({
             price: Number.isInteger(goods_price) ? Number.parseInt(goods_price) : goods_price.toFixed(2)
           }
         });
-        this.setData({ list });
+        list.isMchid = app.globalData.isMchid
+        this.setData({ list, isMchid:app.globalData.isMchid });
       }
     },
     isCurrentNum:{
@@ -38,7 +39,8 @@ Component({
     isCurrentNum:false,
     isCar:false,
     totalPrice:0,
-    totalCount:0
+    totalCount:0,
+    isMchid:''
   },
 
   /**

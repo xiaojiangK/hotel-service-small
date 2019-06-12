@@ -12,7 +12,9 @@
         </view>
         <view class="facility-rg">
           <view style="margin-top: 16rpx"><label class="facility-rg-sign">￥</label> <text class="facility-rg-nub">{{item.price}}</text></view>   
-          <view class="handleTap" data-item="{{item}}" bindtap="handleToOrder">立即购买</view>
+          <block wx:if="{{isMchid}}">
+            <view class="handleTap" data-item="{{item}}" bindtap="handleToOrder">立即购买</view>
+          </block>
         </view>       
       </view>   
     </view>

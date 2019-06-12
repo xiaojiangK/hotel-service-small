@@ -59,6 +59,10 @@ Page({
           key: 'system',
           data: res.data
         });
+        let mchid  = res.data.mchid
+        if (mchid) {
+          app.globalData.isMchid = true
+        }
       }
     });
     // 酒店设施

@@ -12,9 +12,11 @@ Page({
     totalPrice: 0,
     totalCount: 0,
     NoList:false,
-    isIphoneX: false
+    isIphoneX: false,
+    isMchid:''
   },
   loadData() {
+    console.log(app.globalData.isMchid)
     let isIphoneX =app.globalData.isIphoneX;
     if (isIphoneX){
       this.setData({
@@ -35,7 +37,7 @@ Page({
           },
           success:(res) => {
             const list = res.data;
-            this.setData({ list });
+            this.setData({ list, isMchid:app.globalData.isMchid });
             wx.hideLoading();
             if (list.length == 0){
               this.setData({ NoList:true });

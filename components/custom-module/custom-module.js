@@ -1,5 +1,5 @@
 const api = require("../../utils/api.js");
-
+const app = getApp()
 Component({
   /**
    * 组件的属性列表
@@ -15,7 +15,7 @@ Component({
             price: Number.isInteger(goods_price) ? Number.parseInt(goods_price) : goods_price.toFixed(2)
           }
         });
-        this.setData({ list });
+        this.setData({ list, isMchid: app.globalData.isMchid });
       }
     }
   },

@@ -225,7 +225,8 @@ App({
     newArr:[],
     vipInfo: {},
     isIphonex:false,
-    isMchid:false
+    isMchid:false,
+    imgSize: '?x-oss-process=image/resize,m_mfit,h_300,w_400'
   },
   onShareAppMessage: function (res) {
     // if (res.from === 'button') {

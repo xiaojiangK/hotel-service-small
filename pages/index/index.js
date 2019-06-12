@@ -171,9 +171,7 @@ Page({
     })
   },
   getUserPhoneNumber(e){
-    app.getUserPhoneNumber(e);
-    app.userLogin();
-    this.bindGetUserInfo();
+    app.getUserPhoneNumber(e, this);
   },
   onShareAppMessage: function (res) {
   }

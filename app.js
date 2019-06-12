@@ -93,7 +93,7 @@ App({
       }
     });
   },
-  getUserPhoneNumber(e){
+  getUserPhoneNumber(e, that){
     const d = e.detail;
     if(e.detail.errMsg == "getPhoneNumber:ok") {
       wx.login({
@@ -118,6 +118,9 @@ App({
                     wx.showToast({
                       title: '绑定成功',
                       icon: 'none'
+                    });
+                    that.setData({
+                      isGetPhoneNumber: false
                     });
                   } else {
                     wx.showToast({

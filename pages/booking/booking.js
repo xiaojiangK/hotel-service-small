@@ -119,9 +119,7 @@ Page({
     });
   },
   getUserPhoneNumber(e){
-    app.getUserPhoneNumber(e);
-    app.userLogin();
-    this.changePhoneNumber();
+    app.getUserPhoneNumber(e, this);
   },
   onShareAppMessage: function (res) {
   }

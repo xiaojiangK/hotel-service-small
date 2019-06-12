@@ -77,11 +77,11 @@ Page({
             let swiper = [];
             const roomList = res.data.map(item => {
               if (item.state == '1') {
-                swiper.push(item.logo);
+                swiper.push(item.logo+app.globalData.imgSize);
               }
               return {
                 ...item,
-                logo: item.logo,
+                logo: item.logo+app.globalData.imgSize,
                 price: Math.ceil(item.min_price)
               }
             });

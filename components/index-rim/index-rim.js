@@ -7,7 +7,13 @@ Component({
     data: {
       type: Array,
       observer: function(newVal, oldVal) {
-        this.setData({ list: newVal  });
+        const list = newVal.map(item => {
+          return {
+            ...item,
+            img: item.img + app.globalData.imgSize,
+          }
+        });
+        this.setData({ list  });
       }
     },
     widget: {

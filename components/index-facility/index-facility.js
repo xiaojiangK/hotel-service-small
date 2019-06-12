@@ -11,6 +11,7 @@ Component({
           const goods_price = Number.parseFloat(item.specifications[0].goods_price);
           return {
             ...item,
+            goods_img: item.goods_img + app.globalData.imgSize,
             price: Number.isInteger(goods_price) ? Number.parseInt(goods_price) : goods_price.toFixed(2)
           }
         });

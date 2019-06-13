@@ -130,10 +130,16 @@ App({
                       isGetPhoneNumber: false
                     });
                   } else {
-                    wx.showToast({
-                      title: res3.data.info,
-                      icon: 'none'
-                    });
+                    if(res3.data.info=='解密失败'){
+                      wx.showToast({
+                        title: res3.data.info,
+                        icon: 'none'
+                      });
+                    }else{
+                      that.setData({
+                        isGetPhoneNumber: false
+                      });
+                    }
                   }
                 }
               });

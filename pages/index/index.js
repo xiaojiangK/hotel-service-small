@@ -135,7 +135,6 @@ Page({
   },
   getSignTotal(openid,name){
     const a = wx.getAccountInfoSync() ? wx.getAccountInfoSync() : {}
-    console.log(a)
     if(openid=='undefined'){
       wx.login({
         success: res1 => {
@@ -172,6 +171,7 @@ Page({
   },
   getUserPhoneNumber(e){
     app.getUserPhoneNumber(e, this);
+    app.userLogin();
   },
   onShareAppMessage: function (res) {
   }

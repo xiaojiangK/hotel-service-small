@@ -58,6 +58,7 @@ Page({
     this.data.phone = e.detail.value
   },
   pay() {
+    let _this = this
     if (this.data.phone.length < 11) {
       wx.showToast({
         title: '手机号有误',
@@ -81,12 +82,12 @@ Page({
         app.util.request({
           url: url,
           data: {
-            phone: this.data.phone,
+            phone: _this.data.phone,
             openid: d.openid,
             user_id: d.id,
             uniacid: d.uniacid,
-            seller_id: this.data.hotelid,
-            price: this.data.totalPrice,
+            seller_id: _this.data.hotelid,
+            price: _this.data.totalPrice,
             type: g.goods_attribute,
             orderGoods: [
               {
@@ -94,9 +95,9 @@ Page({
                 name: g.goods_name,
                 img: g.goods_img,
                 type: g.goods_attribute,
-                price: this.data.money,
-                number: this.data.code,
-                total_price: this.data.money * this.data.code
+                price: _this.data.money,
+                number: _this.data.code,
+                total_price: _this.data.money * _this.data.code
               }
             ]
           },

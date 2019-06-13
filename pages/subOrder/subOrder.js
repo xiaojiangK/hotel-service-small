@@ -77,7 +77,7 @@ Page({
         const g = this.data.goods;
         let url = "entry/wxapp/AddGoodsOrders"
         if (siteinfo.uniacid==4){
-          url = "entry/wxapp/AddOrder"
+          url = "entry/wxapp/AddGoodsOrder"
         }
         app.util.request({
           url: url,

@@ -1,6 +1,7 @@
 //app.js
 var Moment = require("./utils/moment.js");
 var siteinfo = require("./siteinfo.js");
+let iNow = 0;
 
 App({
   onLaunch (option) {
@@ -114,6 +115,12 @@ App({
                   openid: res2.data.openid
                 },
                 success:(res3) => {
+                  iNow++;
+                  if (iNow == 2) {
+                    that.setData({
+                      isGetPhoneNumber: false
+                    });
+                  }
                   if (res3.data.status == 200) {
                     wx.showToast({
                       title: '绑定成功',

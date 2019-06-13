@@ -1,3 +1,4 @@
+var siteinfo = require("../../siteinfo.js");
 var app = getApp();
 let price = 0;
 
@@ -179,8 +180,12 @@ Page({
       key: 'hotel',
       success: (res)=>{
         const h = res.data;
+        let url = "entry/wxapp/AddOrders"
+        if (siteinfo.uniacid==4){
+          url = "entry/wxapp/AddOrder"
+        }
         app.util.request({
-          url: "entry/wxapp/AddOrder",
+          url: url,
           data: {
             is_vip: data.vipInfo.is_vip,
             vip_coupon: data.vipInfo.is_vip == 1 ? data.vipInfo.vip_coupon : '',

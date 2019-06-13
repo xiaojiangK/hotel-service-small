@@ -1,4 +1,5 @@
 // pages/marketPay/marketPay.js
+var siteinfo = require("../../siteinfo.js");
 var app = getApp();
 
 Page({
@@ -124,8 +125,12 @@ Page({
             });
           }
         }
+        let url = "entry/wxapp/AddGoodsOrders"
+        if (siteinfo.uniacid==4){
+          url = "entry/wxapp/AddOrder"
+        }
         app.util.request({
-          url: "entry/wxapp/AddGoodsOrder",
+          url: url,
           data: {
             openid: d.openid,
             user_id: d.id,

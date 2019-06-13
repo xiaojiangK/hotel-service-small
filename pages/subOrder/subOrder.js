@@ -1,3 +1,4 @@
+var siteinfo = require("../../siteinfo.js");
 var app = getApp();
 
 Page({
@@ -73,8 +74,12 @@ Page({
       success: (res) => {
         const d = res.data;
         const g = this.data.goods;
+        let url = "entry/wxapp/AddGoodsOrders"
+        if (siteinfo.uniacid==4){
+          url = "entry/wxapp/AddOrder"
+        }
         app.util.request({
-          url: "entry/wxapp/AddGoodsOrder",
+          url: url,
           data: {
             phone: this.data.phone,
             openid: d.openid,

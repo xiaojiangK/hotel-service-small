@@ -52,7 +52,7 @@ Page({
         } else {
           totalPrice = (totalPrice * num).toFixed(2);
         }
-        this.setData({ detail, totalPrice });
+        this.setData({ detail, totalPrice: totalPrice.toFixed(2) });
         
         // 倒计时
         this.c3 = new $wuxCountDown({

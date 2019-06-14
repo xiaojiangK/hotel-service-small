@@ -19,6 +19,7 @@ Page({
     room: { days: 1 },
     roomCost: [],
     totalPrice: 0,
+    total_cost: 0,
     name: '',
     phone: '',
     userid: '',
@@ -63,7 +64,7 @@ Page({
               totalPrice += Math.ceil(item.mprice);
               return {
                 ...item,
-                mprice: Math.ceil(item.mprice)
+                mprice: Math.ceil(item.mprice).toFixed(2)
               };
             });
             const num = this.data.roomNumber;
@@ -82,7 +83,7 @@ Page({
               success: (res) => {
                 vipInfo = res.data;
                 if (vipInfo.is_vip == 1) {
-                  rebate = Math.ceil((totalPrice - totalPrice * vipInfo.vip_coupon).toFixed(2))
+                  rebate = (totalPrice - totalPrice * vipInfo.vip_coupon).toFixed(2)
                 }
               },
               complete: () => {
@@ -90,7 +91,8 @@ Page({
                   rebate,
                   vipInfo,
                   roomCost,
-                  totalPrice: Math.ceil(totalPrice)
+                  totalPrice: Math.ceil(totalPrice).toFixed(2),
+                  total_cost: (totalPrice - rebate).toFixed(2)
                 });
               }
             });

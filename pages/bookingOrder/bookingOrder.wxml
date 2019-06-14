@@ -48,7 +48,7 @@
 <!-- sum bar start -->
 <view class="sum-bar {{isIphoneX ? 'fix-iphonex-button':''}}">
   <view class="number">
-    实付金额：<text>{{totalPrice - rebate}}</text>
+    实付金额：<text>{{total_cost}}</text>
   </view>
   <view class="detail" bindtap="toggleSumDetail">
     <image src="/assets/image/icon-sum-detail.png" mode="aspectFill"></image>
@@ -78,7 +78,7 @@
     </view>
     <view class="row sum">
       <view>实付金额</view>
-      <view class="price">￥{{totalPrice - rebate}}</view>
+      <view class="price">￥{{total_cost}}</view>
     </view>
   </view>
 </view>

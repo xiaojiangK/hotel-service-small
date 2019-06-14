@@ -158,8 +158,12 @@ App({
     wx.getStorage({
       key: 'userinfo',
       success: (res) => {
+        let url = "entry/wxapp/Pays"
+        if (siteinfo.uniacid==4){
+          url = "entry/wxapp/Pay"
+        }
         this.util.request({
-          url: "entry/wxapp/Pay",
+          url: url,
           data: {
             flag: flag,
             order_id: id,

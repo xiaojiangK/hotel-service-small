@@ -1,7 +1,7 @@
 <view class="wrapper">
   <block wx:for="{{widgets}}" wx:key="index">
     <custom-swiper wx:if="{{item.type == 'banner'}}" widget="{{item}}" data="{{detail}}"> </custom-swiper>
-    <index-service wx:if="{{item.type == 'menu'}}" widget="{{item}}"></index-service>
+    <index-service id="index-service" wx:if="{{item.type == 'menu'}}" widget="{{item}}"></index-service>
     <index-location wx:if="{{item.type == 'addresspicture'}}" widget="{{item}}" data="{{detail}}"></index-location>
     <!-- <index-facility wx:if="{{item.type == 'facilitiespicture'}}" widget="{{item}}" data="{{volume}}"></index-facility>
     <index-supermarket wx:if="{{item.type == 'goods'}}" widget="{{item}}" data="{{goods}}"></index-supermarket>

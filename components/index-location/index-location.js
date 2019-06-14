@@ -58,7 +58,7 @@ Component({
   methods: {
     openPhoneCall() {
       api.makePhoneCall({
-        phoneNumber: this.data.data.link_tel
+        phoneNumber: this.data.data.tel
       })
     },
     openMap() {

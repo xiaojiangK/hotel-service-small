@@ -45,7 +45,7 @@ Component({
   lifetimes: {
     // 生命周期函数
     attached: function () {
-      this.loadData()
+      // this.loadData()
     }
   },
   methods: {

@@ -53,6 +53,9 @@ Page({
               data: detail
             });
             this.setData({ detail });
+
+            let indexService = this.selectComponent('#index-service');
+            indexService.loadData();
           }
         });
         wx.setStorage({

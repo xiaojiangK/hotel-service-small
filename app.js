@@ -115,12 +115,12 @@ App({
                   openid: res2.data.openid
                 },
                 success:(res3) => {
-                  iNow++;
-                  if (iNow == 2) {
-                    that.setData({
-                      isGetPhoneNumber: false
-                    });
-                  }
+                  // iNow++;
+                  // if (iNow == 2) {
+                  //   that.setData({
+                  //     isGetPhoneNumber: false
+                  //   });
+                  // }
                   if (res3.data.status == 200) {
                     wx.showToast({
                       title: '绑定成功',

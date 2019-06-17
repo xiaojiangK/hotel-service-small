@@ -9,9 +9,11 @@ Page({
   },
   onLoad (options) {
     this.loadData();
-    this.setData({  
-      type: options.title
-    }) 
+    if (options.title){
+      this.setData({
+        type: options.title
+      }) 
+    }
   },
   loadData() {
     wx.getStorage({

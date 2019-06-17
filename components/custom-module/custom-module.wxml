@@ -1,6 +1,6 @@
 <!--components/custom-module/custom-module.wxml-->
 <view class="wrapper">
-  <block wx:for="{{list}}" wx:key="{{index}}">
+  <block wx:if="{{ list.length>0 }}" wx:for="{{list}}" wx:key="{{index}}">
     <view class="hotel-facility" wx:if="{{item.goods_is_open == '1'}}">
       <view class="facility-banner">
         <image src="{{item.goods_img}}" mode="aspectFill"/>
@@ -19,4 +19,9 @@
       </view>   
     </view>
   </block>
+  <view wx:if="{{ list.length==0 }}" class="noCon">
+    <image src="/assets/image/noInfo.png" />
+    <text>酒店暂未开放此功能</text>
+    <!-- <text>您可以致电前台咨询</text> -->
+  </view>
 </view>

@@ -145,9 +145,9 @@ Component({
       const password = that.data.password;
       wx.startWifi({
         success: function (res) {
-          wx.showLoading({
-            title: '连接中'
-          })
+          // wx.showLoading({
+          //   title: '连接中'
+          // })
           //请求成功连接Wifi
           that.Connected();    
         },

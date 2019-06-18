@@ -52,21 +52,21 @@ Component({
     loadData() {
       // let res = wx.getStorageSync('wifiList')
       // this.handleTypeSucc(res)  
-      wx.getStorage({
-        key: 'hotel',
-        success: (res)=>{
-          this.handleTypeSucc(res)       
-        }
-      });
+      // wx.getStorage({
+      //   key: 'hotel',
+      //   success: (res)=>{
+      //     this.handleTypeSucc(res)       
+      //   }
+      // });
     },
     //wifi类型判断
-    handleTypeSucc(res) {
-      if (res.data.wifi != "1") {
-        this.setData({
-          isShow: false
-        })
-      }
-    },
+    // handleTypeSucc(res) {
+    //   if (res.data.wifi != "1") {
+    //     this.setData({
+    //       isShow: false
+    //     })
+    //   }
+    // },
     getWifiList(){
       let res = wx.getStorageSync('wifiList')
       if (res.length > 1) {
@@ -80,11 +80,21 @@ Component({
           bssid: res[0].wifi_name,
           password: res[0].wifi_pwd
         })
+      }else{
+        this.setData({
+          wifiType: 'none'
+        })
       }
     },
     connectWifi: function () {
       this.getWifiList()
-      if(this.data.wifiType == 'list'){
+      if (this.data.wifiType == 'none'){
+        wx.showModal({
+          title: '温馨提示',
+          content: '酒店暂未开放此功能',
+          showCancel: false
+        })
+      } else if (this.data.wifiType == 'list'){
         wx.navigateTo({
           url: '/pages/wifiList/wifiList',
         })
@@ -115,10 +125,18 @@ Component({
     },
     wifiNext(){
       this.getWifiList()
-      let url = this.data.wifiType == 'list' ? '/pages/wifiList/wifiList?title=none' : '/pages/wifiFail/wifiFail?name=' + this.data.bssid + '&pwd=' + this.data.password
-      wx.navigateTo({
-        url: url,
-      })
+      if (this.data.wifiType == 'none'){
+        wx.showModal({
+          title: '温馨提示',
+          content: '酒店暂未开放此功能',
+          showCancel: false
+        })
+      }else{
+        let url = this.data.wifiType == 'list' ? '/pages/wifiList/wifiList?title=none' : '/pages/wifiFail/wifiFail?name=' + this.data.bssid + '&pwd=' + this.data.password
+        wx.navigateTo({
+          url: url,
+        })
+      }
     },
     //初始化 Wi-Fi 模块
     startWifi: function () {

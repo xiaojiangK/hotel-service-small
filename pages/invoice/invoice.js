@@ -25,7 +25,9 @@ Page({
     bankAccount: '',
     //  房间号
     roomNumber: '',
-    //  是否在搜索
+    //  搜索开关
+    searchOnOff: false,
+    //  是否在搜索中
     isSearch: false,
     //  抬头列表
     titleList: []
@@ -89,6 +91,20 @@ Page({
       type
     });
   },
+  //  发票搜索开始
+  searchTitleStart: function () {
+    this.setData({
+      searchOnOff: true
+    });
+  },
+  //  发票搜索结束
+  searchTitleEnd: function () {
+    if (!this.data.titleList) {
+      this.setData({
+        isSearch: false
+      });
+    }
+  },
   //  搜索发票抬头
   searchTitle: function (e) {
     let { value } = e.detail;
@@ -99,7 +115,7 @@ Page({
         isSearch: false,
         titleList: []
       });
-    } else if ( value.length > 1 ) {
+    } else if (value.length > 1 && this.data.searchOnOff) {
       request.searchTitle({
         user_id: this.data.user_id,
         seller_id: this.data.seller_id,
@@ -121,6 +137,7 @@ Page({
     this.setData({
       isSearch: false,
       titleList: [],
+      searchOnOff: false,
       title: invoice.title,
       taxNumber: invoice.tax_number,
       companyAddress: invoice.company_address,

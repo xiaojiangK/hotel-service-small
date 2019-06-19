@@ -108,7 +108,7 @@ Page({
       fail: (res) => {
         if(res.data.tel) {
           this.setData({
-            isGetPhoneNumber: false
+            isGetPhoneNumber: true
           });
         } else {
           this.setData({
@@ -120,6 +120,7 @@ Page({
   },
   getUserPhoneNumber(e){
     app.getUserPhoneNumber(e, this);
+    app.userLogin();
   },
   onShareAppMessage: function (res) {
   }

@@ -68,6 +68,7 @@ App({
                                   iv: res3.iv,
                                   code: res.code,
                                   id: res4.data.id,
+                                  mobile: res4.data.tel,
                                   openid: res4.data.openid,
                                   data: res3.encryptedData
                                 },

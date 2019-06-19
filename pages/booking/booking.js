@@ -120,6 +120,7 @@ Page({
   },
   getUserPhoneNumber(e){
     app.getUserPhoneNumber(e, this);
+    app.userLogin();
   },
   onShareAppMessage: function (res) {
   }

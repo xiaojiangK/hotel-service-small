@@ -49,63 +49,94 @@ Component({
     }
   },
   methods: {
-    goList:function () {
-      wx.navigateTo({
-        url: '/pages/wifiList/wifiList',
-      })
-    },
     loadData() {
-      wx.getStorage({
-        key: 'hotel',
-        success: (res)=>{
-          this.handleTypeSucc(res)       
-        }
-      });
+      // let res = wx.getStorageSync('wifiList')
+      // this.handleTypeSucc(res)  
+      // wx.getStorage({
+      //   key: 'hotel',
+      //   success: (res)=>{
+      //     this.handleTypeSucc(res)       
+      //   }
+      // });
     },
     //wifi类型判断
-    handleTypeSucc(res) {
-      const data = res.data.wifiList
-      if (data.length > 1) {
+    // handleTypeSucc(res) {
+    //   if (res.data.wifi != "1") {
+    //     this.setData({
+    //       isShow: false
+    //     })
+    //   }
+    // },
+    getWifiList(){
+      let res = wx.getStorageSync('wifiList')
+      if (res.length > 1) {
         this.setData({
           wifiType: "list"
         })
-      }else if (data.length == 1) {
+      } else if (res.length == 1) {
         this.setData({
           wifiType: "info",
-          accountNumber: data[0].wifi_name,
-          bssid: data[0].wifi_name,
-          password: data[0].wifi_pwd
+          accountNumber: res[0].wifi_name,
+          bssid: res[0].wifi_name,
+          password: res[0].wifi_pwd
         })
-      }
-      if (res.data.wifi != "1") {
+      }else{
         this.setData({
-          isShow: false
+          wifiType: 'none'
         })
       }
     },
     connectWifi: function () {
-      const that = this;
-      //检测手机型号
-      wx.getSystemInfo({
-        success: function (res) {
-          var system = '';
-          if (res.platform == 'android') system = parseInt(res.system.substr(8));
-          if (res.platform == 'ios') system = parseInt(res.system.substr(4));
-          if (res.platform == 'android' && system < 6) {
-            wx.showToast({
-              title: '手机版本支持6以上',
-            })
-            return
+      this.getWifiList()
+      if (this.data.wifiType == 'none'){
+        wx.showModal({
+          title: '温馨提示',
+          content: '酒店暂未开放此功能',
+          showCancel: false
+        })
+      } else if (this.data.wifiType == 'list'){
+        wx.navigateTo({
+          url: '/pages/wifiList/wifiList',
+        })
+      }else{
+        const that = this;
+        //检测手机型号
+        wx.getSystemInfo({
+          success: function (res) {
+            var system = '';
+            if (res.platform == 'android') system = parseInt(res.system.substr(8));
+            if (res.platform == 'ios') system = parseInt(res.system.substr(4));
+            if (res.platform == 'android' && system < 6) {
+              wx.showToast({
+                title: '手机版本支持6以上',
+              })
+              return
+            }
+            if (res.platform == 'ios' && system < 11.2) {
+              wx.showToast({
+                title: '手机版本支持11以上',
+              })
+              return
+            }
+            that.startWifi();//初始化 Wi-Fi 模块
           }
-          if (res.platform == 'ios' && system < 11.2) {
-            wx.showToast({
-              title: '手机版本支持11以上',
-            })
-            return
-          }
-          that.startWifi();//初始化 Wi-Fi 模块
-        }
-      })
+        })
+      }
+    },
+    wifiNext(){
+      this.getWifiList()
+      if (this.data.wifiType == 'none'){
+        wx.showModal({
+          title: '温馨提示',
+          content: '酒店暂未开放此功能',
+          showCancel: false
+        })
+      }else{
+        let url = this.data.wifiType == 'list' ? '/pages/wifiList/wifiList?title=none' : '/pages/wifiFail/wifiFail?name=' + this.data.bssid + '&pwd=' + this.data.password
+        wx.navigateTo({
+          url: url,
+        })
+      }
     },
     //初始化 Wi-Fi 模块
     startWifi: function () {
@@ -114,9 +145,9 @@ Component({
       const password = that.data.password;
       wx.startWifi({
         success: function (res) {
-          wx.showLoading({
-            title: '连接中'
-          })
+          // wx.showLoading({
+          //   title: '连接中'
+          // })
           //请求成功连接Wifi
           that.Connected();    
         },

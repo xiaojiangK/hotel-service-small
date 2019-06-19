@@ -16,4 +16,11 @@
       </view>   
     </view>
   </block>
+  <block wx:if="{{ list.length==0 }}" >
+    <view class="noCon">
+      <image src="/assets/image/noInfo.png" />
+      <text>酒店暂未开放此功能</text>
+      <!-- <text>您可以致电前台咨询</text> -->
+    </view>
+  </block>
 </view>

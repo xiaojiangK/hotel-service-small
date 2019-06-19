@@ -48,12 +48,14 @@ Page({
               ewm_logo: item.ewm_logo + app.globalData.imgSize,
               coordinates: item.coordinates.split(',')
             }
+            let { wifiList } = detail
+
             wx.setStorage({
               key: 'hotel',
               data: detail
             });
+            wx.setStorageSync('wifiList', wifiList)
             this.setData({ detail });
-
             let indexService = this.selectComponent('#index-service');
             indexService.loadData();
           }

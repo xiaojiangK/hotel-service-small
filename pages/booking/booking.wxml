@@ -53,8 +53,8 @@
 </block>
 <block wx:else>
   <view class="build">
-    <image class="icon-build" src="/assets/image/icon-build.png" mode="aspectFill" />
-    <view class="desc">功能建设中，敬请期待</view>
+    <image class="icon-build" src="/assets/image/noInfo.png" mode="aspectFill" />
+    <view class="desc">酒店暂未开放此功能</view>
   </view>
 </block>
 

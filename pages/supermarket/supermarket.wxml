@@ -9,9 +9,14 @@
       <view class='submit-btn' bind:tap="selected" > 查看购物车 </view>
     </view>
   </block>
-  <view wx:if="{{ NoList }}" class="noCon">
+  <!-- <view wx:if="{{ NoList }}" class="noCon">
     <image src="/assets/image/noInfo.png" />
     <text>没有任何信息</text>
     <text>您可以致电前台咨询</text>
+  </view> -->
+  <view wx:if="{{ NoList }}" class="noCon">
+    <image src="/assets/image/noInfo.png" />
+    <text>酒店暂未开放此功能</text>
+    <!-- <text>您可以致电前台咨询</text> -->
   </view>
 </view>

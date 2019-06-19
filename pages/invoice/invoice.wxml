@@ -11,11 +11,12 @@
   <view class="hidden">
     <input type="text" name="user_id" value="{{user_id}}" />
     <input type="text" name="seller_id" value="{{seller_id}}" />
+    <input type="text" name="uniacid" value="{{uniacid}}" />
     <input type="text" name="type" value="{{type}}" />
   </view>
   <view class="row">
     <text class="label">抬头名称</text>
-    <textarea name="title" placeholder="{{type == 0 ? '单位名称':'姓名'}}（必填）" value="{{title}}" auto-height bindinput="searchTitle"></textarea>
+    <textarea name="title" placeholder="{{type == 0 ? '单位名称':'姓名'}}（必填）" value="{{title}}" auto-height bindfocus="searchTitleStart" bindblur="searchTitleEnd" bindinput="searchTitle"></textarea>
     <text class="choose" bindtap="chooseWXTitle">选择抬头</text>
     <view class="title-list">
       <view class="item" wx:for="{{titleList}}" wx:key="index" data-title="{{item}}" bindtap="chooseTitle">{{item.title}}</view>

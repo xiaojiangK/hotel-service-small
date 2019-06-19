@@ -108,7 +108,7 @@ Page({
       fail: (res) => {
         if(res.data.tel) {
           this.setData({
-            isGetPhoneNumber: true
+            isGetPhoneNumber: false
           });
         } else {
           this.setData({

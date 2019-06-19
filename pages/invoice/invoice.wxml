@@ -11,6 +11,7 @@
   <view class="hidden">
     <input type="text" name="user_id" value="{{user_id}}" />
     <input type="text" name="seller_id" value="{{seller_id}}" />
+    <input type="text" name="uniacid" value="{{uniacid}}" />
     <input type="text" name="type" value="{{type}}" />
   </view>
   <view class="row">

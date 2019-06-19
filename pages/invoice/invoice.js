@@ -9,6 +9,7 @@ Page({
     user_id: '',
     //  酒店标识
     seller_id: '',
+    uniacid: '',
     //  开票类型
     type: 1,
     //  抬头名称
@@ -60,7 +61,8 @@ Page({
     .then(res => {
       if ( res.data ) {
         this.setData({
-          seller_id: res.data.seller_id
+          seller_id: res.data.seller_id,
+          uniacid: res.data.uniacid
         });
       }
     });
@@ -119,6 +121,7 @@ Page({
       request.searchTitle({
         user_id: this.data.user_id,
         seller_id: this.data.seller_id,
+        uniacid: this.data.uniacid,
         title: value
       })
       .then(res => {
@@ -148,7 +151,7 @@ Page({
   },
   //  申请开票
   applyInvoice: function (e) {
-    let { user_id, seller_id, type, title, taxNumber, roomNumber } = e.detail.value;
+    let { user_id, seller_id, uniacid, type, title, taxNumber, roomNumber } = e.detail.value;
     let params = null;
     if ( !title.length ) {
       wx.showToast({
@@ -176,6 +179,7 @@ Page({
       params = {
         user_id,
         seller_id,
+        uniacid,
         type,
         title,
         taxNumber,

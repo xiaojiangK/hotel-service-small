@@ -95,6 +95,7 @@ App({
     });
   },
   getUserPhoneNumber(e, that){
+    let _this = this
     const d = e.detail;
     if(e.detail.errMsg == "getPhoneNumber:ok") {
       wx.login({
@@ -132,19 +133,23 @@ App({
                   } else {
                     if(res3.data.info=='解密失败'){
                       wx.showToast({
-                        title: res3.data.info,
+                        title: '由于网络波动暂未获取到手机号，请您再试一下',
                         icon: 'none'
                       });
                     }else{
+                      
                       that.setData({
                         isGetPhoneNumber: false
                       });
                     }
                   }
+                  //绑定手机号后更新本地用户信息
+                  _this.userLogin()
                 }
               });
             }
           });
+          
         }
       });
     }

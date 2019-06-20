@@ -196,7 +196,7 @@ Page({
             vip_coupon: data.vipInfo.is_vip == 1 ? data.vipInfo.vip_coupon : '',
             roomCost: data.roomCost,
             price: data.roomCost[0].mprice,
-            total_cost: data.totalPrice,
+            total_cost: data.total_cost,
             seller_name: h.name,
             seller_address: h.address,
             coordinates: `${h.coordinates[0]},${h.coordinates[1]}`,

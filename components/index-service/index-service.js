@@ -107,14 +107,16 @@ Component({
             if (res.platform == 'android') system = parseInt(res.system.substr(8));
             if (res.platform == 'ios') system = parseInt(res.system.substr(4));
             if (res.platform == 'android' && system < 6) {
-              wx.showToast({
-                title: '手机版本支持6以上',
+              wx.showModal({
+                title: '温馨提示',
+                content: '支持安卓6以上的版本',
               })
               return
             }
             if (res.platform == 'ios' && system < 11.2) {
-              wx.showToast({
-                title: '手机版本支持11以上',
+              wx.showModal({
+                title: '温馨提示',
+                content: '支持IOS11以上的版本',
               })
               return
             }

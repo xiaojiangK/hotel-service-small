@@ -122,6 +122,8 @@ Page({
         })
       }
     })
+  },
+  onShareAppMessage: function () {
   }
 
 });

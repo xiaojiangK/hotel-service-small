@@ -355,5 +355,7 @@ Page({
     this.setData({
       dateList: dateList
     });
+  },
+  onShareAppMessage: function () {
   }
 })

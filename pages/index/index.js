@@ -178,6 +178,6 @@ Page({
     app.getUserPhoneNumber(e, this);
     // app.userLogin();
   },
-  onShareAppMessage: function (res) {
+  onShareAppMessage: function () {
   }
 })

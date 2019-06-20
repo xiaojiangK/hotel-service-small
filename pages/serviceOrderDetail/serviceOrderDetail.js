@@ -249,4 +249,6 @@ Page({
   onUnload() {
     clearInterval(timer);
   },
+  onShareAppMessage: function () {
+  }
 })

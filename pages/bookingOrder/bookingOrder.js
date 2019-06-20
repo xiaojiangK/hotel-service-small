@@ -257,5 +257,7 @@ Page({
         });
       }
     });
+  },
+  onShareAppMessage: function () {
   }
 })

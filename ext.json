@@ -1,15 +1,15 @@
 {
   "extEnable": true,
-  "extAppid": "wxe76544bee8a265ce",
+  "extAppid": "wxe6d10ebdbcfa3240",
   "directCommit": false,
   "ext": {
     "name": "wechat",
     "_appids": [
-      "wxe76544bee8a265ce"
+      "wxe6d10ebdbcfa3240"
     ],
-    "extAppid": "wxe76544bee8a265ce",
+    "extAppid": "wxe6d10ebdbcfa3240",
     "extAppName": "",
-    "uniacid":11
+    "uniacid":15
     
   }
 }

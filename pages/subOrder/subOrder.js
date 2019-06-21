@@ -169,6 +169,8 @@ Page({
     this.setData({
       totalPrice: needPay
     })
+  },
+  onShareAppMessage: function () {
   }
     
 })

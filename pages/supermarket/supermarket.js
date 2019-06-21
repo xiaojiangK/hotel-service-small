@@ -93,6 +93,8 @@ Page({
       totalPrice,
       totalCount
     })
+  },
+  onShareAppMessage: function () {
   }
 
 })

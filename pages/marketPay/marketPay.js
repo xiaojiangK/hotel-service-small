@@ -194,5 +194,7 @@ Page({
         });
       }
     });
+  },
+  onShareAppMessage: function () {
   }
 })

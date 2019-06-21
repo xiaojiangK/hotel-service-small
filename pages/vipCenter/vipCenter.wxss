@@ -42,9 +42,11 @@ page{
   color:#fff;
 }
 .bg-color{
+  width: 90rpx;
   padding: 4rpx 20rpx 8rpx;
   border-radius: 20rpx;
   font-size: 24rpx;
+  text-align: center;
   background-color: #ce5621;
 }
 .vip-order{

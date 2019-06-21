@@ -7,10 +7,13 @@
     <view>
       <view class='vip-name'>{{userInfo.name ? userInfo.name : '用户名'}}</view>
       <!-- <view class='vip-notice'>{{userInfo.name ? '欢迎入住 · '+hotelName : '使用微信快捷登录'}}</view> -->
-      <block wx:if='{{ userInfo.name }}'>
-      <view class='vip-notice bg-color'>普通会员</view>
+      <block wx:if='{{ userInfo.tel }}'>
+        <view class='vip-notice bg-color'>VIP会员</view>
       </block>
-      <block wx:else>
+      <block wx:if='{{ userInfo.name && !userInfo.tel }}'>
+        <view class='vip-notice bg-color'>非会员</view>
+      </block>
+      <block wx:if='{{  !userInfo.name && !userInfo.tel  }}'>
       <view class='vip-notice'>使用微信快捷登录</view>
       </block>
     </view>

@@ -176,8 +176,8 @@ Page({
   },
   getUserPhoneNumber(e){
     app.getUserPhoneNumber(e, this);
-    app.userLogin();
+    // app.userLogin();
   },
-  onShareAppMessage: function (res) {
+  onShareAppMessage: function () {
   }
 })

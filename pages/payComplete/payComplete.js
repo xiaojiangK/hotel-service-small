@@ -41,5 +41,7 @@ Page({
         }
       });
     }
+  },
+  onShareAppMessage: function () {
   }
 })

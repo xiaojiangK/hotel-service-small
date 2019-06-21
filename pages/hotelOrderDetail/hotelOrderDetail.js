@@ -117,5 +117,7 @@ Page({
     wx.switchTab({
       url: '/pages/booking/booking'
     });
+  },
+  onShareAppMessage: function () {
   }
 })

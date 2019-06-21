@@ -209,5 +209,7 @@ Page({
         titleList: []
       });
     });
+  },
+  onShareAppMessage: function () {
   }
 })

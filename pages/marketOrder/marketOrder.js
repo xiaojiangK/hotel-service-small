@@ -108,5 +108,7 @@ Page({
     this.data.id = op.id;
     this.data.flag = op.flag;
     this.loadData();
+  },
+  onShareAppMessage: function () {
   }
 })

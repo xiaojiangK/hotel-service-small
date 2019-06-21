@@ -20,6 +20,8 @@ Page({
         });
       }
     });
+  },
+  onShareAppMessage: function () {
   }
  
 })

@@ -34,5 +34,7 @@ Page({
     wx.makePhoneCall({
       phoneNumber: e.currentTarget.dataset.tel
     });
+  },
+  onShareAppMessage: function () {
   }
 })

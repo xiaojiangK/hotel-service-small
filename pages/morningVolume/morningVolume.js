@@ -31,5 +31,7 @@ Page({
    */
   onLoad(options) {
     this.loadData();
+  },
+  onShareAppMessage: function () {
   }
 })

@@ -13,7 +13,7 @@
       <block wx:if='{{ userInfo.name && !userInfo.tel }}'>
         <view class='vip-notice bg-color'>非会员</view>
       </block>
-      <block wx:else>
+      <block wx:if='{{  !userInfo.name && !userInfo.tel  }}'>
       <view class='vip-notice'>使用微信快捷登录</view>
       </block>
     </view>

@@ -5,7 +5,7 @@
 <view class="tab" wx:if="{{state != 'build'}}">
   <text class="label">开票类型</text>
   <text class="tab-nav {{type == 1 ? 'active':''}}" data-type="{{1}}" bindtap="chooseType">单位</text>
-  <text class="tab-nav  {{type == 2 ? 'active':''}}" data-type="{{2}}" bindtap="chooseType">个人</text>
+  <text class="tab-nav {{type == 2 ? 'active':''}}" data-type="{{2}}" bindtap="chooseType">个人</text>
 </view>
 <form class="form" bindsubmit="applyInvoice" wx:if="{{state != 'build'}}">
   <view class="hidden">
@@ -15,36 +15,42 @@
     <input type="text" name="type" value="{{type}}" />
   </view>
   <view class="row">
-    <text class="label">抬头名称</text>
+    <text class="label title">抬头名称</text>
     <textarea name="title" placeholder="{{type == 1 ? '单位名称':'姓名'}}（必填）" value="{{title}}" auto-height bindfocus="searchTitleStart" bindblur="searchTitleEnd" bindinput="searchTitle"></textarea>
     <text class="choose" bindtap="chooseWXTitle">选择抬头</text>
-    <view class="title-list">
-      <view class="item" wx:for="{{titleList}}" wx:key="index" data-title="{{item}}" bindtap="chooseTitle">{{item.title}}</view>
+  </view>
+  <view class="title-list" wx:if="{{titleList}}">
+    <view class="item" wx:for="{{titleList}}" wx:key="index" data-title="{{item}}" bindtap="chooseTitle">{{item.title}}</view>
+  </view>
+  <view hidden="{{isSearch}}">
+    <view class="row">
+      <text class="label tax-number">税号</text>
+      <input type="text" name="taxNumber" placeholder="15-20位（必填）" maxlength="20" value="{{taxNumber}}" />
     </view>
   </view>
-  <view class="row" hidden="{{isSearch}}">
-    <text class="label">税号</text>
-    <input type="text" name="taxNumber" placeholder="15-20位（必填）" maxlength="20" value="{{taxNumber}}" />
+  <view hidden="{{type != 1 || isSearch}}">
+    <view class="row">
+      <text class="label">单位地址</text>
+      <textarea name="companyAddress" placeholder="单位地址信息（选填）" value="{{companyAddress}}" auto-height></textarea>
+    </view>
+    <view class="row">
+      <text class="label">单位电话</text>
+      <input type="number" name="telephone" placeholder="电话号码（选填）" value="{{telephone}}" />
+    </view>
+    <view class="row">
+      <text class="label">开户银行</text>
+      <textarea name="bankName" placeholder="开户银行名称（选填）" value="{{bankName}}" auto-height></textarea>
+    </view>
+    <view class="row">
+      <text class="label">银行账号</text>
+      <input type="number" name="bankAccount" placeholder="银行账号号码（选填）" value="{{bankAccount}}" />
+    </view>
   </view>
-  <view class="row" hidden="{{type != 1 || isSearch}}">
-    <text class="label">单位地址</text>
-    <textarea name="companyAddress" placeholder="单位地址信息（选填）" value="{{companyAddress}}" auto-height></textarea>
-  </view>
-  <view class="row" hidden="{{type != 1 || isSearch}}">
-    <text class="label">单位电话</text>
-    <input type="text" name="telephone" placeholder="电话号码（选填）" value="{{telephone}}" />
-  </view>
-  <view class="row" hidden="{{type != 1 || isSearch}}">
-    <text class="label">开户银行</text>
-    <textarea name="bankName" placeholder="开户银行名称（选填）" value="{{bankName}}" auto-height></textarea>
-  </view>
-  <view class="row" hidden="{{type != 1 || isSearch}}">
-    <text class="label">银行账号</text>
-    <input type="text" name="bankAccount" placeholder="银行账号号码（选填）" value="{{bankAccount}}" />
-  </view>
-  <view class="row" hidden="{{isSearch}}">
-    <text class="label">房间号</text>
-    <textarea name="roomNumber" placeholder="房间号（选填）" value="{{roomNumber}}" auto-height></textarea>
+  <view hidden="{{isSearch}}">
+    <view class="row">
+      <text class="label">房间号</text>
+      <input type="text" name="roomNumber" placeholder="房间号（选填）" value="{{roomNumber}}" />
+    </view>
   </view>
   <button class="apply" hidden="{{isSearch}}" form-type="submit">申请开票</button>
 </form>

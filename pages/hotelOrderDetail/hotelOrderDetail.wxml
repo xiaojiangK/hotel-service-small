@@ -46,7 +46,7 @@
     <view class='payment-title'>
       <view class='payment-title-text'>实付金额</view>
       <view class='item-nub'>
-        <label>￥</label><text>{{totalPrice}}</text>
+        <label>￥</label><text>{{detail.total_cost}}</text>
       </view>
     </view>
     <view class='payment-box'>

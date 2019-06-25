@@ -24,6 +24,8 @@ Page({
     bankName: '',
     //  银行账号
     bankAccount: '',
+    //  名称
+    name: '',
     //  房间号
     roomNumber: '',
     //  搜索开关
@@ -73,7 +75,8 @@ Page({
       user_id: this.data.user_id
     })
     .then(res => {
-      if ( res ) {
+      if ( res && res.type == 1 ) {
+        //  单位信息回填
         this.setData({
           type: res.type,
           title: res.title,
@@ -82,6 +85,12 @@ Page({
           telephone: res.telephone,
           bankName: res.bank_name,
           bankAccount: res.bank_account
+        });
+      } else if (res && res.type == 2) {
+        //  个人信息回填
+        this.setData({
+          type: res.type,
+          name: res.title
         });
       }
     });
@@ -110,9 +119,7 @@ Page({
   //  搜索发票抬头
   searchTitle: function (e) {
     let { value } = e.detail;
-    if ( this.data.type == 2 ) {
-      return;
-    } else if ( !value ) {
+    if ( !value ) {
       this.setData({
         isSearch: false,
         titleList: []
@@ -151,31 +158,47 @@ Page({
   },
   //  申请开票
   applyInvoice: function (e) {
-    let { user_id, seller_id, uniacid, type, title, taxNumber, roomNumber } = e.detail.value;
+    let { 
+      user_id,
+      seller_id,
+      uniacid,
+      type,
+      title,
+      taxNumber,
+      companyAddress,
+      telephone,
+      bankName,
+      bankAccount,
+      name,
+      roomNumber
+    } = e.detail.value;
     let params = null;
-    if ( !title.length ) {
+    if ( type == 1 && !title.length ) {
       wx.showToast({
         title: '请填写抬头名称',
         icon: 'none'
       });
       return;
-    } else if ( !taxNumber ) {
+    } else if ( type == 1 && !taxNumber ) {
       wx.showToast({
         title: '请填写税号',
         icon: 'none'
       });
       return;
-    } else if ( taxNumber.length < 15) {
+    } else if ( type == 1 && taxNumber.length < 15) {
       wx.showToast({
         title: '请正确填写税号',
         icon: 'none'
       });
       return;
+    } else if (type == 2 && !name.length) {
+      wx.showToast({
+        title: '请填写名称',
+        icon: 'none'
+      });
+      return;
     } else if ( type == 1 ) {
       //  单位类型参数
-      params = e.detail.value;
-    } else if ( type == 2 ) {
-      //  个人类型参数
       params = {
         user_id,
         seller_id,
@@ -183,6 +206,20 @@ Page({
         type,
         title,
         taxNumber,
+        companyAddress,
+        telephone,
+        bankName,
+        bankAccount,
+        roomNumber
+      };
+    } else if ( type == 2 ) {
+      //  个人类型参数
+      params = {
+        user_id,
+        seller_id,
+        uniacid,
+        type,
+        title: name,
         roomNumber 
       };
     }
@@ -200,14 +237,22 @@ Page({
   //  选择微信里的发票抬头
   chooseWXTitle: function () {
     api.chooseInvoiceTitle()
-    .then(res => {
-      let type = res.type == 0 ? 1 : 2;
-      this.setData({
-        ...res,
-        type,
-        isSearch: false,
-        titleList: []
-      });
+    .then(res => {console.log(res);
+      if (res.type == 0) {
+        //  单位
+        this.setData({
+          ...res,
+          type: 1,
+          isSearch: false,
+          titleList: []
+        });
+      } else {
+        //  个人
+        this.setData({
+          type: 2,
+          name: res.title
+        });
+      }
     });
   },
   onShareAppMessage: function () {

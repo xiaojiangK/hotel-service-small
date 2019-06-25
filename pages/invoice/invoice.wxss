@@ -67,8 +67,7 @@ page {
   font-size: 32rpx;
   font-weight: 400;
 }
-.form .title::after,
-.form .tax-number::after {
+.form .required::after {
   content: '*';
   color: #f90808;
   font-size: 32rpx;
@@ -85,7 +84,7 @@ page {
 .form textarea {
   padding: 10rpx 0 2rpx;
 }
-.form .row:nth-of-type(2) textarea {
+.form .row .title {
   width: 400rpx;
 }
 .form .row .choose {

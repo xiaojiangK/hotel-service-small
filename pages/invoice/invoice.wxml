@@ -14,36 +14,43 @@
     <input type="text" name="uniacid" value="{{uniacid}}" />
     <input type="text" name="type" value="{{type}}" />
   </view>
-  <view class="row">
-    <text class="label title">抬头名称</text>
-    <textarea name="title" placeholder="{{type == 1 ? '单位名称':'姓名'}}（必填）" value="{{title}}" auto-height bindfocus="searchTitleStart" bindblur="searchTitleEnd" bindinput="searchTitle"></textarea>
-    <text class="choose" bindtap="chooseWXTitle">选择抬头</text>
-  </view>
-  <view class="title-list" wx:if="{{titleList}}">
-    <view class="item" wx:for="{{titleList}}" wx:key="index" data-title="{{item}}" bindtap="chooseTitle">{{item.title}}</view>
-  </view>
-  <view hidden="{{isSearch}}">
-    <view class="row">
-      <text class="label tax-number">税号</text>
-      <input type="text" name="taxNumber" placeholder="15-20位（必填）" maxlength="20" value="{{taxNumber}}" />
+  <view hidden="{{type == 2}}">
+    <view class="row" hidden="{{type === 2}}">
+      <text class="label required">抬头名称</text>
+      <textarea class="title" name="title" placeholder="单位名称（必填）" value="{{title}}" auto-height bindfocus="searchTitleStart" bindblur="searchTitleEnd" bindinput="searchTitle"></textarea>
+      <text class="choose" bindtap="chooseWXTitle">选择抬头</text>
+    </view>
+    <view class="title-list" wx:if="{{titleList}}">
+      <view class="item" wx:for="{{titleList}}" wx:key="index" data-title="{{item}}" bindtap="chooseTitle">{{item.title}}</view>
+    </view>
+    <view hidden="{{isSearch}}">
+      <view class="row">
+        <text class="label required">税号</text>
+        <input type="text" name="taxNumber" placeholder="15-20位（必填）" maxlength="20" value="{{taxNumber}}" />
+      </view>
+      <view class="row">
+        <text class="label">单位地址</text>
+        <textarea name="companyAddress" placeholder="单位地址信息（选填）" value="{{companyAddress}}" auto-height></textarea>
+      </view>
+      <view class="row">
+        <text class="label">单位电话</text>
+        <input type="number" name="telephone" placeholder="电话号码（选填）" value="{{telephone}}" />
+      </view>
+      <view class="row">
+        <text class="label">开户银行</text>
+        <textarea name="bankName" placeholder="开户银行名称（选填）" value="{{bankName}}" auto-height></textarea>
+      </view>
+      <view class="row">
+        <text class="label">银行账号</text>
+        <input type="number" name="bankAccount" placeholder="银行账号号码（选填）" value="{{bankAccount}}" />
+      </view>
     </view>
   </view>
-  <view hidden="{{type != 1 || isSearch}}">
+  <view hidden="{{type == 1}}">
     <view class="row">
-      <text class="label">单位地址</text>
-      <textarea name="companyAddress" placeholder="单位地址信息（选填）" value="{{companyAddress}}" auto-height></textarea>
-    </view>
-    <view class="row">
-      <text class="label">单位电话</text>
-      <input type="number" name="telephone" placeholder="电话号码（选填）" value="{{telephone}}" />
-    </view>
-    <view class="row">
-      <text class="label">开户银行</text>
-      <textarea name="bankName" placeholder="开户银行名称（选填）" value="{{bankName}}" auto-height></textarea>
-    </view>
-    <view class="row">
-      <text class="label">银行账号</text>
-      <input type="number" name="bankAccount" placeholder="银行账号号码（选填）" value="{{bankAccount}}" />
+      <text class="label required">名称</text>
+      <input class="title" type="text" name="name" placeholder="名称（必填）" maxlength="10" value="{{name}}" />
+      <text class="choose" bindtap="chooseWXTitle">选择抬头</text>
     </view>
   </view>
   <view hidden="{{isSearch}}">

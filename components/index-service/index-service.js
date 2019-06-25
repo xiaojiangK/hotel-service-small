@@ -100,6 +100,9 @@ Component({
         })
       }else{
         const that = this;
+        //获取wifi手机号验证码
+        let bssid = that.data.bssid;
+        let pwd = that.data.password;
         //检测手机型号
         wx.getSystemInfo({
           success: function (res) {
@@ -109,16 +112,36 @@ Component({
             if (res.platform == 'android' && system < 6) {
               wx.showModal({
                 title: '温馨提示',
-                content: '支持安卓6以上的版本',
+                content: '此功能微信仅支持Android 6以上版本，可查看密码手动连接WiFi',
+                confirmText:'查看密码',
+                showCancel: false,
+                success: function (res) {
+                  if (res.confirm) {
+                    wx.navigateTo({
+                      url: "/pages/wifiFail/wifiFail?name=" + bssid + "&pwd=" + pwd
+                    })
+                  } else {
+                    return
+                  }
+                }
               })
-              return
             }
             if (res.platform == 'ios' && system < 11.2) {
               wx.showModal({
                 title: '温馨提示',
-                content: '支持IOS11以上的版本',
+                content: '此功能微信仅支持iOS 11以上版本，可查看密码手动连接WiFi',
+                confirmText: '查看密码',
+                showCancel: false,
+                success: function (res) {
+                  if (res.confirm) {
+                    wx.navigateTo({
+                      url: "/pages/wifiFail/wifiFail?name=" + bssid + "&pwd=" + pwd
+                    })
+                  } else {
+                    return
+                  }
+                }
               })
-              return
             }
             that.startWifi();//初始化 Wi-Fi 模块
           }

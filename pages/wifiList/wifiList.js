@@ -63,16 +63,36 @@ Page({
           if (res.platform == 'android' && system < 6) {
             wx.showModal({
               title: '温馨提示',
-              content: '支持到安卓6以上的版本哦',
+              content: '此功能微信仅支持Android 6以上版本，可查看密码手动连接WiFi',
+              confirmText: '查看密码',
+              showCancel: false,
+              success: function(res){
+                if(res.confirm){
+                  wx.navigateTo({
+                    url: "/pages/wifiFail/wifiFail?name=" + bssid + "&pwd=" + pwd
+                  })
+                }else{
+                  return
+                }
+              }
             })
-            return
           }
           if (res.platform == 'ios' && system < 11.2) {
             wx.showModal({
               title: '温馨提示',
-              content: '支持到IOS11以上的版本哦',
+              content: '此功能微信仅支持iOS 11以上版本，可查看密码手动连接WiFi',
+              confirmText: '查看密码',
+              showCancel:false,
+              success: function (res) {
+                if (res.confirm) {
+                  wx.navigateTo({
+                    url: "/pages/wifiFail/wifiFail?name=" + bssid + "&pwd=" + pwd
+                  })
+                } else {
+                  return
+                }
+              }
             })
-            return
           }
           //2.初始化 Wi-Fi 模块
           that.startWifi();

@@ -9,7 +9,7 @@
   <view class="wifi-ssid" >
     <image class="icon-wifi" src="/assets/image/icon-pad.png"/>
     <text class="wifi-text password" selectable='true'>{{pwd}}</text>
-    <button class="btn-copy" bindtap="copyBtn">复制密码</button>  
+    <button class="btn-copy" bindtap="copyBtn">点击复制密码</button>  
   </view>  
 </view>
 <view class="bottom" >

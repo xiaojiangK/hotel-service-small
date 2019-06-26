@@ -117,12 +117,30 @@ Page({
     });
     const num = this.data.roomNumber;
     let totalPrice = 0;
+    let rebate = 0;
     if (Number.isInteger(price * num)) {
       totalPrice = price * num;
     } else {
       totalPrice = (price * num).toFixed(2);
     }
-    this.setData({ totalPrice });
+
+    // 获取会员折扣
+    wx.getStorage({
+      key: 'vipInfo',
+      success: (res) => {
+        const data = res.data;
+        if (data.is_vip == 1) {
+          rebate = (totalPrice - totalPrice * data.vip_coupon).toFixed(2)
+        }
+      },
+      complete: () => {
+        this.setData({
+          rebate,
+          totalPrice,
+          total_cost: (totalPrice - rebate).toFixed(2)
+        });
+      }
+    });
   },
   //  选择预计办理入住时间
   bindDateChange (e) {

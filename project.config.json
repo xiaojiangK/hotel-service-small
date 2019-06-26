@@ -48,8 +48,15 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 0,
+			"list": [
+				{
+					"id": -1,
+					"name": "发票",
+					"pathName": "pages/invoice/invoice",
+					"scene": null
+				}
+			]
 		}
 	}
 }

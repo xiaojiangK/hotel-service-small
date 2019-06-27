@@ -53,13 +53,14 @@ page {
   width: 390rpx;
 }
 .btn-copy {
-  width: 180rpx;
+  width: 186rpx;
   height: 58rpx;
+  padding: 10rpx;
   background: #4A90E3;
-  line-height: 58rpx;
+  line-height: 40rpx;
   text-align: center;
   color: white;
-  font-size: 28rpx;
+  font-size: 24rpx;
   border-radius: 8rpx;
   border: none;
 }

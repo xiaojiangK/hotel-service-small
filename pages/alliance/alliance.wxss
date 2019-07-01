@@ -1,5 +1,57 @@
 page {
-  height: 100%;
-  background: #232533;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  line-height: 1;
+  text-align: center;
+  background: #ff5434;
+}
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 750rpx;
+  height: 1098rpx;
+}
+.money {
+  padding-top: 440rpx;
+  color: #e51b38;
+  font-size: 24rpx;
+  font-weight: 600;
+}
+.money text {
+  margin-left: 5rpx;
+  margin-right: 10rpx;
+  font-size: 60rpx;
+  font-weight: bold;
+}
+.tips {
+  margin-top: 85rpx;
+  color: #fff;
+  font-size: 40rpx;
+  font-weight: 600;
+}
+.desc {
+  margin-top: 15rpx;
+  color: #fff;
+  font-size: 24rpx;
+  font-weight: 600;
+}
+.btn {
+  margin-top: 47rpx;
+  border-radius: 30rpx;
+  width: 260rpx;
+  height: 60rpx;
+  color: #821b13;
+  font-size: 24rpx;
+  font-weight: 600;
+  line-height: 60rpx;
+  text-align: center;
+  background: linear-gradient(0deg,#F4D266 0%, #FEE195 100%);
+}
+.logo {
+  margin: 210rpx auto 50rpx;
+  width: 390rpx;
+  height: 76rpx;
 }

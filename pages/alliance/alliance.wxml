@@ -1,1 +1,8 @@
-<web-view src="https://j.showboom.cn/webview/jytj/index.html" bindmessage=""></web-view>
+<view class="content">
+  <image class="bg" src="/assets/image/alliance-bg.png" mode="aspectFill"></image>
+  <view class="money">￥<text>10</text>元</view>
+  <view class="tips">恭喜您获得</view>
+  <view class="desc">秀豹新客户关注领红包</view>
+  <button class="btn" open-type="contact">点击立即领取</button>
+</view>
+<image class="logo" src="/assets/image/alliance-logo.png" mode="aspectFill"></image>

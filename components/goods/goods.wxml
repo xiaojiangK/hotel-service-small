@@ -18,7 +18,7 @@
           </view>
         </view>
         <!-- currentNum --> 
-        <view wx:if='{{ isCurrentNum }}' class='goods-current-num'></view>
+        <view wx:if='{{ isCurrentNum }}' class='goods-current-num'>x{{ item.num }}</view>
         <block wx:if='{{ isCar && isMchid }}'>
           <view wx:if='{{ item.specifications[0].goods_stock>0 }}' class="goods-add" bindtap='addShopCar' data-goods="{{ item }}">
             <image class="goods-car" src="/assets/image/shop-car.png" />

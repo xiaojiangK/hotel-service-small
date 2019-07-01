@@ -1,2 +1,2 @@
 <!--pages/morningVolume/morningVolume.wxml-->
-<custom-module data="{{list}}"></custom-module>
+<custom-module data="{{list}}" classtype="breakfast" ></custom-module>

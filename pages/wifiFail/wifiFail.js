@@ -1,13 +1,15 @@
 Page({
   data: {
     ssid: "",
-    pwd: ""
+    pwd: "",
+    authentication:'2'
   },
   onLoad: function (options) {
     console.log (options)
     this.setData({  
       ssid: options.name,
-      pwd: options.pwd  
+      pwd: options.pwd,
+      authentication: options.authentication  
     }) 
   },
   copyBtn: function (e) {

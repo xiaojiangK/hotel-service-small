@@ -1,20 +1,46 @@
-<view class="top" >
-  <image class="img-warning" src="/assets/image/wifi-warning.png"></image>
-  <view class="text bold">酒店WiFi账号密码</view>
-  <view class="msg">可以尝试手动连接</view> 
-  <view class="wifi-ssid" >
-    <image class="icon-wifi" src="/assets/image/icon-wifi.png"/>
-    <view class="wifi-text" >{{ssid}}</view>  
+<view wx:if='{{ authentication==2 }}'>
+  <view class="top" >
+    <image class="img-warning" src="/assets/image/wifi-warning.png"></image>
+    <view class="text bold">酒店WiFi账号密码</view>
+    <view class="msg">可以尝试手动连接</view> 
+    <view class="wifi-ssid" >
+      <image class="icon-wifi" src="/assets/image/icon-wifi.png"/>
+      <view class="wifi-text" >{{ssid}}</view>  
+    </view>
+    <view class="wifi-ssid" >
+      <image class="icon-wifi" src="/assets/image/icon-pad.png"/>
+      <text class="wifi-text password" selectable='true'>{{pwd}}</text>
+      <button class="btn-copy" bindtap="copyBtn">点击复制密码</button>  
+    </view>  
   </view>
-  <view class="wifi-ssid" >
-    <image class="icon-wifi" src="/assets/image/icon-pad.png"/>
-    <text class="wifi-text password" selectable='true'>{{pwd}}</text>
-    <button class="btn-copy" bindtap="copyBtn">点击复制密码</button>  
-  </view>  
+  <view class="bottom" >
+    <view class="wifi-text bold" > 如果连接遇到问题：</view>
+    <view class="wifi-text mt" > 1、可能WiFi信号弱 </view> 
+    <view class="wifi-text mt" > 2、仅 Android 6与 iOS 11 以上版本支持自动连接WiFi，请点击复制密码，手动连接WiFi</view>
+  </view>
 </view>
-<view class="bottom" >
-  <view class="wifi-text bold" > 如果连接遇到问题：</view>
-  <view class="wifi-text mt" > 1、可能WiFi信号弱 </view> 
-  <view class="wifi-text mt" > 2、仅 Android 6与 iOS 11 以上版本支持</view>
+
+<!-- 需要认证的wifi -->
+<view wx:if='{{ authentication==1 }}'>
+  <view class="top" style="height:676rpx;">
+      <image class="img-warning" src="/assets/image/wifi-warning.png"></image>
+      <view class="text">您所在的酒店</view>
+      <view class="text" style="margin-top:10rpx;">需要实名认证后使用wifi</view> 
+      <!-- <view class="wifi-ssid" >
+        <image class="icon-wifi" src="/assets/image/icon-wifi.png"/>
+        <view class="wifi-text" >{{ssid}}</view>  
+      </view> -->
+      <!-- <view class="wifi-ssid" >
+        <image class="icon-wifi" src="/assets/image/icon-pad.png"/>
+        <text class="wifi-text password" selectable='true'>{{pwd}}</text>
+        <button class="btn-copy" bindtap="copyBtn">点击复制密码</button>  
+      </view>   -->
+    </view>
+    <view class="bottom"  style="height:312rpx;">
+      <view class="wifi-text bold" > 实名认证步骤：</view>
+      <view class="wifi-text mt" > 1、打开手机设置，连接酒店无线网络,WiFi网络名称：{{ssid}}</view> 
+      <view class="wifi-text mt" > 2、打开手机浏览器，访问任意网址时自动跳转至实名认证页面</view>
+      <view class="wifi-text mt" > 2、完成实名认证即可免费上网</view>
+    </view>
 </view>
   

@@ -12,7 +12,8 @@ Page({
     roomList: [],
     swiper: [],
     isGetPhoneNumber: false,
-    isMchid: ''
+    isMchid: '',
+    room_booking:1
   },
   goPay(e) {
     const room = e.currentTarget.dataset.room;
@@ -41,6 +42,17 @@ Page({
     });
   },
   initDate() {
+    
+    //获取权限
+    wx.getStorage({
+      key: 'hotel',
+      success: function(res) {
+        let { room_booking } = res.data || 1
+        this.setData({
+          room_booking: room_booking
+        })
+      },
+    })
     // 保存的日期
     wx.getStorage({
       key: 'ROOM_SOURCE_DATE',

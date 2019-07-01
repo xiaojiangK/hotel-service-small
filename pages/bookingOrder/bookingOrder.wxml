@@ -62,7 +62,9 @@
   <view class="wrap">
     <view class="head">
       费用明细
-      <image class="close" src="/assets/image/icon-close.png" mode="aspectFill" bindtap="toggleSumDetail"></image>
+      <view class="close-parent" bindtap="toggleSumDetail">
+        <image class="close" src="/assets/image/icon-close.png" mode="aspectFill"></image>
+      </view>
     </view>
     <view class="row">
       <view class="item">入住间夜（{{room.days}}晚，{{roomNumber}}间）</view>

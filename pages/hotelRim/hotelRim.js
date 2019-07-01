@@ -7,10 +7,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list: []
+    list: [],
+    periphery:1
   },
   loadData() {
     // 酒店周边
+    let _this = this
+    wx.getStorage({
+      key: 'hotel',
+      success: function (res) {
+        let { periphery } = res.data
+        this.setData({
+          periphery: periphery
+        })
+      },
+    })
     app.util.request({
       url: "entry/wxapp/Periphery",
       success:(res) => {

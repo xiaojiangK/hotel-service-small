@@ -25,9 +25,23 @@ Component({
    * 组件的初始数据
    */
   data: {
-    list: []
+    list: [],
+    isShow:1
   },
-
+  lifetimes:{
+    ready(){
+      let _this = this 
+      wx.getStorage({
+        key: 'hotel',
+        success: function(res) {
+          let { breakfast_ticket } = res.data || 1
+          this.setData({
+            isShow: breakfast_ticket
+          })
+        },
+      })
+    }
+  },
   /**
    * 组件的方法列表
    */

@@ -1,4 +1,4 @@
-<block wx:if="{{isMchid}}">
+<block wx:if="{{room_booking ==1 && roomList.length>0 }}">
   <!-- banner start -->
   <view class="banner">
     <swiper interval="2000" duration="500" circular="true">
@@ -51,7 +51,7 @@
     </view>
   </view>
 </block>
-<block wx:else>
+<block wx:if="{{ room_booking==2 || roomList.length==0 }}">
   <view class="build">
     <image class="icon-build" src="/assets/image/noInfo.png" mode="aspectFill" />
     <view class="desc">酒店暂未开放此功能</view>

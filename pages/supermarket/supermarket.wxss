@@ -1,7 +1,8 @@
 /* pages/supermarket/supermarket.wxss */
-.good-list{
-  padding: 0 0 140rpx;
+page{
+  background-color: #fff;
 }
+
 .submit-bar{
   position: fixed;
   bottom: 0;
@@ -57,7 +58,7 @@
   margin-top: 40%;
 }
 .noCon image{
-  width: 260rpx;
+  width: 250rpx;
   height: 230rpx;
   margin: 0 0 40rpx;
 }
@@ -66,4 +67,226 @@
   color: #A3A3A3;
   font-size: 36rpx;
   line-height: 50rpx;
+}
+
+.super-content{
+  display: flex;
+  justify-content: space-between;
+}
+.content-left{
+  width: 160rpx;
+  height: 1204rpx;
+  background-color: #f2f2f2;
+}
+.good-class{
+  position: relative;
+  width: 160rpx;
+  height: 110rpx;
+  border-left: 8rpx solid #f2f2f2;
+  font-size: 28rpx;
+  line-height: 110rpx;
+  text-align: center;
+}
+.good-class.current{
+  font-weight: bold;
+  border-left: 8rpx solid #E83A3D;
+  background: #fff;
+}
+.tag-num{
+  position: absolute;
+  top: 2rpx;
+  right: 10rpx;
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 32rpx;
+  font-size: 18rpx;
+  color: #fff;
+  line-height: 32rpx;
+  text-align: center;
+  background-color: #FF3B30;
+}
+.good-list{
+  width: 560rpx;
+}
+/* goods */
+.goods{
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 200rpx;
+  border-bottom:2rpx solid #E1E1E1;
+  background-color: #fff; 
+}
+.goods-img{
+  display: block;
+  flex: 0 0 150rpx;
+  height: 150rpx;
+}
+.good-right{
+  width:485rpx;
+  padding:0 24rpx;
+}
+.goods-title{
+  height: 60rpx;
+  overflow: hidden;
+  margin-top: 18rpx;
+  font-size: 34rpx;
+  color: #333;
+  line-height: 48rpx;
+}
+.goods-content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 26rpx;
+}
+.goods-price{
+  font-size: 24rpx;
+  color: #E93A3D;
+}
+.goods-price>text{
+  display: inline-block;
+  margin-left: 2rpx;
+  font-size: 42rpx;
+}
+.goods-current-num{
+  font-size: 32rpx;
+  color: #666;
+}
+.goods-car{
+  display: block;
+  width: 36rpx;
+  height: 36rpx;
+}
+.no-goods-num{
+  font-size: 26rpx;
+  color: #aaa;
+}
+.goods-delete{
+  position: absolute;
+  top: 14rpx;
+  right: 10rpx;
+}
+.icon-delete{
+  width: 46rpx;
+  height: 46rpx;
+}
+
+
+/* stepper */
+.stepper{
+  display: flex;
+  justify-content: flex-end;
+  width: 150rpx;
+  height: 60rpx;
+  /* border: 2rpx solid #e1e1e1; */
+  border-radius: 8rpx;
+}
+.btn{
+  display: flex;
+  justify-content: center;
+  flex: 0 0 46rpx;
+  height: 46rpx;
+  line-height: 44rpx;
+  border-radius: 46rpx;
+  font-size: 50rpx;
+  color: #fff;
+}
+.add{
+  border: 2rpx solid #B9B9B9;
+  background-color: #B9B9B9;
+}
+.add.selected{
+  border: 2rpx solid #E83A3D;
+  background-color: #E83A3D;
+}
+.minus{
+  line-height: 40rpx;
+  border: 2rpx solid #B9B9B9;
+  background-color: #fff;
+  color: #B9B9B9;
+
+}
+.num{
+  display: flex;
+  width: 40rpx;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-grow: 1;
+  height: 50rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.bg-black{
+  position: absolute;
+  top:0;
+  left:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color:rgba(0,0,0,0.4); 
+}
+.good-content{
+  height: 820rpx;
+  width: 650rpx;
+  border-radius: 10rpx;
+  background-color: #fff;
+  overflow: hidden;
+}
+.good-content-img{
+  height: 600rpx;
+}
+.good-content-img >image{
+  width: 650rpx;
+  height: 600rpx;
+}
+.good-content-name{
+  height: 100rpx;
+  font-size: 32rpx;
+  text-indent: 28rpx;
+  line-height: 100rpx;
+}
+.good-content-footer{
+  display: flex;
+  width: 100%;
+  height: 120rpx;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fafafa;
+}
+.good-content-price{
+  font-size: 48rpx;
+  font-weight: bold;
+  color:#E83A3D;
+  text-indent: 24rpx;
+}
+.good-join-car{
+  width: 180rpx;
+  height: 60rpx;
+  border-radius: 60rpx;
+  margin-right: 38rpx;
+  font-size: 28rpx;
+  color: #fff;
+  line-height: 60rpx;
+  text-align: center;
+  background-color: #E83A3D;
+}
+.good-content-footer .stepper{
+  margin-right: 40rpx;
+}
+.good-content-close{
+  position: absolute;
+  bottom: 86rpx;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 80rpx;
+  font-size: 40rpx;
+  color: #fff;
+  line-height: 80rpx;
+  text-align: center;
+  background-color: rgba(0,0,0,0.4)
 }

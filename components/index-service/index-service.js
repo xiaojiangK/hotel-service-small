@@ -41,6 +41,7 @@ Component({
     accountNumber: '',//Wi-Fi 的SSID，即账号
     bssid: '',//Wi-Fi 的ISSID
     password: '',//Wi-Fi 的密码
+    authentication:''//是否需要实名认证
   },
   lifetimes: {
     // 生命周期函数
@@ -78,7 +79,8 @@ Component({
           wifiType: "info",
           accountNumber: res[0].wifi_name,
           bssid: res[0].wifi_name,
-          password: res[0].wifi_pwd
+          password: res[0].wifi_pwd,
+          authentication: res[0].authentication
         })
       }else{
         this.setData({
@@ -103,6 +105,7 @@ Component({
         //获取wifi手机号验证码
         let bssid = that.data.bssid;
         let pwd = that.data.password;
+        let authentication = that.data.authentication
         //检测手机型号
         wx.getSystemInfo({
           success: function (res) {
@@ -157,7 +160,7 @@ Component({
           showCancel: false
         })
       }else{
-        let url = this.data.wifiType == 'list' ? '/pages/wifiList/wifiList?title=none' : '/pages/wifiFail/wifiFail?name=' + this.data.bssid + '&pwd=' + this.data.password
+        let url = this.data.wifiType == 'list' ? '/pages/wifiList/wifiList?title=none' : '/pages/wifiFail/wifiFail?name=' + this.data.bssid + '&pwd=' + this.data.password + '&authentication=' + authentication
         wx.navigateTo({
           url: url,
         })

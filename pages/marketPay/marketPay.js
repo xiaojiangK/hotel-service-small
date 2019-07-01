@@ -49,17 +49,23 @@ Page({
       }
     });
     //console.log(hash)
-    let newArr = app.globalData.newArr
+    let newArr = app.globalData.shopCar
 
     let allPrice = 0
     let allNum = 0
+    let selectGoodsList = []
     newArr.forEach(i => {
+      if (i.num && i.num > 0){
+        selectGoodsList.push(i)
+      } 
+    })
+    selectGoodsList.forEach(i => {
       allPrice += i.specifications[0].goods_price * i.num
       allNum += i.num
     })
     allPrice = allPrice.toFixed(2)
     this.setData({
-      goods: newArr,
+      goods: selectGoodsList,
       allPrice,
       allNum
     })

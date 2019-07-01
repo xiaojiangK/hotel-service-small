@@ -10,7 +10,7 @@
 
   <view class='goods-list'>
     
-    <goods data="{{goods}}" isStepper="1" bind:myevent="getGoods"></goods>
+    <goods data="{{goods}}" isCurrentNum="1" bind:myevent="getGoods"></goods>
     
   </view>
   <view class="submit-bar {{isIphoneX ? 'fix-iphonex-button':''}}">

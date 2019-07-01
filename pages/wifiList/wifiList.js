@@ -47,11 +47,12 @@ Page({
     const type = that.data.type;
     const bssid = e.currentTarget.dataset.id
     const pwd = e.currentTarget.dataset.pwd
+    const authentication = e.currentTarget.dataset.authentication
     this.setData({ bssid, pwd })
     //如果直接点击wifi密码进入 不需连接
     if (type == "none") {
       wx.navigateTo({
-        url: "/pages/wifiFail/wifiFail?name=" + bssid +"&pwd="+ pwd
+        url: "/pages/wifiFail/wifiFail?name=" + bssid + "&pwd=" + pwd + '&authentication=' + authentication
       })
     }else {
        //检测手机型号

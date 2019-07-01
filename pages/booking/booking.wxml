@@ -42,20 +42,22 @@
     <!-- duration end -->
     <!-- room list start -->
     <view class="room-list">
-      <view class="item" wx:for="{{roomList}}" wx:key="index" wx:if="{{item.state == '1'}}" data-room="{{item}}" bindtap="goPay">
-        <view class="img">
-          <image src="{{item.logo}}" mode="aspectFill"></image>
-          <text class="tag" catchtap="toggleDetail">详情</text>
+      <view class="item" wx:for="{{roomList}}" wx:key="index" wx:if="{{item.state == '1'}}">
+        <view catchtap="toggleDetail">
+          <view class="img">
+            <image src="{{item.logo}}" mode="aspectFill"></image>
+            <text class="tag">详情</text>
+          </view>
+          <view class="type">{{item.name}}</view>
+          <view class="desc">
+            <text class="{{item.breakfast == '0' ? '' : 'active'}}">{{item.breakfast == '0' ? '不含早' : '含早'}}</text>
+            <text>{{item.size}}</text>
+            <text>{{item.windows == '1' ? '有窗' : '无窗'}}</text>
+          </view>
+          <view class="price">{{item.price}}</view>
         </view>
-        <view class="type">{{item.name}}</view>
-        <view class="desc">
-          <text class="{{item.breakfast == '0' ? '' : 'active'}}">{{item.breakfast == '0' ? '不含早' : '含早'}}</text>
-          <text>{{item.size}}</text>
-          <text>{{item.windows == '1' ? '有窗' : '无窗'}}</text>
-        </view>
-        <view class="price">{{item.price}}</view>
         <block wx:if="{{ isMchid }}">
-          <view class="status" wx:if="{{item.min_num > 0}}">
+          <view class="status" data-room="{{item}}" bindtap="goPay" wx:if="{{item.min_num > 0}}">
             <view>预订</view>
             <view>
               <block wx:if="{{item.min_num == 0}}">已售完</block>

@@ -8,48 +8,187 @@
         </swiper-item>
       </block>
     </swiper>
+    <view class="number">
+      <image class="icon-camera" src="/assets/image/icon-camera.png" mode="aspectFill"></image>
+      {{swiper.length}}张
+    </view>
   </view>
   <!-- banner end -->
-  <!-- duration start -->
-  <view class="duration">
-    <view class="col" bind:tap="selectDate">
-      <view class="status">入住</view>
-      <view class="date">{{start[1]}}月{{start[2]}}日</view>
-      <view class="day">{{startWeek}}</view>
-    </view>
-    <view class="col sum">共{{days}}晚</view>
-    <view class="col" bind:tap="selectDate">
-      <view class="status">离店</view>
-      <view class="date">{{end[1]}}月{{end[2]}}日</view>
-      <view class="day">{{endWeek}}</view>
-    </view>
+  <!-- tab nav start -->
+  <view class="tab-nav">
+    <text class="{{tabIndex === 0 ? 'active' : ''}}" data-index="{{0}}" bindtap="chooseTab">客房预订</text>
+    <text class="{{tabIndex === 1 ? 'active' : ''}}" data-index="{{1}}" bindtap="chooseTab">详情设施</text>
+    <text class="{{tabIndex === 2 ? 'active' : ''}}" data-index="{{2}}" bindtap="chooseTab">住客评价</text>
   </view>
-
-  <!-- duration end -->
-  <!-- room list start -->
-  <view class="room-list">
-    <view class="item" wx:for="{{roomList}}" wx:key="index" wx:if="{{item.state == '1'}}" data-room="{{item}}" bindtap="goPay">
-      <image class="img" src="{{item.logo}}" mode="aspectFill"></image>
-      <view class="type">{{item.name}}</view>
-      <view class="desc">{{item.size}} {{item.windows == '1' ? '有窗' : '无窗'}}</view>
-      <view class="breakfast">{{item.breakfast == '0' ? '不' : ''}}含早</view>
-      <view class="price {{ isMchid ? '' : 'mr0'}}">{{item.price}}</view>
-      <block wx:if="{{ isMchid }}">
-        <view class="status" wx:if="{{item.min_num > 0}}">
-        <view>预订</view>
-        <view>
-          <block wx:if="{{item.min_num == 0}}">已售完</block>
-          <block wx:if="{{item.min_num > 10}}">在线付</block>
-          <block wx:else>仅剩{{item.min_num}}间</block>
+  <!-- tab nav end -->
+  <!-- tab content start -->
+  <view class="tab-panel" hidden="{{tabIndex !== 0}}">
+    <!-- duration start -->
+    <view class="duration">
+      <view class="col" bind:tap="selectDate">
+        <text class="date">{{start[1]}}月{{start[2]}}日</text>
+        <text class="day">{{startWeek}}入住</text>
+      </view>
+      <text class="line">—</text>
+      <view class="col" bind:tap="selectDate">
+        <text class="date">{{end[1]}}月{{end[2]}}日</text>
+        <text class="day">{{endWeek}}离店</text>
+      </view>
+      <view class="col sum">
+        共{{days}}晚
+        <image class="icon-right" src="/assets/image/icon-right-orange.png" mode="aspectFill" />
+      </view>
+    </view>
+    <!-- duration end -->
+    <!-- room list start -->
+    <view class="room-list">
+      <view class="item" wx:for="{{roomList}}" wx:key="index" wx:if="{{item.state == '1'}}">
+        <view catchtap="toggleDetail">
+          <view class="img">
+            <image src="{{item.logo}}" mode="aspectFill"></image>
+            <text class="tag">详情</text>
+          </view>
+          <view class="type">{{item.name}}</view>
+          <view class="desc">
+            <text class="{{item.breakfast == '0' ? '' : 'active'}}">{{item.breakfast == '0' ? '不含早' : '含早'}}</text>
+            <text>{{item.size}}</text>
+            <text>{{item.windows == '1' ? '有窗' : '无窗'}}</text>
+          </view>
+          <view class="price">{{item.price}}</view>
+        </view>
+        <block wx:if="{{ isMchid }}">
+          <view class="status" data-room="{{item}}" bindtap="goPay" wx:if="{{item.min_num > 0}}">
+            <view>预订</view>
+            <view>
+              <block wx:if="{{item.min_num == 0}}">已售完</block>
+              <block wx:if="{{item.min_num > 10}}">在线付</block>
+              <block wx:else>仅剩{{item.min_num}}间</block>
+            </view>
+          </view>
+          <view class="status full" wx:else>
+            <view>满房</view>
+            <view>满房</view>
+          </view>
+        </block>
+      </view>
+    </view>
+    <!-- room list end -->
+    <!-- room detail start -->
+    <view class="room-detail" hidden="{{!isShowRoomDetail}}">
+      <view class="wrap">
+          <view class="head">
+          标准双床房
+          <image class="icon-close" src="/assets/image/icon-close.png" mode="aspectFill" bindtap="toggleDetail" />
+        </view>
+        <view class="scroll">
+          <view class="swiper">
+            <swiper interval="2000" duration="500" circular="true" bindchange="roomSwiperChange">
+                <block wx:for="{{roomSwiper}}" wx:key="index">
+                  <swiper-item>
+                    <image src="{{item}}" mode="aspectFill"/>
+                  </swiper-item>
+                </block>
+            </swiper>
+            <text class="number">{{roomSwiperIndex+1}}/{{roomSwiper.length}}</text>
+          </view>
+          <view class="attr">
+            <view class="item">
+              <text class="label">上网</text>
+              WiFi
+            </view>
+            <view class="item">
+              <text class="label">卫浴</text>
+              独立
+            </view>
+            <view class="item">
+              <text class="label">窗户</text>
+              有
+            </view>
+            <view class="item">
+              <text class="label">可住</text>
+              2人
+            </view>
+            <view class="item">
+              <text class="label">面积</text>
+              25㎡
+            </view>
+            <view class="item">
+              <text class="label">楼层</text>
+              2层
+            </view>
+            <view class="item">
+              <text class="label">床型</text>
+              单人床1.0×2.0米2张
+            </view>
+            <view class="item">
+              <text class="label">早餐</text>
+              无早餐
+            </view>
+          </view>
+          <view class="policy">
+            <view class="label">酒店政策</view>
+            <view class="text">入住时间: 14:00以后 离店时间: 12:00之前</view>
+            <view class="text">不可取消  订单确认后不可取消/变更，如未入住，酒店将扣除全额房费</view>
+          </view>
+        </view>
+        <view class="btn">
+          <text>￥384</text>
+          <text>预订</text>
         </view>
       </view>
-      <view class="status full" wx:else>
-        <view>满房</view>
-        <view>满房</view>
-      </view>
-      </block>
     </view>
+    <!-- room detail end -->
   </view>
+  <view class="tab-panel detail" hidden="{{tabIndex !== 1}}">
+    <!-- level start -->
+    <view class="sect level">
+      <view class="head">北京世纪金源大饭店</view>
+      <view class="star">五星级</view>
+    </view>
+    <!-- level end -->
+    <!-- service start -->
+    <view class="sect service">
+      <view class="head">可提供的服务</view>
+      <view class="list">
+        <view class="item" wx:for="{{serviceList}}" wx:key="index">
+          <image class="icon" src="{{item.imgUrl}}" mode="aspectFill"></image>
+          <text>{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+    <!-- service end -->
+    <!-- intro start -->
+    <view class="sect intro">
+      <view class="head">酒店介绍</view>
+      <view class="attr">
+        <view class="item">装修时间：2017年</view>
+        <view class="item">开业时间：2012年</view>
+        <view class="item">楼层高度：4层</view>
+        <view class="item">房间总数：80间</view>
+      </view>
+      <view class="desc">北京世纪金源大饭店位于北京西三环与西四环之间美丽的昆玉河畔，周围不仅靠近香山、颐和园、动物园、八大处等旅游景点，还紧邻中关村商业区，与金源时代购物中心仅一街之隔，饭店总建筑面积18.68万平方米，其中地下有建筑面积4.2万平方米的休闲、购物、娱乐设施，娱乐设施之全无与伦比；房间内宽带上网、卫星电视、国际国内直播电话、独立淋浴室等应有尽有；中餐、西餐、咖啡厅、日本料理、酒吧、茶艺居会令您流连往返。 拥有各类大小会议室18间，提供数字会议系统、多种语言同声传译系统、摄像跟踪等现代化的会务服务设施，大宴会厅可容纳1000人、国际会议厅可容纳200人，是举办各种国际会议的理想场所。也是您商务旅行不错的选择。地下游泳馆和健身房因不夜城装修，故停止使用，具体开放时间另行通知，带来不便敬请谅解！</view>
+    </view>
+    <!-- intro end -->
+    <!-- policy start -->
+    <view class="sect policy">
+      <view class="head">酒店政策</view>
+      <view class="text">入住时间: 14:00以后 离店时间: 12:00之前</view>
+      <view class="text">不可取消  订单确认后不可取消/变更，如未入住，酒店将扣除全额房费</view>
+      <view class="text">直接消费，携带所有入住，人的有效身份证办理入住，入住必须按照一人一-证</view>
+      <view class="text">入住需要押金，金额以前台为准</view>
+    </view>
+    <!-- policy end -->
+  </view>
+  <view class="tab-panel" hidden="{{tabIndex !== 2}}">
+
+  </view>
+  <!-- tab content end -->
+  
+
+
+
+  
+  
 </block>
 <block wx:if="{{ room_booking==2 || roomList.length==0 }}">
   <view class="build">

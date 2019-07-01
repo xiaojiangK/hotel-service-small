@@ -52,8 +52,8 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "发票",
-					"pathName": "pages/invoice/invoice",
+					"name": "酒店预订",
+					"pathName": "pages/booking/booking",
 					"scene": null
 				}
 			]

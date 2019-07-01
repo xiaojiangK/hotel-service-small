@@ -29,18 +29,111 @@ Page({
         endWeek: data.endWeek,
         days: data.days,
         start: data.start,
-        end: data.end
-      }
-    });
-    wx.navigateTo({
-      url: '/pages/bookingOrder/bookingOrder'
-    });
+        end: data.end,
+
+      //  Tab 索引
+      tabIndex: 0,
+      //  是否显示房间详情
+      isShowRoomDetail: false,
+      //  详情滑块图片
+      roomSwiper: [
+        'https://static.hotel.showboom.cn/images/15/2019/06/h4i4cN5NoCN7no36WQ6whwZ6Bc4030.png?x-oss-process=image/resize,m_mfit,h_300,w_400',
+        'https://static.hotel.showboom.cn/images/15/2019/06/CF38FKqdLq8yCK18KFfKlcFqs8Q3FC.png?x-oss-process=image/resize,m_mfit,h_300,w_400',
+        'https://static.hotel.showboom.cn/images/15/2019/06/NqnPD98APe4U90900N9p0LJm84z1u0.png?x-oss-process=image/resize,m_mfit,h_300,w_400'
+      ],
+      //  详情滑块图片索引
+      roomSwiperIndex: 0,
+      //  酒店服务
+      serviceList: [
+        {
+          imgUrl: '/assets/image/icon-wifi.png',
+          name: '无线上网'
+        },
+        {
+          imgUrl: '/assets/image/icon-wifi.png',
+          name: '无线上网'
+        },
+        {
+          imgUrl: '/assets/image/icon-wifi.png',
+          name: '无线上网'
+        },
+        {
+          imgUrl: '/assets/image/icon-wifi.png',
+          name: '无线上网'
+        },
+        {
+          imgUrl: '/assets/image/icon-wifi.png',
+          name: '无线上网'
+        },
+        {
+          imgUrl: '/assets/image/icon-wifi.png',
+          name: '无线上网'
+        },
+        {
+          imgUrl: '/assets/image/icon-wifi.png',
+          name: '无线上网'
+        },
+        {
+          imgUrl: '/assets/image/icon-wifi.png',
+          name: '无线上网'
+        },
+        {
+          imgUrl: '/assets/image/icon-wifi.png',
+          name: '无线上网'
+        },
+        {
+          imgUrl: '/assets/image/icon-wifi.png',
+          name: '无线上网'
+        },
+        {
+          imgUrl: '/assets/image/icon-wifi.png',
+          name: '无线上网'
+        },
+        {
+          imgUrl: '/assets/image/icon-wifi.png',
+          name: '无线上网'
+        },
+        {
+          imgUrl: '/assets/image/icon-wifi.png',
+          name: '无线上网'
+        },
+        {
+          imgUrl: '/assets/image/icon-wifi.png',
+          name: '无线上网'
+        },
+        {
+          imgUrl: '/assets/image/icon-wifi.png',
+          name: '无线上网'
+        },
+        {
+          imgUrl: '/assets/image/icon-wifi.png',
+          name: '无线上网'
+        },
+        {
+          imgUrl: '/assets/image/icon-wifi.png',
+          name: '无线上网'
+        },
+        {
+          imgUrl: '/assets/image/icon-wifi.png',
+          name: '无线上网'
+        },
+        {
+          imgUrl: '/assets/image/icon-wifi.png',
+          name: '无线上网'
+        },
+        {
+          imgUrl: '/assets/image/icon-wifi.png',
+          name: '无线上网'
+        }
+    ]}
+    })
   },
-  selectDate(){
-    wx.navigateTo({
-      url: '/pages/calendar/index'
-    });
+  //  页面显示
+  onShow() {
+    this.initDate();
+    this.changePhoneNumber();
   },
+  //  初始化数据
   initDate() {
     
     //获取权限
@@ -71,6 +164,29 @@ Page({
       }
     });
   },
+  //  获取手机号
+  getUserPhoneNumber(e){
+    app.getUserPhoneNumber(e, this);
+    // app.userLogin();
+  },
+  //  校验手机号
+  changePhoneNumber() {
+    wx.getStorage({
+      key: 'userinfo',
+      fail: (res) => {
+        if(res.data.tel) {
+          this.setData({
+            isGetPhoneNumber: false
+          });
+        } else {
+          this.setData({
+            isGetPhoneNumber: true
+          });
+        }
+      }
+    });
+  },
+  //  加载数据
   loadData() {
     this.setData({
       isMchid:app.globalData.isMchid
@@ -103,6 +219,20 @@ Page({
       }
     });
   },
+  //  选择标签
+  chooseTab: function (e) {
+    let { index } = e.currentTarget.dataset;
+    this.setData({
+      tabIndex: index
+    });
+  },
+  //  选择日期
+  selectDate(){
+    wx.navigateTo({
+      url: '/pages/calendar/index'
+    });
+  },
+  //  格式化周
   formatWeek(w) {
     if (w == 0) {
       return '周日';
@@ -110,30 +240,42 @@ Page({
       return '周' + app.integer(w);
     }
   },
-  onShow() {
-    this.initDate();
-    this.changePhoneNumber();
-  },
-  changePhoneNumber() {
-    wx.getStorage({
-      key: 'userinfo',
-      fail: (res) => {
-        if(res.data.tel) {
-          this.setData({
-            isGetPhoneNumber: false
-          });
-        } else {
-          this.setData({
-            isGetPhoneNumber: true
-          });
-        }
-      }
+  //  查看房间详情
+  toggleDetail: function () {
+    this.setData({
+      isShowRoomDetail: !this.data.isShowRoomDetail
     });
   },
-  getUserPhoneNumber(e){
-    app.getUserPhoneNumber(e, this);
-    // app.userLogin();
+  //  详情滑块切换
+  roomSwiperChange: function (e) {
+    let { current } = e.detail;
+    this.setData({
+      detailSwiperIndex: current
+    });
   },
+  //  支付
+  goPay(e) {
+    const room = e.currentTarget.dataset.room;
+    if (!room.min_num || room.min_num == '0') {
+      return;
+    }
+    const data = this.data;
+    wx.setStorage({
+      key: 'room',
+      data: {
+        ...room,
+        startWeek: data.startWeek,
+        endWeek: data.endWeek,
+        days: data.days,
+        start: data.start,
+        end: data.end
+      }
+    });
+    wx.navigateTo({
+      url: '/pages/bookingOrder/bookingOrder'
+    });
+  },
+  //  转发
   onShareAppMessage: function () {
   }
 })

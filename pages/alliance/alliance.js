@@ -42,6 +42,7 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function (res) {
+        console.log(res)
       }
     })
   },

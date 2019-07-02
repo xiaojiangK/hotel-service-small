@@ -1,5 +1,6 @@
 // pages/supermarket/supermarket.js
 var app = getApp();
+let sellerId = 0;
 
 Page({
 
@@ -9,7 +10,7 @@ Page({
   data: {
     list: [],
     selected: [],
-    selectType:2, //选择类型
+    selectType: 0, //选择类型
     totalPrice: 0.00, //价格总计
     totalCount: 0, //数量总计
     store:1,
@@ -18,23 +19,7 @@ Page({
     isMchid:'',
     allPrice:0.00,
     allNum:0,
-    goodTypeList:[
-      {
-        name:'烟酒',
-        type:1,
-        typeNum:0
-      },
-      {
-        name: '零食',
-        type: 2,
-        typeNum: 0
-      },
-      {
-        name: '特产',
-        type: 3,
-        typeNum: 0
-      },
-    ],
+    goodTypeList:[],
     isshowGoods:false,//是否显示商品详情
     currentGoods:null,
   },
@@ -53,44 +38,69 @@ Page({
     wx.getStorage({
       key: 'hotel',
       success: (res) => {
-        let {store} = res.data || 1
+        let {store} = res.data || 1;
+        sellerId = res.data.id;
         _this.setData({
           store: store
         })
+        // 获取分类
         app.util.request({
-          url: "entry/wxapp/Goods",
-          data: {
-            seller_id: res.data.id
-          },
-          success:(res) => {
-            let oldList = res.data;
-            const list = oldList.map(item => {
-              const goods_price = Number.parseFloat(item.specifications[0].goods_price);
+          url: "entry/wxapp/Classify",
+          success: (res) => {
+
+            const goodTypeList = res.data.map((item, index) => {
               return {
                 ...item,
-                isSelected:false,
-                goods_img: item.goods_img + app.globalData.imgSize,
-                price: Number.isInteger(goods_price) ? Number.parseInt(goods_price) : goods_price.toFixed(2)
+                typeNum: 0,
+                type: index
               }
             });
-            let newGoodsList = list.map(item => {
-              return {
-                ...item,
-                goodsType: 2
-              }
-            })
-            list.isMchid = app.globalData.isMchid
-            this.setData({ list: newGoodsList, isMchid: app.globalData.isMchid });
-            app.globalData.shopCar = newGoodsList
-            wx.hideLoading();
-            // if (list.length == 0){
-            //   this.setData({ NoList:true });
-            // }
+            
+            if (goodTypeList[0]) {
+              this.getGoods(goodTypeList[0].id);
+            }
+
+            this.setData({ goodTypeList });
+
           }
         });
       }
     });
-   
+  },
+  // 获取商品
+  getGoods(classId = '') {
+    app.util.request({
+      url: "entry/wxapp/Goods",
+      data: {
+        seller_id: sellerId,
+        class: classId
+      },
+      success:(res) => {
+        let oldList = res.data;
+        const list = oldList.map(item => {
+          const goods_price = Number.parseFloat(item.specifications[0].goods_price);
+          return {
+            ...item,
+            isSelected:false,
+            goods_img: item.goods_img + app.globalData.imgSize,
+            price: Number.isInteger(goods_price) ? Number.parseInt(goods_price) : goods_price.toFixed(2)
+          }
+        });
+        let newGoodsList = list.map(item => {
+          return {
+            ...item,
+            goodsType: 2
+          }
+        })
+        list.isMchid = app.globalData.isMchid
+        this.setData({ list: newGoodsList, isMchid: app.globalData.isMchid });
+        app.globalData.shopCar = newGoodsList
+        wx.hideLoading();
+        // if (list.length == 0){
+        //   this.setData({ NoList:true });
+        // }
+      }
+    });
   },
   getEmitData(e){
     let { totalPrice, totalCount } = e.detail
@@ -118,8 +128,10 @@ Page({
 
   //选择不同的种类
   selectGoodsClass(e){
-    let goodsClass = e.currentTarget.dataset.goodtype
-    let current = goodsClass.type
+    let goodsClass = e.currentTarget.dataset.goodtype;
+    let current = goodsClass.type;
+    let classId = goodsClass.id;
+    this.getGoods(classId);
     this.setData({
       selectType: current
     })

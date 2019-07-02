@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/comment/comment",
     "pages/index/index",
     "pages/joinVip/joinVip",
     "pages/subOrder/subOrder",
@@ -26,6 +25,7 @@
     "pages/registerVip/registerVip",
     "pages/invoice/invoice",
     "pages/invoiceResult/invoiceResult",
+    "pages/comment/comment",
     "pages/submitComment/submitComment"
   ],
   "window": {

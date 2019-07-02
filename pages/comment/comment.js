@@ -1,7 +1,6 @@
-const api = require('./../../utils/api');
-
 Page({
   data: {
+    //  评价
     comment: {
       //  头像
       avatarUrl: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=865200461,3363625639&fm=26&gp=0.jpg',
@@ -31,14 +30,6 @@ Page({
         }
       ]
     }
-  },
-  //  预览图片
-  previewImage: function (e) {
-    let { index } = e.currentTarget.dataset;
-    api.previewImage({
-      current: this.data.comment.photo[index],
-      urls: this.data.comment.photo 
-    });
   },
   //  转发
   onShareAppMessage: function () {

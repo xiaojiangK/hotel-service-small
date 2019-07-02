@@ -1,6 +1,6 @@
 {
   "pages": [
-    
+    "pages/supermarket/supermarket",
     "pages/index/index",
     "pages/joinVip/joinVip",
     "pages/subOrder/subOrder",
@@ -8,7 +8,7 @@
     "pages/hotelOrderDetail/hotelOrderDetail",
     "pages/serviceOrderDetail/serviceOrderDetail",
     "pages/marketPay/marketPay",
-    "pages/supermarket/supermarket",
+    
     "pages/alliance/alliance",
     "pages/hotelRim/hotelRim",
     "pages/hotelFacility/hotelFacility",

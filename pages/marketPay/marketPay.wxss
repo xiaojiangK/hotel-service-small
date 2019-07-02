@@ -5,21 +5,34 @@
 .title{
   height: 100rpx;
   line-height: 100rpx;
-  font-size: 30rpx;
-  text-indent: 22rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  text-align: center;
 }
 .title >text{
   color: #929292;
 }
+.room-info{
+  margin: 20rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+
+}
 .input-item{
+  display: flex;
   height: 100rpx;
   line-height: 100rpx;
   background-color: #fff;
   border-bottom: 1px solid #f2f2f2;
 }
+.input-item >view{
+  margin-left: 24rpx;
+  font-size: 32rpx;
+  color: #929292;
+}
 .input-item >input{
   display: block;
-  width: 80%;
   height: 100%;
   margin-left: 22rpx;
   font-size: 32rpx;

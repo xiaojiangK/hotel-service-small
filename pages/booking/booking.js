@@ -13,7 +13,101 @@ Page({
     swiper: [],
     isGetPhoneNumber: false,
     isMchid: '',
-    room_booking:1
+    room_booking:1,
+    //  Tab 索引
+    tabIndex: 0,
+    //  是否显示房间详情
+    isShowRoomDetail: false,
+    //  详情滑块图片
+    roomSwiper: [
+      'https://static.hotel.showboom.cn/images/15/2019/06/h4i4cN5NoCN7no36WQ6whwZ6Bc4030.png?x-oss-process=image/resize,m_mfit,h_300,w_400',
+      'https://static.hotel.showboom.cn/images/15/2019/06/CF38FKqdLq8yCK18KFfKlcFqs8Q3FC.png?x-oss-process=image/resize,m_mfit,h_300,w_400',
+      'https://static.hotel.showboom.cn/images/15/2019/06/NqnPD98APe4U90900N9p0LJm84z1u0.png?x-oss-process=image/resize,m_mfit,h_300,w_400'
+    ],
+    //  详情滑块图片索引
+    roomSwiperIndex: 0,
+    //  酒店服务
+    serviceList: [
+      {
+        imgUrl: '/assets/image/icon-wifi.png',
+        name: '无线上网'
+      },
+      {
+        imgUrl: '/assets/image/icon-wifi.png',
+        name: '无线上网'
+      },
+      {
+        imgUrl: '/assets/image/icon-wifi.png',
+        name: '无线上网'
+      },
+      {
+        imgUrl: '/assets/image/icon-wifi.png',
+        name: '无线上网'
+      },
+      {
+        imgUrl: '/assets/image/icon-wifi.png',
+        name: '无线上网'
+      },
+      {
+        imgUrl: '/assets/image/icon-wifi.png',
+        name: '无线上网'
+      },
+      {
+        imgUrl: '/assets/image/icon-wifi.png',
+        name: '无线上网'
+      },
+      {
+        imgUrl: '/assets/image/icon-wifi.png',
+        name: '无线上网'
+      },
+      {
+        imgUrl: '/assets/image/icon-wifi.png',
+        name: '无线上网'
+      },
+      {
+        imgUrl: '/assets/image/icon-wifi.png',
+        name: '无线上网'
+      },
+      {
+        imgUrl: '/assets/image/icon-wifi.png',
+        name: '无线上网'
+      },
+      {
+        imgUrl: '/assets/image/icon-wifi.png',
+        name: '无线上网'
+      },
+      {
+        imgUrl: '/assets/image/icon-wifi.png',
+        name: '无线上网'
+      },
+      {
+        imgUrl: '/assets/image/icon-wifi.png',
+        name: '无线上网'
+      },
+      {
+        imgUrl: '/assets/image/icon-wifi.png',
+        name: '无线上网'
+      },
+      {
+        imgUrl: '/assets/image/icon-wifi.png',
+        name: '无线上网'
+      },
+      {
+        imgUrl: '/assets/image/icon-wifi.png',
+        name: '无线上网'
+      },
+      {
+        imgUrl: '/assets/image/icon-wifi.png',
+        name: '无线上网'
+      },
+      {
+        imgUrl: '/assets/image/icon-wifi.png',
+        name: '无线上网'
+      },
+      {
+        imgUrl: '/assets/image/icon-wifi.png',
+        name: '无线上网'
+      }]
   },
   goPay(e) {
     const room = e.currentTarget.dataset.room;
@@ -29,103 +123,8 @@ Page({
         endWeek: data.endWeek,
         days: data.days,
         start: data.start,
-        end: data.end,
-
-      //  Tab 索引
-      tabIndex: 0,
-      //  是否显示房间详情
-      isShowRoomDetail: false,
-      //  详情滑块图片
-      roomSwiper: [
-        'https://static.hotel.showboom.cn/images/15/2019/06/h4i4cN5NoCN7no36WQ6whwZ6Bc4030.png?x-oss-process=image/resize,m_mfit,h_300,w_400',
-        'https://static.hotel.showboom.cn/images/15/2019/06/CF38FKqdLq8yCK18KFfKlcFqs8Q3FC.png?x-oss-process=image/resize,m_mfit,h_300,w_400',
-        'https://static.hotel.showboom.cn/images/15/2019/06/NqnPD98APe4U90900N9p0LJm84z1u0.png?x-oss-process=image/resize,m_mfit,h_300,w_400'
-      ],
-      //  详情滑块图片索引
-      roomSwiperIndex: 0,
-      //  酒店服务
-      serviceList: [
-        {
-          imgUrl: '/assets/image/icon-wifi.png',
-          name: '无线上网'
-        },
-        {
-          imgUrl: '/assets/image/icon-wifi.png',
-          name: '无线上网'
-        },
-        {
-          imgUrl: '/assets/image/icon-wifi.png',
-          name: '无线上网'
-        },
-        {
-          imgUrl: '/assets/image/icon-wifi.png',
-          name: '无线上网'
-        },
-        {
-          imgUrl: '/assets/image/icon-wifi.png',
-          name: '无线上网'
-        },
-        {
-          imgUrl: '/assets/image/icon-wifi.png',
-          name: '无线上网'
-        },
-        {
-          imgUrl: '/assets/image/icon-wifi.png',
-          name: '无线上网'
-        },
-        {
-          imgUrl: '/assets/image/icon-wifi.png',
-          name: '无线上网'
-        },
-        {
-          imgUrl: '/assets/image/icon-wifi.png',
-          name: '无线上网'
-        },
-        {
-          imgUrl: '/assets/image/icon-wifi.png',
-          name: '无线上网'
-        },
-        {
-          imgUrl: '/assets/image/icon-wifi.png',
-          name: '无线上网'
-        },
-        {
-          imgUrl: '/assets/image/icon-wifi.png',
-          name: '无线上网'
-        },
-        {
-          imgUrl: '/assets/image/icon-wifi.png',
-          name: '无线上网'
-        },
-        {
-          imgUrl: '/assets/image/icon-wifi.png',
-          name: '无线上网'
-        },
-        {
-          imgUrl: '/assets/image/icon-wifi.png',
-          name: '无线上网'
-        },
-        {
-          imgUrl: '/assets/image/icon-wifi.png',
-          name: '无线上网'
-        },
-        {
-          imgUrl: '/assets/image/icon-wifi.png',
-          name: '无线上网'
-        },
-        {
-          imgUrl: '/assets/image/icon-wifi.png',
-          name: '无线上网'
-        },
-        {
-          imgUrl: '/assets/image/icon-wifi.png',
-          name: '无线上网'
-        },
-        {
-          imgUrl: '/assets/image/icon-wifi.png',
-          name: '无线上网'
-        }
-    ]}
+        end: data.end
+      }
     })
   },
   //  页面显示
@@ -135,13 +134,13 @@ Page({
   },
   //  初始化数据
   initDate() {
-    
+    let _this = this
     //获取权限
     wx.getStorage({
       key: 'hotel',
       success: function(res) {
         let { room_booking } = res.data || 1
-        this.setData({
+        _this.setData({
           room_booking: room_booking
         })
       },

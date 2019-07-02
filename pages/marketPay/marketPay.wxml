@@ -1,11 +1,15 @@
 <!--pages/marketPay/marketPay.wxml-->
-<view class='pages'>     
-  <view class='title'>收货信息<text>(以便送至客房)</text></view>
-  <view class='input-item'>
-    <input type='text' bindchange="roomChange" placeholder='房间号'></input>
-  </view>
-  <view class='input-item'>
-    <input type='text' maxlength="11" bindchange="telChange" placeholder='手机号' value="{{tel}}"></input>
+<view class='pages'>   
+  <view class="room-info">
+   <view class='title'>请填写信息，以便送至客房</view>
+    <view class='input-item'>
+      <view>房间号</view>
+      <input type='text' bindchange="roomChange" placeholder='房间号'></input>
+    </view>
+    <view class='input-item'>
+    <view>手机号</view>
+      <input type='text' maxlength="11" bindchange="telChange" placeholder='手机号' value="{{tel}}"></input>
+    </view>
   </view>
 
   <view class='goods-list'>

@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "commentItem": "/components/commentItem/commentItem"
+  },
   "navigationBarTitleText": "查看评价"
 }

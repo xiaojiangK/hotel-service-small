@@ -147,6 +147,9 @@ page {
   font-size: 24rpx;
   line-height: 24rpx;
 }
+.room-list .desc text.active {
+  color: #ff6342;
+}
 .room-list .desc text:first-of-type {
   padding-left: 0;
 }
@@ -410,9 +413,43 @@ page {
   content: '· ';
   margin-right: 20rpx;
 }
-
-
-
+/*** 评论列表 ***/
+.comment-list .tag-list {
+  padding: 28rpx 22rpx 10rpx;
+}
+.comment-list .tag-list .tag {
+  display: inline-block;
+  margin-right: 26rpx;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 32rpx;
+  padding: 0 28rpx;
+  min-width: 160rpx;
+  height: 56rpx;
+  color: #b5b5b5;
+  font-size: 26rpx;
+  line-height: 56rpx;
+  text-align: center;
+  transition: all .25s;
+}
+.comment-list .tag-list .tag.active {
+  border-color: #ff6342;
+  color: #ff6342;
+  background: #fff5f3;
+}
+.comment-list .null {
+  padding: 138rpx 0 190rpx;
+  color: #999;
+  font-size: 36rpx;
+  font-weight: 400;
+  line-height: 36rpx;
+  text-align: center;
+}
+.comment-list .null .icon {
+  margin-bottom: 66rpx;
+  width: 260rpx;
+  height: 228rpx;
+}
+/*** 建设中 ***/
 .build {
   padding-top: 323rpx;
   text-align: center;

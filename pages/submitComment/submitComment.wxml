@@ -1,0 +1,19 @@
+<view class="content">
+  <textarea class="text" placeholder="写出您真实的想法…" placeholder-style="color:#b5b5b5" maxlength="{{countLimit}}" value="{{content}}" bindinput="contentChange"></textarea>
+  <view class="count">{{count}}/{{countLimit}}</view>
+  <view class="photo-list">
+    <view class="item" wx:for="{{photoList}}" wx:key="index">
+      <image class="photo" src="{{item}}" mode="aspectFill" data-index="{{index}}" bindtap="previewImage" ></image>
+      <image class="icon-delete" src="/assets/image/icon-photo-delete.png" mode="aspectFill" data-index="{{index}}" bindtap="deleteImage" ></image>
+    </view>
+    <view class="item {{photoList.length === 9 ? 'hide' : ''}}">
+      <view class="null" bindtap="chooseImage">
+        <image class="icon-photo" src="/assets/image/icon-photo.png" mode="aspectFill" ></image>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="btn">
+  <text bindtap="cancel">取消</text>
+  <text bindtap="submit">发布</text>
+</view>

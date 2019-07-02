@@ -54,9 +54,12 @@
       </view>
     </view>
     <view class='payment-box'>
-      <view class='cancel-payment' wx:if="{{detail.status == '1'}}" bindtap="cancelOrder">取消订单</view>
-      <view class='sub-payment' wx:if="{{detail.status == '1'}}" bindtap="goPay">去支付</view>
-      <view class='book-again' wx:else bindtap="goReserve">再次预定</view>
+      <view class="btn white">去评价</view>
+      <!-- <view class="btn orange">查看回复</view> -->
+      <!-- <view class="btn gray">查看评价</view> -->
+      <view class='btn gray' wx:if="{{detail.status == '1'}}" bindtap="cancelOrder">取消订单</view>
+      <view class='btn orange' wx:if="{{detail.status == '1'}}" bindtap="goPay">去支付</view>
+      <view class='btn orange' wx:else bindtap="goReserve">再次预定</view>
     </view>
     <view class='payment-meg'>预订成功后不可取消/变更订单</view>
   </view>

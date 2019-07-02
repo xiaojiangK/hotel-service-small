@@ -88,6 +88,9 @@
         </block>
       </view>
       <view class='operate-right'>
+        <view class="oprate-btn white">去评价</view>
+        <!-- <view class="oprate-btn orange">查看回复</view> -->
+        <!-- <view class="oprate-btn">查看评价</view> -->
         <view class='oprate-btn' wx:if="{{data.status == '1'}}" bindtap="cancelOrder">取消订单</view>
         <view class='oprate-btn orange' wx:if="{{data.status == '1'}}" bindtap="goPay">去支付</view>
         <view class='oprate-btn' wx:else bindtap="goReserve">再次预定</view>

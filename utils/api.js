@@ -37,6 +37,13 @@ let apiSpace = {
     'getStorageInfo',
     'getStorageInfoSync'
   ],
+  //  媒体
+  media: [
+    //  预览图片
+    'previewImage',
+    //  选择图片
+    'chooseImage'
+  ],
   //  位置
   location: [
     'getLocation',

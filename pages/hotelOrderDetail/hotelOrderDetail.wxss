@@ -155,47 +155,34 @@
   padding-left: 22rpx;
 }
 .payment-box {
-  width: 100%;
-  height: auto;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  margin: 30rpx auto 40rpx auto;
+  justify-content: space-between;
+  margin: 30rpx 34rpx 40rpx 28rpx;
 }
-.cancel-payment {
-  width: 330rpx;
-  height: 80rpx;
-  background: #CCCCCC;
-  color: white;
+.payment-box .btn {
+  border: 2rpx solid transparent;
+  border-radius: 4rpx;
+  width: 326rpx;
+  height: 76rpx;
   font-size: 30rpx;
-  font-weight: bold;
-  line-height: 80rpx;
+  line-height: 76rpx;
   text-align: center;
-  border-radius:4rpx;
 }
-.sub-payment {
-  width: 330rpx;
-  height: 80rpx;
-  background: #FF6634;
-  color: white;
-  font-size: 30rpx;
-  font-weight: bold;
-  line-height: 80rpx;
-  text-align: center;
-  margin-left: 24rpx;
-  border-radius:4rpx;
+.payment-box .btn.white {
+  border-color: #ff6342;
+  color: #ff6342;
+  background: #fff;
 }
-.book-again {
-  width: 330rpx;
-  height: 80rpx;
-  background: #FF6634;
-  color: white;
-  font-size: 30rpx;
-  font-weight: bold;
-  line-height: 80rpx;
-  text-align: center;
-  margin-left: 24rpx;
-  border-radius:4rpx;
+.payment-box .btn.orange {
+  border-color: #ff6342;
+  color: #fff;
+  background: #ff6342;
+}
+.payment-box .btn.gray {
+  border-color: #ccc;
+  color: #fff;
+  background: #ccc;
 }
 .payment-meg {
   color: #929292;

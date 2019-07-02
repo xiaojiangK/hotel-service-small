@@ -1,0 +1,26 @@
+<view class="wrap">
+  <!-- comment start -->
+  <view class="comment">
+    <image class="avatar" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=865200461,3363625639&fm=26&gp=0.jpg" mode="aspectFill" ></image>
+    <view class="head">
+      <text class="nickname">xtp231200153</text>
+      <text class="type">经济大床房</text>
+    </view>
+    <view class="content">位置不太好找，门面太小。前台小哥哥小姐姐服务态度很好，很有耐心。价格在这位置不算贵，房间是二层有窗，但是窗外是墙体。感觉一层是半地下，二层就是一层的样子。打开房间很整洁就是烟味特别大，还得先打开排风扇</view>
+    <view class="photo col-1">
+      <image src="" mode="aspectFill" ></image>
+    </view>
+    <view class="state">2019-02入住，2019-02-15发表</view>
+  </view>
+  <!-- comment end -->
+  <!-- reply start -->
+  <view class="reply">
+    <view class="item">
+      <view class="content">
+        <text class="speaker">酒店回复：</text>位置不太好找，门面太小。前台小哥哥小姐姐服务态度很好，很有耐心。
+      </view>
+      <view class="state">2019-02-15回复</view>
+    </view>
+  </view>
+  <!-- reply end -->
+</view>

@@ -1,6 +1,7 @@
+var app = getApp();
 const api = require('./../../utils/api');
 var siteinfo = require("../../siteinfo.js");
-var app = getApp();
+
 
 Page({
   data: {
@@ -21,8 +22,8 @@ Page({
   },
   onLoad(opts) {
     this.setData({
-      roomId: opts.roomId,
-      orderId: opts.orderId
+      orderId: opts.orderId,
+      roomId: opts.roomId
     });
   },
   //  内容输入

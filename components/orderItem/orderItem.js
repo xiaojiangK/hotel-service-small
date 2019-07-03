@@ -34,7 +34,9 @@ Component({
   data: {
     data: {},
     time: '',
-    timer: null
+    timer: null,
+    isReply: false,
+    isAssess: false
   },
   /**
    * 组件的方法列表
@@ -103,6 +105,36 @@ Component({
         }
       });
     },
+    // 获取评论列表
+    getAssess() {
+      app.util.request({
+        url: "entry/wxapp/AssessList",
+        data: {
+          order_id: this.data.data.id
+        },
+        success: (res) => {
+          for (let i of res.data) {
+            if (i.reply) {
+              this.setData({
+                isReply: true
+              });
+            }
+          }
+          if (res.data.length > 0) {
+            this.setData({
+              isAssess: true
+            });
+          }
+        }
+      });
+    },
+    // 查看评论
+    viewComment() {
+      wx.navigateTo({
+        url: `/pages/comment/comment?orderId=${this.data.data.id}`
+      });
+    },
+    // 去评论
     goComment() {
       const item = this.data.data;
       wx.navigateTo({
@@ -132,5 +164,8 @@ Component({
         });
       }
     }
+  },
+  ready() {
+    this.getAssess();
   }
 })

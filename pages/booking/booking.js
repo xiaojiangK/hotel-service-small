@@ -113,7 +113,8 @@ Page({
     commentTagIndex: 0,
     //  评论列表
     commentList: [],
-    assessCount: {}
+    assessCount: {},
+    hotel: {}
   },
   //  页面显示
   onShow() {
@@ -205,6 +206,26 @@ Page({
               }
             });
             this.setData({ roomList, swiper, isMchid: app.globalData.isMchid });
+          }
+        });
+      }
+    });
+    this.getHotelDetail();
+  },
+  getHotelDetail() {
+    app.util.request({
+      url: "entry/wxapp/GetSystem",
+      success:(res) => {
+        app.util.request({
+          url: "entry/wxapp/PjDetails",
+          data: {
+            uniacid: res.data.uniacid
+          },
+          success:(res) => {
+            this.setData({
+              hotel: res.data
+            });
+            console.log(res.data);
           }
         });
       }

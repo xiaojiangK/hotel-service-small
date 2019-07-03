@@ -127,8 +127,9 @@
           </view>
           <view class="policy">
             <view class="label">酒店政策</view>
-            <view class="text">入住时间: 14:00以后 离店时间: 12:00之前</view>
-            <view class="text">不可取消  订单确认后不可取消/变更，如未入住，酒店将扣除全额房费</view>
+            <view class="content">{{hotel.policy}}</view>
+            <!-- <view class="text">入住时间: 14:00以后 离店时间: 12:00之前</view>
+            <view class="text">不可取消  订单确认后不可取消/变更，如未入住，酒店将扣除全额房费</view> -->
           </view>
         </view>
         <view class="btn">
@@ -142,8 +143,8 @@
   <view class="tab-panel detail" hidden="{{tabIndex !== 1}}">
     <!-- level start -->
     <view class="sect level">
-      <view class="head">北京世纪金源大饭店</view>
-      <view class="star">五星级</view>
+      <view class="head">{{hotel.name}}</view>
+      <view class="star">{{hotel.star}}</view>
     </view>
     <!-- level end -->
     <!-- service start -->
@@ -172,10 +173,11 @@
     <!-- policy start -->
     <view class="sect policy">
       <view class="head">酒店政策</view>
-      <view class="text">入住时间: 14:00以后 离店时间: 12:00之前</view>
+      <view class="content">{{hotel.policy}}</view>
+      <!-- <view class="text">入住时间: 14:00以后 离店时间: 12:00之前</view>
       <view class="text">不可取消  订单确认后不可取消/变更，如未入住，酒店将扣除全额房费</view>
       <view class="text">直接消费，携带所有入住，人的有效身份证办理入住，入住必须按照一人一-证</view>
-      <view class="text">入住需要押金，金额以前台为准</view>
+      <view class="text">入住需要押金，金额以前台为准</view> -->
     </view>
     <!-- policy end -->
   </view>

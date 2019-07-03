@@ -19,8 +19,8 @@
 .comment .head {
   display: flex;
   justify-content: space-between;
-  height: 100rpx;
-  line-height: 100rpx;
+  height: 90rpx;
+  line-height: 90rpx;
 }
 .comment .head .nickname {
   color: #fd9900;

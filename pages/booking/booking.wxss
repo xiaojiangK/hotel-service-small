@@ -101,9 +101,6 @@ page {
   margin-bottom: 36rpx;
   height: 154rpx;
 }
-.room-list .item:last-of-type {
-  margin-bottom: 0;
-}
 .room-list .img {
   float: left;
   position: relative;
@@ -265,7 +262,8 @@ page {
 }
 .room-detail .attr {
   border-bottom: 2rpx solid #e0e0e0;
-  padding: 16rpx 28rpx 30rpx;
+  margin: 0 28rpx;
+  padding: 16rpx 0 30rpx;
 }
 .room-detail .attr .item {
   display: inline-block;

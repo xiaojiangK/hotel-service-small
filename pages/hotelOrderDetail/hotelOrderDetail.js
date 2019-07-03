@@ -130,6 +130,12 @@ Page({
       }
     });
   },
+  goComment() {
+    const item = this.data.detail;
+    wx.navigateTo({
+      url: `/pages/submitComment/submitComment?roomId=${item.room_id}&orderId=${item.id}`
+    });
+  },
   goPay() {
     app.goPay(this.data.id, this.data.flag);
   },

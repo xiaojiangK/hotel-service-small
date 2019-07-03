@@ -103,6 +103,12 @@ Component({
         }
       });
     },
+    goComment() {
+      const item = this.data.data;
+      wx.navigateTo({
+        url: `/pages/submitComment/submitComment?roomId=${item.room_id}&orderId=${item.id}`
+      });
+    },
     goPay() {
       app.goPay(this.data.data.id, this.data.data.flag);
     },

@@ -181,8 +181,8 @@
   </view>
   <view class="tab-panel comment-list" hidden="{{tabIndex !== 2}}">
     <view class="tag-list" wx:if="{{commentList.length}}">
-      <text class="tag {{commentTagIndex === 0 ? 'active' : ''}}" data-index="{{0}}" bindtap="chooseCommentTag">全部（2624）</text>
-      <text class="tag {{commentTagIndex === 1 ? 'active' : ''}}" data-index="{{1}}" bindtap="chooseCommentTag">有图（2624）</text>
+      <text class="tag {{commentTagIndex === 0 ? 'active' : ''}}" data-index="{{0}}" bindtap="chooseCommentTag">全部（{{assessCount.total}}）</text>
+      <text class="tag {{commentTagIndex === 1 ? 'active' : ''}}" data-index="{{1}}" bindtap="chooseCommentTag">有图（{{assessCount.num}}）</text>
     </view>
     <view class="comment-wrap" wx:if="{{commentList.length}}">
       <commentItem wx:for="{{commentList}}" wx:key="index" comment="{{item}}"></commentItem>

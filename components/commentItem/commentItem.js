@@ -22,8 +22,8 @@ Component({
     previewImage: function (e) {
       let { index } = e.currentTarget.dataset;
       api.previewImage({
-        current: this.properties.comment.photo[index],
-        urls: this.properties.comment.photo 
+        current: this.properties.comment.img[index],
+        urls: this.properties.comment.img 
       });
     }
   }

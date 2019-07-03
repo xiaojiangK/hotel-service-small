@@ -157,7 +157,7 @@
 .payment-box {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   margin: 30rpx 34rpx 40rpx 28rpx;
 }
 .payment-box .btn {
@@ -173,6 +173,7 @@
   border-color: #ff6342;
   color: #ff6342;
   background: #fff;
+  margin: 0 30rpx 0 0;
 }
 .payment-box .btn.orange {
   border-color: #ff6342;
@@ -183,6 +184,7 @@
   border-color: #ccc;
   color: #fff;
   background: #ccc;
+  margin: 0 30rpx 0 0;
 }
 .payment-meg {
   color: #929292;

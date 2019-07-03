@@ -1,6 +1,7 @@
 // pages/booking/booking.js
 const app = getApp();
 var Moment = require("../../utils/moment.js");
+import { formatDate } from '../../utils/tool.js'
 
 Page({
   data: {
@@ -111,126 +112,16 @@ Page({
     //  评论标签索引
     commentTagIndex: 0,
     //  评论列表
-    commentList: [
-      {
-        //  头像
-        avatarUrl: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=865200461,3363625639&fm=26&gp=0.jpg',
-        //  昵称
-        nickname: 'xtp231200153',
-        //  房间类型
-        type: '经济大床房',
-        //  评论内容
-        content: '位置不太好找，门面太小。前台小哥哥小姐姐服务态度很好，很有耐心。价格在这位置不算贵，房间是二层有窗，但是窗外是墙体。感觉一层是半地下，二层就是一层的样子。打开房间很整洁就是烟味特别大，还得先打开排风扇',
-        //  图片
-        photo: [
-          'https://static.hotel.showboom.cn/images/15/2019/06/h4i4cN5NoCN7no36WQ6whwZ6Bc4030.png?x-oss-process=image/resize,m_mfit,h_300,w_400'
-          
-        ],
-        //  入住时间
-        checkInDatetime: '2019-02',
-        //  发表时间
-        publishDatetime: '2019-02-15',
-        //  回复列表
-        replyList: [
-          {
-            speaker: '酒店回复：',
-            content: '位置不太好找，门面太小。前台小哥哥小姐姐服务态度很好，很有耐心。',
-            datetime: '2019-02-15'
-          }
-        ]
-      },
-      {
-        //  头像
-        avatarUrl: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=865200461,3363625639&fm=26&gp=0.jpg',
-        //  昵称
-        nickname: 'xtp231200153',
-        //  房间类型
-        type: '经济大床房',
-        //  评论内容
-        content: '位置不太好找，门面太小。前台小哥哥小姐姐服务态度很好，很有耐心。价格在这位置不算贵，房间是二层有窗，但是窗外是墙体。感觉一层是半地下，二层就是一层的样子。打开房间很整洁就是烟味特别大，还得先打开排风扇',
-        //  图片
-        photo: [
-          'https://static.hotel.showboom.cn/images/15/2019/06/h4i4cN5NoCN7no36WQ6whwZ6Bc4030.png?x-oss-process=image/resize,m_mfit,h_300,w_400',
-          'https://static.hotel.showboom.cn/images/15/2019/06/CF38FKqdLq8yCK18KFfKlcFqs8Q3FC.png?x-oss-process=image/resize,m_mfit,h_300,w_400'
-          
-        ],
-        //  入住时间
-        checkInDatetime: '2019-02',
-        //  发表时间
-        publishDatetime: '2019-02-15',
-        //  回复列表
-        replyList: [ ]
-      },
-      {
-        //  头像
-        avatarUrl: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=865200461,3363625639&fm=26&gp=0.jpg',
-        //  昵称
-        nickname: 'xtp231200153',
-        //  房间类型
-        type: '经济大床房',
-        //  评论内容
-        content: '位置不太好找，门面太小。前台小哥哥小姐姐服务态度很好，很有耐心。价格在这位置不算贵，房间是二层有窗，但是窗外是墙体。感觉一层是半地下，二层就是一层的样子。打开房间很整洁就是烟味特别大，还得先打开排风扇',
-        //  图片
-        photo: [
-          'https://static.hotel.showboom.cn/images/15/2019/06/h4i4cN5NoCN7no36WQ6whwZ6Bc4030.png?x-oss-process=image/resize,m_mfit,h_300,w_400',
-          'https://static.hotel.showboom.cn/images/15/2019/06/CF38FKqdLq8yCK18KFfKlcFqs8Q3FC.png?x-oss-process=image/resize,m_mfit,h_300,w_400',
-          'https://static.hotel.showboom.cn/images/15/2019/06/NqnPD98APe4U90900N9p0LJm84z1u0.png?x-oss-process=image/resize,m_mfit,h_300,w_400'
-          
-        ],
-        //  入住时间
-        checkInDatetime: '2019-02',
-        //  发表时间
-        publishDatetime: '2019-02-15',
-        //  回复列表
-        replyList: [
-          {
-            speaker: '酒店回复：',
-            content: '位置不太好找，门面太小。前台小哥哥小姐姐服务态度很好，很有耐心。',
-            datetime: '2019-02-15'
-          }
-        ]
-      },
-      {
-        //  头像
-        avatarUrl: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=865200461,3363625639&fm=26&gp=0.jpg',
-        //  昵称
-        nickname: 'xtp231200153',
-        //  房间类型
-        type: '经济大床房',
-        //  评论内容
-        content: '位置不太好找，门面太小。前台小哥哥小姐姐服务态度很好，很有耐心。价格在这位置不算贵，房间是二层有窗，但是窗外是墙体。感觉一层是半地下，二层就是一层的样子。打开房间很整洁就是烟味特别大，还得先打开排风扇',
-        //  图片
-        photo: [
-          'https://static.hotel.showboom.cn/images/15/2019/06/h4i4cN5NoCN7no36WQ6whwZ6Bc4030.png?x-oss-process=image/resize,m_mfit,h_300,w_400',
-          'https://static.hotel.showboom.cn/images/15/2019/06/CF38FKqdLq8yCK18KFfKlcFqs8Q3FC.png?x-oss-process=image/resize,m_mfit,h_300,w_400',
-          'https://static.hotel.showboom.cn/images/15/2019/06/NqnPD98APe4U90900N9p0LJm84z1u0.png?x-oss-process=image/resize,m_mfit,h_300,w_400',
-          'https://static.hotel.showboom.cn/images/15/2019/06/h4i4cN5NoCN7no36WQ6whwZ6Bc4030.png?x-oss-process=image/resize,m_mfit,h_300,w_400',
-          'https://static.hotel.showboom.cn/images/15/2019/06/CF38FKqdLq8yCK18KFfKlcFqs8Q3FC.png?x-oss-process=image/resize,m_mfit,h_300,w_400',
-          'https://static.hotel.showboom.cn/images/15/2019/06/h4i4cN5NoCN7no36WQ6whwZ6Bc4030.png?x-oss-process=image/resize,m_mfit,h_300,w_400',
-          'https://static.hotel.showboom.cn/images/15/2019/06/CF38FKqdLq8yCK18KFfKlcFqs8Q3FC.png?x-oss-process=image/resize,m_mfit,h_300,w_400',
-          'https://static.hotel.showboom.cn/images/15/2019/06/h4i4cN5NoCN7no36WQ6whwZ6Bc4030.png?x-oss-process=image/resize,m_mfit,h_300,w_400',
-          'https://static.hotel.showboom.cn/images/15/2019/06/CF38FKqdLq8yCK18KFfKlcFqs8Q3FC.png?x-oss-process=image/resize,m_mfit,h_300,w_400'
-          
-        ],
-        //  入住时间
-        checkInDatetime: '2019-02',
-        //  发表时间
-        publishDatetime: '2019-02-15',
-        //  回复列表
-        replyList: [
-          {
-            speaker: '酒店回复：',
-            content: '位置不太好找，门面太小。前台小哥哥小姐姐服务态度很好，很有耐心。',
-            datetime: '2019-02-15'
-          }
-        ]
-      }
-    ]
+    commentList: [],
+    assessCount: {}
   },
   //  页面显示
   onShow() {
     this.initDate();
     this.changePhoneNumber();
+  },
+  onLoad() {
+    this.loadData();
   },
   //  初始化数据
   initDate() {
@@ -259,9 +150,10 @@ Page({
         let endWeek = this.formatWeek(w2);
         const days = Moment(endDate).differ(startDate);
         this.setData({ days, start, end, startWeek, endWeek });
-        this.loadData();
       }
     });
+    this.getAssess();
+    this.getAssessCount();
   },
   //  获取手机号
   getUserPhoneNumber(e){
@@ -318,6 +210,46 @@ Page({
       }
     });
   },
+  // 获取评论数量
+  getAssessCount() {
+    wx.getStorage({
+      key: 'userinfo',
+      success: (res)=>{
+        app.util.request({
+          url: "entry/wxapp/AssessCount",
+          data: {
+            user_id: res.data.id
+          },
+          success: (res) => {
+            this.setData({ assessCount: res.data });
+          }
+        });
+      }
+    });
+  },
+  // 获取评论列表
+  getAssess() {
+    app.util.request({
+      url: "entry/wxapp/AssessList",
+      data: {
+        page: 1,
+        img_type: this.data.commentTagIndex
+      },
+      success: (res) => {
+        const commentList = res.data.map(item => {
+          return {
+            ...item,
+            speaker: "酒店回复：",
+            time: formatDate(item.time * 1000),
+            reply_time: formatDate(item.reply_time * 1000),
+            arrival_time: formatDate(item.arrival_time * 1000),
+            img: item.img && item.img.map(item => item.img_url)
+          }
+        });
+        this.setData({ commentList });
+      }
+    });
+  },
   //  选择TAB标签
   chooseTab: function (e) {
     let { index } = e.currentTarget.dataset;
@@ -358,6 +290,7 @@ Page({
     this.setData({
       commentTagIndex: index
     });
+    this.getAssess();
   },
   //  支付
   goPay(e) {

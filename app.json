@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/supermarket/supermarket",
     "pages/index/index",
     
     
@@ -10,7 +9,7 @@
     "pages/hotelOrderDetail/hotelOrderDetail",
     "pages/serviceOrderDetail/serviceOrderDetail",
     "pages/marketPay/marketPay",
-    
+    "pages/supermarket/supermarket",
     "pages/alliance/alliance",
     "pages/hotelRim/hotelRim",
     "pages/hotelFacility/hotelFacility",
@@ -27,7 +26,9 @@
     "pages/wifiList/wifiList",
     "pages/registerVip/registerVip",
     "pages/invoice/invoice",
-    "pages/invoiceResult/invoiceResult"
+    "pages/invoiceResult/invoiceResult",
+    "pages/comment/comment",
+    "pages/submitComment/submitComment"
   ],
   "window": {
     "backgroundTextStyle": "light",

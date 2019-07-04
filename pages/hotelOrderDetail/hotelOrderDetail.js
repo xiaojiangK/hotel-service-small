@@ -13,6 +13,8 @@ Page({
     id: 0,
     flag: 0,
     detail: {},
+    isReply: false,
+    isAssess: false,
     totalPrice: 0
   },
 
@@ -25,6 +27,9 @@ Page({
       flag: op.flag
     });
     this.loadData();
+  },
+  onShow() {
+    this.getAssess();
   },
   loadData() {
     app.util.request({
@@ -128,6 +133,41 @@ Page({
           });
         }
       }
+    });
+  },
+  // 获取评论列表
+  getAssess() {
+    app.util.request({
+      url: "entry/wxapp/AssessList",
+      data: {
+        order_id: this.data.id
+      },
+      success: (res) => {
+        for (let i of res.data) {
+          if (i.reply) {
+            this.setData({
+              isReply: true
+            });
+          }
+        }
+        if (res.data.length > 0) {
+          this.setData({
+            isAssess: true
+          });
+        }
+      }
+    });
+  },
+  // 查看评论
+  viewComment() {
+    wx.navigateTo({
+      url: `/pages/comment/comment?orderId=${this.data.id}`
+    });
+  },
+  goComment() {
+    const item = this.data.detail;
+    wx.navigateTo({
+      url: `/pages/submitComment/submitComment?roomId=${item.room_id}&orderId=${item.id}`
     });
   },
   goPay() {

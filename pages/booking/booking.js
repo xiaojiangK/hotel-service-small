@@ -1,6 +1,7 @@
 // pages/booking/booking.js
 const app = getApp();
 var Moment = require("../../utils/moment.js");
+import { formatDate } from '../../utils/tool.js'
 
 Page({
   data: {
@@ -107,30 +108,21 @@ Page({
       {
         imgUrl: '/assets/image/icon-wifi.png',
         name: '无线上网'
-      }]
-  },
-  goPay(e) {
-    const room = e.currentTarget.dataset.room;
-    if (!room.min_num || room.min_num == '0') {
-      return;
-    }
-    const data = this.data;
-    wx.setStorage({
-      key: 'room',
-      data: {
-        ...room,
-        startWeek: data.startWeek,
-        endWeek: data.endWeek,
-        days: data.days,
-        start: data.start,
-        end: data.end
-      }
-    })
+      }],
+    //  评论标签索引
+    commentTagIndex: 0,
+    //  评论列表
+    commentList: [],
+    assessCount: {},
+    hotel: {}
   },
   //  页面显示
   onShow() {
     this.initDate();
     this.changePhoneNumber();
+  },
+  onLoad() {
+    this.loadData();
   },
   //  初始化数据
   initDate() {
@@ -159,9 +151,10 @@ Page({
         let endWeek = this.formatWeek(w2);
         const days = Moment(endDate).differ(startDate);
         this.setData({ days, start, end, startWeek, endWeek });
-        this.loadData();
       }
     });
+    this.getAssess();
+    this.getAssessCount();
   },
   //  获取手机号
   getUserPhoneNumber(e){
@@ -217,8 +210,68 @@ Page({
         });
       }
     });
+    this.getHotelDetail();
   },
-  //  选择标签
+  getHotelDetail() {
+    app.util.request({
+      url: "entry/wxapp/GetSystem",
+      success:(res) => {
+        app.util.request({
+          url: "entry/wxapp/PjDetails",
+          data: {
+            uniacid: res.data.uniacid
+          },
+          success:(res) => {
+            this.setData({
+              hotel: res.data
+            });
+            console.log(res.data);
+          }
+        });
+      }
+    });
+  },
+  // 获取评论数量
+  getAssessCount() {
+    wx.getStorage({
+      key: 'userinfo',
+      success: (res)=>{
+        app.util.request({
+          url: "entry/wxapp/AssessCount",
+          data: {
+            user_id: res.data.id
+          },
+          success: (res) => {
+            this.setData({ assessCount: res.data });
+          }
+        });
+      }
+    });
+  },
+  // 获取评论列表
+  getAssess() {
+    app.util.request({
+      url: "entry/wxapp/AssessList",
+      data: {
+        page: 1,
+        img_type: this.data.commentTagIndex
+      },
+      success: (res) => {
+        const commentList = res.data.map(item => {
+          return {
+            ...item,
+            speaker: "酒店回复：",
+            time: formatDate(item.time * 1000),
+            reply_time: formatDate(item.reply_time * 1000),
+            arrival_time: formatDate(item.arrival_time * 1000),
+            img: item.img && item.img.map(item => item.img_url)
+          }
+        });
+        this.setData({ commentList });
+      }
+    });
+  },
+  //  选择TAB标签
   chooseTab: function (e) {
     let { index } = e.currentTarget.dataset;
     this.setData({
@@ -251,6 +304,14 @@ Page({
     this.setData({
       detailSwiperIndex: current
     });
+  },
+  //  选择评论标签
+  chooseCommentTag: function (e) {
+    let { index } = e.currentTarget.dataset;
+    this.setData({
+      commentTagIndex: index
+    });
+    this.getAssess();
   },
   //  支付
   goPay(e) {

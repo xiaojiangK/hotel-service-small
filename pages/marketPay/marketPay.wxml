@@ -11,11 +11,12 @@
       <input type='text' maxlength="11" bindchange="telChange" placeholder='手机号' value="{{tel}}"></input>
     </view>
   </view>
-
+  <view class="goods-title">
+    <view class="title-name">商品清单</view>
+    <view class="goods-title-num">共<text>{{ allNum }}</text>商品</view>
+  </view>
   <view class='goods-list'>
-    
     <goods data="{{goods}}" isCurrentNum="1" bind:myevent="getGoods"></goods>
-    
   </view>
   <view class="submit-bar {{isIphoneX ? 'fix-iphonex-button':''}}">
     <view class='totle-num'>已选<text class='red'>{{ allNum }}</text>件商品</view>

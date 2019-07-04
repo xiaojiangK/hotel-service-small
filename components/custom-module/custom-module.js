@@ -35,7 +35,7 @@ Component({
         key: 'hotel',
         success: function(res) {
           let { breakfast_ticket } = res.data || 1
-          this.setData({
+          _this.setData({
             isShow: breakfast_ticket
           })
         },

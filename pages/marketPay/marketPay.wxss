@@ -37,10 +37,28 @@
   margin-left: 22rpx;
   font-size: 32rpx;
 }
-
+.goods-title{
+  display: flex;
+  margin-top:32rpx; 
+}
+.goods-title .title-name{
+  margin-left: 24rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+.goods-title-num{
+  margin-top: 10rpx;
+  margin-left: 20rpx;
+  font-size: 32rpx;
+}
+.goods-title-num >text{
+  color: #E83A3D
+}
 .goods-list{
-  margin-top: 20rpx;
-  padding-bottom: 120rpx;
+  margin: 26rpx 26rpx 120rpx;
+  padding:36rpx;
+  border-radius: 16rpx;
+  background-color: #fff;
 }
 
 .submit-bar{

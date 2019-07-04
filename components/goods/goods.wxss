@@ -1,5 +1,5 @@
 /* components/goods/goods.wxss */
-.goods{
+/* .goods{
   position: relative;
   display: flex;
   height: 240rpx;
@@ -28,6 +28,51 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 24rpx;
+}
+.goods-price{
+  font-size: 24rpx;
+  color: #E93A3D;
+}
+.goods-price>text{
+  display: inline-block;
+  margin-left: 2rpx;
+  font-size: 42rpx;
+}
+.goods-current-num{
+  font-size: 32rpx;
+  color: #666;
+} */
+/* goods */
+.goods{
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 200rpx;
+  /* border-bottom:2rpx solid #E1E1E1; */
+  background-color: #fff; 
+}
+.goods-img{
+  display: block;
+  flex: 0 0 150rpx;
+  height: 150rpx;
+}
+.good-right{
+  width:485rpx;
+  padding:0 24rpx;
+}
+.goods-title{
+  height: 60rpx;
+  overflow: hidden;
+  margin-top: 18rpx;
+  font-size: 34rpx;
+  color: #333;
+  line-height: 48rpx;
+}
+.goods-content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 26rpx;
 }
 .goods-price{
   font-size: 24rpx;

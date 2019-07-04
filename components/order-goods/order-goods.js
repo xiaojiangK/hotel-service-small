@@ -12,7 +12,6 @@ Component({
           const price = Number.parseFloat(item.price);
           return {
             ...item,
-            img: item.img + app.globalData.imgSize,
             price: Number.isInteger(price) ? Number.parseInt(price) : price.toFixed(2)
           }
         });

@@ -2,7 +2,7 @@
   <!-- <block wx:if="{{list.length > 0}}"> -->
     <view class="super-content" wx:if="{{ store==1 }}">
       <view class="content-left">
-        <view wx:for="{{ goodTypeList }}" wx:key="{{ item.type }}" bindtap="selectGoodsClass" data-goodtype="{{ item }}" class="good-class {{ item.type == selectType?'current':'' }}">
+        <view wx:for="{{ goodTypeList }}" wx:key="{{ item.type }}" bindtap="selectGoodsClass" data-goodtype="{{ item }}" data-index="{{index}}" class="good-class {{ item.type == selectType?'current':'' }}">
           <view>{{ item.name }}</view>
           <view class="tag-num" wx:if="{{ item.typeNum>0 }}">{{ item.typeNum }}</view>
         </view>
@@ -20,10 +20,10 @@
               <!-- <stepper getNum="{{ item.num }}"></stepper> -->
 
               <view class='stepper'>
-                <view class='minus btn' wx:if="{{ item.isSelected }}" catchtap='calculation' data-goods="{{ item }}" data-ctype="minus" data-gid="{{ item.goods_id }}" >-</view>
+                <view class='minus btn' wx:if="{{ item.isSelected && item.num>0 }}" catchtap='calculation' data-goods="{{ item }}" data-ctype="minus" data-gid="{{ item.goods_id }}" >-</view>
                 <!-- <input class='num' type='text' disabled value='{{ item.num }}'>8</input> -->
-                <view class="num" wx:if="{{ item.isSelected }}">{{ item.num }}</view>
-                <view class='add btn {{item.isSelected? "selected":""}}' catchtap='calculation' data-ctype="add" data-goods="{{ item }}" data-gid="{{ item.goods_id }}">+</view>
+                <view class="num" wx:if="{{ item.isSelected && item.num>0  }}">{{ item.num }}</view>
+                <view class='add btn {{item.isSelected && item.num>0 ? "selected":""}}' catchtap='calculation' data-ctype="add" data-goods="{{ item }}" data-gid="{{ item.goods_id }}">+</view>
               </view>
             </view>
             <!-- currentNum --> 
@@ -37,11 +37,33 @@
       <!-- <goods isCar= "1" data="{{list}}" bind:emitData="getEmitData"></goods> -->
     </view>
     </view>
-    <view class="submit-bar {{isIphoneX ? 'fix-iphonex-button':''}}" wx:if="{{ store==1 }}">
-      <view class='totle-num'>已选<text class='red'>{{totalCount}}</text>件商品</view>
-      <view class='totle-price'>合计<text class='red'><text class='small-size'>￥</text>{{totalPrice}}</text></view>
-      <view class='submit-btn' bind:tap="selected" > 查看购物车 </view>
+    <block wx:if="{{ totalCount>0 }}">
+      <view class="submit-bar {{isIphoneX ? 'fix-iphonex-button':''}}" bindtap="showShopcar" wx:if="{{ store==1 }}">
+        <view class="shop-car-modal">
+          <image src="/assets/image/icon-shopcar.png" class="none"></image>
+          <view class="goods-tags">{{totalCount}}</view>
+        </view>
+        <!-- <view class='totle-num'>已选<text class='red'>{{totalCount}}</text>件商品</view> -->
+        <view class="totle-content">
+          <view class='totle-price'><text><text class='small-size'>￥</text>{{totalPrice}}</text></view>
+          <view class="totle-price-notice">在线下单送至客房，懂你所需</view>
+        </view>
+        <view class='submit-btn' catchtap="selected" >去结算</view>
     </view>
+    </block>
+
+    <block wx:else>
+        <view class="submit-bar {{isIphoneX ? 'fix-iphonex-button':''}}" wx:if="{{ store==1 }}">
+        <view class="shop-car-modal">
+          <image src="/assets/image/icon-shopcar.png" class="none"></image>
+          <!-- <view class="goods-tags">{{totalCount}}</view> -->
+        </view>
+        <view class="totle-content">
+          <view class="totle-price-notice">在线下单送至客房，懂你所需</view>
+        </view>
+        <view class='submit-btn none' bind:tap="selected" >尚未添加</view>
+    </view>
+    </block>
 
   <block wx:if='{{ store==2|| list.length==0 }}'>
     <view wx:if='{{ item.specifications[0].goods_stock>0 }}' class="goods-add" bindtap='addShopCar' data-goods="{{ item }}">
@@ -65,11 +87,36 @@
     <!-- <text>您可以致电前台咨询</text> -->
   </view>
 
+
+  <!-- 购物车详情 -->
+  <view class="shopcar-black" wx:if="{{ isShowShopcar && totalCount>0  }}" catchtap="closeShopcar">
+    <view class="shopcar-dialog" catchtap="showmore">
+      <view class="shopcar-title">
+        <view>当前选购商品</view>
+        <view catchtap="clearShopcar">
+          <image src="/assets/image/icon-delete-car.png"></image>
+          清空购物车
+        </view>
+      </view>
+      <view class="shopcar-list">
+        <view class="shopcar-list-item" wx:for="{{ shopcarList }}" wx:key="index">
+          <view>{{ item.goods_name}}</view>
+          <view>{{ item.price }}</view>
+          <view class='stepper'>
+            <view class='minus btn' catchtap='calculation' data-goods="{{ item }}" data-ctype="minus"  >-</view>
+            <view class="num">{{ item.num }}</view>
+            <view class='add btn selected' catchtap='calculation' data-ctype="add" data-goods="{{ item }}">+</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
   <!-- 商品详情 -->
   <view class="bg-black" wx:if="{{ isshowGoods }}" catchtap='closeGoods'>
     <view class="good-content" catchtap="showmore">
       <view class="good-content-img">
-        <image src="{{ currentGoods.goods_img }}"></image>
+        <image src="{{ currentGoods.goods_img }}" mode="aspectFill"></image>
       </view>
       <view class="good-content-name">{{ currentGoods.goods_name }}</view>
       <view class="good-content-footer">
@@ -78,10 +125,10 @@
           <view wx:if="{{isShowJoincar}}" catchtap='calculation' data-ctype="add" data-goods="{{ currentGoods }}" data-joincar="1" class="good-join-car">加入购物车</view>
 
           <view wx:else class='stepper'>
-                <view class='minus btn' catchtap='calculation' data-goods="{{ currentGoods }}" data-ctype="minus"  >-</view>
-                <view class="num">{{ currentGoods.num }}</view>
-                <view class='add btn selected' catchtap='calculation' data-ctype="add" data-goods="{{ currentGoods }}">+</view>
-              </view>
+            <view class='minus btn' catchtap='calculation' data-goods="{{ currentGoods }}" data-ctype="minus"  >-</view>
+            <view class="num">{{ currentGoods.num }}</view>
+            <view class='add btn selected' catchtap='calculation' data-ctype="add" data-goods="{{ currentGoods }}">+</view>
+          </view>
         </view>
 
       </view>

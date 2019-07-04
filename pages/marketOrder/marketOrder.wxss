@@ -1,19 +1,25 @@
 /* pages/marketOrder/marketOrder.wxss */
 page{
-  background-color: #fff;
+  background-color: #F1F1F1;
+  padding-bottom: 40rpx;
 }
 .title{
   height: 100rpx;
   line-height: 100rpx;
-  font-size: 46rpx;
+  font-size: 40rpx;
   font-weight: bold;
   color: #111;
   padding: 0 30rpx;
+}
+.room-info{
+  margin: 20rpx;
   background: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
 }
 .input-item{
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   height: 130rpx;
   margin: 0 30rpx;
   border-bottom: 2rpx solid #e1e1e1;
@@ -21,6 +27,10 @@ page{
   color: #666;
   line-height: 130rpx;
   background-color: #fff;
+}
+.input-item-data{
+  margin-left: 24rpx;
+  color:#333333;
 }
 .btn-group{
   display: flex;
@@ -49,16 +59,32 @@ page{
   color: #fff;
   background: #FF6634;
 }
-.goods-list-title{
-  margin-top: 40rpx;
-  padding: 30rpx;
-  border-bottom: 2rpx solid #e1e1e1;
-  font-size: 46rpx;
+.goods-title{
+  display: flex;
+  margin-top:32rpx; 
+}
+.goods-title .title-name{
+  margin-left: 24rpx;
+  font-size: 40rpx;
   font-weight: bold;
+}
+.goods-title-num{
+  margin-top: 10rpx;
+  margin-left: 20rpx;
+  font-size: 32rpx;
+}
+.goods-title-num >text{
+  color: #E83A3D
 }
 /* .goods-list{
   margin-top: 20rpx;
 } */
+.goods-list{
+  margin: 26rpx 26rpx 120rpx;
+  padding:36rpx;
+  border-radius: 16rpx;
+  background-color: #fff;
+}
 .submit-bar{
   position: fixed;
   bottom: 0;

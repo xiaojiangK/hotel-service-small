@@ -2,6 +2,8 @@
   "pages": [
     "pages/supermarket/supermarket",
     "pages/index/index",
+    
+    
     "pages/joinVip/joinVip",
     "pages/subOrder/subOrder",
     "pages/payComplete/payComplete",

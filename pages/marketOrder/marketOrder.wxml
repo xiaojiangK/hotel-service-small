@@ -7,19 +7,24 @@
     <text wx:if="{{orderInfo.status == '4'}}">已完成</text>
     <text wx:if="{{orderInfo.status == '7'}}">已退款</text>
   </view>
-  <view class='input-item'>
-    <view>房间号</view>
-    <view>{{orderInfo.room_num}}</view>
-  </view>
-  <view class='input-item'>
-    <view>手机号</view>
-    <view>{{orderInfo.tel}}</view>
+  <view class="room-info">
+    <view class='input-item'>
+      <view>房间号</view>
+      <view class="input-item-data">{{orderInfo.room_num}}</view>
+    </view>
+    <view class='input-item' style="border:none;">
+      <view>手机号</view>
+      <view class="input-item-data">{{orderInfo.tel}}</view>
+    </view>
   </view>
   <view class="btn-group" wx:if="{{orderInfo.status == '1'}}">
     <view class='order-btn cancel-btn' bind:tap="cancelOrder">取消订单</view>
     <view class='order-btn pay-btn' bind:tap="goPay">去支付</view>
   </view>
-  <view class='goods-list-title'>商品信息</view>
+  <view class="goods-title">
+    <view class="title-name">商品清单</view>
+    <!-- <view class="goods-title-num">共<text>12</text>商品</view> -->
+  </view>
   <view class='goods-list'>
     <order-goods data="{{orderInfo.goods_info}}"></order-goods>
   </view>

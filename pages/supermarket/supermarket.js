@@ -17,11 +17,11 @@ Page({
     NoList:false,
     isIphoneX: false,
     isMchid:'',
-    allPrice:0.00,
-    allNum:0,
     goodTypeList:[],
     isshowGoods:false,//是否显示商品详情
     currentGoods:null,
+    isShowShopcar:false,
+    shopcarList:[]
   },
   loadData() {
     let _this = this
@@ -57,7 +57,7 @@ Page({
             });
             
             if (goodTypeList[0]) {
-              this.getGoods(goodTypeList[0].id);
+              this.getGoods();
             }
 
             this.setData({ goodTypeList });
@@ -73,7 +73,7 @@ Page({
       url: "entry/wxapp/Goods",
       data: {
         seller_id: sellerId,
-        class: classId
+        class: ''
       },
       success:(res) => {
         let oldList = res.data;
@@ -86,14 +86,23 @@ Page({
             price: Number.isInteger(goods_price) ? Number.parseInt(goods_price) : goods_price.toFixed(2)
           }
         });
-        let newGoodsList = list.map(item => {
+        // let newGoodsList = list.map(item => {
+        //   return {
+        //     ...item
+        //   }
+        // })
+        let newGoodsList = list
+        let goodTypeList =  this.data.goodTypeList.map(item => {
+          let a = list.filter(i => {
+            return i.cid == item.id
+          })
           return {
             ...item,
-            goodsType: 2
+            classTypeTotal:a.length*50
           }
         })
         list.isMchid = app.globalData.isMchid
-        this.setData({ list: newGoodsList, isMchid: app.globalData.isMchid });
+        this.setData({ list: newGoodsList, goodTypeList: goodTypeList, isMchid: app.globalData.isMchid });
         app.globalData.shopCar = newGoodsList
         wx.hideLoading();
         // if (list.length == 0){
@@ -131,9 +140,25 @@ Page({
     let goodsClass = e.currentTarget.dataset.goodtype;
     let current = goodsClass.type;
     let classId = goodsClass.id;
-    this.getGoods(classId);
+    let index = e.currentTarget.dataset.index // 元素索引
+    let scrollTop = 0 //滚动距离
+    // this.getGoods(classId);
+    let i = 0
     this.setData({
       selectType: current
+    })
+    
+    if (index == 0){
+      scrollTop =0
+    }else{
+      for (let i = 0; i<index; i++ ){
+        scrollTop += this.data.goodTypeList[i].classTypeTotal
+      }
+    }
+    console.log(scrollTop)
+    wx.pageScrollTo({
+      scrollTop: scrollTop,
+      duration: 300
     })
   },
   //查看商品详情
@@ -154,6 +179,43 @@ Page({
   },
   showmore(){
     console.log('1')
+  },
+  
+  //滚动商品
+  onPageScroll(ev){
+    let scrolltop = ev.scrollTop
+    let len = this.data.goodTypeList.len
+    if(len>0){
+      let top = 0
+      for (let i in this.data.goodTypeList){
+        top+=this.data.goodTypeList
+        if (top > scrolltop){
+          console.log(i)
+          this.setData({
+            selectType: this.data.goodTypeList[i].cid
+          })
+          this.data.goodTypeList[i]
+          break
+        }
+      }
+    }
+  },
+
+  //显示购物车
+  showShopcar(){
+    // let shopcarArr = this.data.list.filter(item => {
+    //   return item.num && item.num > 0
+    // })
+    this.setData({
+      isShowShopcar:true,
+      // shopcarList: shopcarArr
+    })
+  },
+  closeShopcar() {
+    this.setData({
+      isShowShopcar: false
+    })
+    
   },
   /**
    * 生命周期函数--监听页面加载
@@ -179,7 +241,27 @@ Page({
     })
   },
 
+  // 清空购物车
+  clearShopcar(){
+    let a = app.globalData.shopCar.map(item => {
+      item.num = 0
+      return item
+    })
+     let b = this.data.goodTypeList.map(item => {
+      item.typeNum = 0
+      return item
+    })
+    this.setData({
+      list: a ,
+      shopcarList:[],
+      goodTypeList:b,
+      totalPrice: 0.00,
+      totalCount: 0,
+      isShowShopcar: false,
+    })
 
+    // this.shopcarList = []
+  },
   /* 点击加减 */
   calculation(e) {
     let getDataSet = e.currentTarget.dataset
@@ -187,7 +269,7 @@ Page({
     let ctype = getDataSet.ctype
     let goodsItem = getDataSet.goods
     let goodsId = goodsItem.goods_id
-    let goodsType = goodsItem.goodsType
+    let goodsType = goodsItem.cid
     
     if (app.globalData.shopCar.length > 0) {
       let c = app.globalData.shopCar.find(item => {
@@ -197,7 +279,8 @@ Page({
         if (ctype == 'add'){
           c.num++
           wx.showToast({
-            title: '已加入',
+            icon:'none',
+            title: '商品添加成功'
           })
         }else{
           c.num--
@@ -205,7 +288,8 @@ Page({
       } else {
         c.num = 1
         wx.showToast({
-          title: '已加入',
+          icon:'none',
+          title: '商品添加成功',
         })
       }
       c.num > 0 ? c.isSelected = true : c.isSelected = false
@@ -229,13 +313,17 @@ Page({
     }
 
     let currentGoodsType = this.data.goodTypeList.find(item => {
-      return item.type == goodsType
+      return item.id == goodsType
     })
     ctype == 'add' ? currentGoodsType.typeNum++ : currentGoodsType.typeNum--
 
+    let shopcarArr = app.globalData.shopCar.filter(item => {
+      return item.num && item.num > 0
+    })
     this.setData({
       list: app.globalData.shopCar,
-      goodTypeList: this.data.goodTypeList
+      goodTypeList: this.data.goodTypeList,
+      shopcarList: shopcarArr
     })
     // let allGoods = app.globalData.newArr
     // let cIndex = allGoods.findIndex((c, i) => c.goods_id == goodsId)
@@ -255,7 +343,7 @@ Page({
     allPrice = allPrice.toFixed(2)
     this.setData({
       totalPrice: allPrice,
-      totalCount:allNum
+      totalCount: allNum
     })
   },
 

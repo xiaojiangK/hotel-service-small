@@ -17,7 +17,7 @@ Page({
       key: 'hotel',
       success: function (res) {
         let { periphery } = res.data
-        this.setData({
+        _this.setData({
           periphery: periphery
         })
       },

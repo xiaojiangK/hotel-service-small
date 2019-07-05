@@ -175,3 +175,11 @@ page{
   margin-left: 24rpx;
   font-size: 30rpx;
 }
+.wx-version{
+  position: absolute;
+  bottom: 20rpx;
+  width: 100%;
+  font-size: 24rpx;
+  text-align: center;
+  color: #bbb;
+}

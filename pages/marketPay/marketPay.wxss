@@ -86,6 +86,9 @@
   background-color: #E93A3D;
 }
 .red{
+  margin-left: 14rpx;
+  font-size: 42rpx;
+  font-weight: bold;
   color: #E93A3D;
 }
 .totle-num{
@@ -96,13 +99,9 @@
   color: #333;
 }
 .totle-price{
-  margin-right: 100rpx;
+  margin-left: 34rpx;
   font-size: 30rpx;
-  color: #929292;
-}
-.totle-price > text{
-  font-size: 42rpx;
-  font-weight: bold;
+  color: #333333;
 }
 .small-size{
   font-size: 28rpx;

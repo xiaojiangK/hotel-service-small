@@ -117,4 +117,5 @@
     <view class='number-tel'>扫码核销</view>
   </view>
 
+  <view class="wx-version">当前版本 V20190705-1.1.22</view>
 </view>

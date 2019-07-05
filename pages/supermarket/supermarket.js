@@ -22,6 +22,7 @@ Page({
     currentGoods:null,
     isShowShopcar:false,
     shopcarList:[]
+    // isClickScroll: false
   },
   loadData() {
     let _this = this
@@ -145,7 +146,8 @@ Page({
     // this.getGoods(classId);
     let i = 0
     this.setData({
-      selectType: current
+      selectType: current,
+      isClickScroll: true
     })
     
     if (index == 0){
@@ -155,7 +157,6 @@ Page({
         scrollTop += this.data.goodTypeList[i].classTypeTotal
       }
     }
-    console.log(scrollTop)
     wx.pageScrollTo({
       scrollTop: scrollTop,
       duration: 300
@@ -183,22 +184,23 @@ Page({
   
   //滚动商品
   onPageScroll(ev){
-    let scrolltop = ev.scrollTop
-    let len = this.data.goodTypeList.len
-    if(len>0){
-      let top = 0
-      for (let i in this.data.goodTypeList){
-        top+=this.data.goodTypeList
-        if (top > scrolltop){
-          console.log(i)
-          this.setData({
-            selectType: this.data.goodTypeList[i].cid
-          })
-          this.data.goodTypeList[i]
-          break
-        }
-      }
-    }
+    // if(this.data.isClickScroll) return
+    // let scrolltop = ev.scrollTop
+    // let len = this.data.goodTypeList.length
+    // if(len>0){
+    //   let top = 0
+    //   for (let i = 0; i < len; i++){
+    //     top += this.data.goodTypeList[i].classTypeTotal
+    //     if (top > scrolltop){
+    //       this.setData({
+    //         selectType: i
+    //       })
+    //       console.log(this.data.goodTypeList[i].id)
+    //       // this.data.goodTypeList[i]
+    //       break
+    //     }
+    //   }
+    // }
   },
 
   //显示购物车

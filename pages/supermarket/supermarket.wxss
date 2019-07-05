@@ -346,8 +346,11 @@ page{
   z-index: 12
 }
 .good-content{
+  position: fixed;
+  top: 50%;
   width: 650rpx;
   height: 820rpx;
+  margin-top: -500rpx;
   border-radius: 10rpx;
   background-color: #fff;
   overflow: hidden;
@@ -394,10 +397,11 @@ page{
   margin-right: 40rpx;
 }
 .good-content-close{
-  position: absolute;
-  bottom: 140rpx;
+  position: fixed;
+  top: 50%;
   width: 80rpx;
   height: 80rpx;
+  margin-top: 380rpx;
   border-radius: 80rpx;
   font-size: 40rpx;
   color: #fff;

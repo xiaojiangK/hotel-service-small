@@ -10,7 +10,8 @@ Page({
     id: 0,
     flag: 0,
     isCancle: false,//取消订单弹窗
-    orderInfo: {}
+    orderInfo: {},
+    goodsCount:0
   },
   goPay() {
     app.goPay(this.data.id, this.data.flag);
@@ -97,7 +98,15 @@ Page({
         order_id: this.data.id
       },
       success:(res) => {
-        this.setData({ orderInfo: res.data });
+        let goodsList = res.data.goods_info
+        let num = 0
+        goodsList.forEach(item => {
+          num += Number(item.number)
+        })
+        this.setData({
+          goodsNum: num,
+          orderInfo: res.data 
+        });
       }
     });
   },

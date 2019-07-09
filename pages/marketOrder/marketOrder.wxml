@@ -23,7 +23,7 @@
   </view>
   <view class="goods-title">
     <view class="title-name">商品清单</view>
-    <!-- <view class="goods-title-num">共<text>12</text>商品</view> -->
+    <view class="goods-title-num">共<text>{{ goodsNum }}</text>商品</view>
   </view>
   <view class='goods-list'>
     <order-goods data="{{orderInfo.goods_info}}"></order-goods>

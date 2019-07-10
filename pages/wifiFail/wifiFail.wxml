@@ -23,7 +23,7 @@
 <!-- 需要认证的wifi -->
 <view wx:if='{{ authentication==1 }}'>
   <view class="top" style="height:676rpx;">
-      <image class="img-warning" src="/assets/image/wifi-warning.png"></image>
+      <image class="img-warning" src="/assets/image/wifi-authentication.png"></image>
       <view class="text">您所在的酒店</view>
       <view class="text" style="margin-top:10rpx;">需要实名认证后使用wifi</view> 
       <!-- <view class="wifi-ssid" >

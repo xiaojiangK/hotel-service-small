@@ -90,7 +90,7 @@
 
   <!-- 购物车详情 -->
   <view class="shopcar-black" wx:if="{{ isShowShopcar && totalCount>0  }}" catchtap="closeShopcar">
-    <view class="shopcar-dialog" catchtap="showmore">
+    <view class="shopcar-dialog {{isIphoneX ? 'fix-shopcar-bottom':''}}" catchtap="showmore">
       <view class="shopcar-title">
         <view>当前选购商品</view>
         <view catchtap="clearShopcar">

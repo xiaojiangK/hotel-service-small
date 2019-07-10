@@ -5,7 +5,8 @@ Page({
     list: [],
     bssid: "",//Wi-Fi 的ISSID
     pwd: "",
-    type: ""
+    type: "",
+    authentication: '2'
   },
   onLoad (options) {
     this.loadData();
@@ -48,7 +49,7 @@ Page({
     const bssid = e.currentTarget.dataset.id
     const pwd = e.currentTarget.dataset.pwd
     const authentication = e.currentTarget.dataset.authentication
-    this.setData({ bssid, pwd })
+    this.setData({ bssid, pwd, authentication })
     //如果直接点击wifi密码进入 不需连接
     if (type == "none") {
       wx.navigateTo({
@@ -70,7 +71,7 @@ Page({
               success: function(res){
                 if(res.confirm){
                   wx.navigateTo({
-                    url: "/pages/wifiFail/wifiFail?name=" + bssid + "&pwd=" + pwd
+                    url: "/pages/wifiFail/wifiFail?name=" + bssid + "&pwd=" + pwd + '&authentication=' + authentication
                   })
                 }else{
                   return
@@ -87,7 +88,7 @@ Page({
               success: function (res) {
                 if (res.confirm) {
                   wx.navigateTo({
-                    url: "/pages/wifiFail/wifiFail?name=" + bssid + "&pwd=" + pwd
+                    url: "/pages/wifiFail/wifiFail?name=" + bssid + "&pwd=" + pwd + '&authentication=' + authentication
                   })
                 } else {
                   return
@@ -106,25 +107,27 @@ Page({
     const that = this
     const SSID = that.data.bssid;
     const password = that.data.pwd;
+    let authentication = that.data.authentication
     wx.startWifi({
       success: function (res) {
         wx.showLoading({
           title: '连接中',
         })
         //请求成功连接Wifi
-        that.Connected();
+        that.connected();
       },
       fail: function (res) {
         wx.navigateTo({
-          url: "/pages/wifiFail/wifiFail?name=" + SSID +"&pwd="+ password
+          url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication
         })
       }
     })
   },
-  Connected: function () {
+  connected: function () {
     const that = this;
     const SSID = that.data.bssid;
     const password = that.data.pwd;
+    let authentication = that.data.authentication
     wx.connectWifi({
       SSID: that.data.bssid,
       BSSID: that.data.bssid,
@@ -139,7 +142,7 @@ Page({
           success(res) { }
         })
         wx.navigateTo({
-          url: "/pages/wifiFail/wifiFail?name=" + SSID +"&pwd="+ password
+          url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication
         })
       }
     })

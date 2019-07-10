@@ -141,6 +141,9 @@ page{
   width: 100%;
   background: #fff;
 }
+.fix-shopcar-bottom{
+  bottom: 156rpx;
+}
 .shopcar-title{
   display: flex;
   justify-content: space-between;

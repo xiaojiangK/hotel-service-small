@@ -1,8 +1,6 @@
 {
   "pages": [
     "pages/index/index",
-    
-    
     "pages/joinVip/joinVip",
     "pages/subOrder/subOrder",
     "pages/payComplete/payComplete",
@@ -28,7 +26,8 @@
     "pages/invoice/invoice",
     "pages/invoiceResult/invoiceResult",
     "pages/comment/comment",
-    "pages/submitComment/submitComment"
+    "pages/submitComment/submitComment",
+    "pages/hotelAgreement/hotelAgreement"
   ],
   "window": {
     "backgroundTextStyle": "light",

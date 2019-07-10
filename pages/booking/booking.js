@@ -19,110 +19,21 @@ Page({
     tabIndex: 0,
     //  是否显示房间详情
     isShowRoomDetail: false,
-    //  详情滑块图片
-    roomSwiper: [
-      'https://static.hotel.showboom.cn/images/15/2019/06/h4i4cN5NoCN7no36WQ6whwZ6Bc4030.png?x-oss-process=image/resize,m_mfit,h_300,w_400',
-      'https://static.hotel.showboom.cn/images/15/2019/06/CF38FKqdLq8yCK18KFfKlcFqs8Q3FC.png?x-oss-process=image/resize,m_mfit,h_300,w_400',
-      'https://static.hotel.showboom.cn/images/15/2019/06/NqnPD98APe4U90900N9p0LJm84z1u0.png?x-oss-process=image/resize,m_mfit,h_300,w_400'
-    ],
     //  详情滑块图片索引
     roomSwiperIndex: 0,
-    //  酒店服务
-    serviceList: [
-      {
-        imgUrl: '/assets/image/icon-wifi.png',
-        name: '无线上网'
-      },
-      {
-        imgUrl: '/assets/image/icon-wifi.png',
-        name: '无线上网'
-      },
-      {
-        imgUrl: '/assets/image/icon-wifi.png',
-        name: '无线上网'
-      },
-      {
-        imgUrl: '/assets/image/icon-wifi.png',
-        name: '无线上网'
-      },
-      {
-        imgUrl: '/assets/image/icon-wifi.png',
-        name: '无线上网'
-      },
-      {
-        imgUrl: '/assets/image/icon-wifi.png',
-        name: '无线上网'
-      },
-      {
-        imgUrl: '/assets/image/icon-wifi.png',
-        name: '无线上网'
-      },
-      {
-        imgUrl: '/assets/image/icon-wifi.png',
-        name: '无线上网'
-      },
-      {
-        imgUrl: '/assets/image/icon-wifi.png',
-        name: '无线上网'
-      },
-      {
-        imgUrl: '/assets/image/icon-wifi.png',
-        name: '无线上网'
-      },
-      {
-        imgUrl: '/assets/image/icon-wifi.png',
-        name: '无线上网'
-      },
-      {
-        imgUrl: '/assets/image/icon-wifi.png',
-        name: '无线上网'
-      },
-      {
-        imgUrl: '/assets/image/icon-wifi.png',
-        name: '无线上网'
-      },
-      {
-        imgUrl: '/assets/image/icon-wifi.png',
-        name: '无线上网'
-      },
-      {
-        imgUrl: '/assets/image/icon-wifi.png',
-        name: '无线上网'
-      },
-      {
-        imgUrl: '/assets/image/icon-wifi.png',
-        name: '无线上网'
-      },
-      {
-        imgUrl: '/assets/image/icon-wifi.png',
-        name: '无线上网'
-      },
-      {
-        imgUrl: '/assets/image/icon-wifi.png',
-        name: '无线上网'
-      },
-      {
-        imgUrl: '/assets/image/icon-wifi.png',
-        name: '无线上网'
-      },
-      {
-        imgUrl: '/assets/image/icon-wifi.png',
-        name: '无线上网'
-      }],
     //  评论标签索引
     commentTagIndex: 0,
     //  评论列表
     commentList: [],
     assessCount: {},
-    hotel: {}
+    hotel: {},
+    roomDetail: {}
   },
   //  页面显示
   onShow() {
     this.initDate();
-    this.changePhoneNumber();
-  },
-  onLoad() {
     this.loadData();
+    this.changePhoneNumber();
   },
   //  初始化数据
   initDate() {
@@ -222,10 +133,22 @@ Page({
             uniacid: res.data.uniacid
           },
           success:(res) => {
+            const hotel = res.data;
+            let service = [];
+            if (hotel.service) {
+              for (let i of hotel.service) {
+                for (let j in i) {
+                  service.push(i[j]);
+                }
+              }
+            }
             this.setData({
-              hotel: res.data
+              hotel: {
+                ...hotel,
+                service
+              }
             });
-            console.log(res.data);
+            console.log(hotel);
           }
         });
       }
@@ -293,7 +216,21 @@ Page({
     }
   },
   //  查看房间详情
-  toggleDetail: function () {
+  toggleDetail: function (e) {
+    app.util.request({
+      url: "entry/wxapp/RoomDetails",
+      data: {
+        room_id: e.currentTarget.dataset.id
+      },
+      success: (res) => {
+        const data = res.data;
+        const roomDetail = {
+          ...data,
+          img: data.img ? data.img : [] 
+        }
+        this.setData({ roomDetail });
+      }
+    });
     this.setData({
       isShowRoomDetail: !this.data.isShowRoomDetail
     });
@@ -302,7 +239,7 @@ Page({
   roomSwiperChange: function (e) {
     let { current } = e.detail;
     this.setData({
-      detailSwiperIndex: current
+      roomSwiperIndex: current
     });
   },
   //  选择评论标签

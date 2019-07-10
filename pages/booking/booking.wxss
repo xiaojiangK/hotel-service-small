@@ -400,6 +400,9 @@ page {
 .detail .policy .head {
   margin-bottom: 28rpx;
 }
+rich-text{
+  display: inline-block;
+}
 .detail .policy .text {
   margin-bottom: 16rpx;
   color: #666;

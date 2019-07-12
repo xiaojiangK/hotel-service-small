@@ -224,8 +224,20 @@ Page({
       },
       success: (res) => {
         const data = res.data;
+        let facilities = [];
+        if (data.facilities) {
+          for (let i of data.facilities) {
+            for (let j in i) {
+              facilities.push({
+                id: j,
+                value: i[j]
+              });
+            }
+          }
+        }
         const roomDetail = {
           ...data,
+          facilities,
           img: data.img ? data.img : [] 
         }
         this.setData({ roomDetail });

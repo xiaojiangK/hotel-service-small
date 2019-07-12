@@ -92,37 +92,37 @@
             <text class="number" wx:if="{{roomDetail.img.length}}">{{roomSwiperIndex+1}}/{{roomDetail.img.length}}</text>
           </view>
           <view class="attr">
-            <view class="item">
-              <text class="label">上网</text>
-              WiFi
-            </view>
-            <view class="item">
-              <text class="label">卫浴</text>
-              独立
-            </view>
+            <block wx:for="{{roomDetail.facilities}}" wx:key="index">
+              <block wx:if="{{item.id == 101054}}">
+                <view class="item">
+                  <text class="label">卫浴</text>
+                  {{item.value}}
+                </view>
+              </block>
+            </block>
             <view class="item">
               <text class="label">窗户</text>
-              有
+              {{roomDetail.windows == '1' ? '有' : '无'}}
             </view>
             <view class="item">
               <text class="label">可住</text>
-              2人
+              {{roomDetail.people}}人
             </view>
-            <view class="item">
+            <view class="item" wx:if="{{roomDetail.acreage}}">
               <text class="label">面积</text>
-              25㎡
+              {{roomDetail.acreage}}㎡
             </view>
-            <view class="item">
+            <view class="item" wx:if="{{roomDetail.floorNum}}">
               <text class="label">楼层</text>
-              2层
+              {{roomDetail.floorNum}}层
             </view>
-            <view class="item">
+            <view class="item" wx:if="{{roomDetail.bedtype}}">
               <text class="label">床型</text>
-              单人床1.0×2.0米2张
+              {{roomDetail.bedtype}} {{roomDetail.size}}米 {{roomDetail.bed}}张
             </view>
             <view class="item">
               <text class="label">早餐</text>
-              无早餐
+              {{roomDetail.breakfast == '1' ? '有' : '无'}}早餐
             </view>
           </view>
           <view class="policy">
@@ -192,10 +192,10 @@
     <view class="sect intro">
       <view class="head">酒店介绍</view>
       <view class="attr">
-        <view class="item">装修时间：{{hotel.decorationDate}}年</view>
-        <view class="item">开业时间：{{hotel.openDate}}年</view>
-        <view class="item">楼层高度：{{hotel.floorNum}}层</view>
-        <view class="item">房间总数：{{hotel.roomNum}}间</view>
+        <view class="item" wx:if="{{hotel.decorationDate}}">装修时间：{{hotel.decorationDate}}年</view>
+        <view class="item" wx:if="{{hotel.openDate}}">开业时间：{{hotel.openDate}}年</view>
+        <view class="item" wx:if="{{hotel.floorNum}}">楼层高度：{{hotel.floorNum}}层</view>
+        <view class="item" wx:if="{{hotel.roomNum}}">房间总数：{{hotel.roomNum}}间</view>
       </view>
       <view class="desc">{{hotel.introduction}}</view>
     </view>

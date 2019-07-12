@@ -136,10 +136,11 @@ Page({
             const hotel = res.data;
             let service = [];
             if (hotel.service) {
-              for (let i of hotel.service) {
-                for (let j in i) {
-                  service.push(i[j]);
-                }
+              for (let i in hotel.service) {
+                service.push({
+                  id: i,
+                  val: hotel.service[i]
+                });
               }
             }
             this.setData({
@@ -148,7 +149,6 @@ Page({
                 service
               }
             });
-            console.log(hotel);
           }
         });
       }

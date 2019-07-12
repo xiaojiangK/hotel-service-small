@@ -154,36 +154,32 @@
       <view class="head">可提供的服务</view>
       <view class="list">
         <view class="item" wx:for="{{hotel.service}}" wx:key="index">
-          <image class="icon" wx:if="{{item == 'WiFi'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '早餐'}}" src="/assets/image/service-icon2.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '健身房'}}" src="/assets/image/service-icon3.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '会议室'}}" src="/assets/image/service-icon4.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '餐厅'}}" src="/assets/image/service-icon5.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '停车场'}}" src="/assets/image/service-icon6.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '信用卡收费'}}" src="/assets/image/service-icon7.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '叫醒服务'}}" src="/assets/image/service-icon8.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '洗衣服务'}}" src="/assets/image/service-icon9.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '送餐服务'}}" src="/assets/image/service-icon10.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '24小时前台接待'}}" src="/assets/image/service-icon11.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '自行车租赁'}}" src="/assets/image/service-icon12.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '旅游服务'}}" src="/assets/image/service-icon13.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '擦鞋服务'}}" src="/assets/image/service-icon14.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '行李服务'}}" src="/assets/image/service-icon15.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '外币服务'}}" src="/assets/image/service-icon16.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '专职行李员'}}" src="/assets/image/service-icon17.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '医疗支援'}}" src="/assets/image/service-icon18.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '接送机服务'}}" src="/assets/image/service-icon19.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '多语言服务'}}" src="/assets/image/service-icon20.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '雨伞租赁服务'}}" src="/assets/image/service-icon21.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '租车服务'}}" src="/assets/image/service-icon22.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '叫车服务'}}" src="/assets/image/service-icon23.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '代订机票'}}" src="/assets/image/service-icon24.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '代订火车票'}}" src="/assets/image/service-icon25.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '看护小孩服务'}}" src="/assets/image/service-icon26.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '宠物携带'}}" src="/assets/image/service-icon27.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '泊车服务'}}" src="/assets/image/service-icon28.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item == '可加折叠床'}}" src="/assets/image/service-icon29.png" mode="aspectFill"></image>
-          <text>{{item}}</text>
+          <image class="icon" wx:if="{{item.id == '101006'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101007'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101038'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101039'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101040'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101041'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101042'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101044'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101045'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101047'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101048'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101049'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101050'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101051'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101052'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101053'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101101'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101102'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101103'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101104'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101106'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101128'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101135'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101170'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101197'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <text>{{item.val}}</text>
         </view>
       </view>
     </view>
@@ -197,7 +193,7 @@
         <view class="item" wx:if="{{hotel.floorNum}}">楼层高度：{{hotel.floorNum}}层</view>
         <view class="item" wx:if="{{hotel.roomNum}}">房间总数：{{hotel.roomNum}}间</view>
       </view>
-      <view class="desc">{{hotel.introduction}}</view>
+      <view class="desc"><rich-text nodes="{{hotel.introduction}}"></rich-text></view>
     </view>
     <!-- intro end -->
     <!-- policy start -->

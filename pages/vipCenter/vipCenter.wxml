@@ -117,7 +117,7 @@
     <view class='number-tel'>扫码核销</view>
   </view>
 
-  <view class="wx-version">当前版本 V20190705-1.1.22</view>
+  <view class="wx-version">当前版本 V20190710-1.1.23</view>
 </view>
 <!-- 授权手机窗口 -->
   <cover-view class='user-alert phone-tel' wx:if="{{isGetPhoneNumber}}">

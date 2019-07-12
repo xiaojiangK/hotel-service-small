@@ -100,20 +100,19 @@ page{
   -webkit-filter: grayscale(100%);
   -moz-filter: grayscale(100%);
   -ms-filter: grayscale(100%);
-  -o-filter: grayscale(100%);
-  filter: grayscale(100%);
-  filter: gray;
+  -o-filter: grayscale(100%);  filter: gray;
 }
 .goods-tags{
   position: absolute;
-  top: 2rpx;
-  right: 10rpx;
-  width: 32rpx;
-  height: 32rpx;
+  top: -4rpx;
+  right: 2rpx;
+  width: 36rpx;
+  height: 36rpx;
   border-radius: 32rpx;
-  font-size: 18rpx;
+  font-size: 20rpx;
+  font-weight: bold;
   color: #fff;
-  line-height: 32rpx;
+  line-height: 36rpx;
   text-align: center;
   background-color: #FF3B30;
 
@@ -209,14 +208,14 @@ page{
 }
 .tag-num{
   position: absolute;
-  top: 2rpx;
-  right: 10rpx;
-  width: 32rpx;
-  height: 32rpx;
+  top: 0rpx;
+  right: 8rpx;
+  width: 36rpx;
+  height: 36rpx;
   border-radius: 32rpx;
-  font-size: 18rpx;
+  font-size: 20rpx;
   color: #fff;
-  line-height: 32rpx;
+  line-height: 36rpx;
   text-align: center;
   background-color: #FF3B30;
 }
@@ -301,10 +300,12 @@ page{
 }
 .btn{
   display: flex;
+  flex-shrink: 0;
   justify-content: center;
-  flex: 0 0 46rpx;
+  width: 46rpx;
   height: 46rpx;
-  line-height: 44rpx;
+  line-height: 40rpx;
+  text-align: center;
   border-radius: 46rpx;
   font-size: 50rpx;
   color: #fff;

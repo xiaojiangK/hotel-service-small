@@ -10,14 +10,26 @@ Page({
   data: {
     list: [],
     selected: [],
-    selectType: 0, //选择类型
+    selectType: -1, //选择类型
+    selectTypeId:-1,
     totalPrice: 0.00, //价格总计
     totalCount: 0, //数量总计
     store:1,
     NoList:false,
     isIphoneX: false,
     isMchid:'',
-    goodTypeList:[],
+    goodTypeList: [{
+      id: -1,
+      seller_id: 0,
+      uniacid: 0,
+      sort: 0,
+      name: "全部",
+      status: 1,
+      addtime: "",
+      typeNum: -1,
+      type: -1,
+      classTypeTotal: 0
+}],
     isshowGoods:false,//是否显示商品详情
     currentGoods:null,
     isShowShopcar:false,
@@ -49,15 +61,15 @@ Page({
           url: "entry/wxapp/Classify",
           success: (res) => {
 
-            const goodTypeList = res.data.map((item, index) => {
+            let list = res.data.map((item, index) => {
               return {
                 ...item,
                 typeNum: 0,
                 type: index
               }
             });
-            
-            if (goodTypeList[0]) {
+            let goodTypeList= this.data.goodTypeList.concat(list)
+            if (this.data.goodTypeList[0]) {
               this.getGoods();
             }
 
@@ -142,25 +154,41 @@ Page({
     let current = goodsClass.type;
     let classId = goodsClass.id;
     let index = e.currentTarget.dataset.index // 元素索引
-    let scrollTop = 0 //滚动距离
+    // let scrollTop = 0 //滚动距离
     // this.getGoods(classId);
-    let i = 0
-    this.setData({
-      selectType: current,
-      isClickScroll: true
-    })
-    
-    if (index == 0){
-      scrollTop =0
-    }else{
-      for (let i = 0; i<index; i++ ){
-        scrollTop += this.data.goodTypeList[i].classTypeTotal
-      }
+    // let i = 0
+    if (classId != -1){
+      let classList = app.globalData.shopCar.filter(item => {
+        return item.cid == classId
+      })
+
+      this.setData({
+        list: classList,
+        selectType: current,
+        isClickScroll: true,
+        selectTypeId: classId
+      })
+    } else{
+      this.setData({
+        list: app.globalData.shopCar,
+        selectType: current,
+        isClickScroll: true,
+        selectTypeId: -1
+      })
     }
-    wx.pageScrollTo({
-      scrollTop: scrollTop,
-      duration: 300
-    })
+    
+    
+    // if (index == 0){
+    //   scrollTop =0
+    // }else{
+    //   for (let i = 0; i<index; i++ ){
+    //     scrollTop += this.data.goodTypeList[i].classTypeTotal
+    //   }
+    // }
+    // wx.pageScrollTo({
+    //   scrollTop: scrollTop,
+    //   duration: 300
+    // })
   },
   //查看商品详情
   showGoods(e){
@@ -249,18 +277,37 @@ Page({
       item.num = 0
       return item
     })
-     let b = this.data.goodTypeList.map(item => {
+
+    let b = this.data.goodTypeList.map(item => {
       item.typeNum = 0
       return item
     })
-    this.setData({
-      list: a ,
-      shopcarList:[],
-      goodTypeList:b,
-      totalPrice: 0.00,
-      totalCount: 0,
-      isShowShopcar: false,
-    })
+
+    // 不同分类时展示列表不同
+    if (this.data.selectTypeId != -1) {
+      let classList = a.filter(item => {
+        return item.cid == this.data.selectTypeId
+      })
+
+      this.setData({
+        list: classList,
+        shopcarList: [],
+        goodTypeList: b,
+        totalPrice: 0.00,
+        totalCount: 0,
+        isShowShopcar: false,
+      })
+    } else {
+      this.setData({
+        list: a,
+        shopcarList: [],
+        goodTypeList: b,
+        totalPrice: 0.00,
+        totalCount: 0,
+        isShowShopcar: false,
+      })
+    }
+    
 
     // this.shopcarList = []
   },
@@ -327,12 +374,33 @@ Page({
       goodTypeList: this.data.goodTypeList,
       shopcarList: shopcarArr
     })
+
+    // 不同分类时展示列表不同
+    if (this.data.selectTypeId != -1) {
+      let classList = app.globalData.shopCar.filter(item => {
+        return item.cid == this.data.selectTypeId
+      })
+
+      this.setData({
+        list: classList,
+        goodTypeList: this.data.goodTypeList,
+        shopcarList: shopcarArr
+      })
+    } else {
+      this.setData({
+        list: app.globalData.shopCar,
+        goodTypeList: this.data.goodTypeList,
+        shopcarList: shopcarArr
+      })
+    }
     // let allGoods = app.globalData.newArr
     // let cIndex = allGoods.findIndex((c, i) => c.goods_id == goodsId)
     // allGoods[cIndex].num++
     // this.setData({
     //   list: allGoods
     // })
+
+    // 价格数量计算
     let allPrice = 0
     let allNum = 0
     app.globalData.shopCar.forEach(i => {

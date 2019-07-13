@@ -31,7 +31,7 @@
             <cover-image src="{{userInfo.img ? userInfo.img : '/assets/image/user-img.png'}}" mode="aspectFill" />
           </cover-view>
           <cover-view>
-            <cover-view class='vip-name'>广州长广酒店</cover-view>
+            <cover-view class='vip-name'>{{ hotelName }}</cover-view>
             <cover-view class='vip-notice'>VIP会员卡</cover-view>
           </cover-view>
         </cover-view>

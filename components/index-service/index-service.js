@@ -41,7 +41,8 @@ Component({
     accountNumber: '',//Wi-Fi 的SSID，即账号
     bssid: '',//Wi-Fi 的ISSID
     password: '',//Wi-Fi 的密码
-    authentication:''//是否需要实名认证
+    authentication:'',//是否需要实名认证
+    phoneType:'' //手机类型
   },
   lifetimes: {
     // 生命周期函数
@@ -110,6 +111,9 @@ Component({
         wx.getSystemInfo({
           success: function (res) {
             var system = '';
+            that.setData({
+              phoneType: res.platform
+            })
             if (res.platform == 'android') system = parseInt(res.system.substr(8));
             if (res.platform == 'ios') system = parseInt(res.system.substr(4));
             if (res.platform == 'android' && system < 6) {
@@ -199,6 +203,23 @@ Component({
           wx.showToast({
             title: 'wifi连接成功'
           })
+          // if (phoneType == 'ios') {
+          //   wx.onWifiConnected(result => {
+          //     if (result.wifi.SSID === SSID) {
+          //       wx.showToast({
+          //         title: 'wifi连接成功',
+          //       })
+          //     } else {
+          //       wx.navigateTo({
+          //         url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication
+          //       })
+          //     }
+          //   })
+          // } else {
+          //   wx.showToast({
+          //     title: 'wifi连接成功',
+          //   })
+          // }
         },
         fail: function (res) {
           wx.stopWifi({

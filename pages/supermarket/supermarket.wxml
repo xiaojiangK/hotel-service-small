@@ -40,7 +40,7 @@
     <block wx:if="{{ totalCount>0 }}">
       <view class="submit-bar {{isIphoneX ? 'fix-iphonex-button':''}}" bindtap="showShopcar" wx:if="{{ store==1 }}">
         <view class="shop-car-modal">
-          <image src="/assets/image/icon-shopcar.png" class="none"></image>
+          <image src="/assets/image/icon-shopcar.png" class="{{totalCount>0?'':'none' }}"></image>
           <view class="goods-tags">{{totalCount}}</view>
         </view>
         <!-- <view class='totle-num'>已选<text class='red'>{{totalCount}}</text>件商品</view> -->

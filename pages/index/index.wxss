@@ -81,9 +81,10 @@ page {
   color: #FF6342;
   border-radius:10rpx;
   background-color: #fff;
+  border:2rpx solid #FF6342;
 }
 .getVip-btn::after{
-  border:4rpx solid #FF6342;
+  border:none;
 }
 button::after{
   border:none;

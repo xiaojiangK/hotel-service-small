@@ -6,7 +6,8 @@ Page({
     bssid: "",//Wi-Fi 的ISSID
     pwd: "",
     type: "",
-    authentication: '2'
+    authentication: '2',
+    phoneType:''//手机类型
   },
   onLoad (options) {
     this.loadData();
@@ -60,6 +61,9 @@ Page({
       wx.getSystemInfo({
         success: function (res) {
           var system = '';
+          that.setData({
+            phoneType: res.platform
+          })
           if (res.platform == 'android') system = parseInt(res.system.substr(8));
           if (res.platform == 'ios') system = parseInt(res.system.substr(4));
           if (res.platform == 'android' && system < 6) {
@@ -108,6 +112,12 @@ Page({
     const SSID = that.data.bssid;
     const password = that.data.pwd;
     let authentication = that.data.authentication
+    if (authentication == 1){
+      wx.navigateTo({
+        url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication
+      })
+      return
+    }
     wx.startWifi({
       success: function (res) {
         wx.showLoading({
@@ -128,14 +138,36 @@ Page({
     const SSID = that.data.bssid;
     const password = that.data.pwd;
     let authentication = that.data.authentication
+    let phoneType = that.data.phoneType
     wx.connectWifi({
       SSID: that.data.bssid,
       BSSID: that.data.bssid,
       password: that.data.pwd,
       success: function (res) {
         wx.showToast({
-          title: 'wifi连接成功',
+          title: 'wifi连接成功'
         })
+        // if (phoneType =='ios'){
+        //   wx.onWifiConnected(result => {
+        //     console.log('111111111')
+        //     if (result.wifi.SSID === SSID) {
+        //       wx.showToast({
+        //         title: 'wifi连接成功',
+        //       })
+        //     } else {
+        //       wx.stopWifi({
+        //         success(res) { }
+        //       })
+        //       wx.navigateTo({
+        //         url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication
+        //       })
+        //     }
+        //   })
+        // }else{
+        //   wx.showToast({
+        //     title: 'wifi连接成功',
+        //   })
+        // }
       },
       fail: function (res) {
         wx.stopWifi({

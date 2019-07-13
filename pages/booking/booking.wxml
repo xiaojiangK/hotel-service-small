@@ -43,7 +43,7 @@
     <!-- room list start -->
     <view class="room-list">
       <view class="item" wx:for="{{roomList}}" wx:key="index" wx:if="{{item.state == '1'}}">
-        <view catchtap="toggleDetail" data-id="{{item.id}}">
+        <view catchtap="toggleDetail" data-item="{{item}}">
           <view class="img">
             <image src="{{item.logo}}" mode="aspectFill"></image>
             <text class="tag">详情</text>
@@ -134,9 +134,9 @@
             </view>
           </view>
         </view>
-        <view class="btn">
+        <view class="btn" wx:if="{{ isMchid }}">
           <text>￥{{roomDetail.price}}</text>
-          <text>预订</text>
+          <text data-room="{{roomDetail}}" bindtap="goPay">预订</text>
         </view>
       </view>
     </view>

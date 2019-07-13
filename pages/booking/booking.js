@@ -217,35 +217,39 @@ Page({
   },
   //  查看房间详情
   toggleDetail: function (e) {
-    app.util.request({
-      url: "entry/wxapp/RoomDetails",
-      data: {
-        room_id: e.currentTarget.dataset.id
-      },
-      success: (res) => {
-        const data = res.data;
-        let facilities = [];
-        if (data.facilities) {
-          for (let i of data.facilities) {
-            for (let j in i) {
-              facilities.push({
-                id: j,
-                value: i[j]
-              });
-            }
-          }
-        }
-        const roomDetail = {
-          ...data,
-          facilities,
-          img: data.img ? data.img : [] 
-        }
-        this.setData({ roomDetail });
-      }
-    });
     this.setData({
       isShowRoomDetail: !this.data.isShowRoomDetail
     });
+    const item = e.currentTarget.dataset.item;
+    if (item) {
+      app.util.request({
+        url: "entry/wxapp/RoomDetails",
+        data: {
+          room_id: item.id
+        },
+        success: (res) => {
+          const data = res.data;
+          let facilities = [];
+          if (data.facilities) {
+            for (let i of data.facilities) {
+              for (let j in i) {
+                facilities.push({
+                  id: j,
+                  value: i[j]
+                });
+              }
+            }
+          }
+          const roomDetail = {
+            ...data,
+            facilities,
+            min_num: item.min_num,
+            img: data.img ? data.img : [] 
+          }
+          this.setData({ roomDetail });
+        }
+      });
+    }
   },
   //  详情滑块切换
   roomSwiperChange: function (e) {

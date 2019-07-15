@@ -197,6 +197,20 @@ page {
 .room-list .status.full view:last-of-type {
   color: #c6c6c6;
 }
+.room-list .tel{
+  padding: 0 0 30rpx;
+  text-align: center;
+}
+.room-list .tel image{
+  width: 32rpx;
+  height: 32rpx;
+  vertical-align: middle;
+}
+.room-list .tel text{
+  font-size: 24rpx;
+  color: #595959;
+  margin: 0 0 0 12rpx;
+}
 /*** 房间详情 ***/
 .room-detail {
   position: fixed;
@@ -294,10 +308,7 @@ page {
   font-size: 24rpx;
   font-weight: 400;
   line-height: 36rpx;
-}
-.room-detail .policy .text::before {
-  content: '· ';
-  margin-right: 20rpx;
+  text-indent: 50rpx;
 }
 .room-detail .btn {
   display: flex;
@@ -406,10 +417,7 @@ page {
   font-size: 24rpx;
   font-weight: 400;
   line-height: 36rpx;
-}
-.detail .policy .text::before {
-  content: '· ';
-  margin-right: 20rpx;
+  text-indent: 50rpx;
 }
 /*** 评论列表 ***/
 .comment-list .tag-list {

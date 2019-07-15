@@ -71,6 +71,10 @@
           </view>
         </block>
       </view>
+      <view class="tel" bindtap="goCall">
+        <image src="/assets/image/icon-tel.png" />
+        <text>联系商家</text>
+      </view>
     </view>
     <!-- room list end -->
     <!-- room detail start -->

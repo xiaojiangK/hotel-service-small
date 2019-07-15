@@ -12,7 +12,7 @@ Page({
     //  字数
     count: 0,
     //  图片数限制
-    imageLimit: 9,
+    imageLimit: 4,
     //  照片临时列表
     photoListTemp: [],
     //  照片列表

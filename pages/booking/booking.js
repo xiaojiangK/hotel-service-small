@@ -67,6 +67,11 @@ Page({
     this.getAssess();
     this.getAssessCount();
   },
+  goCall() {
+    wx.makePhoneCall({
+      phoneNumber: this.data.hotel.tel
+    });
+  },
   //  获取手机号
   getUserPhoneNumber(e){
     app.getUserPhoneNumber(e, this);

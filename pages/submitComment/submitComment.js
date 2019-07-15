@@ -148,10 +148,11 @@ Page({
           url: "entry/wxapp/SaveAssess",
           data: {
             img: img.join(','),
+            user_id: res.data.id,
             room_id: this.data.roomId,
             order_id: this.data.orderId,
             content: this.data.content,
-            user_id: res.data.id
+            isAnonymous: this.data.isAnonymous
           },
           success: (res) => {
             api.showToast({

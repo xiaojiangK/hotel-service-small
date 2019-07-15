@@ -17,6 +17,8 @@ Page({
     photoListTemp: [],
     //  照片列表
     photoList: [],
+    //  是否匿名
+    isAnonymous: false,
     roomId: '',
     orderId: ''
   },
@@ -73,6 +75,12 @@ Page({
     api.previewImage({
       current: this.data.photoListTemp[index],
       urls: this.data.photoListTemp 
+    });
+  },
+  //  匿名发布
+  anonymous: function () {
+    this.setData({
+      isAnonymous: !this.data.isAnonymous
     });
   },
   //  取消

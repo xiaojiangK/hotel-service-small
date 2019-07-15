@@ -12,6 +12,9 @@
       </view>
     </view>
   </view>
+  <view class="anonymous">
+    <image class="icon-checkbox" src="/assets/image/icon-checkbox{{isAnonymous ? '-checked' : ''}}.png" mode="aspectFill" bindtap="anonymous" ></image><text bindtap="anonymous">匿名评价</text>
+  </view>
 </view>
 <view class="btn">
   <text bindtap="cancel">取消</text>

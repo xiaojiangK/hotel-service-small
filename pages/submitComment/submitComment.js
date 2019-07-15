@@ -102,7 +102,7 @@ Page({
     //  未填写内容
     if (!this.data.content) {
       api.showToast({
-        title: '请写出您的想法',
+        title: '请输入4~100字评论',
         icon: 'none'
       });
     } else {

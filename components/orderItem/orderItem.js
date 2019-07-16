@@ -19,6 +19,7 @@ Component({
       clearInterval(this.timer);
     },
     show() {
+      this.getAssess();
       this.startCountDown();
     }
   },

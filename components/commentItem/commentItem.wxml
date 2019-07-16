@@ -1,9 +1,9 @@
 <view class="comment-item" wx:if="{{comment.display == '1'}}">
   <!-- comment start -->
   <view class="comment">
-    <image class="avatar" src="{{comment.logo}}" mode="aspectFill" ></image>
+    <image class="avatar" src="{{comment.logo ? comment.logo : '/assets/image/user-img.png'}}" mode="aspectFill" ></image>
     <view class="head">
-      <text class="nickname">{{comment.name}}</text>
+      <text class="nickname">{{comment.name ? comment.name : '匿名住客'}}</text>
       <text class="type">{{comment.room}}</text>
     </view>
     <view class="content">{{comment.content}}</view>

@@ -140,6 +140,7 @@ Page({
           success:(res) => {
             const hotel = res.data;
             let service = [];
+            let facilities = [];
             if (hotel.service) {
               for (let i in hotel.service) {
                 service.push({
@@ -148,10 +149,19 @@ Page({
                 });
               }
             }
+            if (hotel.facilities) {
+              for (let i in hotel.facilities) {
+                facilities.push({
+                  id: i,
+                  val: hotel.facilities[i]
+                });
+              }
+            }
             this.setData({
               hotel: {
                 ...hotel,
-                service
+                service,
+                facilities
               }
             });
           }

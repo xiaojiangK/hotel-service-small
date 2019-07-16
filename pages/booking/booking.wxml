@@ -185,6 +185,47 @@
           <image class="icon" wx:if="{{item.id == '101197'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
           <text>{{item.val}}</text>
         </view>
+        <view class="item" wx:for="{{hotel.facilities}}" wx:key="index">
+          <image class="icon" wx:if="{{item.id == '101009'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101011'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101013'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101014'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101015'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101016'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101017'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101018'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101019'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101020'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101021'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101022'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101023'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101024'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101025'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101026'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101027'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101028'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101029'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101030'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101031'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101032'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101033'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101034'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101035'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101036'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101037'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101092'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101093'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101094'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101095'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101096'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101097'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101098'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101099'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101100'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101137'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101138'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <text>{{item.val}}</text>
+        </view>
       </view>
     </view>
     <!-- service end -->

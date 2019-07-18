@@ -96,14 +96,11 @@
             <text class="number" wx:if="{{roomDetail.img.length}}">{{roomSwiperIndex+1}}/{{roomDetail.img.length}}</text>
           </view>
           <view class="attr">
-            <block wx:for="{{roomDetail.facilities}}" wx:key="index">
-              <block wx:if="{{item.id == 101054}}">
-                <view class="item">
-                  <text class="label">卫浴</text>
-                  {{item.value}}
-                </view>
-              </block>
-            </block>
+            <view class="item" wx:if="{{roomDetail.bathroom || roomDetail.bathrooms}}">
+                <text class="label">卫浴</text>
+                {{roomDetail.bathroom ? '独立卫浴' : ''}}
+                {{roomDetail.bathrooms ? '公共卫浴' : ''}}
+            </view>
             <view class="item" wx:if="{{roomDetail.wifi == '1'}}">
               <text class="label">上网</text>
               WiFi

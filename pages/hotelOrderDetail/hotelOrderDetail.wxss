@@ -180,6 +180,9 @@
   color: #fff;
   background: #ff6342;
 }
+.payment-box .btn.reply{
+  margin: 0 30rpx 0 0;
+}
 .payment-box .btn.gray {
   border-color: #ccc;
   color: #fff;

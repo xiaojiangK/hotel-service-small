@@ -104,9 +104,17 @@
                 </view>
               </block>
             </block>
+            <view class="item" wx:if="{{roomDetail.wifi == '1'}}">
+              <text class="label">上网</text>
+              WiFi
+            </view>
             <view class="item">
               <text class="label">窗户</text>
               {{roomDetail.windows == '1' ? '有' : '无'}}
+            </view>
+            <view class="item">
+              <text class="label">空调</text>
+              {{roomDetail.air_conditioner == '1' ? '有' : '无'}}空调
             </view>
             <view class="item">
               <text class="label">可住</text>

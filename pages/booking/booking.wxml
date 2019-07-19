@@ -121,9 +121,9 @@
               <text class="label">面积</text>
               {{roomDetail.acreage}}㎡
             </view>
-            <view class="item" wx:if="{{roomDetail.floorNum}}">
+            <view class="item" wx:if="{{roomDetail.floor}}">
               <text class="label">楼层</text>
-              {{roomDetail.floorNum}}层
+              {{roomDetail.floor}}层
             </view>
             <view class="item" wx:if="{{roomDetail.bedtype}}">
               <text class="label">床型</text>

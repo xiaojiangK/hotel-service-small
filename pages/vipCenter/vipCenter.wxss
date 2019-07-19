@@ -182,7 +182,22 @@ page{
   text-align: center;
   color: #bbb;
 }
+
+/* components/registerVip/registerVip.wxss */
+
 /* 获取会员卡 */
+.user-alert{
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: rgba(0,0,0,0.5); */
+  z-index: 99;
+}
 .sign-vip {
   display: flex;
   flex-direction: column;
@@ -234,7 +249,7 @@ page{
   margin-left: 40rpx;
   color: #fff;
 }
-.vip-notice{
+.sign-vip .vip-notice{
   margin-top: 4rpx;
   font-size:28rpx;
   color:#fff;

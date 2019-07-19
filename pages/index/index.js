@@ -8,9 +8,9 @@ Page({
     goods: [],
     periphery: [],
     isGetUserInfo: false,
-    isGetPhoneNumber: false,
     hotelName: "",
-    widgets: []
+    widgets: [],
+    isGetPhoneNumber:false
   },
 
   /**
@@ -108,12 +108,15 @@ Page({
       }
     });
   },
+  getUserPhoneNumber(e) {
+    app.getUserPhoneNumber(e, this);
+  },
   bindGetUserInfo() {
     wx.getStorage({
       key: 'userinfo',
       success: (res) => {
-        if(res.data.tel) {
-          this.getSignTotal(res.data.openid, res.data.name)//获取访问次数
+        this.getSignTotal(res.data.openid, res.data.name)//获取访问次数
+        if (res.data.tel) {
           this.setData({
             isGetPhoneNumber: false
           });
@@ -127,6 +130,7 @@ Page({
         this.setData({
           isGetUserInfo: true
         });
+        console.log('获取数据失败')
       }
     });
   },
@@ -173,10 +177,6 @@ Page({
         console.log(res)
       }
     })
-  },
-  getUserPhoneNumber(e){
-    app.getUserPhoneNumber(e, this);
-    // app.userLogin();
   },
   onShareAppMessage: function () {
   }

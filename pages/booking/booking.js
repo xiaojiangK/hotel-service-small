@@ -27,13 +27,15 @@ Page({
     commentList: [],
     assessCount: {},
     hotel: {},
-    roomDetail: {}
+    roomDetail: {},
+    hotelName:''
   },
   //  页面显示
   onShow() {
     this.initDate();
     this.loadData();
     this.changePhoneNumber();
+    this.bindGetUserInfo();
   },
   //  初始化数据
   initDate() {
@@ -42,9 +44,10 @@ Page({
     wx.getStorage({
       key: 'hotel',
       success: function(res) {
-        let { room_booking } = res.data || 1
+        let { room_booking,name } = res.data || 1
         _this.setData({
-          room_booking: room_booking
+          room_booking: room_booking,
+          hotelName: name
         })
       },
     })
@@ -271,6 +274,32 @@ Page({
     let { current } = e.detail;
     this.setData({
       roomSwiperIndex: current
+    });
+  },
+
+  //  是否有手机号
+  getUserPhoneNumber(e) {
+    app.getUserPhoneNumber(e, this);
+  },
+  bindGetUserInfo() {
+    wx.getStorage({
+      key: 'userinfo',
+      success: (res) => {
+        if (res.data.tel) {
+          this.setData({
+            isGetPhoneNumber: false
+          });
+        } else {
+          this.setData({
+            isGetPhoneNumber: true,
+          });
+        }
+      },
+      fail: () => {
+        this.setData({
+          isGetPhoneNumber: true
+        });
+      }
     });
   },
   //  选择评论标签

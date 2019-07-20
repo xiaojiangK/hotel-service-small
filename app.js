@@ -131,7 +131,7 @@ App({
                                     user_id: res4.data.id
                                   },
                                   success: (res) => {
-                                    if (res.data == 1) {
+                                    if (res.data.openid) {
                                       if (that) {
                                         that.setData({
                                           isGetUserInfo: false

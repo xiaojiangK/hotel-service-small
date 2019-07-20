@@ -55,6 +55,16 @@ page{
   color: #FF6634;
   background-color: #fff;
 }
+.cancel-btn2{
+  width: 142px;
+  height: 45px;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  line-height: 45px;
+  border-radius: 4px;
+  background: #E83A3D;
+}
 .pay-btn{
   color: #fff;
   background: #FF6634;

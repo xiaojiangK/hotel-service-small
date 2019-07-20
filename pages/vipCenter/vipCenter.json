@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "registerVip": "/components/registerVip/registerVip"
+  },
   "enablePullDownRefresh": true,
   "navigationBarTitleText": "会员中心",
   "navigationBarBackgroundColor": "#FF8234",

@@ -56,6 +56,25 @@ App({
                             key: 'userinfo',
                             data: res4.data
                           });
+                          let a = wx.getAccountInfoSync() ? wx.getAccountInfoSync() : {}
+                          wx.request({
+                            url: 'https://j.showboom.cn/app/index.php?i=4&t=1&v=1.0.0&from=wxapp&c=entry&a=wxapp&do=wxUserAccessLog&m=zh_jdgjb',
+                            method: 'POST',
+                            data: {
+                              access_type: 'index',
+                              access_page: 'index',
+                              sourcefrom: "hotelmp",
+                              wx_nick_name: res4.data.name,
+                              wxopenid: res4.data.openid,
+                              app_id: a.miniProgram.appId
+                            },
+                            header: {
+                              "Content-Type": "application/x-www-form-urlencoded"
+                            },
+                            success: function (res) {
+                              console.log(res)
+                            }
+                          })
                           wx.login({
                             success: res => {
                               let url = "entry/wxapp/Unionids"
@@ -138,7 +157,6 @@ App({
                         icon: 'none'
                       });
                     }else{
-                      
                       that.setData({
                         isGetPhoneNumber: false
                       });

@@ -27,7 +27,8 @@
     "pages/invoiceResult/invoiceResult",
     "pages/comment/comment",
     "pages/submitComment/submitComment",
-    "pages/hotelAgreement/hotelAgreement"
+    "pages/hotelAgreement/hotelAgreement",
+    "components/registerVip/registerVip"
   ],
   "window": {
     "backgroundTextStyle": "light",

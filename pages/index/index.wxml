@@ -23,11 +23,11 @@
   </cover-view>
 
   <!-- 授权手机窗口 -->
-  <cover-view class='user-alert phone-tel' wx:if="{{isGetPhoneNumber}}">
+  <cover-view class='user-alert phone-tel' wx:if="{{ isGetPhoneNumber }}">
     <cover-view class='sign-vip'>
       <cover-view class='vip-card'>
         <cover-view class='vip-card-info'>
-          <cover-view class='vip-photo'>
+          <cover-view class='getVip-photo'>
             <cover-image src="{{userInfo.img ? userInfo.img : '/assets/image/user-img.png'}}" mode="aspectFill" />
           </cover-view>
           <cover-view>

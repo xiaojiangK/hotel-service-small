@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "commentItem": "/components/commentItem/commentItem"
+    "commentItem": "/components/commentItem/commentItem",
+    "registerVip": "/components/registerVip/registerVip"
   },
   "navigationBarTitleText": "酒店预订"
 }

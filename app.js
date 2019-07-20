@@ -25,11 +25,21 @@ App({
       }
     })
   },
-  loginInfo(res3, res4) {
-    wx.setStorage({
-      key: 'userinfo',
-      data: res4.data
-    });
+  loginInfo(res3, res4, openid = '') {
+    if (openid) {
+      wx.setStorage({
+        key: 'userinfo',
+        data: {
+          ...res4.data,
+          openid
+        }
+      });
+    } else {
+      wx.setStorage({
+        key: 'userinfo',
+        data: res4.data
+      });
+    }
     let a = wx.getAccountInfoSync() ? wx.getAccountInfoSync() : {}
     wx.request({
       url: 'https://j.showboom.cn/app/index.php?i=4&t=1&v=1.0.0&from=wxapp&c=entry&a=wxapp&do=wxUserAccessLog&m=zh_jdgjb',
@@ -127,7 +137,7 @@ App({
                                           isGetUserInfo: false
                                         });
                                       }
-                                      this.loginInfo(res3, res4);
+                                      this.loginInfo(res3, res4, res.data.openid);
                                     }
                                   }
                                 });

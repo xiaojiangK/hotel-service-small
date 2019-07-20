@@ -127,7 +127,7 @@
             </view>
             <view class="item" wx:if="{{roomDetail.bedtype}}">
               <text class="label">床型</text>
-              {{roomDetail.bedtype}} {{roomDetail.size}}米 {{roomDetail.bed}}张
+              {{roomDetail.bedtype}} {{roomDetail.size}}米
             </view>
             <view class="item">
               <text class="label">早餐</text>

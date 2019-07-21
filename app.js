@@ -25,7 +25,69 @@ App({
       }
     })
   },
-  userLogin() {
+  loginInfo(res3, res4, openid = '') {
+    if (openid) {
+      wx.setStorage({
+        key: 'userinfo',
+        data: {
+          ...res4.data,
+          openid
+        }
+      });
+    } else {
+      wx.setStorage({
+        key: 'userinfo',
+        data: res4.data
+      });
+    }
+    let a = wx.getAccountInfoSync() ? wx.getAccountInfoSync() : {}
+    wx.request({
+      url: 'https://j.showboom.cn/app/index.php?i=4&t=1&v=1.0.0&from=wxapp&c=entry&a=wxapp&do=wxUserAccessLog&m=zh_jdgjb',
+      method: 'POST',
+      data: {
+        access_type: 'index',
+        access_page: 'index',
+        sourcefrom: "hotelmp",
+        wx_nick_name: res4.data.name,
+        wxopenid: res4.data.openid,
+        app_id: a.miniProgram.appId
+      },
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      success: function (res) {
+        console.log(res)
+      }
+    })
+    wx.login({
+      success: res => {
+        let url = "entry/wxapp/Unionids"
+        if (siteinfo.uniacid == 4) {
+          url = "entry/wxapp/Unionid"
+        }
+        this.util.request({
+          url: url,
+          data: {
+            iv: res3.iv,
+            code: res.code,
+            id: res4.data.id,
+            mobile: res4.data.tel,
+            openid: res4.data.openid,
+            data: res3.encryptedData
+          },
+          success:(res) => {
+            if (res.data && res.data.code == 0) {
+              wx.setStorage({
+                key: 'vipInfo',
+                data: res.data.data
+              });
+            }
+          }
+        });
+      }
+    });
+  },
+  userLogin(that = '') {
     // 登录
     wx.login({
       success: res1 => {
@@ -52,56 +114,36 @@ App({
                           name: res3.userInfo.nickName
                         },
                         success:(res4) => {
-                          wx.setStorage({
-                            key: 'userinfo',
-                            data: res4.data
-                          });
-                          let a = wx.getAccountInfoSync() ? wx.getAccountInfoSync() : {}
-                          wx.request({
-                            url: 'https://j.showboom.cn/app/index.php?i=4&t=1&v=1.0.0&from=wxapp&c=entry&a=wxapp&do=wxUserAccessLog&m=zh_jdgjb',
-                            method: 'POST',
-                            data: {
-                              access_type: 'index',
-                              access_page: 'index',
-                              sourcefrom: "hotelmp",
-                              wx_nick_name: res4.data.name,
-                              wxopenid: res4.data.openid,
-                              app_id: a.miniProgram.appId
-                            },
-                            header: {
-                              "Content-Type": "application/x-www-form-urlencoded"
-                            },
-                            success: function (res) {
-                              console.log(res)
-                            }
-                          })
-                          wx.login({
-                            success: res => {
-                              let url = "entry/wxapp/Unionids"
-                              if (siteinfo.uniacid == 4) {
-                                url = "entry/wxapp/Unionid"
-                              }
-                              this.util.request({
-                                url: url,
-                                data: {
-                                  iv: res3.iv,
-                                  code: res.code,
-                                  id: res4.data.id,
-                                  mobile: res4.data.tel,
-                                  openid: res4.data.openid,
-                                  data: res3.encryptedData
-                                },
-                                success:(res) => {
-                                  if (res.data && res.data.code == 0) {
-                                    wx.setStorage({
-                                      key: 'vipInfo',
-                                      data: res.data.data
-                                    });
-                                  }
-                                }
+                          if (res4.data.openid != 'undefined') {
+                            if (that) {
+                              that.setData({
+                                isGetUserInfo: false
                               });
                             }
-                          });
+                            this.loginInfo(res3, res4);
+                          } else {
+                            wx.login({
+                              success: resr => {
+                                this.util.request({
+                                  url: "entry/wxapp/Openid_repair",
+                                  data: {
+                                    code: resr.code,
+                                    user_id: res4.data.id
+                                  },
+                                  success: (res) => {
+                                    if (res.data.openid) {
+                                      if (that) {
+                                        that.setData({
+                                          isGetUserInfo: false
+                                        });
+                                      }
+                                      this.loginInfo(res3, res4, res.data.openid);
+                                    }
+                                  }
+                                });
+                              }
+                            });
+                          }
                         }
                       });
                     }

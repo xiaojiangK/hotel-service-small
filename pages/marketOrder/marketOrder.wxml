@@ -17,13 +17,16 @@
       <view class="input-item-data">{{orderInfo.tel}}</view>
     </view>
   </view>
-  <view class="btn-group" wx:if="{{orderInfo.status == '1'}}">
-    <view class='order-btn cancel-btn' bind:tap="cancelOrder">取消订单</view>
-    <view class='order-btn pay-btn' bind:tap="goPay">去支付</view>
+  <view class="btn-group">
+    <block wx:if="{{orderInfo.status == '1'}}">
+      <view class='order-btn cancel-btn' bind:tap="cancelOrder">取消订单</view>
+      <view class='order-btn pay-btn' bind:tap="goPay">去支付</view>
+    </block>
+    <view wx:if="{{orderInfo.status == '2'}}" class='order-btn cancel-btn2' bind:tap="goRefund">取消订单</view>
   </view>
   <view class="goods-title">
     <view class="title-name">商品清单</view>
-    <view class="goods-title-num">共<text>{{ goodsNum }}</text>商品</view>
+    <view class="goods-title-num">共<text>{{ goodsNum }}</text>件商品</view>
   </view>
   <view class='goods-list'>
     <order-goods data="{{orderInfo.goods_info}}"></order-goods>

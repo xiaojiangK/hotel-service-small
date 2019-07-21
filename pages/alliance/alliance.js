@@ -2,13 +2,25 @@ const app = getApp()
 Page({  
   onShow(){
     let _this = this
+    // wx.getStorage({
+    //   key: 'hotel',
+    //   success: function(res) {
+    //     let { openid,name} = res.data
+    //     _this.getSignTotal(openid, name)
+    //   },
+    // })
+    this.bindGetUserInfo();
+  },
+  bindGetUserInfo() {
     wx.getStorage({
-      key: 'hotel',
-      success: function(res) {
-        let { openid,name} = res.data
-        _this.getSignTotal(openid, name)
+      key: 'userinfo',
+      success: (res) => {
+        this.getSignTotal(res.data.openid, res.data.name)//获取访问次数
       },
-    })
+      fail: () => {
+        console.log('获取数据失败')
+      }
+    });
   },
   getSignTotal(openid, name) {
     const a = wx.getAccountInfoSync() ? wx.getAccountInfoSync() : {}

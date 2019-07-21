@@ -118,11 +118,13 @@ Page({
         this.getSignTotal(res.data.openid, res.data.name)//获取访问次数
         if (res.data.tel) {
           this.setData({
-            isGetPhoneNumber: false
+            isGetPhoneNumber: false,
+            isGetUserInfo: false
           });
         } else {
           this.setData({
-            isGetPhoneNumber: true
+            isGetPhoneNumber: true,
+            isGetUserInfo: false
           });
         }
       },

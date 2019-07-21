@@ -279,7 +279,17 @@
   </view>
 </block>
 
-  <!-- 授权手机窗口 -->
+  <!-- 授权窗口 -->
+  <cover-view class="user-alert" scroll-top="0" wx:if="{{ isGetUserInfo }}">
+    <cover-view class='alert-content'>
+      <cover-image class="alert-banner" src="/assets/image/alert-banner.png" ></cover-image>    
+      <!-- <cover-view class="alert-text"></cover-view>   -->
+      <cover-view class="alert-title">欢迎入住{{hotelName}}</cover-view>
+      <cover-view class="alert-msg">尽享酒店服务</cover-view>
+      <button class='getUser-btn' bindgetuserinfo='getUserInfo' open-type="getUserInfo">微信授权</button>
+    </cover-view>
+  </cover-view>
+  
  <!-- 授权手机窗口 -->
   <cover-view class='user-alert phone-tel' wx:if="{{ isGetPhoneNumber }}">
     <cover-view class='sign-vip'>

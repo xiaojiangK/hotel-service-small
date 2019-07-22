@@ -34,7 +34,7 @@ Page({
   onShow() {
     this.initDate();
     this.loadData();
-    this.changePhoneNumber();
+    // this.changePhoneNumber();
     this.bindGetUserInfo();
   },
   //  初始化数据
@@ -281,23 +281,33 @@ Page({
   getUserPhoneNumber(e) {
     app.getUserPhoneNumber(e, this);
   },
+  getUserInfo(e) {
+    if (e.detail.errMsg == "getUserInfo:ok") {
+      app.userLogin();
+      this.setData({
+        isGetUserInfo: false
+      });
+    }
+  },
   bindGetUserInfo() {
     wx.getStorage({
       key: 'userinfo',
       success: (res) => {
         if (res.data.tel) {
           this.setData({
-            isGetPhoneNumber: false
+            isGetPhoneNumber: false,
+            isGetUserInfo: false
           });
         } else {
           this.setData({
             isGetPhoneNumber: true,
+            isGetUserInfo: false
           });
         }
       },
       fail: () => {
         this.setData({
-          isGetPhoneNumber: true
+          isGetUserInfo: true
         });
       }
     });

@@ -175,6 +175,14 @@ Page({
   getUserPhoneNumber(e) {
     app.getUserPhoneNumber(e, this);
   },
+  getUserInfo(e) {
+    if (e.detail.errMsg == "getUserInfo:ok") {
+      app.userLogin();
+      this.setData({
+        isGetUserInfo: false
+      });
+    }
+  },
   bindGetUserInfo(){
     wx.getStorage({
       key: 'userinfo',
@@ -182,17 +190,19 @@ Page({
         if (res.data.tel) {
           // this.getSignTotal(res.data.openid, res.data.name)//获取访问次数
           this.setData({
-            isGetPhoneNumber: false
+            isGetPhoneNumber: false,
+            isGetUserInfo: false
           });
         } else {
           this.setData({
-            isGetPhoneNumber: true
+            isGetPhoneNumber: true,
+            isGetUserInfo: false
           });
         }
       },
       fail: () => {
         this.setData({
-          isGetPhoneNumber: true
+          isGetUserInfo: true
         });
       }
     });

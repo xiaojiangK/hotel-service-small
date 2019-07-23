@@ -1,7 +1,7 @@
 <block wx:if="{{room_booking ==1 && roomList.length>0 }}">
   <!-- banner start -->
   <view class="banner">
-    <swiper interval="2000" duration="500" circular="true">
+    <swiper interval="3000" duration="1000" autoplay="true" circular="true">
       <block wx:for="{{swiper}}" wx:key="index">
         <swiper-item>
           <image src="{{item}}" mode="aspectFill"/>
@@ -272,7 +272,7 @@
   </view>
   <!-- tab content end -->
 </block>
-<block wx:if="{{ room_booking==2 || roomList.length==0 }}">
+<block wx:if="{{ room_booking==2 || noRoomList }}">
   <view class="build">
     <image class="icon-build" src="/assets/image/noInfo.png" mode="aspectFill" />
     <view class="desc">酒店暂未开放此功能</view>
@@ -290,7 +290,7 @@
     </cover-view>
   </cover-view>
   
- <!-- 授权手机窗口 -->
+ <!-- 授权手机窗口
   <cover-view class='user-alert phone-tel' wx:if="{{ isGetPhoneNumber }}">
     <cover-view class='sign-vip'>
       <cover-view class='vip-card'>
@@ -313,7 +313,7 @@
       </cover-view>
       <button class='getVip-btn getIphone-btn' bindgetphonenumber='getUserPhoneNumber' open-type="getPhoneNumber">领取VIP会员卡</button>
     </cover-view>
-  </cover-view>
+  </cover-view> -->
 
 
 <!-- <cover-view class='user-alert' wx:if="{{isGetPhoneNumber}}">

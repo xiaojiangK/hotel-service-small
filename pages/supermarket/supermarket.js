@@ -313,6 +313,16 @@ Page({
   },
   /* 点击加减 */
   calculation(e) {
+    // 是否需要手机号授权
+    let userInfo = wx.getStorageSync('userinfo')
+    if (!userInfo.tel){
+      wx.navigateTo({
+        url: '/pages/getPhone/getPhone',
+      })
+      return
+    }
+
+
     let getDataSet = e.currentTarget.dataset
     //let newList = app.globalData.shopCar
     let ctype = getDataSet.ctype

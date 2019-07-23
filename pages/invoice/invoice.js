@@ -10,6 +10,8 @@ Page({
     //  酒店标识
     seller_id: '',
     uniacid: '',
+    //用户openId
+    wxopenid:'',
     //  开票类型
     type: 1,
     //  抬头名称
@@ -53,7 +55,8 @@ Page({
     .then(res => {
       if ( res.data ) {
         this.setData({
-          user_id: res.data.id
+          user_id: res.data.id,
+          wxopenid: res.data.openid
         });
         this.getLastInvoice();
       }
@@ -163,6 +166,7 @@ Page({
       seller_id,
       uniacid,
       type,
+      wxopenid,
       title,
       taxNumber,
       companyAddress,
@@ -172,6 +176,7 @@ Page({
       name,
       roomNumber
     } = e.detail.value;
+    let wxformid = e.detail.formId
     let params = null;
     if ( type == 1 && !title.length ) {
       wx.showToast({
@@ -203,6 +208,7 @@ Page({
         user_id,
         seller_id,
         uniacid,
+        wxopenid,
         type,
         title,
         taxNumber,
@@ -210,7 +216,8 @@ Page({
         telephone,
         bankName,
         bankAccount,
-        roomNumber
+        roomNumber,
+        wxformid
       };
     } else if ( type == 2 ) {
       //  个人类型参数
@@ -218,9 +225,11 @@ Page({
         user_id,
         seller_id,
         uniacid,
+        wxopenid,
         type,
         title: name,
-        roomNumber 
+        roomNumber,
+        wxformid 
       };
     }
     request.applyInvoice({

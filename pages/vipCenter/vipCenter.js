@@ -21,6 +21,18 @@ Page({
       phoneNumber: this.data.tel
     });
   },
+
+  //领取会员
+  getVip(){
+    // 是否需要手机号授权
+    let userInfo = wx.getStorageSync('userinfo')
+    if (!userInfo.tel) {
+      wx.navigateTo({
+        url: '/pages/getPhone/getPhone',
+      })
+      return
+    }
+  },
   verifygoods() {
     // 允许从相机和相册扫码
     wx.scanCode({

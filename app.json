@@ -28,7 +28,9 @@
     "pages/comment/comment",
     "pages/submitComment/submitComment",
     "pages/hotelAgreement/hotelAgreement",
-    "components/registerVip/registerVip"
+    "components/registerVip/registerVip",
+    "pages/getPhone/getPhone",
+    "pages/getBill/getBill"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -69,6 +71,9 @@
       }
     ]
   },
+  "navigateToMiniProgramAppIdList": [
+    "wx9db2c16d0633c2e7"
+  ],
   "permission": {
     "scope.userLocation": {
       "desc": "您的位置信息用于地图导航"

@@ -1,0 +1,18 @@
+<!--pages/getBill/getBill.wxml-->
+<view class="bill-money">￥{{amount}}</view>
+
+<view class="bill">
+  <view class="bill-item">
+    <view class="bill-label">抬头名称</view>
+    <view class="bill-content">{{title}}</view>
+  </view>
+  <view class="bill-item">
+    <view class="bill-label">发票税号</view>
+    <view class="bill-content">{{tax_num}}</view>
+  </view>
+  <view class="bill-item">
+    <view class="bill-label">单位电话</view>
+    <view class="bill-content">{{telephone}}</view>
+  </view>
+</view>
+<view bindtap="goNext" class="get-bill">确认开票</view>

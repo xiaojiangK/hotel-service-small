@@ -127,9 +127,22 @@ Page({
         that.connected();
       },
       fail: function (res) {
-        wx.navigateTo({
-          url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication
-        })
+        if (that.phoneType == 'android') {
+          if (res.errMsg == ''){
+
+          }else{
+            wx.navigateTo({
+              url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=123" + password + '&authentication=' + authentication
+            })
+          }
+        } else {
+          wx.navigateTo({
+            url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication
+          })
+        }
+        // wx.navigateTo({
+        //   url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication
+        // })
       }
     })
   },

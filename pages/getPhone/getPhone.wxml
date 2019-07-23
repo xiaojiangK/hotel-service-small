@@ -1,0 +1,25 @@
+<view class='user-alert phone-tel'>
+    <view class='sign-vip'>
+      <view class='vip-card'>
+        <view class='vip-card-info'>
+          <view class='getVip-photo'>
+            <cover-image src="{{userInfo.img ? userInfo.img : '/assets/image/user-img.png'}}" mode="aspectFill" />
+          </view>
+          <view>
+            <view class='vip-name'>{{ hotelName }}</view>
+            <view class='vip-notice'>VIP会员卡</view>
+          </view>
+        </view>
+        <view class='vip-num'>酒店直定 · 没有中间商赚差价</view>
+        <view>
+        </view>
+      </view>
+      <view class="hotel-agreement">
+         <navigator hover-class="none" url="/pages/hotelAgreement/hotelAgreement">领取会员，视为同意酒店会员协议</navigator>
+        <view class="right-arrow"></view>
+      </view>
+      <button class='getVip-btn getIphone-btn' bindgetphonenumber='getUserPhoneNumber' open-type="getPhoneNumber">领取VIP会员卡</button>
+    </view>
+</view>
+<!-- <web-view  src="https://mp.weixin.qq.com/intp/invoice/wapredirect?redirect_url=weixin://dl/business/?ticket=tbfb9e40beac2ed4c0db21b6a701a943c"></web-view> -->
+

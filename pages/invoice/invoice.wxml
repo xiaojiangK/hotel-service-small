@@ -7,12 +7,13 @@
   <text class="tab-nav {{type == 1 ? 'active':''}}" data-type="{{1}}" bindtap="chooseType">单位</text>
   <text class="tab-nav {{type == 2 ? 'active':''}}" data-type="{{2}}" bindtap="chooseType">个人</text>
 </view>
-<form class="form" bindsubmit="applyInvoice" wx:if="{{state != 'build'}}">
+<form class="form" bindsubmit="applyInvoice" report-submit="true" wx:if="{{state != 'build'}}">
   <view class="hidden">
     <input type="text" name="user_id" value="{{user_id}}" />
     <input type="text" name="seller_id" value="{{seller_id}}" />
     <input type="text" name="uniacid" value="{{uniacid}}" />
     <input type="text" name="type" value="{{type}}" />
+    <input type="text" name="wxopenid" value="{{wxopenid}}" />
   </view>
   <view hidden="{{type == 2}}">
     <view class="row" hidden="{{type === 2}}">

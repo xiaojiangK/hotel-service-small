@@ -184,9 +184,13 @@ Component({
           that.Connected();    
         },
         fail: function (res) {
-          wx.navigateTo({  
-            url: "/pages/wifiFail/wifiFail?name=" + SSID +"&pwd="+ password
-          })
+          if (that.phoneType =='android'){
+            
+          }else{
+            wx.navigateTo({
+              url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password
+            })
+          }
         }
       })
     },

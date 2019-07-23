@@ -28,7 +28,8 @@ Page({
     assessCount: {},
     hotel: {},
     roomDetail: {},
-    hotelName:''
+    hotelName:'',
+    noRoomList: false
   },
   //  页面显示
   onShow() {
@@ -99,6 +100,9 @@ Page({
   },
   //  加载数据
   loadData() {
+    wx.showLoading({
+      title: '加载中...',
+    })
     this.setData({
       isMchid:app.globalData.isMchid
     })
@@ -113,6 +117,7 @@ Page({
             seller_id: res.data.id
           },
           success:(res) => {
+            wx.hideLoading()
             let swiper = [];
             const roomList = res.data.map(item => {
               if (item.state == '1') {
@@ -124,7 +129,8 @@ Page({
                 price: Math.ceil(item.min_price)
               }
             });
-            this.setData({ roomList, swiper, isMchid: app.globalData.isMchid });
+            let noRoomList = roomList.length>0 ? false : true
+            this.setData({ roomList, swiper, isMchid: app.globalData.isMchid, noRoomList });
           }
         });
       }
@@ -221,6 +227,16 @@ Page({
   },
   //  选择日期
   selectDate(){
+
+    // 是否需要手机号授权
+    let userInfo = wx.getStorageSync('userinfo')
+    if (!userInfo.tel) {
+      wx.navigateTo({
+        url: '/pages/getPhone/getPhone',
+      })
+      return
+    }
+
     wx.navigateTo({
       url: '/pages/calendar/index'
     });
@@ -293,17 +309,9 @@ Page({
     wx.getStorage({
       key: 'userinfo',
       success: (res) => {
-        if (res.data.tel) {
-          this.setData({
-            isGetPhoneNumber: false,
-            isGetUserInfo: false
-          });
-        } else {
-          this.setData({
-            isGetPhoneNumber: true,
-            isGetUserInfo: false
-          });
-        }
+        this.setData({
+          isGetUserInfo: false
+        });
       },
       fail: () => {
         this.setData({
@@ -322,6 +330,16 @@ Page({
   },
   //  支付
   goPay(e) {
+
+    // 是否需要手机号授权
+    let userInfo = wx.getStorageSync('userinfo')
+    if (!userInfo.tel) {
+      wx.navigateTo({
+        url: '/pages/getPhone/getPhone',
+      })
+      return
+    }
+
     const room = e.currentTarget.dataset.room;
     if (!room.min_num || room.min_num == '0') {
       return;

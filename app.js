@@ -192,6 +192,9 @@ App({
                     that.setData({
                       isGetPhoneNumber: false
                     });
+                    wx.navigateBack({
+                      delta: 1
+                    })
                   } else {
                     if(res3.data.info=='解密失败'){
                       wx.showToast({

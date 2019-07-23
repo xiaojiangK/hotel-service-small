@@ -11,7 +11,7 @@
         <view class='vip-notice bg-color'>VIP会员</view>
       </block>
       <block wx:if='{{ userInfo.name && !userInfo.tel }}'>
-        <view class='vip-notice bg-color'>非会员</view>
+        <view class='vip-notice bg-color' bindtap="getVip">点击领取会员</view>
       </block>
       <block wx:if='{{  !userInfo.name && !userInfo.tel  }}'>
       <view class='vip-notice'>使用微信快捷登录</view>
@@ -128,30 +128,5 @@
       <cover-view class="alert-title">欢迎入住{{hotelName}}</cover-view>
       <cover-view class="alert-msg">尽享酒店服务</cover-view>
       <button class='getUser-btn' bindgetuserinfo='getUserInfo' open-type="getUserInfo">微信授权</button>
-    </cover-view>
-  </cover-view>
-
-<!-- 授权手机窗口 -->
-  <cover-view class='user-alert phone-tel' wx:if="{{ isGetPhoneNumber }}">
-    <cover-view class='sign-vip'>
-      <cover-view class='vip-card'>
-        <cover-view class='vip-card-info'>
-          <cover-view class='getVip-photo'>
-            <cover-image src="{{userInfo.img ? userInfo.img : '/assets/image/user-img.png'}}" mode="aspectFill" />
-          </cover-view>
-          <cover-view>
-            <cover-view class='vip-name'>{{ hotelName }}</cover-view>
-            <cover-view class='vip-notice'>VIP会员卡</cover-view>
-          </cover-view>
-        </cover-view>
-        <cover-view class='vip-num'>酒店直定 · 没有中间商赚差价</cover-view>
-        <cover-view>
-        </cover-view>
-      </cover-view>
-      <cover-view class="hotel-agreement">
-         <navigator hover-class="none" url="/pages/hotelAgreement/hotelAgreement">领取会员，视为同意酒店会员协议</navigator>
-        <cover-view class="right-arrow"></cover-view>
-      </cover-view>
-      <button class='getVip-btn getIphone-btn' bindgetphonenumber='getUserPhoneNumber' open-type="getPhoneNumber">领取VIP会员卡</button>
     </cover-view>
   </cover-view>

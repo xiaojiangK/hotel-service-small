@@ -17,7 +17,7 @@
     </swiper-item>
   </swiper>
   <view class="welcome">
-    <view class="welcome-tp">{{data.prompt}}</view>
+    <view class="welcome-tp">{{data.prompt ? data.prompt : ''}}</view>
     <view class="welcome-bt">欢迎入住{{data.name}}</view>
   </view>
 </view>

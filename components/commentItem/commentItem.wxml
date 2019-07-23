@@ -1,4 +1,4 @@
-<view class="comment-item" wx:if="{{comment.display == '1'}}">
+<view class="comment-item">
   <!-- comment start -->
   <view class="comment">
     <image class="avatar" src="{{comment.logo ? comment.logo : '/assets/image/user-img.png'}}" mode="aspectFill" ></image>

@@ -96,42 +96,44 @@
             <text class="number" wx:if="{{roomDetail.img.length}}">{{roomSwiperIndex+1}}/{{roomDetail.img.length}}</text>
           </view>
           <view class="attr">
-            <view class="item" wx:if="{{roomDetail.bathroom || roomDetail.bathrooms}}">
-                <text class="label">卫浴</text>
-                {{roomDetail.bathroom ? '独立卫浴' : ''}}
-                {{roomDetail.bathrooms ? '公共卫浴' : ''}}
-            </view>
-            <view class="item" wx:if="{{roomDetail.wifi == '1'}}">
-              <text class="label">上网</text>
-              WiFi
+            <view class="item">
+              <text class="label">卫浴</text>
+              <block wx:if="{{roomDetail.bathroom >= '1'}}">独立卫浴</block>
+              <block wx:if="{{roomDetail.bathrooms >= '1'}}">公共卫浴</block>
+              <block wx:if="{{roomDetail.bathroom < '1' && roomDetail.bathrooms < '1'}}">无</block>
             </view>
             <view class="item">
               <text class="label">窗户</text>
-              {{roomDetail.windows == '1' ? '有' : '无'}}
-            </view>
-            <view class="item">
-              <text class="label">空调</text>
-              {{roomDetail.air_conditioner == '1' ? '有' : '无'}}空调
+              {{roomDetail.windows >= '1' ? '有' : '无'}}
             </view>
             <view class="item">
               <text class="label">可住</text>
-              {{roomDetail.people}}人
+              {{roomDetail.people >= '1' ? roomDetail.people + '人' : '无'}}
             </view>
-            <view class="item" wx:if="{{roomDetail.acreage}}">
+            <view class="item">
               <text class="label">面积</text>
-              {{roomDetail.acreage}}㎡
+              {{roomDetail.acreage >= '1' ? roomDetail.acreage + '㎡' : '无'}}
             </view>
-            <view class="item" wx:if="{{roomDetail.floor}}">
+            <view class="item">
               <text class="label">楼层</text>
-              {{roomDetail.floor}}层
+              {{roomDetail.floor >= '1' ? roomDetail.floor + '层' : '无'}}
             </view>
-            <view class="item" wx:if="{{roomDetail.bedtype}}">
+            <view class="item">
               <text class="label">床型</text>
-              {{roomDetail.bedtype}} {{roomDetail.size}}米
+              {{roomDetail.bedtype >= '1' ? roomDetail.bedtype : '无'}}
+              {{roomDetail.size >= '1' ? roomDetail.size + '米' : '无'}}
             </view>
             <view class="item">
               <text class="label">早餐</text>
-              {{roomDetail.breakfast == '1' ? '有' : '无'}}早餐
+              {{roomDetail.breakfast >= '1' ? '有' : '无'}}早餐
+            </view>
+            <view class="item">
+              <text class="label">上网</text>
+              {{roomDetail.wifi >= '1' ? 'WiFi' : '无'}}
+            </view>
+            <view class="item">
+              <text class="label">空调</text>
+              {{roomDetail.air_conditioner >= '1' ? '有' : '无'}}空调
             </view>
           </view>
           <view class="policy">

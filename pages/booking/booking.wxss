@@ -237,10 +237,17 @@ page {
   line-height: 92rpx;
   text-align: center;
 }
-.room-detail .icon-close {
+.room-detail .right-close{
   position: absolute;
-  top: 33rpx;
-  right: 30rpx;
+  top:0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 92rpx;
+  height: 92rpx;
+}
+.room-detail .icon-close {
   width: 26rpx;
   height: 26rpx;
 }

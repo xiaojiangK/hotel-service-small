@@ -6,11 +6,11 @@
             <cover-image src="{{userInfo.img ? userInfo.img : '/assets/image/user-img.png'}}" mode="aspectFill" />
           </view>
           <view>
-            <view class='vip-name'>{{ hotelName }}</view>
+            <view class='vip-name'>{{ name }}</view>
             <view class='vip-notice'>VIP会员卡</view>
           </view>
         </view>
-        <view class='vip-num'>酒店直定 · 没有中间商赚差价</view>
+        <view class='vip-num'>酒店直订 · 没有中间商赚差价</view>
         <view>
         </view>
       </view>

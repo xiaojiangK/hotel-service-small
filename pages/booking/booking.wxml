@@ -82,7 +82,9 @@
       <view class="wrap">
           <view class="head">
           {{roomDetail.name}}
-          <image class="icon-close" src="/assets/image/icon-close.png" mode="aspectFill" bindtap="toggleDetail" />
+          <view class="right-close" bindtap="toggleDetail" >
+          <image class="icon-close" src="/assets/image/icon-close.png" mode="aspectFill" />
+          </view>
         </view>
         <view class="scroll">
           <view class="swiper">

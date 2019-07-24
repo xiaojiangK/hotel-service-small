@@ -1,6 +1,6 @@
 <!--pages/hotelRim/hotelRim.wxml-->
 <view class="wrapper" > 
-  <block wx:for="{{list}}" wx:if="{{ periphery==1 }}" wx:key="index">
+  <block wx:for="{{list}}" wx:if="{{ isHasList }}" wx:key="index">
     <view class="hotel-rim" wx:if="{{item.state == '1'}}">
       <view class="rim-banner">
         <image src="{{item.img}}" mode="aspectFill"/>
@@ -16,7 +16,7 @@
       </view>   
     </view>
   </block>
-  <block wx:if="{{ list.length==0 || periphery==2 }}" >
+  <block wx:if="{{ isNoList }}" >
     <view class="noCon">
       <image src="/assets/image/noInfo.png" />
       <text>酒店暂未开放此功能</text>

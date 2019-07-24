@@ -7,7 +7,11 @@ Page({
    */
   data: {
     url:'',
-    recId:''
+    recId:'',
+    amount: '',
+    title: '',
+    tax_number: '',
+    telephone: ''
   },
 
   /**
@@ -36,15 +40,15 @@ Page({
         rec_id: this.data.recId
       },
       success: (res) => {
-        
+        console.log(res.data)
         if (res.data.result == 'success'){
           console.log(res.data.yp_auth_path)
-          let { amount,title,tax_num,telephone} = res.data.content
+          let { amount,title,tax_number,telephone} = res.data.content
           _this.setData({
-            url: yp_auth_path,
+            url: res.data.yp_auth_path,
             amount,
             title,
-            tax_num,
+            tax_number,
             telephone
           })
         }else{

@@ -11,7 +11,7 @@
         <view class='vip-notice bg-color'>VIP会员</view>
       </block>
       <block wx:if='{{ userInfo.name && !userInfo.tel }}'>
-        <view class='vip-notice bg-color' bindtap="getVip">点击领取会员</view>
+        <view class='vip-notice bg-color' bindtap="getVip">领取VIP会员</view>
       </block>
       <block wx:if='{{  !userInfo.name && !userInfo.tel  }}'>
       <view class='vip-notice'>使用微信快捷登录</view>
@@ -117,7 +117,7 @@
     <view class='number-tel'>扫码核销</view>
   </view>
 
-  <view class="wx-version">当前版本 V20190721-1.1.27</view>
+  <view class="wx-version">当前版本:标准版 v1.1.28</view>
 </view>
 
   <!-- 授权窗口 -->

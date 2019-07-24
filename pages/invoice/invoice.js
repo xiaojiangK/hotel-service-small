@@ -232,6 +232,10 @@ Page({
         wxformid 
       };
     }
+
+    //检测数据
+    console.log(params)
+    
     request.applyInvoice({
       ...params
     })

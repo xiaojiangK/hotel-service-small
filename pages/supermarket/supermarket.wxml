@@ -1,4 +1,4 @@
-<view>
+<view wx:if="{{ hasList }}">
   <!-- <block wx:if="{{list.length > 0}}"> -->
     <view class="super-content" wx:if="{{ store==1 }}">
       <view class="content-left">
@@ -8,34 +8,34 @@
         </view>
       </view>
       <view class='good-list'>
-      <view class="goods" bindtap="showGoods" data-goods="{{ item }}"   wx:for="{{ list }}" wx:key="{{index}}" wx:if="{{item.goods_is_open == '1'}}">
-        <image class="goods-img" mode="aspectFill" src="{{item.goods_img}}"></image>
-        <view class="good-right">
-          <view class="goods-title">{{item.goods_name}}</view>
-          <view class="goods-content">
-            <!-- price -->
-            <view class="goods-price">￥<text>{{item.price}}</text></view>
-            <!-- step -->
-            <view class="goods-num">
-              <!-- <stepper getNum="{{ item.num }}"></stepper> -->
+        <view class="goods" bindtap="showGoods" data-goods="{{ item }}"   wx:for="{{ list }}" wx:key="{{index}}" wx:if="{{item.goods_is_open == '1'}}">
+          <image class="goods-img" mode="aspectFill" src="{{item.goods_img}}"></image>
+          <view class="good-right">
+            <view class="goods-title">{{item.goods_name}}</view>
+            <view class="goods-content">
+              <!-- price -->
+              <view class="goods-price">￥<text>{{item.price}}</text></view>
+              <!-- step -->
+              <view class="goods-num">
+                <!-- <stepper getNum="{{ item.num }}"></stepper> -->
 
-              <view class='stepper'>
-                <view class='minus btn' wx:if="{{ item.isSelected && item.num>0 }}" catchtap='calculation' data-goods="{{ item }}" data-ctype="minus" data-gid="{{ item.goods_id }}" >-</view>
-                <!-- <input class='num' type='text' disabled value='{{ item.num }}'>8</input> -->
-                <view class="num" wx:if="{{ item.isSelected && item.num>0  }}">{{ item.num }}</view>
-                <view class='add btn {{item.isSelected && item.num>0 ? "selected":""}}' catchtap='calculation' data-ctype="add" data-goods="{{ item }}" data-gid="{{ item.goods_id }}">+</view>
+                <view class='stepper'>
+                  <view class='minus btn' wx:if="{{ item.isSelected && item.num>0 }}" catchtap='calculation' data-goods="{{ item }}" data-ctype="minus" data-gid="{{ item.goods_id }}" >-</view>
+                  <!-- <input class='num' type='text' disabled value='{{ item.num }}'>8</input> -->
+                  <view class="num" wx:if="{{ item.isSelected && item.num>0  }}">{{ item.num }}</view>
+                  <view class='add btn {{item.isSelected && item.num>0 ? "selected":""}}' catchtap='calculation' data-ctype="add" data-goods="{{ item }}" data-gid="{{ item.goods_id }}">+</view>
+                </view>
               </view>
+              <!-- currentNum --> 
+              <view wx:if='{{ isCurrentNum }}' class='goods-current-num'></view>
             </view>
-            <!-- currentNum --> 
-            <view wx:if='{{ isCurrentNum }}' class='goods-current-num'></view>
+          </view>
+          <view wx:if='{{ isStepper }}' class="goods-delete">
+            <image class="icon-delete" data-gid="{{item.goods_id}}" bind:tap="delete" src="/assets/image/icon-delete.png" />
           </view>
         </view>
-        <view wx:if='{{ isStepper }}' class="goods-delete">
-          <image class="icon-delete" data-gid="{{item.goods_id}}" bind:tap="delete" src="/assets/image/icon-delete.png" />
-        </view>
-      </view>
       <!-- <goods isCar= "1" data="{{list}}" bind:emitData="getEmitData"></goods> -->
-    </view>
+      </view>
     </view>
     <block wx:if="{{ totalCount>0 }}">
       <view class="submit-bar {{isIphoneX ? 'fix-iphonex-button':''}}" bindtap="showShopcar" wx:if="{{ store==1 }}">
@@ -81,11 +81,7 @@
     <text>没有任何信息</text>
     <text>您可以致电前台咨询</text>
   </view> -->
-  <view wx:if="{{ NoList }}" class="noCon">
-    <image src="/assets/image/noInfo.png" />
-    <text>酒店暂未开放此功能</text>
-    <!-- <text>您可以致电前台咨询</text> -->
-  </view>
+  
 
 
   <!-- 购物车详情 -->
@@ -136,3 +132,9 @@
     <view class="good-content-close" catchtap='closeGoods'>✖</view>
   </view>
 </view>
+
+<view wx:if="{{ noList }}" class="noCon">
+    <image src="/assets/image/noInfo.png" />
+    <text>酒店暂未开放此功能</text>
+    <!-- <text>您可以致电前台咨询</text> -->
+  </view>

@@ -8,11 +8,11 @@
   </view>
   <view class="bill-item">
     <view class="bill-label">发票税号</view>
-    <view class="bill-content">{{tax_num}}</view>
+    <view class="bill-content">{{tax_number}}</view>
   </view>
   <view class="bill-item">
     <view class="bill-label">单位电话</view>
     <view class="bill-content">{{telephone}}</view>
   </view>
 </view>
-<view bindtap="goNext" class="get-bill">确认开票</view>
+<view bindtap="goNext" class="get-bill">领取到微信卡包</view>

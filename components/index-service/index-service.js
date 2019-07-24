@@ -42,8 +42,9 @@ Component({
     bssid: '',//Wi-Fi 的ISSID
     password: '',//Wi-Fi 的密码
     authentication:'',//是否需要实名认证
-    phoneType:'' //手机类型
-  },
+    phoneType:'', //手机类型
+    isShowInvoice:true
+   },
   lifetimes: {
     // 生命周期函数
     attached: function () {
@@ -52,7 +53,12 @@ Component({
   },
   methods: {
     loadData() {
-      // let res = wx.getStorageSync('wifiList')
+      let res = wx.getStorageSync('hotel')
+      if (res.receipt_status != 1) {
+        this.setData({
+          isShowInvoice: false
+        })
+      }
       // this.handleTypeSucc(res)  
       // wx.getStorage({
       //   key: 'hotel',
@@ -175,6 +181,7 @@ Component({
       const that = this
       const SSID = that.data.bssid;
       const password = that.data.password;
+      let authentication = that.data.authentication;
       wx.startWifi({
         success: function (res) {
           // wx.showLoading({
@@ -184,13 +191,9 @@ Component({
           that.Connected();    
         },
         fail: function (res) {
-          if (that.phoneType =='android'){
-            
-          }else{
-            wx.navigateTo({
-              url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password
-            })
-          }
+          wx.navigateTo({
+            url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication
+          })
         }
       })
     },
@@ -199,6 +202,7 @@ Component({
       const that = this;
       const SSID = that.data.bssid;
       const password = that.data.password;
+      let authentication = that.data.authentication
       wx.connectWifi({
         SSID: that.data.accountNumber,
         BSSID: that.data.bssid,
@@ -207,31 +211,20 @@ Component({
           wx.showToast({
             title: 'wifi连接成功'
           })
-          // if (phoneType == 'ios') {
-          //   wx.onWifiConnected(result => {
-          //     if (result.wifi.SSID === SSID) {
-          //       wx.showToast({
-          //         title: 'wifi连接成功',
-          //       })
-          //     } else {
-          //       wx.navigateTo({
-          //         url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication
-          //       })
-          //     }
-          //   })
-          // } else {
-          //   wx.showToast({
-          //     title: 'wifi连接成功',
-          //   })
-          // }
         },
         fail: function (res) {
           wx.stopWifi({
             success(res) {}
           })
-          wx.navigateTo({  
-            url: "/pages/wifiFail/wifiFail?name=" + SSID +"&pwd="+ password
-          })
+          if (res.errCode == 12005) {
+            wx.navigateTo({
+              url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication + '&errCode=12005'
+            })
+          } else {
+            wx.navigateTo({
+              url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication
+            })
+          }
         }
       })
     }

@@ -100,15 +100,15 @@ Page({
   },
   //  加载数据
   loadData() {
-    wx.showLoading({
-      title: '加载中...',
-    })
     this.setData({
       isMchid:app.globalData.isMchid
     })
     wx.getStorage({
       key: 'system',
       success: (res)=>{
+        // wx.showLoading({
+        //   title: '加载中...',
+        // })
         app.util.request({
           url: "entry/wxapp/RoomList",
           data: {

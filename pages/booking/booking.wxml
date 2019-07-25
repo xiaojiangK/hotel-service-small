@@ -192,6 +192,10 @@
           <image class="icon" wx:if="{{item.id == '101135'}}" src="/assets/image/icon_pets.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101170'}}" src="/assets/image/icon_car.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101197'}}" src="/assets/image/icon_folding.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '201111'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '201112'}}" src="/assets/image/icon_gym.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '201113'}}" src="/assets/image/icon_meetingroom.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '201114'}}" src="/assets/image/icon_restaurant.png" mode="aspectFill"></image>
           <text>{{item.val}}</text>
         </view>
         <view class="item" wx:for="{{hotel.facilities}}" wx:key="index">

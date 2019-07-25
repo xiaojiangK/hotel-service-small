@@ -44,7 +44,6 @@ Page({
             })
             const detail = {
               ...item,
-              img: item.img.split(','),
               ewm_logo: item.ewm_logo + app.globalData.imgSize,
               coordinates: item.coordinates.split(',')
             }

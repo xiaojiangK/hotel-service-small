@@ -29,8 +29,7 @@ Page({
     hotel: {},
     roomDetail: {},
     hotelName:'',
-    noRoomList: false
-    hotelName:'',
+    noRoomList: false,
     roomNum: 0
   },
   //  页面显示

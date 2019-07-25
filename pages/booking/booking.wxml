@@ -163,7 +163,7 @@
     </view>
     <!-- level end -->
     <!-- service start -->
-    <view class="sect service" wx:if="{{hotel.service.length <= 0 && hotel.facilities <= 0}}">
+    <view class="sect service" wx:if="{{hotel.service.length > 0 || hotel.facilities > 0}}">
       <view class="head">可提供的服务</view>
       <view class="list">
         <view class="item" wx:for="{{hotel.service}}" wx:key="index">

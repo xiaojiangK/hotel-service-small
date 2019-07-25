@@ -2,8 +2,19 @@
 page{
   background-color: #fff;
 }
-.bill-money{
+.bill-title{
   margin-top: 120rpx;
+  font-size: 32rpx;
+  text-align: center;
+}
+.back-index{
+  margin-top: 80rpx;
+  font-size: 32rpx;
+  color: #999;
+  text-align: center;
+}
+.bill-money{
+  margin-top: 20rpx;
   font-size: 96rpx;
   text-align: center;
 }

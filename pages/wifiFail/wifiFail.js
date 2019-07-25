@@ -8,7 +8,7 @@ Page({
     if (options.errCode){
       wx.showModal({
         title: '温馨提示',
-        content: '系统WiFi没有开启，请先打开WiFi',
+        content: '手机WiFi没有开启，请先打开WiFi',
         showCancel:false
       })
     }

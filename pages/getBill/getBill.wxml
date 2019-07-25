@@ -1,18 +1,20 @@
 <!--pages/getBill/getBill.wxml-->
-<view class="bill-money">￥{{amount}}</view>
+<view class="bill-title">开票金额</view>
+<view class="bill-money">￥{{amount}}28989</view>
 
 <view class="bill">
   <view class="bill-item">
-    <view class="bill-label">抬头名称</view>
+    <view class="bill-label">名称</view>
     <view class="bill-content">{{title}}</view>
   </view>
   <view class="bill-item">
-    <view class="bill-label">发票税号</view>
+    <view class="bill-label">税号</view>
     <view class="bill-content">{{tax_number}}</view>
   </view>
-  <view class="bill-item">
+  <!-- <view class="bill-item">
     <view class="bill-label">单位电话</view>
     <view class="bill-content">{{telephone}}</view>
-  </view>
+  </view> -->
 </view>
 <view bindtap="goNext" class="get-bill">领取到微信卡包</view>
+<view class="back-index" bindtap="goIndex" style="margin-top:">返回首页</view>

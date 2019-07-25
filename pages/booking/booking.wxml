@@ -24,13 +24,13 @@
   <!-- tab content start -->
   <view class="tab-panel" hidden="{{tabIndex !== 0}}">
     <!-- duration start -->
-    <view class="duration">
-      <view class="col" bind:tap="selectDate">
+    <view class="duration" bind:tap="selectDate">
+      <view class="col">
         <text class="date">{{start[1]}}月{{start[2]}}日</text>
         <text class="day">{{startWeek}}入住</text>
       </view>
       <text class="line">—</text>
-      <view class="col" bind:tap="selectDate">
+      <view class="col">
         <text class="date">{{end[1]}}月{{end[2]}}日</text>
         <text class="day">{{endWeek}}离店</text>
       </view>
@@ -57,12 +57,12 @@
           <view class="price" wx:if="{{item.price}}">{{item.price}}</view>
         </view>
         <block wx:if="{{ isMchid }}">
-          <view class="status" data-room="{{item}}" bindtap="goPay" wx:if="{{item.price > 0}}">
+          <view class="status" data-room="{{item}}" bindtap="goPay" wx:if="{{item.min_num > 0}}">
             <view>预订</view>
             <view>
-              <block wx:if="{{item.price == 0}}">已售完</block>
-              <block wx:if="{{item.price > 10}}">在线付</block>
-              <block wx:else>仅剩{{item.price}}间</block>
+              <block wx:if="{{item.min_num == 0}}">已售完</block>
+              <block wx:if="{{item.min_num > 10}}">在线付</block>
+              <block wx:else>仅剩{{item.min_num}}间</block>
             </view>
           </view>
           <view class="status full" wx:else>
@@ -71,10 +71,10 @@
           </view>
         </block>
       </view>
-      <view class="tel" bindtap="goCall">
+      <!-- <view class="tel" bindtap="goCall">
         <image src="/assets/image/icon-tel.png" />
         <text>联系商家</text>
-      </view>
+      </view> -->
     </view>
     <!-- room list end -->
     <!-- room detail start -->
@@ -149,7 +149,7 @@
         </view>
         <view class="btn" wx:if="{{ isMchid }}">
           <text>￥{{roomDetail.price}}</text>
-          <text data-room="{{roomDetail}}" bindtap="goPay">预订</text>
+          <text data-room="{{roomDetail}}" class="{{roomNum <= 0 ? 'no' : ''}}" bindtap="goPay">{{roomNum > 0 ? '预订' : '满房'}}</text>
         </view>
       </view>
     </view>
@@ -167,9 +167,9 @@
       <view class="head">可提供的服务</view>
       <view class="list">
         <view class="item" wx:for="{{hotel.service}}" wx:key="index">
-          <image class="icon" wx:if="{{item.id == '101006'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101007'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101038'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101006'}}" src="/assets/image/icon-parking.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101007'}}" src="/assets/image/icon-card.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101038'}}" src="/assets/image/icon-clock.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101039'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101040'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101041'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
@@ -179,7 +179,7 @@
           <image class="icon" wx:if="{{item.id == '101047'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101048'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101049'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101050'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101050'}}" src="/assets/image/icon-airport.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101051'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101052'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101053'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
@@ -188,7 +188,7 @@
           <image class="icon" wx:if="{{item.id == '101103'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101104'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101106'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101128'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101128'}}" src="/assets/image/icon-network.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101135'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101170'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101197'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
@@ -215,7 +215,7 @@
           <image class="icon" wx:if="{{item.id == '101028'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101029'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101030'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101031'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101031'}}" src="/assets/image/icon-meetingroom.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101032'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101033'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101034'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>

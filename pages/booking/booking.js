@@ -30,6 +30,8 @@ Page({
     roomDetail: {},
     hotelName:'',
     noRoomList: false
+    hotelName:'',
+    roomNum: 0
   },
   //  页面显示
   onShow() {
@@ -251,10 +253,10 @@ Page({
   },
   //  查看房间详情
   toggleDetail: function (e) {
+    const item = e.currentTarget.dataset.item;
     this.setData({
       isShowRoomDetail: !this.data.isShowRoomDetail
     });
-    const item = e.currentTarget.dataset.item;
     if (item) {
       app.util.request({
         url: "entry/wxapp/RoomDetails",
@@ -280,7 +282,10 @@ Page({
             min_num: item.min_num,
             img: data.img ? data.img : [] 
           }
-          this.setData({ roomDetail });
+          this.setData({
+            roomDetail,
+            roomNum: item.min_num
+          });
         }
       });
     }

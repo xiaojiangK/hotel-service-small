@@ -4,8 +4,8 @@ page {
   background: #fff;
 }
 .icon {
-  width: 260rpx;
-  height: 260rpx;
+  width: 262rpx;
+  height: 240rpx;
 }
 .state {
   margin-top: 50rpx;

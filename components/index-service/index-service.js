@@ -216,9 +216,9 @@ Component({
           wx.stopWifi({
             success(res) {}
           })
-          if (res.errCode == 12005) {
+          if (res.errCode) {
             wx.navigateTo({
-              url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication + '&errCode=12005'
+              url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication + '&errCode=' + res.errCode
             })
           } else {
             wx.navigateTo({

@@ -5,7 +5,13 @@ Page({
     authentication:'2'
   },
   onLoad: function (options) {
-    console.log (options)
+    if (options.errCode){
+      wx.showModal({
+        title: '温馨提示',
+        content: '系统WiFi没有开启，请先打开WiFi',
+        showCancel:false
+      })
+    }
     this.setData({  
       ssid: options.name,
       pwd: options.pwd,

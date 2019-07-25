@@ -1,4 +1,5 @@
 //app.js
+const mtjwxsdk = require('./utils/mtj-wx-sdk.js');
 var Moment = require("./utils/moment.js");
 var siteinfo = require("./siteinfo.js");
 let iNow = 0;
@@ -192,6 +193,14 @@ App({
                     that.setData({
                       isGetPhoneNumber: false
                     });
+                    //绑定手机号后更新本地用户信息
+
+                    _this.userLogin()
+                    setTimeout(function(){
+                      wx.navigateBack({
+                        delta: 1
+                      })
+                    },2000)
                   } else {
                     if(res3.data.info=='解密失败'){
                       wx.showToast({
@@ -204,8 +213,7 @@ App({
                       });
                     }
                   }
-                  //绑定手机号后更新本地用户信息
-                  _this.userLogin()
+                  
                 }
               });
             }

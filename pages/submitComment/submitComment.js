@@ -100,9 +100,9 @@ Page({
   //  发布
   submit: function () {
     //  未填写内容
-    if (!this.data.content) {
+    if (!this.data.content || this.data.content.length < 5) {
       api.showToast({
-        title: '请输入4~100字评论',
+        title: '请您输入5~100个字符',
         icon: 'none'
       });
     } else {

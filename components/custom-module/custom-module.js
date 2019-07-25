@@ -48,13 +48,29 @@ Component({
   methods: {
     handleToOrder(e) {
       const item = e.currentTarget.dataset.item;
-      wx.setStorage({
-        key: 'goods',
-        data: item
+      wx.getStorage({
+        key: 'userinfo',
+        success: (res) => {
+          if (!res.data.tel) {
+            wx.navigateTo({
+              url: '/pages/getPhone/getPhone',
+            })
+          }else{
+            wx.setStorage({
+              key: 'goods',
+              data: item
+            });
+            api.navigateTo({
+              url: '/pages/subOrder/subOrder'
+            })
+          }
+        },
+        fail: () => {
+          this.setData({
+            isGetUserInfo: true
+          });
+        }
       });
-      api.navigateTo({
-        url: '/pages/subOrder/subOrder'
-      })
     }
   }
 })

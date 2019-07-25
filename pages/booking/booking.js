@@ -28,7 +28,10 @@ Page({
     assessCount: {},
     hotel: {},
     roomDetail: {},
-    hotelName:''
+    hotelName:'',
+    noRoomList: false
+    hotelName:'',
+    roomNum: 0
   },
   //  页面显示
   onShow() {
@@ -105,6 +108,9 @@ Page({
     wx.getStorage({
       key: 'system',
       success: (res)=>{
+        // wx.showLoading({
+        //   title: '加载中...',
+        // })
         app.util.request({
           url: "entry/wxapp/RoomList",
           data: {
@@ -113,6 +119,7 @@ Page({
             seller_id: res.data.id
           },
           success:(res) => {
+            wx.hideLoading()
             let swiper = [];
             const roomList = res.data.map(item => {
               if (item.state == '1') {
@@ -124,7 +131,8 @@ Page({
                 price: Math.ceil(item.min_price)
               }
             });
-            this.setData({ roomList, swiper, isMchid: app.globalData.isMchid });
+            let noRoomList = roomList.length>0 ? false : true
+            this.setData({ roomList, swiper, isMchid: app.globalData.isMchid, noRoomList });
           }
         });
       }
@@ -221,6 +229,16 @@ Page({
   },
   //  选择日期
   selectDate(){
+
+    // 是否需要手机号授权
+    let userInfo = wx.getStorageSync('userinfo')
+    if (!userInfo.tel) {
+      wx.navigateTo({
+        url: '/pages/getPhone/getPhone',
+      })
+      return
+    }
+
     wx.navigateTo({
       url: '/pages/calendar/index'
     });
@@ -235,10 +253,10 @@ Page({
   },
   //  查看房间详情
   toggleDetail: function (e) {
+    const item = e.currentTarget.dataset.item;
     this.setData({
       isShowRoomDetail: !this.data.isShowRoomDetail
     });
-    const item = e.currentTarget.dataset.item;
     if (item) {
       app.util.request({
         url: "entry/wxapp/RoomDetails",
@@ -264,7 +282,10 @@ Page({
             min_num: item.min_num,
             img: data.img ? data.img : [] 
           }
-          this.setData({ roomDetail });
+          this.setData({
+            roomDetail,
+            roomNum: item.min_num
+          });
         }
       });
     }
@@ -293,17 +314,9 @@ Page({
     wx.getStorage({
       key: 'userinfo',
       success: (res) => {
-        if (res.data.tel) {
-          this.setData({
-            isGetPhoneNumber: false,
-            isGetUserInfo: false
-          });
-        } else {
-          this.setData({
-            isGetPhoneNumber: true,
-            isGetUserInfo: false
-          });
-        }
+        this.setData({
+          isGetUserInfo: false
+        });
       },
       fail: () => {
         this.setData({
@@ -322,6 +335,16 @@ Page({
   },
   //  支付
   goPay(e) {
+
+    // 是否需要手机号授权
+    let userInfo = wx.getStorageSync('userinfo')
+    if (!userInfo.tel) {
+      wx.navigateTo({
+        url: '/pages/getPhone/getPhone',
+      })
+      return
+    }
+
     const room = e.currentTarget.dataset.room;
     if (!room.min_num || room.min_num == '0') {
       return;

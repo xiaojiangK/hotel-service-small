@@ -21,6 +21,18 @@ Page({
       phoneNumber: this.data.tel
     });
   },
+
+  //领取会员
+  getVip(){
+    // 是否需要手机号授权
+    let userInfo = wx.getStorageSync('userinfo')
+    if (!userInfo.tel) {
+      wx.navigateTo({
+        url: '/pages/getPhone/getPhone',
+      })
+      return
+    }
+  },
   verifygoods() {
     // 允许从相机和相册扫码
     wx.scanCode({
@@ -69,11 +81,14 @@ Page({
     });
   },
   loadData() {
+    let that = this 
     wx.showNavigationBarLoading();
     wx.getStorage({
       key: 'userinfo',
       success: (res)=>{
-        
+        that.setData({
+          userInfo:res.data
+        })
         // 判断是否有核销权限
         app.util.request({
           url: "entry/wxapp/Write_off",
@@ -170,35 +185,31 @@ Page({
    */
   onShow() {
     this.loadData();
-    this.bindGetUserInfo();
+    this.bindGetUserInfo()
   },
   getUserPhoneNumber(e) {
     app.getUserPhoneNumber(e, this);
   },
   getUserInfo(e) {
+    let that = this 
     if (e.detail.errMsg == "getUserInfo:ok") {
       app.userLogin();
       this.setData({
         isGetUserInfo: false
       });
+      setTimeout(function(){
+        that.bindGetUserInfo()
+      },2000)
     }
   },
   bindGetUserInfo(){
     wx.getStorage({
       key: 'userinfo',
       success: (res) => {
-        if (res.data.tel) {
-          // this.getSignTotal(res.data.openid, res.data.name)//获取访问次数
-          this.setData({
-            isGetPhoneNumber: false,
-            isGetUserInfo: false
-          });
-        } else {
-          this.setData({
-            isGetPhoneNumber: true,
-            isGetUserInfo: false
-          });
-        }
+        this.setData({
+          userInfo: res.data,
+          isGetUserInfo: false
+        });
       },
       fail: () => {
         this.setData({

@@ -9,8 +9,7 @@ Page({
     periphery: [],
     isGetUserInfo: false,
     hotelName: "",
-    widgets: [],
-    isGetPhoneNumber:false
+    widgets: []
   },
 
   /**
@@ -45,6 +44,7 @@ Page({
             })
             const detail = {
               ...item,
+              img: item.img.split(','),
               ewm_logo: item.ewm_logo + app.globalData.imgSize,
               coordinates: item.coordinates.split(',')
             }
@@ -116,17 +116,9 @@ Page({
       key: 'userinfo',
       success: (res) => {
         this.getSignTotal(res.data.openid, res.data.name)//获取访问次数
-        if (res.data.tel) {
-          this.setData({
-            isGetPhoneNumber: false,
-            isGetUserInfo: false
-          });
-        } else {
-          this.setData({
-            isGetPhoneNumber: true,
-            isGetUserInfo: false
-          });
-        }
+        this.setData({
+          isGetUserInfo: false
+        });
       },
       fail: () => {
         this.setData({

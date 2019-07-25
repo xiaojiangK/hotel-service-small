@@ -8,7 +8,9 @@ Page({
    */
   data: {
     list: [],
-    periphery:1
+    periphery:1,
+    isHasList:false,
+    isNoList: false
   },
   loadData() {
     // 酒店周边
@@ -31,7 +33,12 @@ Page({
             img: item.img + app.globalData.imgSize,
           }
         });
-        this.setData({ list });
+        if (list.length > 0 && this.data.periphery == 1 ){
+          this.setData({ list, isHasList:true });
+        }else{
+          this.setData({ list, isNoList: true });
+        }
+        
       }
     });
   },

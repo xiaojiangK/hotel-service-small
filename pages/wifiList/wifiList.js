@@ -17,6 +17,9 @@ Page({
       }) 
     }
   },
+  onShow(){
+    wx.hideLoading()
+  },
   loadData() {
     wx.getStorage({
       key: 'hotel',
@@ -147,35 +150,20 @@ Page({
         wx.showToast({
           title: 'wifi连接成功'
         })
-        // if (phoneType =='ios'){
-        //   wx.onWifiConnected(result => {
-        //     console.log('111111111')
-        //     if (result.wifi.SSID === SSID) {
-        //       wx.showToast({
-        //         title: 'wifi连接成功',
-        //       })
-        //     } else {
-        //       wx.stopWifi({
-        //         success(res) { }
-        //       })
-        //       wx.navigateTo({
-        //         url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication
-        //       })
-        //     }
-        //   })
-        // }else{
-        //   wx.showToast({
-        //     title: 'wifi连接成功',
-        //   })
-        // }
       },
       fail: function (res) {
         wx.stopWifi({
           success(res) { }
         })
-        wx.navigateTo({
-          url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication
-        })
+        if (res.errCode == 12005) {
+          wx.navigateTo({
+            url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication +'&errCode=12005'
+          })
+        }else{
+          wx.navigateTo({
+            url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication
+          })
+        }
       }
     })
   },

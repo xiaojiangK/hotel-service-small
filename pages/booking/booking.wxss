@@ -237,10 +237,17 @@ page {
   line-height: 92rpx;
   text-align: center;
 }
-.room-detail .icon-close {
+.room-detail .right-close{
   position: absolute;
-  top: 33rpx;
-  right: 30rpx;
+  top:0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 92rpx;
+  height: 92rpx;
+}
+.room-detail .icon-close {
   width: 26rpx;
   height: 26rpx;
 }
@@ -322,6 +329,7 @@ page {
   color: #ff6342;
   font-size: 40rpx;
   font-weight: 500;
+  background: rgb(250, 250, 250);
 }
 .room-detail .btn text:last-of-type {
   flex: 1;
@@ -332,6 +340,9 @@ page {
 }
 .room-detail .btn text.full {
   background: #dedede;
+}
+.room-detail .btn text.no{
+  background: #ccc;
 }
 /*** 详情设施 ***/
 .detail .sect {

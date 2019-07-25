@@ -15,7 +15,8 @@ Page({
     totalPrice: 0.00, //价格总计
     totalCount: 0, //数量总计
     store:1,
-    NoList:false,
+    noList:false,
+    hasList:false,
     isIphoneX: false,
     isMchid:'',
     goodTypeList: [{
@@ -115,12 +116,12 @@ Page({
           }
         })
         list.isMchid = app.globalData.isMchid
-        this.setData({ list: newGoodsList, goodTypeList: goodTypeList, isMchid: app.globalData.isMchid });
+        this.setData({ list: newGoodsList, goodTypeList: goodTypeList, isMchid: app.globalData.isMchid, hasList:true });
         app.globalData.shopCar = newGoodsList
         wx.hideLoading();
-        // if (list.length == 0){
-        //   this.setData({ NoList:true });
-        // }
+        if (list.length == 0){
+          this.setData({ noList: true, hasList:false });
+        }
       }
     });
   },
@@ -313,6 +314,16 @@ Page({
   },
   /* 点击加减 */
   calculation(e) {
+    // 是否需要手机号授权
+    let userInfo = wx.getStorageSync('userinfo')
+    if (!userInfo.tel){
+      wx.navigateTo({
+        url: '/pages/getPhone/getPhone',
+      })
+      return
+    }
+
+
     let getDataSet = e.currentTarget.dataset
     //let newList = app.globalData.shopCar
     let ctype = getDataSet.ctype

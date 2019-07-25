@@ -9,7 +9,9 @@ Page({
    */
   data: {
     list: [],
-    facility:1
+    facility:1,
+    isHasList:false,
+    isNoList: false
   },
   loadData() {
     // 酒店设施
@@ -34,7 +36,12 @@ Page({
                 price: Number.isInteger(goods_price) ? Number.parseInt(goods_price) : goods_price.toFixed(2)
               }
             });
-            this.setData({ list, isMchid: app.globalData.isMchid });
+            if (facility == 1 && list.length > 0){
+              this.setData({ list, isMchid: app.globalData.isMchid, isHasList: true });
+            }else{
+              this.setData({ list, isMchid: app.globalData.isMchid, isNoList: true });
+            }
+            
             // this.setData({ list: res.data });
           }
         });

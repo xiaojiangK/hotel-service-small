@@ -167,19 +167,19 @@
       <view class="head">可提供的服务</view>
       <view class="list">
         <view class="item" wx:for="{{hotel.service}}" wx:key="index">
-          <image class="icon" wx:if="{{item.id == '101006'}}" src="/assets/image/icon-parking.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101007'}}" src="/assets/image/icon-card.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101038'}}" src="/assets/image/icon-clock.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101006'}}" src="/assets/image/icon_parking.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101007'}}" src="/assets/image/icon_card.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101038'}}" src="/assets/image/icon_clock.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101039'}}" src="/assets/image/icon_cup.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101040'}}" src="/assets/image/icon_eating.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101041'}}" src="/assets/image/icon_reception.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101042'}}" src="/assets/image/icon_pic.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101044'}}" src="/assets/image/icon_socks.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101045'}}" src="/assets/image/icon_bag.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101047'}}" src="/assets/image/icon_foreign .png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101047'}}" src="/assets/image/icon_foreign.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101048'}}" src="/assets/image/icon_bag.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101049'}}" src="/assets/image/icon_care.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101050'}}" src="/assets/image/icon-airport.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101050'}}" src="/assets/image/icon_airport.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101051'}}" src="/assets/image/icon_bicycle.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101052'}}" src="/assets/image/icon_multilingual.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101053'}}" src="/assets/image/icon_umbrella.png" mode="aspectFill"></image>
@@ -188,7 +188,7 @@
           <image class="icon" wx:if="{{item.id == '101103'}}" src="/assets/image/icon_airport.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101104'}}" src="/assets/image/icon_railway.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101106'}}" src="/assets/image/icon_baby.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101128'}}" src="/assets/image/icon-wifi.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101128'}}" src="/assets/image/icon_wifi.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101135'}}" src="/assets/image/icon_pets.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101170'}}" src="/assets/image/icon_car.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101197'}}" src="/assets/image/icon_folding.png" mode="aspectFill"></image>
@@ -215,7 +215,7 @@
           <image class="icon" wx:if="{{item.id == '101028'}}" src="/assets/image/icon_gym.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101029'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101030'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101031'}}" src="/assets/image/icon-meetingroom.png" mode="aspectFill"></image>
+          <image class="icon" wx:if="{{item.id == '101031'}}" src="/assets/image/icon_meetingroom.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101032'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101033'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
           <image class="icon" wx:if="{{item.id == '101034'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>

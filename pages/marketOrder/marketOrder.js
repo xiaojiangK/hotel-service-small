@@ -25,7 +25,7 @@ Page({
       success: (e) => {
         if (e.confirm) {
           app.util.request({
-            url: "entry/wxapp/Refund",
+            url: "entry/wxapp/Refunds",
             data: {
               flag: this.data.flag,
               order_id: this.data.id

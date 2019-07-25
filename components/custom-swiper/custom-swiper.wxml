@@ -12,8 +12,8 @@
         <image src="{{item}}" class="slide-image" mode="aspectFill"/>
       </swiper-item>
     </block> -->
-    <swiper-item class="swiper-item">
-      <image src="{{data.ewm_logo}}" class="slide-image" mode="aspectFill"/>
+    <swiper-item class="swiper-item" wx:for="{{data.img}}" wx:key="index" wx:if="{{index < 3}}">
+      <image src="{{item}}" class="slide-image" mode="aspectFill"/>
     </swiper-item>
   </swiper>
   <view class="welcome">

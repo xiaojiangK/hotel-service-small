@@ -83,7 +83,7 @@
           <image class='icon-notice' wx:if="{{data.status == '1' || data.status == '2' || data.status == '10' || data.status == '4'}}" src='/assets/image/icon-sum-detail.png'></image>
           <view class='notice-content' wx:if="{{data.status == '1'}}">剩余支付时间 {{time}}</view>
           <view class='notice-content' wx:if="{{data.status == '2'}}">等待酒店确认</view>
-          <view class='notice-content' wx:if="{{data.status == '10'}}">等待已确认，等待入住</view>
+          <view class='notice-content' wx:if="{{data.status == '10'}}">酒店已确认，等待入住</view>
           <view class='notice-content' wx:if="{{data.status == '4'}}">已入住，欢迎再次光临！</view>
         </block>
       </view>

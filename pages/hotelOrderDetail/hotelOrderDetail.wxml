@@ -16,7 +16,7 @@
         <view class='pay-time countdown'>{{c3}}</view>
       </block>
       <view class='pay-s' wx:if="{{detail.status == '2'}}">等待酒店确认</view>
-      <view class='pay-s' wx:if="{{detail.status == '10'}}">等待已确认，等待入住</view>
+      <view class='pay-s' wx:if="{{detail.status == '10'}}">酒店已确认，等待入住</view>
       <view class='pay-s' wx:if="{{detail.status == '4'}}">已入住，欢迎再次光临！</view>
       <view class='pay-thank' wx:if="{{detail.status == '3'}}">感谢您再次光临！</view>
     </view>

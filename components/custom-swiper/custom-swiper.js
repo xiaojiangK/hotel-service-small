@@ -21,7 +21,7 @@ Component({
   data: {
     data: {},
     indicatorDots: false,
-    interval: 3000,
+    interval: 2000,
     duration: 1000,
     style: {}
   },

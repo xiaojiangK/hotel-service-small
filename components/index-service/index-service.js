@@ -1,3 +1,4 @@
+const app = getApp()
 Component({
   /**
    * 组件的属性列表
@@ -47,14 +48,18 @@ Component({
    },
   lifetimes: {
     // 生命周期函数
-    attached: function () {
-      // this.loadData()
+    ready: function () {
+      this.loadData()
     }
   },
   methods: {
     loadData() {
-      let res = wx.getStorageSync('hotel')
-      if (res.receipt_status != 1) {
+      let config = app.globalData.hotelConfig
+      if (config.receipt_swich == 1) {
+        this.setData({
+          isShowInvoice: true
+        })
+      }else{
         this.setData({
           isShowInvoice: false
         })
@@ -170,7 +175,7 @@ Component({
           showCancel: false
         })
       }else{
-        let url = this.data.wifiType == 'list' ? '/pages/wifiList/wifiList?title=none' : '/pages/wifiFail/wifiFail?name=' + this.data.bssid + '&pwd=' + this.data.password + '&authentication=' + authentication
+        let url = this.data.wifiType == 'list' ? '/pages/wifiList/wifiList?title=none' : '/pages/wifiFail/wifiFail?name=' + this.data.bssid + '&pwd=' + this.data.password + '&authentication=' + this.data.authentication
         wx.navigateTo({
           url: url,
         })
@@ -184,13 +189,14 @@ Component({
       let authentication = that.data.authentication;
       wx.startWifi({
         success: function (res) {
-          // wx.showLoading({
-          //   title: '连接中'
-          // })
+          wx.showLoading({
+            title: '连接中'
+          })
           //请求成功连接Wifi
           that.Connected();    
         },
         fail: function (res) {
+          wx.hideLoading()
           wx.navigateTo({
             url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication
           })
@@ -216,11 +222,20 @@ Component({
           wx.stopWifi({
             success(res) {}
           })
-          if (res.errCode) {
-            wx.navigateTo({
-              url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication + '&errCode=' + res.errCode
+          wx.hideLoading()
+          if (res.errCode && res.errCode == 12005) {
+            wx.showModal({
+              title: '温馨提示',
+              content: '手机WiFi没有开启，请先打开WiFi',
+              showCancel: false
             })
-          } else {
+          } else if (res.errCode && res.errCode == 12002) {
+            wx.showModal({
+              title: '温馨提示',
+              content: 'WiFi密码错误',
+              showCancel: false
+            })
+          }else{
             wx.navigateTo({
               url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication
             })

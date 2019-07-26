@@ -33,10 +33,12 @@ Page({
             img: item.img + app.globalData.imgSize,
           }
         });
-        if (list.length > 0 && this.data.periphery == 1 ){
-          this.setData({ list, isHasList:true });
-        }else{
-          this.setData({ list, isNoList: true });
+        
+        let config = app.globalData.hotelConfig
+        if (list.length > 0 && config.around_swich == 1) {
+          this.setData({ list, isHasList: true });
+        } else {
+          this.setData({ isNoList: true });
         }
         
       }

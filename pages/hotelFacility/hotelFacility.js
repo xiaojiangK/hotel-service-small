@@ -36,12 +36,18 @@ Page({
                 price: Number.isInteger(goods_price) ? Number.parseInt(goods_price) : goods_price.toFixed(2)
               }
             });
-            if (facility == 1 && list.length > 0){
-              this.setData({ list, isMchid: app.globalData.isMchid, isHasList: true });
-            }else{
-              this.setData({ list, isMchid: app.globalData.isMchid, isNoList: true });
+
+            let config = app.globalData.hotelConfig
+            if (list.length > 0 && config.wx_mchid && config.facility_swich == 1) {
+              this.setData({ list, isHasList: true });
+            } else {
+              this.setData({ isNoList: true });
             }
-            
+            // if (facility == 1 && list.length > 0){
+            //   this.setData({ list, isMchid: app.globalData.isMchid, isHasList: true });
+            // }else{
+            //   this.setData({ list, isMchid: app.globalData.isMchid, isNoList: true });
+            // }
             // this.setData({ list: res.data });
           }
         });

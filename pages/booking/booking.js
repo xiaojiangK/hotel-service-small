@@ -29,7 +29,8 @@ Page({
     hotel: {},
     roomDetail: {},
     hotelName:'',
-    noRoomList: false,
+    hasList:false,
+    noList: false,
     roomNum: 0
   },
   //  页面显示
@@ -130,8 +131,13 @@ Page({
                 price: Math.ceil(item.min_price)
               }
             });
-            let noRoomList = roomList.length>0 ? false : true
-            this.setData({ roomList, swiper, isMchid: app.globalData.isMchid, noRoomList });
+            let config = app.globalData.hotelConfig
+            if (roomList.length > 0 && config.wx_mchid && config.book_swich == 1) {
+              this.setData({ roomList, swiper, hasList:true })
+            } else {
+              this.setData({ noList: true });
+            }
+            ;
           }
         });
       }

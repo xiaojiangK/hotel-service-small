@@ -2,10 +2,29 @@
   <image class="icon-build" src="/assets/image/icon-build.png" mode="aspectFill" />
   <view class="desc">功能建设中，敬请期待</view>
 </view>
+<view class="invoice-type">
+  <view class="type-title">发票类型</view>
+  <view class="every-type-list">
+    <view wx:if="{{ receipt_professional == 1 }}" class="every-type-title {{rec_mold == 2 ? 'active':''}}" data-rec_mold="{{2}}" bindtap="selectInoice">增值税专用发票</view>
+    <view wx:if="{{ receipt_normal == 1 }}" class="every-type-title  {{rec_mold == 1 ? 'active':''}}" data-rec_mold="{{1}}" bindtap="selectInoice">普通发票</view>
+    <view wx:if="{{ receipt_e == 1 }}" class="every-type-title {{rec_mold == 3 ? 'active':''}}" data-rec_mold="{{3}}" bindtap="selectInoice">电子普通发票</view>
+  </view>
+</view>
+<view class="gray-line"></view>
 <view class="tab" wx:if="{{state != 'build'}}">
-  <text class="label">开票类型</text>
-  <text class="tab-nav {{type == 1 ? 'active':''}}" data-type="{{1}}" bindtap="chooseType">单位</text>
-  <text class="tab-nav {{type == 2 ? 'active':''}}" data-type="{{2}}" bindtap="chooseType">个人</text>
+  <text class="label">发票抬头</text>
+  <view class="flex-tab-type">
+    <view class="tab-nav {{type == 1 ? 'active':''}}" data-type="{{1}}" bindtap="chooseType">
+    <image wx:if="{{ type == 1 }}" class="select-circle" src="/assets/image/icon-select.png"></image>
+    <view wx:if="{{ type == 2 }}" class="gray-circle"></view>
+    单位
+  </view>
+  <view wx:if="{{ rec_mold != 2 }}" class="tab-nav {{type == 2 ? 'active':''}}" data-type="{{2}}" bindtap="chooseType">
+  <image wx:if="{{ type == 2 }}" class="select-circle" src="/assets/image/icon-select.png"></image>
+    <view wx:if="{{ type == 1 }}" class="gray-circle"></view>
+  个人
+  </view>
+  </view>
 </view>
 <form class="form" bindsubmit="applyInvoice" report-submit="true" wx:if="{{state != 'build'}}">
   <view class="hidden">
@@ -13,52 +32,69 @@
     <input type="text" name="seller_id" value="{{seller_id}}" />
     <input type="text" name="uniacid" value="{{uniacid}}" />
     <input type="text" name="type" value="{{type}}" />
+    <input type="text" name="rec_mold" value="{{rec_mold}}" />
     <input type="text" name="wxopenid" value="{{wxopenid}}" />
   </view>
   <view hidden="{{type == 2}}">
     <view class="row" hidden="{{type === 2}}">
-      <text class="label required">抬头名称</text>
-      <textarea class="title" name="title" placeholder="单位名称（必填）" value="{{title}}" auto-height bindfocus="searchTitleStart" bindblur="searchTitleEnd" bindinput="searchTitle"></textarea>
+      <!-- required -->
+      <text class="label">抬头名称</text>
+      <textarea class="title" name="title" placeholder="关键字检索单位名称" value="{{title}}" auto-height bindfocus="searchTitleStart" bindblur="searchTitleEnd" bindinput="searchTitle"></textarea>
       <text class="choose" bindtap="chooseWXTitle">选择抬头</text>
     </view>
     <view class="title-list" wx:if="{{titleList}}">
       <view class="item" wx:for="{{titleList}}" wx:key="index" data-title="{{item}}" bindtap="chooseTitle">{{item.title}}</view>
     </view>
-    <view hidden="{{isSearch}}">
+    <view  hidden="{{isSearch}}">
       <view class="row">
-        <text class="label required">税号</text>
-        <input type="text" name="taxNumber" placeholder="15-20位（必填）" maxlength="20" value="{{taxNumber}}" />
+        <text class="label">税号</text>
+        <input type="text" name="taxNumber" placeholder="请填写" maxlength="20" value="{{taxNumber}}" />
       </view>
-      <view class="row">
-        <text class="label">单位地址</text>
-        <textarea name="companyAddress" placeholder="单位地址信息（选填）" value="{{companyAddress}}" auto-height></textarea>
-      </view>
-      <view class="row">
-        <text class="label">单位电话</text>
-        <input type="number" name="telephone" placeholder="电话号码（选填）" value="{{telephone}}" />
-      </view>
-      <view class="row">
-        <text class="label">开户银行</text>
-        <textarea name="bankName" placeholder="开户银行名称（选填）" value="{{bankName}}" auto-height></textarea>
-      </view>
-      <view class="row">
-        <text class="label">银行账号</text>
-        <input type="number" name="bankAccount" placeholder="银行账号号码（选填）" value="{{bankAccount}}" />
-      </view>
+      <block wx:if="{{ rec_mold == 2  }}">
+        <view class="row">
+          <text class="label">单位地址</text>
+          <textarea name="companyAddress" placeholder="请填写" value="{{companyAddress}}" auto-height></textarea>
+        </view>
+        <view class="row">
+          <text class="label">单位电话</text>
+          <input type="number" name="telephone" placeholder="请填写" value="{{telephone}}" />
+        </view>
+        <view class="row">
+          <text class="label">开户银行</text>
+          <textarea name="bankName" placeholder="请填写" value="{{bankName}}" auto-height></textarea>
+        </view>
+        <view class="row">
+          <text class="label">银行账号</text>
+          <input type="number" name="bankAccount" placeholder="请填写" value="{{bankAccount}}" />
+        </view>
+      </block>
     </view>
   </view>
   <view hidden="{{type == 1}}">
     <view class="row">
       <text class="label required">名称</text>
-      <input class="title" type="text" name="name" placeholder="名称（必填）" maxlength="10" value="{{name}}" />
+      <input class="title" type="text" name="name" placeholder="请填写" maxlength="10" value="{{name}}" />
       <text class="choose" bindtap="chooseWXTitle">选择抬头</text>
     </view>
   </view>
   <view hidden="{{isSearch}}">
     <view class="row">
       <text class="label">房间号</text>
-      <input type="text" name="roomNumber" placeholder="房间号（选填）" value="{{roomNumber}}" />
+      <input type="text" name="roomNumber" placeholder="（选填，建议填写）" value="{{roomNumber}}" />
     </view>
   </view>
-  <button class="apply" hidden="{{isSearch}}" form-type="submit">申请开票</button>
+  <view hidden="{{isSearch}}">
+    <view class="row">
+      <text class="label">联系电话</text>
+      <input type="text" name="roomTel"  placeholder="（选填，建议填写）" value="{{roomTel}}" />
+    </view>
+  </view>
+  <view class="gray-color"  hidden="{{isSearch}}">
+    <view class="notice-text">
+      <view wx:if="{{ rec_mold!=3  }}">申请后到前台领取</view>
+      <view wx:if="{{ rec_mold==3  }}">申请后，酒店前台确认开票金额</view>
+      <view wx:if="{{ rec_mold==3  }}">您会收到微信“服务通知”请点击领取</view>
+    </view>
+    <button hidden="{{isSearch}}" class="apply"  form-type="submit">申请开票</button>
+  </view>
 </form>

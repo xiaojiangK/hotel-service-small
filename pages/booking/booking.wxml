@@ -1,4 +1,4 @@
-<block wx:if="{{room_booking ==1 && roomList.length>0 }}">
+<block wx:if="{{ hasList }}">
   <!-- banner start -->
   <view class="banner">
     <swiper interval="3000" duration="1000" autoplay="true" circular="true">
@@ -280,7 +280,7 @@
   </view>
   <!-- tab content end -->
 </block>
-<block wx:if="{{ room_booking==2 || noRoomList }}">
+<block wx:if="{{ noList }}">
   <view class="build">
     <image class="icon-build" src="/assets/image/noInfo.png" mode="aspectFill" />
     <view class="desc">酒店暂未开放此功能</view>

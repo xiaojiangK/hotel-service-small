@@ -21,5 +21,4 @@
       <button class='getUser-btn' bindgetuserinfo='getUserInfo' open-type="getUserInfo">微信授权</button>
     </cover-view>
   </cover-view>
-  
 </view>

@@ -16,7 +16,13 @@ Component({
             price: Number.isInteger(goods_price) ? Number.parseInt(goods_price) : goods_price.toFixed(2)
           }
         });
-        this.setData({ list, isMchid: app.globalData.isMchid });
+        let config = app.globalData.hotelConfig
+        if (list.length > 0 && config.wx_mchid && config.breakfast_swich == 1){
+          this.setData({ list, hasBreatfast: true, noBreatfast:false });
+        }else{
+          this.setData({ noBreatfast: true });
+        }
+        
       }
     }
   },
@@ -26,7 +32,8 @@ Component({
    */
   data: {
     list: [],
-    isShow:1
+    hasBreakfast:false,
+    noBreakfast: false
   },
   lifetimes:{
     ready(){

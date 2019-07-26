@@ -115,13 +115,19 @@ Page({
             classTypeTotal:a.length*50
           }
         })
-        list.isMchid = app.globalData.isMchid
-        this.setData({ list: newGoodsList, goodTypeList: goodTypeList, isMchid: app.globalData.isMchid, hasList:true });
+        let config = app.globalData.hotelConfig
+        if (list.length > 0 && config.wx_mchid && config.store_swich == 1) {
+          this.setData({ list: newGoodsList, goodTypeList: goodTypeList, isMchid: app.globalData.isMchid, hasList: true });
+        }else{
+          this.setData({ noList: true });
+        }
+        // list.isMchid = app.globalData.isMchid
+        
         app.globalData.shopCar = newGoodsList
         wx.hideLoading();
-        if (list.length == 0){
-          this.setData({ noList: true, hasList:false });
-        }
+        // if (list.length == 0){
+        //   this.setData({ noList: true, hasList:false });
+        // }
       }
     });
   },

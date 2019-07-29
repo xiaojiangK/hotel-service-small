@@ -66,7 +66,7 @@ page {
 .gray-circle{
   width: 42rpx;
   height: 42rpx;
-  border:1rpx solid #c9c9c9;
+  border:2rpx solid #c9c9c9;
   margin-right: 28rpx;
   border-radius: 42rpx;
 }
@@ -195,5 +195,6 @@ button::after{
 }
 .gray-color{
   padding-top: 100rpx;
+  height: 360rpx;
   background-color: #f1f1f1;
 }

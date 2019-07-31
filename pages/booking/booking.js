@@ -13,7 +13,10 @@ Page({
     roomList: [],
     swiper: [],
     isGetPhoneNumber: false,
-    isMchid: '',
+    //默认到店支付
+    payInstore: 1,
+    //在线支付
+    payOnline: 2,
     room_booking:1,
     //  Tab 索引
     tabIndex: 0,
@@ -102,8 +105,10 @@ Page({
   },
   //  加载数据
   loadData() {
+    let config = app.globalData.hotelConfig
     this.setData({
-      isMchid:app.globalData.isMchid
+      payInstore: config.pay_instore,
+      payOnline:config.pay_online
     })
     wx.getStorage({
       key: 'system',
@@ -132,7 +137,7 @@ Page({
               }
             });
             let config = app.globalData.hotelConfig
-            if (roomList.length > 0 && config.wx_mchid && config.book_swich == 1) {
+            if (roomList.length > 0 && config.pay_instore && config.book_swich == 1) {
               this.setData({ roomList, swiper, hasList:true })
             } else {
               this.setData({ noList: true });

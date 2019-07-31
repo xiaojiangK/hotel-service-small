@@ -110,7 +110,8 @@ Page({
           companyAddress: res.company_address,
           telephone: res.telephone,
           bankName: res.bank_name,
-          bankAccount: res.bank_account
+          bankAccount: res.bank_account,
+          roomTel:res.user_tel
         });
       }else{
         if (res.type == 1) {

@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    name:''
+    name:'',
+    logo:''
   },
 
   /**
@@ -30,9 +31,10 @@ Page({
     wx.getStorage({
       key: 'hotel',
       success: (res) => {
-        let { name } = res.data
+        let { name,app_logo } = res.data
         this.setData({
-          name: name
+          name: name,
+          logo: app_logo
         })
       }
     })    

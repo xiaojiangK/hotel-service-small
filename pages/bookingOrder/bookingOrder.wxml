@@ -1,3 +1,5 @@
+<!-- 增加form提交 -->
+<form bindsubmit="submit" report-submit="true">
 <view class="content">
   <!-- room start -->
   <view class="room">
@@ -28,11 +30,11 @@
     </view>
     <view class="form-group">
       <label for="">入住人</label>
-      <input type="text" placeholder="姓名，每间只需填写1人" value="{{name}}" data-idx="name" bindblur="inputChange" maxlength="10" />
+      <input type="text" placeholder="姓名" value="{{name}}" data-idx="name" bindblur="inputChange" maxlength="10" />
     </view>
     <view class="form-group">
       <label for="">手机号</label>
-      <input type="text" placeholder="用于接收通知" value="{{phone}}" data-idx="phone" bindinput="inputChange" maxlength="11" />
+      <input type="text" placeholder="用于核对订单" value="{{phone}}" data-idx="phone" bindinput="inputChange" maxlength="11" />
     </view>
     <view class="form-group">
       <label for="">到店时间</label>
@@ -48,15 +50,19 @@
 <!-- sum bar start -->
 <view class="sum-bar {{isIphoneX ? 'fix-iphonex-button':''}}">
   <view class="number">
-    实付金额：<text>{{total_cost}}</text>
+    <block wx:if="{{payInstore == 1}}">到店实付</block>
+    <block wx:if="{{payOnline == 1}}">实付金额</block>
+   ：<text>{{total_cost}}</text>
   </view>
   <view class="detail" bindtap="toggleSumDetail">
     <image src="/assets/image/icon-sum-detail.png" mode="aspectFill"></image>
     <text>明细</text>
   </view>
-  <view class="submit" bind:tap="submit">提交订单</view>
+  <button form-type="submit" class="submit">提交订单</button>
 </view>
 <!-- sum bar end -->
+</form>
+
 <!-- sum panel start -->
 <view class="sum-panel" hidden="{{!isSumDetail}}">
   <view class="wrap">

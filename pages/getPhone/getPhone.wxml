@@ -3,7 +3,7 @@
       <view class='vip-card'>
         <view class='vip-card-info'>
           <view class='getVip-photo'>
-            <cover-image src="{{userInfo.img ? userInfo.img : '/assets/image/user-img.png'}}" mode="aspectFill" />
+            <cover-image src="{{logo}}" mode="aspectFill" />
           </view>
           <view>
             <view class='vip-name'>{{ name }}</view>

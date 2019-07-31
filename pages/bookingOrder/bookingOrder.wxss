@@ -160,6 +160,8 @@
   margin-top: -1rpx;
   width: 260rpx;
   height: 110rpx;
+  line-height: 110rpx;
+  border-radius: 0;
   color: #fff;
   font-size: 36rpx;
   text-align: center;

@@ -5,6 +5,7 @@ page{
   overflow: hidden;
 }
 .center-header{
+  position: relative;
   display: flex;
   align-items: center;
   width: 100%;
@@ -38,13 +39,14 @@ page{
 }
 .vip-notice{
   margin-top: 14rpx;
-  font-size:28rpx;
+  font-size:30rpx;
   color:#fff;
 }
 .bg-color{
-  padding: 4rpx 20rpx 8rpx;
+  width: 200rpx;
+  padding: 4rpx 26rpx 6rpx;
   border-radius: 50rpx;
-  font-size: 24rpx;
+  font-size: 28rpx;
   text-align: center;
   background-color: #ce5621;
 }
@@ -185,6 +187,19 @@ page{
 
 /* components/registerVip/registerVip.wxss */
 
+/* 加入会员 */
+.join-vip{
+  position: absolute;
+  right: -10rpx;
+  bottom: 10rpx;
+  width: 280rpx;
+  height: 154rpx;
+}
+.join-vip>image{
+  width: 100%;
+  height: 100%;
+}
+
 /* 获取会员卡 */
 .user-alert{
   position: fixed;
@@ -240,9 +255,13 @@ page{
   height: 100%;
 }
 .vip-name{
+  width: 300rpx;
   margin-top: 2rpx;
-  font-size:30rpx;
+  font-size:36rpx;
   color:#fff;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .vip-num{
   margin-top: 120rpx;

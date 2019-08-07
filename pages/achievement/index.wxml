@@ -1,0 +1,69 @@
+<view class="wrap">
+    <view class="block">
+        <view class="title">
+            <image src="/assets/image/data-bg-right.png" />
+            <text>今日</text>
+            <image src="/assets/image/data-bg-left.png" />
+        </view>
+        <view class="list">
+            <view class="item">
+                <image src="/assets/image/total-icon.png" class="bg" />
+                <view class="num">800</view>
+                <view class="text">全部订单</view>
+            </view>
+            <view class="item">
+                <image src="/assets/image/money-icon.png" class="bg" />
+                <view class="num">800</view>
+                <view class="text">有效订单</view>
+            </view>
+            <view class="item">
+                <image src="/assets/image/gold-icon.png" class="bg" />
+                <view class="num">400.00</view>
+                <view class="text">实付金额</view>
+            </view>
+        </view>
+    </view>
+    <view class="block">
+        <view class="title">
+            <image src="/assets/image/data-bg-right.png" />
+            <text>今月</text>
+            <image src="/assets/image/data-bg-left.png" />
+        </view>
+        <view class="list">
+            <view class="item">
+                <image src="/assets/image/total-icon.png" class="bg" />
+                <view class="num">800</view>
+                <view class="text">全部订单</view>
+            </view>
+            <view class="item">
+                <image src="/assets/image/money-icon.png" class="bg" />
+                <view class="num">800</view>
+                <view class="text">有效订单</view>
+            </view>
+            <view class="item">
+                <image src="/assets/image/gold-icon.png" class="bg" />
+                <view class="num">400.00</view>
+                <view class="text">实付金额</view>
+            </view>
+        </view>
+    </view>
+    <view class="block years">
+        <view class="title">
+            <image src="/assets/image/data-bg-right.png" />
+            <text>公司客户</text>
+            <image src="/assets/image/data-bg-left.png" />
+        </view>
+        <view class="list">
+            <view class="item">
+                <image src="/assets/image/customer-icon.png" class="bg" />
+                <view class="num">800</view>
+                <view class="text">公司客户</view>
+            </view>
+            <view class="item">
+                <image src="/assets/image/members-icon.png" class="bg" />
+                <view class="num">800</view>
+                <view class="text">公司成员</view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,61 @@
+.wrap{
+    height: 100%;
+    padding: 40rpx 20rpx 20rpx;
+    background:linear-gradient(rgba(251,94,40,1) 0%,rgba(253,120,49,1) 99%);
+}
+.block{
+    margin: 0 0 20rpx;
+    background: #fff;
+    border-radius: 12rpx;
+    padding: 0 44rpx 52rpx;
+}
+.wrap .title{
+    display: flex;
+    overflow: hidden;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 43rpx 0 60rpx;
+}
+.wrap .title text{
+    float: left;
+    color: #333;
+    font-size: 36rpx;
+    margin: 0 20rpx;
+}
+.wrap .title image{
+    float: left;
+    width: 155rpx;
+    height: 10rpx;
+}
+.block .list{
+    overflow: hidden;
+}
+.block .list .item{
+    float: left;
+    width: 33.333%;
+    height: 160rpx;
+    position: relative;
+    text-align: center;
+}
+.block .list image{
+    width: 155rpx;
+    height: 160rpx;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}
+.block .list .num{
+    color: #F87440;
+    font-size: 50rpx;
+    font-weight: bold;
+    margin: 10rpx 0 30rpx;
+}
+.block .list .text{
+    color: #333;
+    font-size: 28rpx;
+}
+.block.years .list .item{
+    width: 50%;
+}

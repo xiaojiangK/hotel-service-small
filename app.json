@@ -30,7 +30,9 @@
     "pages/hotelAgreement/hotelAgreement",
     "components/registerVip/registerVip",
     "pages/getPhone/getPhone",
-    "pages/getBill/getBill"
+    "pages/getBill/getBill",
+    "pages/invitedMembers/index",
+    "pages/achievement/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

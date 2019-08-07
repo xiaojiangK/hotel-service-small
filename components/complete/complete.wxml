@@ -5,3 +5,10 @@
     <view class='complete-confirm'>{{param.msgContent}}</view>
   <navigator open-type="redirect" url="{{param.link}}" hover-class="none" class='complete-btn'>查看订单</navigator>
 </view> 
+<!-- <view class="complete-foot">
+  <view class='complete-confirm'>如急需确认订单，请致电前台</view>
+  <view class="hotel-tel" bindtap="callHotel">
+    <image class="icon-tel" src="/assets/image/icon-blue-tel.png"></image>
+    <view>前台电话</view>
+  </view>
+</view> -->

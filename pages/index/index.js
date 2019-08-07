@@ -26,9 +26,27 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
+
+    // 获取酒店权限信息
     app.util.request({
       url: "entry/wxapp/GetSystem",
       success:(res) => {
+        app.util.request({
+          url: "entry/wxapp/HotelDeploy",
+          data: {
+            uniacid: res.data.uniacid
+          },
+          success: (res) => {
+            if(res.data){
+              app.globalData.hotelConfig = res.data.content
+              wx.setStorage({
+                key: 'hotelConfig',
+                data: res.data.content,
+              })
+            }
+          }
+        })
+
         app.util.request({
           url: "entry/wxapp/PjDetails",
           data: {

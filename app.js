@@ -317,6 +317,7 @@ App({
     vipInfo: {},
     isIphonex:false,
     isMchid:false,
+    hotelConfig:{},
     imgSize: '?x-oss-process=image/resize,m_mfit,h_300,w_400'
   },
   onShareAppMessage: function (res) {

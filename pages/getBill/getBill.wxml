@@ -1,6 +1,6 @@
 <!--pages/getBill/getBill.wxml-->
 <view class="bill-title">开票金额</view>
-<view class="bill-money">￥{{amount}}28989</view>
+<view class="bill-money">￥{{amount}}</view>
 
 <view class="bill">
   <view class="bill-item">

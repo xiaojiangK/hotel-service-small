@@ -27,7 +27,11 @@ Page({
     uniacid: '',
     vipInfo: {},
     rebate: 0,
-    isIphoneX: false
+    isIphoneX: false,
+    //默认到店支付
+    payInstore: 1,
+    //在线支付
+    payOnline: 2,
   },
   onLoad() {
     this.loadData();
@@ -38,6 +42,12 @@ Page({
   },
  
   loadData() {
+    let config = app.globalData.hotelConfig
+    this.setData({
+      payInstore: config.pay_instore,
+      payOnline: config.pay_online
+    })
+
     wx.getStorage({
       key: 'userinfo',
       success: (res)=>{
@@ -164,7 +174,8 @@ Page({
       }
       return false;
   },
-  submit() {
+  submit(e) {
+    let formId = e.detail.formId
     const data = this.data;
     const room = data.room;
     if (data.roomNumber > room.total_num) {
@@ -195,10 +206,7 @@ Page({
       });
       return;
     }
-    wx.showLoading({
-      title: '支付中...',
-      mask: true
-    });
+    
     wx.getStorage({
       key: 'hotel',
       success: (res)=>{
@@ -207,6 +215,19 @@ Page({
         if (siteinfo.uniacid==4){
           url = "entry/wxapp/AddOrder"
         }
+        let pay_type = this.data.payInstore == 1?3:0
+        if (pay_type == 3){
+          wx.showLoading({
+            title: '提交中...',
+            mask: true
+          });
+        }else{
+          wx.showLoading({
+            title: '支付中...',
+            mask: true
+          });
+        }
+        
         app.util.request({
           url: url,
           data: {
@@ -232,13 +253,20 @@ Page({
             openid: data.openid,
             user_id: data.userid,
             seller_id: h.id,
-            flag: 0
+            flag: 0,
+            formId,
+            pay_type //支付类型
           },
           success:(e) => {
             if (e.data.code == 0) {
               wx.showToast({
                 title: e.data.msg,
                 icon: 'none'
+              });
+              return;
+            } else if (e.data.code == 10001){
+              wx.navigateTo({
+                url: `/pages/payComplete/payComplete?type=10001`
               });
               return;
             }

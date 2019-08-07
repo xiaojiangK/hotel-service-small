@@ -4,7 +4,7 @@
     <view class="text bold">酒店WiFi账号密码</view>
     <view class="msg">可以尝试手动连接</view> 
     <view class="wifi-ssid" >
-      <image class="icon-wifi" src="/assets/image/icon-wifi.png"/>
+      <image class="icon-wifi" src="/assets/image/icon_wifi.png"/>
       <view class="wifi-text" >{{ssid}}</view>  
     </view>
     <view class="wifi-ssid" >

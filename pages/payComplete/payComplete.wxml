@@ -1,4 +1,20 @@
 <!--pages/payComplete/payComplete.wxml-->
-<view>
+<view wx:if="{{ type !=10001 }}">
   <complete paramToCom='{{ msg }}'></complete>
+</view>
+
+<view class='complete' wx:if="{{ type==10001 }}">
+  <image class='complete-img' src='/assets/image/complete.png'></image>
+  <view class='complete-status'>订单已提交</view>
+  <view class='complete-confirm'>我们尽快与您确认订单，确认后有效</view>
+  <view class='complete-confirm'>请以微信“服务通知”结果为准</view>
+  <navigator open-type="redirect" url="/pages/orderList/orderList" hover-class="none" class='complete-btn'>查看订单</navigator>
+</view>
+
+<view class="complete-foot" wx:if="{{ type==10001 }}">
+  <view class='complete-confirm'>如急需确认订单，请致电前台</view>
+  <view class="hotel-tel {{isIphoneX ? 'fix-iphonex-button':''}}" bindtap="callHotel">
+    <image class="icon-tel" src="/assets/image/icon-blue-tel.png"></image>
+    <view>前台电话</view>
+  </view>
 </view>

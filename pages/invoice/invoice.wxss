@@ -1,5 +1,5 @@
 page {
-  background: #fff;
+  background: #F1F1F1;
 }
 /*** 建设中 ***/
 .build {
@@ -16,11 +16,17 @@ page {
   font-size: 36rpx;
 }
 /*** 类型切换 ***/
+.form{
+  display: block;
+  min-height: 540rpx;
+  background-color: #fff;
+}
 .tab {
   position: relative;
-  margin: 0 25rpx;
-  padding: 35rpx 0 31rpx;
-  border-bottom: 1rpx solid #e1e1e1;
+  margin-top: 25rpx;
+  padding: 35rpx 25rpx 31rpx;
+  background-color: #fff;
+  /* border-bottom: 1rpx solid #e1e1e1; */
 }
 .tab .label {
   display: inline-block;
@@ -31,21 +37,38 @@ page {
   line-height: 60rpx;
 }
 .tab .tab-nav {
-  display: inline-block;
+  display: flex;
   margin-right: 55rpx;
-  border: 2rpx solid #e1e1e1;
-  border-radius: 30rpx;
+  align-items: center;
+  /* border: 2rpx solid #e1e1e1;
+  border-radius: 30rpx; */
   width: 176rpx;
   height: 56rpx;
   color: #e1e1e1;
-  font-size: 28rpx;
+  font-size: 34rpx;
   font-weight: 400;
   line-height: 56rpx;
   text-align: center;
 } 
+.flex-tab-type{
+  display: flex;
+  margin-top: 10rpx;
+}
 .tab .tab-nav.active {
   border-color: #ff8034;
   color: #ff8034;
+}
+.select-circle{
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 28rpx;
+}
+.gray-circle{
+  width: 42rpx;
+  height: 42rpx;
+  border:2rpx solid #c9c9c9;
+  margin-right: 28rpx;
+  border-radius: 42rpx;
 }
 /*** 表单 ***/
 .form .hidden {
@@ -110,7 +133,11 @@ button::after{
   border: none; 
 }
 .apply {
-  margin: 85rpx 40rpx;
+  /* position: absolute;
+  bottom: 80rpx;
+  width: 80%;
+  margin-left: 10%; */
+  margin: 50rpx 40rpx;
   border: none;
   border-radius: 101rpx;
   padding: 0;
@@ -120,4 +147,54 @@ button::after{
   line-height: 101rpx;
   text-align: center;
   background: #ff8034;
+}
+
+/* 改版样式 */
+.invoice-type{
+  background: #fff;
+}
+.type-title{
+  padding: 40rpx 15rpx;
+  font-size: 32rpx;
+  color: #333;
+  background-color: #fff;
+}
+.every-type-list{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.every-type-title{
+  display: inline-block;
+  border: 2rpx solid #e1e1e1;
+  border-radius: 8rpx;
+  width: 30%;
+  margin-left: 2.15%;
+  height: 62rpx;
+  color: #e1e1e1;
+  font-size: 28rpx;
+  font-weight: 400;
+  line-height: 62rpx;
+  text-align: center;
+}
+.every-type-title.active{
+  border-color: #ff8034;
+  color: #ff8034;
+}
+.gray-line{
+  width: 100%;
+  height: 20rpx;
+  padding-top: 40rpx;
+  background-color: #fff;
+}
+.notice-text{
+  width: 100%;
+  font-size: 32rpx;
+  color: #929292;
+  text-align: center;
+}
+.gray-color{
+  padding-top: 100rpx;
+  height: 360rpx;
+  background-color: #f1f1f1;
 }

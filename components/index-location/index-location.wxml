@@ -23,7 +23,7 @@
     <view class="location-bt">
       <view class="location-bt-lf">
         <view class="bt-lf-title">{{data.name}}</view>
-        <view class="bt-lf-meg">{{data.city+data.district+data.address}}</view>
+        <view class="bt-lf-meg">{{data.city+(data.district=="市、县、区"?"":data.district)+data.address}}</view>
       </view>
       <view class="location-bt-rg">
         <image class="location-rg-img" bindtap="openPhoneCall" src="/assets/image/index-iphone.png"></image>

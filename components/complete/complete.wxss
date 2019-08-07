@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30%;
+  padding-top: 28%;
 }
 .complete-img{
   width: 260rpx;
@@ -14,8 +14,10 @@
   font-size: 46rpx;
 }
 .complete-confirm{
+  width: 70%;
   font-size: 30rpx;
   color: #666;
+  text-align: center;
 }
 .complete-btn{
   width: 290rpx;
@@ -28,3 +30,28 @@
   line-height: 110rpx;
   background-color: #E93A3D;
 }
+/* .complete-foot{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  
+}
+.hotel-tel{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100rpx;
+  border-top: 2rpx solid #f1f1f1;
+  margin-top: 40rpx;
+  font-size: 36rpx;
+  color: #4288FF;
+}
+.icon-tel{
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 16rpx;
+} */

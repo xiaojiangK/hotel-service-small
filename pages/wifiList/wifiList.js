@@ -130,6 +130,7 @@ Page({
         that.connected();
       },
       fail: function (res) {
+        wx.hideLoading()
         wx.navigateTo({
           url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication
         })
@@ -155,11 +156,20 @@ Page({
         wx.stopWifi({
           success(res) { }
         })
-        if (res.errCode == 12005) {
-          wx.navigateTo({
-            url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication +'&errCode=12005'
+        wx.hideLoading()
+        if (res.errCode && res.errCode == 12005) {
+          wx.showModal({
+            title: '温馨提示',
+            content: '手机WiFi没有开启，请先打开WiFi',
+            showCancel: false
           })
-        }else{
+        } else if (res.errCode && res.errCode == 12002) {
+          wx.showModal({
+            title: '温馨提示',
+            content: 'WiFi密码错误',
+            showCancel: false
+          })
+        } else {
           wx.navigateTo({
             url: "/pages/wifiFail/wifiFail?name=" + SSID + "&pwd=" + password + '&authentication=' + authentication
           })

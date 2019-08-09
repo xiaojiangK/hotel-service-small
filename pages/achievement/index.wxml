@@ -8,18 +8,24 @@
         <view class="list">
             <view class="item">
                 <image src="/assets/image/total-icon.png" class="bg" />
-                <view class="num">800</view>
-                <view class="text">全部订单</view>
+                <block wx:if="{{sale.today[0]}}">
+                    <view class="num">{{sale.today[0]}}</view>
+                    <view class="text">全部订单</view>
+                </block>
             </view>
             <view class="item">
                 <image src="/assets/image/money-icon.png" class="bg" />
-                <view class="num">800</view>
-                <view class="text">有效订单</view>
+                <block wx:if="{{sale.today[1]}}">
+                    <view class="num">{{sale.today[1]}}</view>
+                    <view class="text">有效订单</view>
+                </block>
             </view>
             <view class="item">
                 <image src="/assets/image/gold-icon.png" class="bg" />
-                <view class="num">400.00</view>
-                <view class="text">实付金额</view>
+                <block wx:if="{{sale.today[2]}}">
+                    <view class="num">{{sale.today[2]}}</view>
+                    <view class="text">实付金额</view>
+                </block>
             </view>
         </view>
     </view>
@@ -32,18 +38,24 @@
         <view class="list">
             <view class="item">
                 <image src="/assets/image/total-icon.png" class="bg" />
-                <view class="num">800</view>
-                <view class="text">全部订单</view>
+                <block wx:if="{{sale.month[0]}}">
+                    <view class="num">{{sale.month[0]}}</view>
+                    <view class="text">全部订单</view>
+                </block>
             </view>
             <view class="item">
                 <image src="/assets/image/money-icon.png" class="bg" />
-                <view class="num">800</view>
-                <view class="text">有效订单</view>
+                <block wx:if="{{sale.month[1]}}">
+                    <view class="num">{{sale.month[1]}}</view>
+                    <view class="text">有效订单</view>
+                </block>
             </view>
             <view class="item">
                 <image src="/assets/image/gold-icon.png" class="bg" />
-                <view class="num">400.00</view>
-                <view class="text">实付金额</view>
+                <block wx:if="{{sale.month[2]}}">
+                    <view class="num">{{sale.month[2]}}</view>
+                    <view class="text">实付金额</view>
+                </block>
             </view>
         </view>
     </view>
@@ -56,13 +68,17 @@
         <view class="list">
             <view class="item">
                 <image src="/assets/image/customer-icon.png" class="bg" />
-                <view class="num">800</view>
-                <view class="text">公司客户</view>
+                <block wx:if="{{sale.company[0]}}">
+                    <view class="num">{{sale.company[0]}}</view>
+                    <view class="text">公司客户</view>
+                </block>
             </view>
             <view class="item">
                 <image src="/assets/image/members-icon.png" class="bg" />
-                <view class="num">800</view>
-                <view class="text">公司成员</view>
+                <block wx:if="{{sale.company[1]}}">
+                    <view class="num">{{sale.company[1]}}</view>
+                    <view class="text">公司成员</view>
+                </block>
             </view>
         </view>
     </view>

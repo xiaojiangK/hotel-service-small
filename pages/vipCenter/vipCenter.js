@@ -14,14 +14,25 @@ Page({
     hotelName: '',
     tel: 13800138000,
     isVerify: 0,
-    isGetPhoneNumber: false
+    isGetPhoneNumber: false,
+    isSale: 0
   },
   goCall () {
     wx.makePhoneCall({
       phoneNumber: this.data.tel
     });
   },
-
+  getSale(id) {
+    app.util.request({
+      url: "entry/wxapp/Performance",
+      data: { id },
+      success: (res) => {
+        this.setData({
+          isSale: res.data.code
+        });
+      }
+    });
+  },
   //领取会员
   getVip(){
     // 是否需要手机号授权
@@ -206,6 +217,7 @@ Page({
     wx.getStorage({
       key: 'userinfo',
       success: (res) => {
+        this.getSale(res.data.id);
         this.setData({
           userInfo: res.data,
           isGetUserInfo: false

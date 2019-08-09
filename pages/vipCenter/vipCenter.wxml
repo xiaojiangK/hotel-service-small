@@ -12,7 +12,7 @@
           <image src="/assets/image/vip-icon.png" />
           VIP会员
         </view>
-        <view class='vip-notice bg-color'>
+        <view class='vip-notice bg-color' wx:if="{{isSale == 200}}">
           <image src="/assets/image/company-icon.png" />
           广州某某旅游公司
         </view>
@@ -131,11 +131,11 @@
     <image class='icon-tel' src='/assets/image/code.png'></image>
     <view class='number-tel'>扫码核销</view>
   </view>
-  <navigator hover-class="none" url="/pages/invitedMembers/index" class='hotel-tel'>
+  <navigator hover-class="none" url="/pages/invitedMembers/index" class='hotel-tel' wx:if="{{isSale == 200}}">
     <image class='icon-tel' src='/assets/image/member-icon.png'></image>
     <view class='number-tel'>邀请公司成员</view>
   </navigator>
-  <navigator hover-class="none" url="/pages/achievement/index" class='hotel-tel'>
+  <navigator hover-class="none" url="/pages/achievement/index" class='hotel-tel' wx:if="{{isSale == 200}}">
     <image class='icon-tel' src='/assets/image/result-icon.png'></image>
     <view class='number-tel'>业绩数据</view>
   </navigator>

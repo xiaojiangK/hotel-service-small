@@ -12,9 +12,9 @@
           <image src="/assets/image/vip-icon.png" />
           VIP会员
         </view>
-        <view class='vip-notice bg-color' wx:if="{{isSale == 200}}">
+        <view class='vip-notice bg-color' wx:if="{{userInfo.issale == '0' && userInfo.isclient == '1'}}">
           <image src="/assets/image/company-icon.png" />
-          广州某某旅游公司
+          {{userInfo.company_name}}
         </view>
       </view>
       <block wx:if='{{ userInfo.name && !userInfo.tel }}'>
@@ -28,7 +28,7 @@
       </view>
     </view>
   </view>
-
+  
   <navigator url="/pages/orderList/orderList" hover-class="none" class='vip-order'>
     <view>我的订单</view>
     <view class='look-all'>查看全部<view class="right-arrow"></view></view>
@@ -131,11 +131,11 @@
     <image class='icon-tel' src='/assets/image/code.png'></image>
     <view class='number-tel'>扫码核销</view>
   </view>
-  <navigator hover-class="none" url="/pages/invitedMembers/index" class='hotel-tel' wx:if="{{isSale == 200}}">
+  <navigator hover-class="none" url="/pages/invitedMembers/index" class='hotel-tel' wx:if="{{userInfo.issale == '0' && userInfo.isclient == '1'}}">
     <image class='icon-tel' src='/assets/image/member-icon.png'></image>
     <view class='number-tel'>邀请公司成员</view>
   </navigator>
-  <navigator hover-class="none" url="/pages/achievement/index" class='hotel-tel' wx:if="{{isSale == 200}}">
+  <navigator hover-class="none" url="/pages/achievement/index" class='hotel-tel' wx:if="{{userInfo.issale == '1'}}">
     <image class='icon-tel' src='/assets/image/result-icon.png'></image>
     <view class='number-tel'>业绩数据</view>
   </navigator>

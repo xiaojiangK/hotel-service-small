@@ -16,6 +16,11 @@ Page({
                             this.setData({
                                 sale: res.data.data
                             });
+                        } else {
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none'
+                            });
                         }
                     }
                 });

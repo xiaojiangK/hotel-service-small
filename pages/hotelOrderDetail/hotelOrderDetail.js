@@ -48,7 +48,7 @@ Page({
         }
 
         let totalPrice = 0;
-        d.roomCost.map(item => {
+        d.roomCost.price_list.map(item => {
           totalPrice += Number.parseFloat(item.mprice);
         });
         const num = detail.num;
@@ -58,25 +58,17 @@ Page({
           totalPrice = (totalPrice * num).toFixed(2);
         }
  
-        let rebate = 0;
-        let vipInfo = {};
         // 获取会员折扣
-        wx.getStorage({
-          key: 'vipInfo',
-          success: (res) => {
-            vipInfo = res.data;
-            if (vipInfo.is_vip == 1) {
-              rebate = (totalPrice - (totalPrice * vipInfo.vip_coupon)).toFixed(2)
-            }
-          },
-          complete: () => {
-            this.setData({
-              rebate,
-              detail,
-              vipInfo,
-              totalPrice: totalPrice.toFixed(2)
-            });
-          }
+        let rebate = 0;
+        let vipInfo = d.roomCost;
+        if (vipInfo.is_vip == 1) {
+          rebate = (totalPrice - (vipInfo.total_cost * d.num)).toFixed(2)
+        }
+        this.setData({
+          rebate,
+          detail,
+          vipInfo,
+          totalPrice: totalPrice.toFixed(2)
         });
 
         // 倒计时

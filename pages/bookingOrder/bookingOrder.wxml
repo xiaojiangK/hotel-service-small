@@ -81,7 +81,7 @@
       <view>{{roomNumber > 1 ? roomNumber+'x' : ''}} ￥{{item.mprice}}</view>
     </view>
     <view class="row member" wx:if="{{vipInfo.is_vip == 1}}">
-      <view class="title">秀豹超级会员{{vipInfo.vip_coupon * 10}}折</view>
+      <view class="title">{{vipInfo.key}}</view>
       <view class="price">-￥{{rebate}}</view>
     </view>
     <view class="row sum">

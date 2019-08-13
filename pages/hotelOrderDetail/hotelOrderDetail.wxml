@@ -35,14 +35,14 @@
       </view>
     </view>
     <view class="charge-box">
-      <view class='charge-item' wx:for="{{detail.roomCost}}" wx:key="index">
+      <view class='charge-item' wx:for="{{detail.roomCost.price_list}}" wx:key="index">
         <view class='item-text'>{{item.dateday}}</view>
         <view class='item-nub black'>
           <label>{{detail.num > 1 ? detail.num+'x' : ''}}</label><label>￥</label><text>{{item.mprice}}</text>
         </view>
       </view>
       <view class="charge-item member" wx:if="{{vipInfo.is_vip == 1}}">
-        <view class="item-text">秀豹超级会员{{vipInfo.vip_coupon * 10}}折</view>
+        <view class="item-text">{{vipInfo.key}}</view>
         <view class="item-nub">-￥{{rebate}}</view>
       </view>
     </view>

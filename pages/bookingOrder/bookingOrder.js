@@ -65,12 +65,14 @@ Page({
           url: "entry/wxapp/GetRoomCost",
           data: {
             room_id: room.id,
+            user_id: this.data.userid,
             end: `${room.end[0]}-${room.end[1]}-${room.end[2]}`,
             start: `${room.start[0]}-${room.start[1]}-${room.start[2]}`
           },
           success: (res) => {
             let totalPrice = 0;
-            const roomCost = res.data.map(item => {
+            const vipInfo = res.data;
+            const roomCost = vipInfo.price_list.map(item => {
               totalPrice += Math.ceil(item.mprice);
               return {
                 ...item,
@@ -84,28 +86,19 @@ Page({
               totalPrice = (totalPrice * num).toFixed(2);
             }
             price = Math.ceil(totalPrice);
+
             let rebate = 0;
-            let vipInfo = {};
-            
-            // 获取会员折扣
-            wx.getStorage({
-              key: 'vipInfo',
-              success: (res) => {
-                vipInfo = res.data;
-                if (vipInfo.is_vip == 1) {
-                  rebate = (totalPrice - totalPrice * vipInfo.vip_coupon).toFixed(2)
-                }
-              },
-              complete: () => {
-                this.setData({
-                  rebate,
-                  vipInfo,
-                  roomCost,
-                  totalPrice: Math.ceil(totalPrice).toFixed(2),
-                  total_cost: (totalPrice - rebate).toFixed(2)
-                });
-              }
+            if (vipInfo.is_vip == 1) {
+              rebate = (totalPrice - vipInfo.total_cost).toFixed(2)
+            }
+            this.setData({
+              rebate,
+              vipInfo,
+              roomCost,
+              totalPrice: Math.ceil(totalPrice).toFixed(2),
+              total_cost: (vipInfo.total_cost).toFixed(2)
             });
+
           }
         });
       }
@@ -135,21 +128,14 @@ Page({
     }
 
     // 获取会员折扣
-    wx.getStorage({
-      key: 'vipInfo',
-      success: (res) => {
-        const data = res.data;
-        if (data.is_vip == 1) {
-          rebate = (totalPrice - totalPrice * data.vip_coupon).toFixed(2)
-        }
-      },
-      complete: () => {
-        this.setData({
-          rebate,
-          totalPrice,
-          total_cost: (totalPrice - rebate).toFixed(2)
-        });
-      }
+    const data = this.data.vipInfo;
+    if (data.is_vip == 1) {
+      rebate = (totalPrice - (data.total_cost * num)).toFixed(2)
+    }
+    this.setData({
+      rebate,
+      totalPrice,
+      total_cost: (data.total_cost * num).toFixed(2)
     });
   },
   //  选择预计办理入住时间
@@ -206,7 +192,8 @@ Page({
       });
       return;
     }
-    
+
+    let average = data.totalPrice / data.roomCost.length / data.roomNumber;
     wx.getStorage({
       key: 'hotel',
       success: (res)=>{
@@ -232,9 +219,10 @@ Page({
           url: url,
           data: {
             is_vip: data.vipInfo.is_vip,
-            vip_coupon: data.vipInfo.is_vip == 1 ? data.vipInfo.vip_coupon : '',
+            vip_coupon: data.vipInfo.is_vip == 1 ? data.vipInfo.value / 100 : '',
             roomCost: data.roomCost,
-            price: data.roomCost[0].mprice,
+            price: average,
+            dis_cost: (data.vipInfo.value / 100 * average).toFixed(2),
             total_cost: data.total_cost,
             seller_name: h.name,
             seller_address: h.address,

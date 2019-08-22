@@ -118,7 +118,6 @@ App({
                           var first_hint = res4.data.first_hint;
                           if (first_hint) {
                             wx.showModal({
-                              title: '通知',
                               showCancel: false,
                               content: first_hint,
                               confirmText: '确定'

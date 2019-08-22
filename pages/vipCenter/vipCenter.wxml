@@ -12,7 +12,7 @@
           <image src="/assets/image/vip-icon.png" />
           VIP会员
         </view>
-        <view class='vip-notice bg-color' wx:if="{{userInfo.issale == '0' && userInfo.isclient == '1'}}">
+        <view class='vip-notice bg-color' wx:if="{{userInfo.issale == '0' && (userInfo.isclient == '1' || userInfo.isclient == '0')}}">
           <image src="/assets/image/company-icon.png" />
           {{userInfo.company_name}}
         </view>

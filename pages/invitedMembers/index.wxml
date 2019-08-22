@@ -5,7 +5,7 @@
         <view class="text-2">享公司专属优惠价</view>
     </view>
     <view class="qrcode">
-        <image src="{{url}}" bindtap="preview" />
+        <image src="data:image/jpg;base64,{{url}}" bindtap="preview" />
         <view class="title">可<text>点击放大</text>分享给同事、好友</view>
     </view>
     <view class="tip">通过微信扫码打开小程序，完成授权即可成为公司会员</view>

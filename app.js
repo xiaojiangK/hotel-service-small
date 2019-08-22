@@ -115,6 +115,15 @@ App({
                           name: res3.userInfo.nickName
                         },
                         success:(res4) => {
+                          var first_hint = res4.data.first_hint;
+                          if (first_hint) {
+                            wx.showModal({
+                              title: '通知',
+                              showCancel: false,
+                              content: first_hint,
+                              confirmText: '确定'
+                            });
+                          }
                           if (res4.data.openid != 'undefined') {
                             if (that) {
                               that.setData({

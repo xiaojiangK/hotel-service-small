@@ -5,7 +5,13 @@ var siteinfo = require("./siteinfo.js");
 let iNow = 0;
 
 App({
+  globalData: {
+    sale_id: '',
+    company_id: ''
+  },
   onLaunch (option) {
+    this.globalData.sale_id = option.query.sale_id;
+    this.globalData.company_id = option.query.company_id;
     // 设缓存缓存起来的日期
     wx.setStorage({
       key: 'ROOM_SOURCE_DATE',
@@ -112,7 +118,9 @@ App({
                         data: {
                           openid: res2.data.openid,
                           img: res3.userInfo.avatarUrl,
-                          name: res3.userInfo.nickName
+                          name: res3.userInfo.nickName,
+                          sale_id: this.globalData.sale_id,
+                          company_id: this.globalData.company_id
                         },
                         success:(res4) => {
                           var first_hint = res4.data.first_hint;

@@ -15,7 +15,7 @@ Page({
     tel: 13800138000,
     isVerify: 0,
     isGetPhoneNumber: false,
-    user: app.globalData.user
+    user: {}
   },
   goCall () {
     wx.makePhoneCall({
@@ -185,7 +185,10 @@ Page({
    */
   onShow() {
     this.loadData();
-    this.bindGetUserInfo()
+    this.bindGetUserInfo();
+    this.setData({
+      user: app.globalData.user
+    });
   },
   getUserPhoneNumber(e) {
     app.getUserPhoneNumber(e, this);

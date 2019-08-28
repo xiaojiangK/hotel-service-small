@@ -22,7 +22,7 @@ App({
           },
           success:(res1) => {
             wx.request({
-              url: 'https://j.showboom.cn/app/index.php?i=4&t=1&v=1.0.0&from=wxapp&c=entry&a=wxapp&do=Crmcode&m=zh_jdgjb',
+              url: 'https://j.qiuxinpay.cn/app/index.php?i=4&t=1&v=1.0.0&from=wxapp&c=entry&a=wxapp&do=Crmcode&m=zh_jdgjb',
               method: 'POST',
               data: {
                 openid: res1.data.openid,

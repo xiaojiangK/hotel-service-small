@@ -14,7 +14,8 @@ Page({
     hotelName: '',
     tel: 13800138000,
     isVerify: 0,
-    isGetPhoneNumber: false
+    isGetPhoneNumber: false,
+    user: app.globalData.user
   },
   goCall () {
     wx.makePhoneCall({

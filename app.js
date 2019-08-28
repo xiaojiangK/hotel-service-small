@@ -6,12 +6,47 @@ let iNow = 0;
 
 App({
   globalData: {
-    sale_id: '',
-    company_id: ''
+    user: {}
   },
   onLaunch (option) {
-    this.globalData.sale_id = option.query.sale_id;
-    this.globalData.company_id = option.query.company_id;
+    wx.login({
+      success: res => {
+        let url = "entry/wxapp/Openids"
+        if (siteinfo.uniacid==4){
+          url = "entry/wxapp/Openid"
+        }
+        this.util.request({
+          url: url,
+          data: {
+            code: res.code
+          },
+          success:(res1) => {
+            wx.request({
+              url: 'https://j.showboom.cn/app/index.php?i=4&t=1&v=1.0.0&from=wxapp&c=entry&a=wxapp&do=Crmcode&m=zh_jdgjb',
+              method: 'POST',
+              data: {
+                openid: res1.data.openid,
+                sale_id: option.query.sale_id,
+                company_id: option.query.company_id
+              },
+              header: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              success: (res) => {
+                this.globalData.user = res.data;
+                if (res.data.first_hint) {
+                  wx.showModal({
+                    showCancel: false,
+                    content: first_hint,
+                    confirmText: '确定'
+                  });
+                }
+              }
+            });
+          }
+        });
+      }
+    });
     // 设缓存缓存起来的日期
     wx.setStorage({
       key: 'ROOM_SOURCE_DATE',
@@ -118,19 +153,9 @@ App({
                         data: {
                           openid: res2.data.openid,
                           img: res3.userInfo.avatarUrl,
-                          name: res3.userInfo.nickName,
-                          sale_id: this.globalData.sale_id,
-                          company_id: this.globalData.company_id
+                          name: res3.userInfo.nickName
                         },
                         success:(res4) => {
-                          var first_hint = res4.data.first_hint;
-                          if (first_hint) {
-                            wx.showModal({
-                              showCancel: false,
-                              content: first_hint,
-                              confirmText: '确定'
-                            });
-                          }
                           if (res4.data.openid != 'undefined') {
                             if (that) {
                               that.setData({

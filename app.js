@@ -3,12 +3,26 @@ const mtjwxsdk = require('./utils/mtj-wx-sdk.js');
 var Moment = require("./utils/moment.js");
 var siteinfo = require("./siteinfo.js");
 let iNow = 0;
+var sale_id = '';
+var company_id = '';
 
 App({
   globalData: {
     user: {}
   },
   onLaunch (option) {
+    sale_id = option.query.sale_id;
+    company_id = option.query.company_id;
+    // 设缓存缓存起来的日期
+    wx.setStorage({
+      key: 'ROOM_SOURCE_DATE',
+      data: {
+        checkInDate: Moment(new Date()).format('YYYY-MM-DD'),
+        checkOutDate: Moment(new Date()).add(1, 'day').format('YYYY-MM-DD')
+      }
+    });
+  },
+  onShow() {
     wx.login({
       success: res => {
         let url = "entry/wxapp/Openids"
@@ -25,16 +39,17 @@ App({
               url: 'https://j.qiuxinpay.cn/app/index.php?i=4&t=1&v=1.0.0&from=wxapp&c=entry&a=wxapp&do=Crmcode&m=zh_jdgjb',
               method: 'POST',
               data: {
-                openid: res1.data.openid,
-                sale_id: option.query.sale_id,
-                company_id: option.query.company_id
+                sale_id,
+                company_id,
+                openid: res1.data.openid
               },
               header: {
                 "Content-Type": "application/x-www-form-urlencoded"
               },
               success: (res) => {
                 this.globalData.user = res.data;
-                if (res.data.first_hint) {
+                var first_hint = res.data.first_hint;
+                if (first_hint) {
                   wx.showModal({
                     showCancel: false,
                     content: first_hint,
@@ -47,16 +62,6 @@ App({
         });
       }
     });
-    // 设缓存缓存起来的日期
-    wx.setStorage({
-      key: 'ROOM_SOURCE_DATE',
-      data: {
-        checkInDate: Moment(new Date()).format('YYYY-MM-DD'),
-        checkOutDate: Moment(new Date()).add(1, 'day').format('YYYY-MM-DD')
-      }
-    });
-  },
-  onShow() {
     //适配iphonex
     wx.getSystemInfo({
       success: res =>{ 

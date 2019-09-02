@@ -147,7 +147,7 @@ Page({
   },
   getUserInfo(e){
     if (e.detail.errMsg == "getUserInfo:ok") {
-      app.userLogin(this);
+      app.userLogin(e.detail, this);
     }
   },
   getSignTotal(openid,name){

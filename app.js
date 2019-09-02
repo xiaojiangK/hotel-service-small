@@ -134,7 +134,7 @@ App({
       }
     });
   },
-  userLogin(that = '') {
+  userLogin(res3, that = '') {
     // 登录
     wx.login({
       success: res1 => {
@@ -151,50 +151,46 @@ App({
             wx.getSetting({
               success:(res) => {
                 if (res.authSetting["scope.userInfo"]){
-                  wx.getUserInfo({
-                    success:(res3) => {
-                      this.util.request({
-                        url: "entry/wxapp/login",
-                        data: {
-                          openid: res2.data.openid,
-                          img: res3.userInfo.avatarUrl,
-                          name: res3.userInfo.nickName
-                        },
-                        success:(res4) => {
-                          if (res4.data.openid != 'undefined') {
-                            if (that) {
-                              that.setData({
-                                isGetUserInfo: false
-                              });
-                            }
-                            this.loginInfo(res3, res4);
-                          } else {
-                            wx.login({
-                              success: resr => {
-                                this.util.request({
-                                  url: "entry/wxapp/Openid_repair",
-                                  data: {
-                                    code: resr.code,
-                                    user_id: res4.data.id
-                                  },
-                                  success: (res) => {
-                                    if (res.data.openid) {
-                                      if (that) {
-                                        that.setData({
-                                          isGetUserInfo: false
-                                        });
-                                      }
-                                      this.loginInfo(res3, res4, res.data.openid);
-                                    }
+                  this.util.request({
+                    url: "entry/wxapp/login",
+                    data: {
+                      openid: res2.data.openid,
+                      img: res3.userInfo.avatarUrl,
+                      name: res3.userInfo.nickName
+                    },
+                    success:(res4) => {
+                      if (res4.data.openid != 'undefined') {
+                        if (that) {
+                          that.setData({
+                            isGetUserInfo: false
+                          });
+                        }
+                        this.loginInfo(res3, res4);
+                      } else {
+                        wx.login({
+                          success: resr => {
+                            this.util.request({
+                              url: "entry/wxapp/Openid_repair",
+                              data: {
+                                code: resr.code,
+                                user_id: res4.data.id
+                              },
+                              success: (res) => {
+                                if (res.data.openid) {
+                                  if (that) {
+                                    that.setData({
+                                      isGetUserInfo: false
+                                    });
                                   }
-                                });
+                                  this.loginInfo(res3, res4, res.data.openid);
+                                }
                               }
                             });
                           }
-                        }
-                      });
+                        });
+                      }
                     }
-                  })
+                  });
                 }
               }
             });

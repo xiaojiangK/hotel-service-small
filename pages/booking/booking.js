@@ -314,7 +314,7 @@ Page({
   },
   getUserInfo(e) {
     if (e.detail.errMsg == "getUserInfo:ok") {
-      app.userLogin();
+      app.userLogin(e.detail);
       this.setData({
         isGetUserInfo: false
       });

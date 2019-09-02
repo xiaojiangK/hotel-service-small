@@ -33,7 +33,7 @@ Page({
       return
     }
   },
-  verifygoods() {
+  verifygoods(e) {
     // 允许从相机和相册扫码
     wx.scanCode({
       success (data) {
@@ -74,7 +74,7 @@ Page({
             });
           },
           fail: () => {
-            app.userLogin();
+            app.userLogin(e.detail);
           }
         });
       }
@@ -196,7 +196,7 @@ Page({
   getUserInfo(e) {
     let that = this 
     if (e.detail.errMsg == "getUserInfo:ok") {
-      app.userLogin();
+      app.userLogin(e.detail);
       this.setData({
         isGetUserInfo: false
       });

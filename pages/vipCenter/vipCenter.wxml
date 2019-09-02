@@ -127,10 +127,10 @@
     <image class='icon-tel' src='/assets/image/icon-tel.png'></image>
     <view class='number-tel'>酒店客服电话</view>
   </view>
-  <view class='hotel-tel' bindtap="verifygoods" wx:if="{{isVerify == 200}}">
+  <button class='hotel-tel' bindgetuserinfo='verifygoods' open-type="getUserInfo" wx:if="{{isVerify == 200}}">
     <image class='icon-tel' src='/assets/image/code.png'></image>
     <view class='number-tel'>扫码核销</view>
-  </view>
+  </button>
   <navigator hover-class="none" url="/pages/invitedMembers/index" class='hotel-tel' wx:if="{{user.issale == '0' && user.isclient == '1'}}">
     <image class='icon-tel' src='/assets/image/member-icon.png'></image>
     <view class='number-tel'>邀请公司成员</view>

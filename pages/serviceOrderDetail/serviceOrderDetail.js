@@ -135,7 +135,7 @@ Page({
                 });
               },
               fail: () => {
-                app.userLogin();
+                app.userLogin(e.detail);
               }
             });
           }

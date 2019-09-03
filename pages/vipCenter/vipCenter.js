@@ -196,6 +196,10 @@ Page({
   getUserInfo(e) {
     let that = this 
     if (e.detail.errMsg == "getUserInfo:ok") {
+      wx.setStorage({
+        key: 'user',
+        data: e.detail
+      });
       app.userLogin(e.detail);
       this.setData({
         isGetUserInfo: false

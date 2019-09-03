@@ -126,8 +126,10 @@ util.url = function(e, t) {
                     cachetime: 0,
                     success: function(e) {
                         console.log(e), e.data.errno || (t.sessionid = e.data.data.sessionid, wx.setStorageSync("userInfo", t), 
-                        wx.getUserInfo({
-                            success: function(e) {
+                        wx.getStorage({
+                            key: 'user',
+                            success (res) {
+                                var e = res.data;
                                 t.wxInfo = e.userInfo, console.log(t), wx.setStorageSync("userInfo", t), util.request({
                                     url: "auth/session/userinfo",
                                     data: {
@@ -146,9 +148,7 @@ util.url = function(e, t) {
                                         "function" == typeof n && n(t);
                                     }
                                 });
-                            },
-                            fail: function() {},
-                            complete: function() {}
+                            }
                         }));
                     }
                 });

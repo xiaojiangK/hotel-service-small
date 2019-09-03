@@ -147,6 +147,10 @@ Page({
   },
   getUserInfo(e){
     if (e.detail.errMsg == "getUserInfo:ok") {
+      wx.setStorage({
+        key: 'user',
+        data: e.detail
+      });
       app.userLogin(e.detail, this);
     }
   },

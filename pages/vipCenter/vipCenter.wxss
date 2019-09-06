@@ -313,8 +313,16 @@ button::after{
   overflow: hidden;
 }
 .tags .bg-color{
+  max-width: 290rpx;
+  max-height: 44rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   margin: 0 10px 0 0;
   display: inline-block;
+}
+.tags .bg-color:last-child{
+  margin: 0;
 }
 .tags image{
   width: 32rpx;

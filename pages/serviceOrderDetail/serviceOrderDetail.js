@@ -135,7 +135,11 @@ Page({
                 });
               },
               fail: () => {
-                app.userLogin(e.detail);
+                wx.getUserInfo({
+                  success: (res) => {
+                    app.userLogin(res);
+                  }
+                });
               }
             });
           }

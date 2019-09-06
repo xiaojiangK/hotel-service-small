@@ -147,11 +147,18 @@ Page({
   },
   getUserInfo(e){
     if (e.detail.errMsg == "getUserInfo:ok") {
-      wx.setStorage({
-        key: 'user',
-        data: e.detail
+      wx.getUserInfo({
+        success: (res) => {
+          wx.setStorage({
+            key: 'user',
+            data: res
+          });
+          this.setData({
+            isGetUserInfo: false
+          });
+          app.userLogin(res);
+        }
       });
-      app.userLogin(e.detail, this);
     }
   },
   getSignTotal(openid,name){

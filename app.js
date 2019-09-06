@@ -134,7 +134,7 @@ App({
       }
     });
   },
-  userLogin(res3, that = '') {
+  userLogin(res3) {
     // 登录
     wx.login({
       success: res1 => {
@@ -160,11 +160,6 @@ App({
                     },
                     success:(res4) => {
                       if (res4.data.openid != 'undefined') {
-                        if (that) {
-                          that.setData({
-                            isGetUserInfo: false
-                          });
-                        }
                         this.loginInfo(res3, res4);
                       } else {
                         wx.login({
@@ -177,11 +172,6 @@ App({
                               },
                               success: (res) => {
                                 if (res.data.openid) {
-                                  if (that) {
-                                    that.setData({
-                                      isGetUserInfo: false
-                                    });
-                                  }
                                   this.loginInfo(res3, res4, res.data.openid);
                                 }
                               }

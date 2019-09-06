@@ -314,13 +314,17 @@ Page({
   },
   getUserInfo(e) {
     if (e.detail.errMsg == "getUserInfo:ok") {
-      wx.setStorage({
-        key: 'user',
-        data: e.detail
-      });
-      app.userLogin(e.detail);
-      this.setData({
-        isGetUserInfo: false
+      wx.getUserInfo({
+        success: (res) => {
+          wx.setStorage({
+            key: 'user',
+            data: res
+          });
+          this.setData({
+            isGetUserInfo: false
+          });
+          app.userLogin(res);
+        }
       });
     }
   },

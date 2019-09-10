@@ -3,16 +3,28 @@ const mtjwxsdk = require('./utils/mtj-wx-sdk.js');
 var Moment = require("./utils/moment.js");
 var siteinfo = require("./siteinfo.js");
 let iNow = 0;
-var sale_id = '';
-var company_id = '';
 
 App({
   globalData: {
-    user: {}
+    user: {},
+    sale_id: '',
+    company_id: '',
+    shopCar:[],
+    newArr:[],
+    vipInfo: {},
+    isIphonex:false,
+    isMchid:false,
+    hotelConfig:{},
+    url: 'http://msp.showboom.cn/attachment/',
+    imgSize: '?x-oss-process=image/resize,m_mfit,h_300,w_400'
   },
   onLaunch (option) {
-    sale_id = option.query.sale_id;
-    company_id = option.query.company_id;
+    if (option.query['sale_id']) {
+      this.globalData.sale_id = option.query['sale_id'];
+    }
+    if (option.query['company_id']) {
+      this.globalData.company_id = option.query['company_id'];
+    }
     // 设缓存缓存起来的日期
     wx.setStorage({
       key: 'ROOM_SOURCE_DATE',
@@ -22,7 +34,7 @@ App({
       }
     });
   },
-  onShow() {
+  getUserLevel(that = '') {
     wx.login({
       success: res => {
         let url = "entry/wxapp/Openids"
@@ -39,16 +51,22 @@ App({
               url: 'https://j.qiuxinpay.cn/app/index.php?i=4&t=1&v=1.0.0&from=wxapp&c=entry&a=wxapp&do=Crmcode&m=zh_jdgjb',
               method: 'POST',
               data: {
-                sale_id,
-                company_id,
+                sale_id: this.globalData.sale_id,
+                company_id: this.globalData.company_id,
                 openid: res1.data.openid
               },
               header: {
                 "Content-Type": "application/x-www-form-urlencoded"
               },
               success: (res) => {
-                this.globalData.user = res.data;
-                var first_hint = res.data.first_hint;
+                var user = res.data;
+                if (that) {
+                  that.setData({
+                    user
+                  });
+                }
+                this.globalData.user = user;
+                var first_hint = user.first_hint;
                 if (first_hint) {
                   wx.showModal({
                     showCancel: false,
@@ -62,6 +80,8 @@ App({
         });
       }
     });
+  },
+  onShow() {
     //适配iphonex
     wx.getSystemInfo({
       success: res =>{ 
@@ -71,6 +91,12 @@ App({
          }   
       }
     })
+    wx.getStorage({
+      key: 'userinfo',
+      success: ()=>{
+        this.getUserLevel();
+      }
+    });
   },
   loginInfo(res3, res4, that, openid = '') {
     if (openid) {
@@ -352,16 +378,6 @@ App({
     return overWan ? getWan(overWan) + "万" + getWan(noWan) : getWan(num);
   },
   util: require("utils/util.js"),
-  globalData: {
-    url: 'http://msp.showboom.cn/attachment/',
-    shopCar:[],
-    newArr:[],
-    vipInfo: {},
-    isIphonex:false,
-    isMchid:false,
-    hotelConfig:{},
-    imgSize: '?x-oss-process=image/resize,m_mfit,h_300,w_400'
-  },
   onShareAppMessage: function (res) {
     // if (res.from === 'button') {
     //   // 来自页面内转发按钮

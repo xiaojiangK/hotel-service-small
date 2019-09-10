@@ -93,6 +93,7 @@ Page({
         that.setData({
           userInfo:res.data
         })
+        app.getUserLevel(this);
         // 判断是否有核销权限
         app.util.request({
           url: "entry/wxapp/Write_off",
@@ -190,8 +191,7 @@ Page({
   onShow() {
     this.loadData();
     this.setData({
-      isGetUserInfo: false,
-      user: app.globalData.user
+      isGetUserInfo: false
     });
   },
   onHide() {
@@ -227,6 +227,7 @@ Page({
             data: res
           });
           app.userLogin(res, this);
+          app.getUserLevel(this);
         }
       });
     }

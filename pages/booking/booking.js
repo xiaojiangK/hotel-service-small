@@ -246,19 +246,23 @@ Page({
   },
   //  选择日期
   selectDate(){
+    wx.getStorage({
+      key: 'userinfo',
+      success: ()=>{
+        // 是否需要手机号授权
+        let userInfo = wx.getStorageSync('userinfo')
+        if (!userInfo.tel) {
+          wx.navigateTo({
+            url: '/pages/getPhone/getPhone',
+          })
+          return
+        }
 
-    // 是否需要手机号授权
-    let userInfo = wx.getStorageSync('userinfo')
-    if (!userInfo.tel) {
-      wx.navigateTo({
-        url: '/pages/getPhone/getPhone',
-      })
-      return
-    }
-
-    wx.navigateTo({
-      url: '/pages/calendar/index'
-    });
+        wx.navigateTo({
+          url: '/pages/calendar/index'
+        });
+      }
+    })
   },
   //  格式化周
   formatWeek(w) {
@@ -324,17 +328,6 @@ Page({
       isGetUserInfo: false
     });
   },
-  getSetting() {
-    wx.getSetting({
-      success: (res)=>{
-        if (!res.authSetting['scope.userInfo']) {
-          this.setData({
-            isGetUserInfo: true
-          });
-        }
-      }
-    });
-  },
   getUserInfo(e) {
     if (e.detail.errMsg == "getUserInfo:ok") {
       wx.getUserInfo({
@@ -358,34 +351,47 @@ Page({
   },
   //  支付
   goPay(e) {
-
-    // 是否需要手机号授权
-    let userInfo = wx.getStorageSync('userinfo')
-    if (!userInfo.tel) {
-      wx.navigateTo({
-        url: '/pages/getPhone/getPhone',
-      })
-      return
-    }
-
-    const room = e.currentTarget.dataset.room;
-    if (!room.min_num || room.min_num == '0') {
-      return;
-    }
-    const data = this.data;
-    wx.setStorage({
-      key: 'room',
-      data: {
-        ...room,
-        startWeek: data.startWeek,
-        endWeek: data.endWeek,
-        days: data.days,
-        start: data.start,
-        end: data.end
+    wx.getSetting({
+      success: (res)=>{
+        if (!res.authSetting['scope.userInfo']) {
+          this.setData({
+            isGetUserInfo: true
+          });
+        }
       }
     });
-    wx.navigateTo({
-      url: '/pages/bookingOrder/bookingOrder'
+    wx.getStorage({
+      key: 'userinfo',
+      success: ()=>{
+        // 是否需要手机号授权
+        let userInfo = wx.getStorageSync('userinfo')
+        if (!userInfo.tel) {
+          wx.navigateTo({
+            url: '/pages/getPhone/getPhone',
+          })
+          return
+        }
+    
+        const room = e.currentTarget.dataset.room;
+        if (!room.min_num || room.min_num == '0') {
+          return;
+        }
+        const data = this.data;
+        wx.setStorage({
+          key: 'room',
+          data: {
+            ...room,
+            startWeek: data.startWeek,
+            endWeek: data.endWeek,
+            days: data.days,
+            start: data.start,
+            end: data.end
+          }
+        });
+        wx.navigateTo({
+          url: '/pages/bookingOrder/bookingOrder'
+        });
+      }
     });
   },
   //  转发

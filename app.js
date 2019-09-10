@@ -72,19 +72,29 @@ App({
       }
     })
   },
-  loginInfo(res3, res4, openid = '') {
+  loginInfo(res3, res4, that, openid = '') {
     if (openid) {
       wx.setStorage({
         key: 'userinfo',
         data: {
           ...res4.data,
           openid
+        },
+        success: ()=>{
+          if (that) {
+            that.loadData();
+          }
         }
       });
     } else {
       wx.setStorage({
         key: 'userinfo',
-        data: res4.data
+        data: res4.data,
+        success: ()=>{
+          if (that) {
+            that.loadData();
+          }
+        }
       });
     }
     let a = wx.getAccountInfoSync() ? wx.getAccountInfoSync() : {}
@@ -134,7 +144,7 @@ App({
       }
     });
   },
-  userLogin(res3) {
+  userLogin(res3, that='') {
     // 登录
     wx.login({
       success: res1 => {
@@ -160,7 +170,7 @@ App({
                     },
                     success:(res4) => {
                       if (res4.data.openid != 'undefined') {
-                        this.loginInfo(res3, res4);
+                        this.loginInfo(res3, res4, that);
                       } else {
                         wx.login({
                           success: resr => {
@@ -172,7 +182,7 @@ App({
                               },
                               success: (res) => {
                                 if (res.data.openid) {
-                                  this.loginInfo(res3, res4, res.data.openid);
+                                  this.loginInfo(res3, res4, that, res.data.openid);
                                 }
                               }
                             });

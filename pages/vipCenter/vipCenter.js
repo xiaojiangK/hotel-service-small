@@ -189,16 +189,31 @@ Page({
    */
   onShow() {
     this.loadData();
-    this.bindGetUserInfo();
     this.setData({
+      isGetUserInfo: false,
       user: app.globalData.user
     });
   },
   getUserPhoneNumber(e) {
     app.getUserPhoneNumber(e, this);
   },
+  closeAlert() {
+    this.setData({
+      isGetUserInfo: false
+    });
+  },
+  getSetting() {
+    wx.getSetting({
+      success: (res)=>{
+        if (!res.authSetting['scope.userInfo']) {
+          this.setData({
+            isGetUserInfo: true
+          });
+        }
+      }
+    });
+  },
   getUserInfo(e) {
-    let that = this 
     if (e.detail.errMsg == "getUserInfo:ok") {
       wx.getUserInfo({
         success: (res) => {
@@ -206,32 +221,10 @@ Page({
             key: 'user',
             data: res
           });
-          this.setData({
-            isGetUserInfo: false
-          });
-          app.userLogin(res);
+          app.userLogin(res, this);
         }
       });
-      setTimeout(function(){
-        that.bindGetUserInfo()
-      },2000)
     }
-  },
-  bindGetUserInfo(){
-    wx.getStorage({
-      key: 'userinfo',
-      success: (res) => {
-        this.setData({
-          userInfo: res.data,
-          isGetUserInfo: false
-        });
-      },
-      fail: () => {
-        this.setData({
-          isGetUserInfo: true
-        });
-      }
-    });
   },
   // getSignTotal(openid, name) {
   //   const a = wx.getAccountInfoSync() ? wx.getAccountInfoSync() : {}

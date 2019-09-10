@@ -41,7 +41,6 @@ Page({
     this.initDate();
     this.loadData();
     // this.changePhoneNumber();
-    this.bindGetUserInfo();
   },
   //  初始化数据
   initDate() {
@@ -72,6 +71,9 @@ Page({
         const days = Moment(endDate).differ(startDate);
         this.setData({ days, start, end, startWeek, endWeek });
       }
+    });
+    this.setData({
+      isGetUserInfo: false
     });
     this.getAssess();
     this.getAssessCount();
@@ -312,6 +314,22 @@ Page({
   getUserPhoneNumber(e) {
     app.getUserPhoneNumber(e, this);
   },
+  closeAlert() {
+    this.setData({
+      isGetUserInfo: false
+    });
+  },
+  getSetting() {
+    wx.getSetting({
+      success: (res)=>{
+        if (!res.authSetting['scope.userInfo']) {
+          this.setData({
+            isGetUserInfo: true
+          });
+        }
+      }
+    });
+  },
   getUserInfo(e) {
     if (e.detail.errMsg == "getUserInfo:ok") {
       wx.getUserInfo({
@@ -320,28 +338,10 @@ Page({
             key: 'user',
             data: res
           });
-          this.setData({
-            isGetUserInfo: false
-          });
           app.userLogin(res);
         }
       });
     }
-  },
-  bindGetUserInfo() {
-    wx.getStorage({
-      key: 'userinfo',
-      success: (res) => {
-        this.setData({
-          isGetUserInfo: false
-        });
-      },
-      fail: () => {
-        this.setData({
-          isGetUserInfo: true
-        });
-      }
-    });
   },
   //  选择评论标签
   chooseCommentTag: function (e) {

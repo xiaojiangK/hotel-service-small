@@ -7,7 +7,6 @@ Page({
     volume: [],
     goods: [],
     periphery: [],
-    isGetUserInfo: false,
     hotelName: "",
     widgets: []
   },
@@ -129,19 +128,32 @@ Page({
     app.getUserPhoneNumber(e, this);
   },
   bindGetUserInfo() {
+    this.setData({
+      isGetUserInfo: false
+    });
     wx.getStorage({
       key: 'userinfo',
       success: (res) => {
         this.getSignTotal(res.data.openid, res.data.name)//获取访问次数
-        this.setData({
-          isGetUserInfo: false
-        });
       },
       fail: () => {
-        this.setData({
-          isGetUserInfo: true
-        });
         console.log('获取数据失败')
+      }
+    });
+  },
+  closeAlert() {
+    this.setData({
+      isGetUserInfo: false
+    });
+  },
+  getSetting() {
+    wx.getSetting({
+      success: (res)=>{
+        if (!res.authSetting['scope.userInfo']) {
+          this.setData({
+            isGetUserInfo: true
+          });
+        }
       }
     });
   },
@@ -152,9 +164,6 @@ Page({
           wx.setStorage({
             key: 'user',
             data: res
-          });
-          this.setData({
-            isGetUserInfo: false
           });
           app.userLogin(res);
         }

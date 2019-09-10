@@ -1,336 +1,338 @@
-<block wx:if="{{ hasList }}">
-  <!-- banner start -->
-  <view class="banner">
-    <swiper interval="3000" duration="1000" autoplay="true" circular="true">
-      <block wx:for="{{swiper}}" wx:key="index">
-        <swiper-item>
-          <image src="{{item}}" mode="aspectFill"/>
-        </swiper-item>
-      </block>
-    </swiper>
-    <view class="number">
-      <image class="icon-camera" src="/assets/image/icon-camera.png" mode="aspectFill"></image>
-      {{swiper.length}}张
-    </view>
-  </view>
-  <!-- banner end -->
-  <!-- tab nav start -->
-  <view class="tab-nav">
-    <text class="{{tabIndex === 0 ? 'active' : ''}}" data-index="{{0}}" bindtap="chooseTab">客房预订</text>
-    <text class="{{tabIndex === 1 ? 'active' : ''}}" data-index="{{1}}" bindtap="chooseTab">详情设施</text>
-    <text class="{{tabIndex === 2 ? 'active' : ''}}" data-index="{{2}}" bindtap="chooseTab">住客评价</text>
-  </view>
-  <!-- tab nav end -->
-  <!-- tab content start -->
-  <view class="tab-panel" hidden="{{tabIndex !== 0}}">
-    <!-- duration start -->
-    <view class="duration" bind:tap="selectDate">
-      <view class="col">
-        <text class="date">{{start[1]}}月{{start[2]}}日</text>
-        <text class="day">{{startWeek}}入住</text>
-      </view>
-      <text class="line">—</text>
-      <view class="col">
-        <text class="date">{{end[1]}}月{{end[2]}}日</text>
-        <text class="day">{{endWeek}}离店</text>
-      </view>
-      <view class="col sum">
-        共{{days}}晚
-        <image class="icon-right" src="/assets/image/icon-right-orange.png" mode="aspectFill" />
-      </view>
-    </view>
-    <!-- duration end -->
-    <!-- room list start -->
-    <view class="room-list">
-      <view class="item" wx:for="{{roomList}}" wx:key="index" wx:if="{{item.state == '1'}}">
-        <view catchtap="toggleDetail" data-item="{{item}}">
-          <view class="img">
-            <image src="{{item.logo}}" mode="aspectFill"></image>
-            <text class="tag">详情</text>
-          </view>
-          <view class="type">{{item.name}}</view>
-          <view class="desc">
-            <text class="{{item.breakfast == '0' ? '' : 'active'}}">{{item.breakfast == '0' ? '不含早' : '含早'}}</text>
-            <text>{{item.size}}</text>
-            <text>{{item.windows == '1' ? '有窗' : '无窗'}}</text>
-          </view>
-          <view class="price" wx:if="{{item.price}}">{{item.price}}</view>
-        </view>
-        <block>
-          <view class="status" data-room="{{item}}" bindtap="goPay" wx:if="{{item.min_num > 0}}">
-            <view>预订</view>
-            <view>
-              <block wx:if="{{item.min_num == 0}}">已售完</block>
-              <block wx:if="{{item.min_num > 10}}">
-                <block wx:if="{{payInstore == 1}}">到店付</block>
-                <block wx:else>在线付</block>
-              </block>
-              <block wx:else>仅剩{{item.min_num}}间</block>
-            </view>
-          </view>
-          <view class="status full" wx:else>
-            <view>满房</view>
-            <view>满房</view>
-          </view>
+<view class="wrap" bindtap="getSetting">
+  <block wx:if="{{ hasList }}">
+    <!-- banner start -->
+    <view class="banner">
+      <swiper interval="3000" duration="1000" autoplay="true" circular="true">
+        <block wx:for="{{swiper}}" wx:key="index">
+          <swiper-item>
+            <image src="{{item}}" mode="aspectFill"/>
+          </swiper-item>
         </block>
+      </swiper>
+      <view class="number">
+        <image class="icon-camera" src="/assets/image/icon-camera.png" mode="aspectFill"></image>
+        {{swiper.length}}张
       </view>
-      <!-- <view class="tel" bindtap="goCall">
-        <image src="/assets/image/icon-tel.png" />
-        <text>联系商家</text>
-      </view> -->
     </view>
-    <!-- room list end -->
-    <!-- room detail start -->
-    <view class="room-detail" hidden="{{!isShowRoomDetail}}">
-      <view class="wrap">
-          <view class="head">
-          {{roomDetail.name}}
-          <view class="right-close" bindtap="toggleDetail" >
-          <image class="icon-close" src="/assets/image/icon-close.png" mode="aspectFill" />
-          </view>
+    <!-- banner end -->
+    <!-- tab nav start -->
+    <view class="tab-nav">
+      <text class="{{tabIndex === 0 ? 'active' : ''}}" data-index="{{0}}" bindtap="chooseTab">客房预订</text>
+      <text class="{{tabIndex === 1 ? 'active' : ''}}" data-index="{{1}}" bindtap="chooseTab">详情设施</text>
+      <text class="{{tabIndex === 2 ? 'active' : ''}}" data-index="{{2}}" bindtap="chooseTab">住客评价</text>
+    </view>
+    <!-- tab nav end -->
+    <!-- tab content start -->
+    <view class="tab-panel" hidden="{{tabIndex !== 0}}">
+      <!-- duration start -->
+      <view class="duration" bind:tap="selectDate">
+        <view class="col">
+          <text class="date">{{start[1]}}月{{start[2]}}日</text>
+          <text class="day">{{startWeek}}入住</text>
         </view>
-        <view class="scroll">
-          <view class="swiper">
-            <swiper interval="2000" duration="500" circular="true" bindchange="roomSwiperChange">
-                <block wx:for="{{roomDetail.img}}" wx:key="index">
-                  <swiper-item>
-                    <image src="{{item}}" mode="aspectFill"/>
-                  </swiper-item>
+        <text class="line">—</text>
+        <view class="col">
+          <text class="date">{{end[1]}}月{{end[2]}}日</text>
+          <text class="day">{{endWeek}}离店</text>
+        </view>
+        <view class="col sum">
+          共{{days}}晚
+          <image class="icon-right" src="/assets/image/icon-right-orange.png" mode="aspectFill" />
+        </view>
+      </view>
+      <!-- duration end -->
+      <!-- room list start -->
+      <view class="room-list">
+        <view class="item" wx:for="{{roomList}}" wx:key="index" wx:if="{{item.state == '1'}}">
+          <view catchtap="toggleDetail" data-item="{{item}}">
+            <view class="img">
+              <image src="{{item.logo}}" mode="aspectFill"></image>
+              <text class="tag">详情</text>
+            </view>
+            <view class="type">{{item.name}}</view>
+            <view class="desc">
+              <text class="{{item.breakfast == '0' ? '' : 'active'}}">{{item.breakfast == '0' ? '不含早' : '含早'}}</text>
+              <text>{{item.size}}</text>
+              <text>{{item.windows == '1' ? '有窗' : '无窗'}}</text>
+            </view>
+            <view class="price" wx:if="{{item.price}}">{{item.price}}</view>
+          </view>
+          <block>
+            <view class="status" data-room="{{item}}" bindtap="goPay" wx:if="{{item.min_num > 0}}">
+              <view>预订</view>
+              <view>
+                <block wx:if="{{item.min_num == 0}}">已售完</block>
+                <block wx:if="{{item.min_num > 10}}">
+                  <block wx:if="{{payInstore == 1}}">到店付</block>
+                  <block wx:else>在线付</block>
                 </block>
-            </swiper>
-            <text class="number" wx:if="{{roomDetail.img.length}}">{{roomSwiperIndex+1}}/{{roomDetail.img.length}}</text>
-          </view>
-          <view class="attr">
-            <view class="item">
-              <text class="label">卫浴</text>
-              <block wx:if="{{roomDetail.bathroom >= '1'}}">独立卫浴</block>
-              <block wx:if="{{roomDetail.bathrooms >= '1'}}">公共卫浴</block>
-              <block wx:if="{{roomDetail.bathroom < '1' && roomDetail.bathrooms < '1'}}">无</block>
+                <block wx:else>仅剩{{item.min_num}}间</block>
+              </view>
             </view>
-            <view class="item">
-              <text class="label">窗户</text>
-              {{roomDetail.windows >= '1' ? '有' : '无'}}
+            <view class="status full" wx:else>
+              <view>满房</view>
+              <view>满房</view>
             </view>
-            <view class="item">
-              <text class="label">可住</text>
-              {{roomDetail.people >= '1' ? roomDetail.people + '人' : '无'}}
-            </view>
-            <view class="item">
-              <text class="label">面积</text>
-              {{roomDetail.acreage >= '1' ? roomDetail.acreage + '㎡' : '无'}}
-            </view>
-            <view class="item">
-              <text class="label">楼层</text>
-              {{roomDetail.floor >= '1' ? roomDetail.floor + '层' : '无'}}
-            </view>
-            <view class="item">
-              <text class="label">床型</text>
-              {{roomDetail.bedtype >= '1' ? roomDetail.bedtype : '无'}}
-              {{roomDetail.size >= '1' ? roomDetail.size + '米' : '无'}}
-            </view>
-            <view class="item">
-              <text class="label">早餐</text>
-              {{roomDetail.breakfast >= '1' ? '有' : '无'}}早餐
-            </view>
-            <view class="item">
-              <text class="label">上网</text>
-              {{roomDetail.wifi >= '1' ? 'WiFi' : '无'}}
-            </view>
-            <view class="item">
-              <text class="label">空调</text>
-              {{roomDetail.air_conditioner >= '1' ? '有' : '无'}}空调
+          </block>
+        </view>
+        <!-- <view class="tel" bindtap="goCall">
+          <image src="/assets/image/icon-tel.png" />
+          <text>联系商家</text>
+        </view> -->
+      </view>
+      <!-- room list end -->
+      <!-- room detail start -->
+      <view class="room-detail" hidden="{{!isShowRoomDetail}}">
+        <view class="wrap">
+            <view class="head">
+            {{roomDetail.name}}
+            <view class="right-close" bindtap="toggleDetail" >
+            <image class="icon-close" src="/assets/image/icon-close.png" mode="aspectFill" />
             </view>
           </view>
-          <view class="policy">
-            <view class="label">酒店政策</view>
-            <view class="content">
-              <view class="text" wx:if="{{roomDetail.policy}}">
-                <rich-text nodes="{{roomDetail.policy}}"></rich-text>
+          <view class="scroll">
+            <view class="swiper">
+              <swiper interval="2000" duration="500" circular="true" bindchange="roomSwiperChange">
+                  <block wx:for="{{roomDetail.img}}" wx:key="index">
+                    <swiper-item>
+                      <image src="{{item}}" mode="aspectFill"/>
+                    </swiper-item>
+                  </block>
+              </swiper>
+              <text class="number" wx:if="{{roomDetail.img.length}}">{{roomSwiperIndex+1}}/{{roomDetail.img.length}}</text>
+            </view>
+            <view class="attr">
+              <view class="item">
+                <text class="label">卫浴</text>
+                <block wx:if="{{roomDetail.bathroom >= '1'}}">独立卫浴</block>
+                <block wx:if="{{roomDetail.bathrooms >= '1'}}">公共卫浴</block>
+                <block wx:if="{{roomDetail.bathroom < '1' && roomDetail.bathrooms < '1'}}">无</block>
+              </view>
+              <view class="item">
+                <text class="label">窗户</text>
+                {{roomDetail.windows >= '1' ? '有' : '无'}}
+              </view>
+              <view class="item">
+                <text class="label">可住</text>
+                {{roomDetail.people >= '1' ? roomDetail.people + '人' : '无'}}
+              </view>
+              <view class="item">
+                <text class="label">面积</text>
+                {{roomDetail.acreage >= '1' ? roomDetail.acreage + '㎡' : '无'}}
+              </view>
+              <view class="item">
+                <text class="label">楼层</text>
+                {{roomDetail.floor >= '1' ? roomDetail.floor + '层' : '无'}}
+              </view>
+              <view class="item">
+                <text class="label">床型</text>
+                {{roomDetail.bedtype >= '1' ? roomDetail.bedtype : '无'}}
+                {{roomDetail.size >= '1' ? roomDetail.size + '米' : '无'}}
+              </view>
+              <view class="item">
+                <text class="label">早餐</text>
+                {{roomDetail.breakfast >= '1' ? '有' : '无'}}早餐
+              </view>
+              <view class="item">
+                <text class="label">上网</text>
+                {{roomDetail.wifi >= '1' ? 'WiFi' : '无'}}
+              </view>
+              <view class="item">
+                <text class="label">空调</text>
+                {{roomDetail.air_conditioner >= '1' ? '有' : '无'}}空调
+              </view>
+            </view>
+            <view class="policy">
+              <view class="label">酒店政策</view>
+              <view class="content">
+                <view class="text" wx:if="{{roomDetail.policy}}">
+                  <rich-text nodes="{{roomDetail.policy}}"></rich-text>
+                </view>
               </view>
             </view>
           </view>
-        </view>
-        <view class="btn">
-          <text>￥{{roomDetail.price}}</text>
-          <text data-room="{{roomDetail}}" class="{{roomNum <= 0 ? 'no' : ''}}" bindtap="goPay">{{roomNum > 0 ? '预订' : '满房'}}</text>
-        </view>
-      </view>
-    </view>
-    <!-- room detail end -->
-  </view>
-  <view class="tab-panel detail" hidden="{{tabIndex !== 1}}">
-    <!-- level start -->
-    <view class="sect level">
-      <view class="head">{{hotel.name}}</view>
-      <view class="star">{{hotel.star}}</view>
-    </view>
-    <!-- level end -->
-    <!-- service start -->
-    <view class="sect service" wx:if="{{hotel.service.length > 0 || hotel.facilities > 0}}">
-      <view class="head">可提供的服务</view>
-      <view class="list">
-        <view class="item" wx:for="{{hotel.service}}" wx:key="index">
-          <image class="icon" wx:if="{{item.id == '101006'}}" src="/assets/image/icon_parking.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101007'}}" src="/assets/image/icon_card.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101038'}}" src="/assets/image/icon_clock.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101039'}}" src="/assets/image/icon_cup.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101040'}}" src="/assets/image/icon_eating.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101041'}}" src="/assets/image/icon_reception.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101042'}}" src="/assets/image/icon_pic.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101044'}}" src="/assets/image/icon_socks.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101045'}}" src="/assets/image/icon_bag.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101047'}}" src="/assets/image/icon_foreign.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101048'}}" src="/assets/image/icon_bag.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101049'}}" src="/assets/image/icon_care.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101050'}}" src="/assets/image/icon_airport.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101051'}}" src="/assets/image/icon_bicycle.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101052'}}" src="/assets/image/icon_multilingual.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101053'}}" src="/assets/image/icon_umbrella.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101101'}}" src="/assets/image/icon_car.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101102'}}" src="/assets/image/icon_car.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101103'}}" src="/assets/image/icon_airport.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101104'}}" src="/assets/image/icon_railway.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101106'}}" src="/assets/image/icon_baby.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101128'}}" src="/assets/image/icon_wifi.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101135'}}" src="/assets/image/icon_pets.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101170'}}" src="/assets/image/icon_car.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101197'}}" src="/assets/image/icon_folding.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '201111'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '201112'}}" src="/assets/image/icon_gym.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '201113'}}" src="/assets/image/icon_meetingroom.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '201114'}}" src="/assets/image/icon_restaurant.png" mode="aspectFill"></image>
-          <text>{{item.val}}</text>
-        </view>
-        <view class="item" wx:for="{{hotel.facilities}}" wx:key="index">
-          <image class="icon" wx:if="{{item.id == '101009'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101011'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101013'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101014'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101015'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101016'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101017'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101018'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101019'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101020'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101021'}}" src="/assets/image/icon_quilt.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101022'}}" src="/assets/image/icon_shower.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101023'}}" src="/assets/image/icon_spa.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101024'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101025'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101026'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101027'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101028'}}" src="/assets/image/icon_gym.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101029'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101030'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101031'}}" src="/assets/image/icon_meetingroom.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101032'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101033'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101034'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101035'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101036'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101037'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101092'}}" src="/assets/image/icon_restaurant.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101093'}}" src="/assets/image/icon_restaurant.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101094'}}" src="/assets/image/icon_restaurant.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101095'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101096'}}" src="/assets/image/icon_coffee.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101097'}}" src="/assets/image/icon_swimming.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101098'}}" src="/assets/image/icon_swimming.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101099'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101100'}}" src="/assets/image/icon_bussiness.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101137'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <image class="icon" wx:if="{{item.id == '101138'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
-          <text>{{item.val}}</text>
+          <view class="btn">
+            <text>￥{{roomDetail.price}}</text>
+            <text data-room="{{roomDetail}}" class="{{roomNum <= 0 ? 'no' : ''}}" bindtap="goPay">{{roomNum > 0 ? '预订' : '满房'}}</text>
+          </view>
         </view>
       </view>
+      <!-- room detail end -->
     </view>
-    <!-- service end -->
-    <!-- intro start -->
-    <view class="sect intro">
-      <view class="head">酒店介绍</view>
-      <view class="attr">
-        <view class="item" wx:if="{{hotel.decorationDate}}">装修时间：{{hotel.decorationDate}}年</view>
-        <view class="item" wx:if="{{hotel.openDate}}">开业时间：{{hotel.openDate}}年</view>
-        <view class="item" wx:if="{{hotel.floorNum}}">楼层高度：{{hotel.floorNum}}层</view>
-        <view class="item" wx:if="{{hotel.roomNum}}">房间总数：{{hotel.roomNum}}间</view>
+    <view class="tab-panel detail" hidden="{{tabIndex !== 1}}">
+      <!-- level start -->
+      <view class="sect level">
+        <view class="head">{{hotel.name}}</view>
+        <view class="star">{{hotel.star}}</view>
       </view>
-      <view class="desc"><rich-text nodes="{{hotel.introduction}}"></rich-text></view>
-    </view>
-    <!-- intro end -->
-    <!-- policy start -->
-    <view class="sect policy">
-      <view class="head">酒店政策</view>
-      <view class="content">
-        <view class="text" wx:if="{{hotel.policy}}">
-          <rich-text nodes="{{hotel.policy}}"></rich-text>
+      <!-- level end -->
+      <!-- service start -->
+      <view class="sect service" wx:if="{{hotel.service.length > 0 || hotel.facilities > 0}}">
+        <view class="head">可提供的服务</view>
+        <view class="list">
+          <view class="item" wx:for="{{hotel.service}}" wx:key="index">
+            <image class="icon" wx:if="{{item.id == '101006'}}" src="/assets/image/icon_parking.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101007'}}" src="/assets/image/icon_card.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101038'}}" src="/assets/image/icon_clock.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101039'}}" src="/assets/image/icon_cup.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101040'}}" src="/assets/image/icon_eating.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101041'}}" src="/assets/image/icon_reception.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101042'}}" src="/assets/image/icon_pic.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101044'}}" src="/assets/image/icon_socks.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101045'}}" src="/assets/image/icon_bag.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101047'}}" src="/assets/image/icon_foreign.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101048'}}" src="/assets/image/icon_bag.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101049'}}" src="/assets/image/icon_care.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101050'}}" src="/assets/image/icon_airport.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101051'}}" src="/assets/image/icon_bicycle.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101052'}}" src="/assets/image/icon_multilingual.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101053'}}" src="/assets/image/icon_umbrella.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101101'}}" src="/assets/image/icon_car.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101102'}}" src="/assets/image/icon_car.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101103'}}" src="/assets/image/icon_airport.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101104'}}" src="/assets/image/icon_railway.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101106'}}" src="/assets/image/icon_baby.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101128'}}" src="/assets/image/icon_wifi.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101135'}}" src="/assets/image/icon_pets.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101170'}}" src="/assets/image/icon_car.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101197'}}" src="/assets/image/icon_folding.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '201111'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '201112'}}" src="/assets/image/icon_gym.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '201113'}}" src="/assets/image/icon_meetingroom.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '201114'}}" src="/assets/image/icon_restaurant.png" mode="aspectFill"></image>
+            <text>{{item.val}}</text>
+          </view>
+          <view class="item" wx:for="{{hotel.facilities}}" wx:key="index">
+            <image class="icon" wx:if="{{item.id == '101009'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101011'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101013'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101014'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101015'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101016'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101017'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101018'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101019'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101020'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101021'}}" src="/assets/image/icon_quilt.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101022'}}" src="/assets/image/icon_shower.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101023'}}" src="/assets/image/icon_spa.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101024'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101025'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101026'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101027'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101028'}}" src="/assets/image/icon_gym.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101029'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101030'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101031'}}" src="/assets/image/icon_meetingroom.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101032'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101033'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101034'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101035'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101036'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101037'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101092'}}" src="/assets/image/icon_restaurant.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101093'}}" src="/assets/image/icon_restaurant.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101094'}}" src="/assets/image/icon_restaurant.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101095'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101096'}}" src="/assets/image/icon_coffee.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101097'}}" src="/assets/image/icon_swimming.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101098'}}" src="/assets/image/icon_swimming.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101099'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101100'}}" src="/assets/image/icon_bussiness.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101137'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <image class="icon" wx:if="{{item.id == '101138'}}" src="/assets/image/icon_others.png" mode="aspectFill"></image>
+            <text>{{item.val}}</text>
+          </view>
         </view>
       </view>
+      <!-- service end -->
+      <!-- intro start -->
+      <view class="sect intro">
+        <view class="head">酒店介绍</view>
+        <view class="attr">
+          <view class="item" wx:if="{{hotel.decorationDate}}">装修时间：{{hotel.decorationDate}}年</view>
+          <view class="item" wx:if="{{hotel.openDate}}">开业时间：{{hotel.openDate}}年</view>
+          <view class="item" wx:if="{{hotel.floorNum}}">楼层高度：{{hotel.floorNum}}层</view>
+          <view class="item" wx:if="{{hotel.roomNum}}">房间总数：{{hotel.roomNum}}间</view>
+        </view>
+        <view class="desc"><rich-text nodes="{{hotel.introduction}}"></rich-text></view>
+      </view>
+      <!-- intro end -->
+      <!-- policy start -->
+      <view class="sect policy">
+        <view class="head">酒店政策</view>
+        <view class="content">
+          <view class="text" wx:if="{{hotel.policy}}">
+            <rich-text nodes="{{hotel.policy}}"></rich-text>
+          </view>
+        </view>
+      </view>
+      <!-- policy end -->
     </view>
-    <!-- policy end -->
-  </view>
-  <view class="tab-panel comment-list" hidden="{{tabIndex !== 2}}">
-    <view class="tag-list" wx:if="{{commentList.length}}">
-      <text class="tag {{commentTagIndex === 0 ? 'active' : ''}}" data-index="{{0}}" bindtap="chooseCommentTag">全部（{{assessCount.total}}）</text>
-      <text class="tag {{commentTagIndex === 1 ? 'active' : ''}}" data-index="{{1}}" bindtap="chooseCommentTag">有图（{{assessCount.num}}）</text>
+    <view class="tab-panel comment-list" hidden="{{tabIndex !== 2}}">
+      <view class="tag-list" wx:if="{{commentList.length}}">
+        <text class="tag {{commentTagIndex === 0 ? 'active' : ''}}" data-index="{{0}}" bindtap="chooseCommentTag">全部（{{assessCount.total}}）</text>
+        <text class="tag {{commentTagIndex === 1 ? 'active' : ''}}" data-index="{{1}}" bindtap="chooseCommentTag">有图（{{assessCount.num}}）</text>
+      </view>
+      <view class="comment-wrap" wx:if="{{commentList.length}}">
+        <commentItem wx:for="{{commentList}}" wx:key="index" comment="{{item}}"></commentItem>
+      </view>
+      <view class="null" wx:if="{{!commentList.length}}">
+        <image class="icon" src="/assets/image/noInfo.png" mode="aspectFill" ></image>
+        <view class="desc">暂无评价</view>
+      </view>
     </view>
-    <view class="comment-wrap" wx:if="{{commentList.length}}">
-      <commentItem wx:for="{{commentList}}" wx:key="index" comment="{{item}}"></commentItem>
+    <!-- tab content end -->
+  </block>
+  <block wx:if="{{ noList }}">
+    <view class="build">
+      <image class="icon-build" src="/assets/image/noInfo.png" mode="aspectFill" />
+      <view class="desc">酒店暂未开放此功能</view>
     </view>
-    <view class="null" wx:if="{{!commentList.length}}">
-      <image class="icon" src="/assets/image/noInfo.png" mode="aspectFill" ></image>
-      <view class="desc">暂无评价</view>
-    </view>
-  </view>
-  <!-- tab content end -->
-</block>
-<block wx:if="{{ noList }}">
-  <view class="build">
-    <image class="icon-build" src="/assets/image/noInfo.png" mode="aspectFill" />
-    <view class="desc">酒店暂未开放此功能</view>
-  </view>
-</block>
-
-  <!-- 授权窗口 -->
-  <cover-view class="user-alert" scroll-top="0" wx:if="{{ isGetUserInfo }}">
-    <cover-view class='alert-content'>
-      <cover-image class="alert-banner" src="/assets/image/alert-banner.png" ></cover-image>    
-      <!-- <cover-view class="alert-text"></cover-view>   -->
-      <cover-view class="alert-title">欢迎入住{{hotelName}}</cover-view>
-      <cover-view class="alert-msg">尽享酒店服务</cover-view>
-      <button class='getUser-btn' bindgetuserinfo='getUserInfo' open-type="getUserInfo">微信授权</button>
-    </cover-view>
-  </cover-view>
-  
- <!-- 授权手机窗口
-  <cover-view class='user-alert phone-tel' wx:if="{{ isGetPhoneNumber }}">
-    <cover-view class='sign-vip'>
-      <cover-view class='vip-card'>
-        <cover-view class='vip-card-info'>
-          <cover-view class='getVip-photo'>
-            <cover-image src="{{userInfo.img ? userInfo.img : '/assets/image/user-img.png'}}" mode="aspectFill" />
+  </block>
+  <!-- 授权手机窗口
+    <cover-view class='user-alert phone-tel' wx:if="{{ isGetPhoneNumber }}">
+      <cover-view class='sign-vip'>
+        <cover-view class='vip-card'>
+          <cover-view class='vip-card-info'>
+            <cover-view class='getVip-photo'>
+              <cover-image src="{{userInfo.img ? userInfo.img : '/assets/image/user-img.png'}}" mode="aspectFill" />
+            </cover-view>
+            <cover-view>
+              <cover-view class='vip-name'>{{ hotelName }}</cover-view>
+              <cover-view class='vip-notice'>VIP会员卡</cover-view>
+            </cover-view>
           </cover-view>
+          <cover-view class='vip-num'>酒店直定 · 没有中间商赚差价</cover-view>
           <cover-view>
-            <cover-view class='vip-name'>{{ hotelName }}</cover-view>
-            <cover-view class='vip-notice'>VIP会员卡</cover-view>
           </cover-view>
         </cover-view>
-        <cover-view class='vip-num'>酒店直定 · 没有中间商赚差价</cover-view>
-        <cover-view>
+        <cover-view class="hotel-agreement">
+          <navigator hover-class="none" url="/pages/hotelAgreement/hotelAgreement">领取会员，视为同意酒店会员协议</navigator>
+          <cover-view class="right-arrow"></cover-view>
         </cover-view>
+        <button class='getVip-btn getIphone-btn' bindgetphonenumber='getUserPhoneNumber' open-type="getPhoneNumber">领取VIP会员卡</button>
       </cover-view>
-      <cover-view class="hotel-agreement">
-         <navigator hover-class="none" url="/pages/hotelAgreement/hotelAgreement">领取会员，视为同意酒店会员协议</navigator>
-        <cover-view class="right-arrow"></cover-view>
-      </cover-view>
-      <button class='getVip-btn getIphone-btn' bindgetphonenumber='getUserPhoneNumber' open-type="getPhoneNumber">领取VIP会员卡</button>
+    </cover-view> -->
+
+
+  <!-- <cover-view class='user-alert' wx:if="{{isGetPhoneNumber}}">
+    <cover-view class='alert-content2'>
+      <cover-view>请绑定手机</cover-view>
+      <cover-view>便于给您提供更优质服务</cover-view>
+      <button class='getUser-btn getIphone-btn' bindgetphonenumber='getUserPhoneNumber' open-type="getPhoneNumber">立即绑定</button>
     </cover-view>
   </cover-view> -->
+</view>
 
-
-<!-- <cover-view class='user-alert' wx:if="{{isGetPhoneNumber}}">
-  <cover-view class='alert-content2'>
-    <cover-view>请绑定手机</cover-view>
-    <cover-view>便于给您提供更优质服务</cover-view>
-    <button class='getUser-btn getIphone-btn' bindgetphonenumber='getUserPhoneNumber' open-type="getPhoneNumber">立即绑定</button>
+<!-- 授权窗口 -->
+<cover-view class="user-alert" scroll-top="0" hidden="{{ !isGetUserInfo }}" bindtap="closeAlert">
+  <cover-view class='alert-content'>
+    <cover-image class="alert-banner" src="/assets/image/alert-banner.png" ></cover-image>    
+    <!-- <cover-view class="alert-text"></cover-view>   -->
+    <cover-view class="alert-title">欢迎入住{{hotelName}}</cover-view>
+    <cover-view class="alert-msg">尽享酒店服务</cover-view>
+    <button class='getUser-btn' bindgetuserinfo='getUserInfo' open-type="getUserInfo">微信授权</button>
+    <button class='cancel-btn' hover-class="none">暂不授权</button>
   </cover-view>
-</cover-view> -->
+</cover-view>

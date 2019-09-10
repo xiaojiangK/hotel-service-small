@@ -82,6 +82,13 @@ page {
   background-color: #fff;
   border-radius: 20rpx; 
 }
+.user-alert .cancel-btn{
+  color: #999;
+  outline: none;
+  font-size: 24rpx;
+  line-height: 80rpx;
+  background: #fff;
+}
 .getUser-btn{
   width: 50%;
   height: 70rpx;

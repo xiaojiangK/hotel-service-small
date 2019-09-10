@@ -47,7 +47,7 @@
       <view class="btn-cancel" bind:tap="goRefund">取消订单</view>
     </block>
   </block>
-  <block wx:else>
+  <!-- <block wx:else>
     <view class="text-box use-box">
       <block wx:if="{{isUse}}">
         <view class="use no">已核销</view>
@@ -61,5 +61,5 @@
       <navigator url="/pages/index/index" open-type="switchTab" hover-class="none" class="back">返回首页</navigator>
       <view style="word-break:break-all;">参数：{{query}}</view>
     </view>
-  </block>
+  </block> -->
 </view>

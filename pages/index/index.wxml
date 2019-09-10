@@ -1,4 +1,4 @@
-<view class="wrapper">
+<view class="wrapper" bindtap="getSetting">
   <block wx:for="{{widgets}}" wx:key="index">
     <custom-swiper wx:if="{{item.type == 'banner'}}" widget="{{item}}" data="{{detail}}"> </custom-swiper>
     <index-service id="index-service" wx:if="{{item.type == 'menu'}}" widget="{{item}}"></index-service>
@@ -10,15 +10,16 @@
   <view class="foot">
     精彩旅行，从酒店生活开始…
   </view>
-  
-  <!-- 授权窗口 -->
-  <cover-view class="user-alert" scroll-top="0" wx:if="{{ isGetUserInfo }}">
-    <cover-view class='alert-content'>
-      <cover-image class="alert-banner" src="/assets/image/alert-banner.png" ></cover-image>    
-      <!-- <cover-view class="alert-text"></cover-view>   -->
-      <cover-view class="alert-title">欢迎入住{{hotelName}}</cover-view>
-      <cover-view class="alert-msg">尽享酒店服务</cover-view>
-      <button class='getUser-btn' bindgetuserinfo='getUserInfo' open-type="getUserInfo">微信授权</button>
-    </cover-view>
-  </cover-view>
 </view>
+
+<!-- 授权窗口 -->
+<cover-view class="user-alert" scroll-top="0" hidden="{{ !isGetUserInfo }}" bindtap="closeAlert">
+  <cover-view class='alert-content'>
+    <cover-image class="alert-banner" src="/assets/image/alert-banner.png" ></cover-image>    
+    <!-- <cover-view class="alert-text"></cover-view>   -->
+    <cover-view class="alert-title">欢迎入住{{hotelName}}</cover-view>
+    <cover-view class="alert-msg">尽享酒店服务</cover-view>
+    <button class='getUser-btn' bindgetuserinfo='getUserInfo' open-type="getUserInfo">微信授权</button>
+    <button class='cancel-btn' hover-class="none">暂不授权</button>
+  </cover-view>
+</cover-view>

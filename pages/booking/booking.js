@@ -42,6 +42,11 @@ Page({
     this.loadData();
     // this.changePhoneNumber();
   },
+  onHide() {
+    this.setData({
+      isGetUserInfo: false
+    });
+  },
   //  初始化数据
   initDate() {
     let _this = this

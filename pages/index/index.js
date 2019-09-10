@@ -20,6 +20,11 @@ Page({
   onShow() {
     this.bindGetUserInfo();
   },
+  onHide() {
+    this.setData({
+      isGetUserInfo: false
+    });
+  },
   loadData(){
     // 酒店详情
     wx.showLoading({

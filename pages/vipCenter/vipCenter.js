@@ -194,6 +194,11 @@ Page({
       user: app.globalData.user
     });
   },
+  onHide() {
+    this.setData({
+      isGetUserInfo: false
+    });
+  },
   getUserPhoneNumber(e) {
     app.getUserPhoneNumber(e, this);
   },

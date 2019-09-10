@@ -87,7 +87,7 @@ page {
   outline: none;
   font-size: 24rpx;
   line-height: 80rpx;
-  background: #fff;
+  background: transparent;
 }
 .getUser-btn{
   width: 50%;

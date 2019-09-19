@@ -35,6 +35,10 @@ App({
     });
   },
   getUserLevel(that = '') {
+    if (iNow == 1) {
+      this.globalData.sale_id = '';
+      this.globalData.company_id = '';
+    }
     wx.login({
       success: res => {
         let url = "entry/wxapp/Openids"
@@ -74,6 +78,7 @@ App({
                     confirmText: '确定'
                   });
                 }
+                iNow++;
               }
             });
           }

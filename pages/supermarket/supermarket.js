@@ -115,12 +115,12 @@ Page({
             classTypeTotal:a.length*50
           }
         })
-        let config = app.globalData.hotelConfig
-        if (list.length > 0 && config.wx_mchid && config.store_swich == 1) {
+        // let config = app.globalData.hotelConfig
+        // if (list.length > 0 && config.wx_mchid && config.store_swich == 1) {
           this.setData({ list: newGoodsList, goodTypeList: goodTypeList, isMchid: app.globalData.isMchid, hasList: true });
-        }else{
-          this.setData({ noList: true });
-        }
+        // }else{
+        //   this.setData({ noList: true });
+        // }
         // list.isMchid = app.globalData.isMchid
         
         app.globalData.shopCar = newGoodsList

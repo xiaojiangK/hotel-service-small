@@ -16,12 +16,12 @@ Component({
             price: Number.isInteger(goods_price) ? Number.parseInt(goods_price) : goods_price.toFixed(2)
           }
         });
-        let config = app.globalData.hotelConfig
-        if (list.length > 0 && config.wx_mchid && config.breakfast_swich == 1){
+        // let config = app.globalData.hotelConfig
+        // if (list.length > 0 && config.wx_mchid && config.breakfast_swich == 1){
           this.setData({ list, hasBreatfast: true, noBreatfast:false });
-        }else{
-          this.setData({ noBreatfast: true });
-        }
+        // }else{
+        //   this.setData({ noBreatfast: true });
+        // }
         
       }
     }

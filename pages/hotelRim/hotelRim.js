@@ -34,12 +34,12 @@ Page({
           }
         });
         
-        let config = app.globalData.hotelConfig
-        if (list.length > 0 && config.around_swich == 1) {
+        // let config = app.globalData.hotelConfig
+        // if (list.length > 0 && config.around_swich == 1) {
           this.setData({ list, isHasList: true });
-        } else {
-          this.setData({ isNoList: true });
-        }
+        // } else {
+        //   this.setData({ isNoList: true });
+        // }
         
       }
     });
